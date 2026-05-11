@@ -4,12 +4,14 @@ import { Header } from './Header'
 import { DRAWER_WIDTH, Sidebar } from './Sidebar'
 
 interface AppShellProps {
+  activePage: string
+  onNavigate: (pageKey: string) => void
   children: ReactNode
 }
 
-const AppShell = ({ children }: AppShellProps) => (
+const AppShell = ({ activePage, onNavigate, children }: AppShellProps) => (
   <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f5f6fa' }}>
-    <Sidebar />
+    <Sidebar activePage={activePage} onNavigate={onNavigate} />
     <Header />
     <Box
       component="main"

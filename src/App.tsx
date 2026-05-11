@@ -44,6 +44,7 @@ const App = () => {
   const [groups, setGroups] = useState<AggregatedCouponGroup[]>([])
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
+  const [activePage, setActivePage] = useState('cupons')
 
   useEffect(() => {
     const bootstrap = async () => {
@@ -132,41 +133,43 @@ const App = () => {
   }
 
   return (
-    <AppShell>
-      {/* Configuração dos critérios do agregador */}
-      <AggregatorConfig criteria={criteria} onChange={setCriteria} />
+    <AppShell activePage={activePage} onNavigate={setActivePage}>
+      {activePage === 'config-agregador' ? (
+        <AggregatorConfig criteria={criteria} onChange={setCriteria} />
+      ) : (
+        <>
+          {/* Card principal: filtros + tabela (segue layout de referência) */}
+          <Paper
+            elevation={0}
+            sx={{
+              borderRadius: 2,
+              border: '1px solid #e8ecf0',
+              overflow: 'hidden',
+              backgroundColor: '#fff',
+            }}
+          >
+            <CouponFiltersBar
+              coupons={coupons}
+              filters={filters}
+              filteredCount={filteredCoupons.length}
+              filteredTotal={filteredTotal}
+              onChange={setFilters}
+              onAggregate={() => void handleAggregate()}
+              processing={processing}
+            />
+            <CouponTable coupons={filteredCoupons} />
+          </Paper>
 
-      {/* Card principal: filtros + tabela (segue layout de referência) */}
-      <Paper
-        elevation={0}
-        sx={{
-          mt: 2,
-          borderRadius: 2,
-          border: '1px solid #e8ecf0',
-          overflow: 'hidden',
-          backgroundColor: '#fff',
-        }}
-      >
-        <CouponFiltersBar
-          coupons={coupons}
-          filters={filters}
-          filteredCount={filteredCoupons.length}
-          filteredTotal={filteredTotal}
-          onChange={setFilters}
-          onAggregate={() => void handleAggregate()}
-          processing={processing}
-        />
-        <CouponTable coupons={filteredCoupons} />
-      </Paper>
-
-      {/* Visão agrupada em accordion com botão SAP por grupo */}
-      {groups.length > 0 && (
-        <Box sx={{ mt: 2.5 }}>
-          <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2c3d', mb: 1.5 }}>
-            Visão Agrupada — {groups.length} grupos gerados
-          </Typography>
-          <AggregatedView groups={groups} />
-        </Box>
+          {/* Visão agrupada em accordion com botão SAP por grupo */}
+          {groups.length > 0 && (
+            <Box sx={{ mt: 2.5 }}>
+              <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2c3d', mb: 1.5 }}>
+                Visão Agrupada — {groups.length} grupos gerados
+              </Typography>
+              <AggregatedView groups={groups} />
+            </Box>
+          )}
+        </>
       )}
     </AppShell>
   )

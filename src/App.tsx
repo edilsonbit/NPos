@@ -154,13 +154,16 @@ const App = () => {
           <CouponFiltersBar
             coupons={coupons}
             filters={filters}
+            onChange={setFilters}
+            onClear={() => setFilters(defaultFilters)}
+          />
+          <CouponTable
+            coupons={filteredCoupons}
             filteredCount={filteredCoupons.length}
             filteredTotal={filteredTotal}
-            onChange={setFilters}
             onAggregate={() => void handleAggregate()}
             processing={processing}
           />
-          <CouponTable coupons={filteredCoupons} />
         </Paper>
       )}
     </AppShell>

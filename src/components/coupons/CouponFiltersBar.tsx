@@ -1,29 +1,23 @@
 import {
   Box,
   Button,
-  Chip,
   MenuItem,
   Stack,
   TextField,
 } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
-import HubIcon from '@mui/icons-material/Hub'
+import ClearIcon from '@mui/icons-material/Clear'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
 import type { Coupon, CouponFilters } from '../../domain/models'
-
-const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
 const selectSx = { flex: 1, minWidth: 100 }
 
 interface CouponFiltersBarProps {
   coupons: Coupon[]
   filters: CouponFilters
-  filteredCount: number
-  filteredTotal: number
   onChange: (filters: CouponFilters) => void
-  onAggregate: () => void
-  processing: boolean
+  onClear: () => void
 }
 
 const set = <K extends keyof CouponFilters>(
@@ -35,11 +29,8 @@ const set = <K extends keyof CouponFilters>(
 const CouponFiltersBar = ({
   coupons,
   filters,
-  filteredCount,
-  filteredTotal,
   onChange,
-  onAggregate,
-  processing,
+  onClear,
 }: CouponFiltersBarProps) => {
   const stores = [...new Set(coupons.map((c) => c.storeId))].sort()
   const acquirers = [...new Set(coupons.map((c) => c.acquirer))].sort()
@@ -127,11 +118,23 @@ const CouponFiltersBar = ({
         />
 
         <Box sx={{ display: 'flex', gap: 1, flexShrink: 0, alignItems: 'center' }}>
-          <Chip
-            size="small"
-            label={`${filteredCount} | ${currency.format(filteredTotal)}`}
-            sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600, height: 32, borderRadius: 1 }}
-          />
+          <Button
+            variant="outlined"
+            startIcon={<ClearIcon />}
+            onClick={onClear}
+            sx={{
+              borderColor: '#e0e0e0',
+              color: '#757575',
+              '&:hover': { borderColor: '#bdbdbd', backgroundColor: '#f5f5f5' },
+              textTransform: 'none',
+              fontWeight: 600,
+              px: 2,
+              height: 40,
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Limpar
+          </Button>
           <Button
             variant="contained"
             startIcon={<SearchIcon />}
@@ -145,23 +148,6 @@ const CouponFiltersBar = ({
             }}
           >
             Pesquisar
-          </Button>
-          <Button
-            variant="contained"
-            startIcon={<HubIcon />}
-            onClick={onAggregate}
-            disabled={processing || filteredCount === 0}
-            sx={{
-              backgroundColor: '#0d3b45',
-              '&:hover': { backgroundColor: '#062930' },
-              textTransform: 'none',
-              fontWeight: 600,
-              px: 2,
-              height: 40,
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {processing ? 'Agrupando...' : 'Rodar Agregador'}
           </Button>
         </Box>
       </Stack>

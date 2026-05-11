@@ -1,6 +1,8 @@
 import {
   Box,
+  Button,
   Chip,
+  Stack,
   Table,
   TableBody,
   TableCell,
@@ -11,6 +13,7 @@ import {
   TableRow,
   Typography,
 } from '@mui/material'
+import HubIcon from '@mui/icons-material/Hub'
 import dayjs from 'dayjs'
 import { useState } from 'react'
 import type { Coupon } from '../../domain/models'
@@ -35,9 +38,13 @@ const headCells = [
 
 interface CouponTableProps {
   coupons: Coupon[]
+  filteredCount: number
+  filteredTotal: number
+  onAggregate: () => void
+  processing: boolean
 }
 
-const CouponTable = ({ coupons }: CouponTableProps) => {
+const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, processing }: CouponTableProps) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
@@ -45,6 +52,42 @@ const CouponTable = ({ coupons }: CouponTableProps) => {
 
   return (
     <Box>
+      {/* Toolbar acima da tabela */}
+      <Stack
+        direction="row"
+        sx={{
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          px: 2,
+          py: 1,
+          borderBottom: '1px solid #e8ecf0',
+          backgroundColor: '#fafbfc',
+        }}
+      >
+        <Chip
+          size="small"
+          label={`${filteredCount} registros | ${currency.format(filteredTotal)}`}
+          sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600, height: 28, borderRadius: 1 }}
+        />
+        <Button
+          variant="contained"
+          startIcon={<HubIcon />}
+          onClick={onAggregate}
+          disabled={processing || filteredCount === 0}
+          sx={{
+            backgroundColor: '#0d3b45',
+            '&:hover': { backgroundColor: '#062930' },
+            textTransform: 'none',
+            fontWeight: 600,
+            px: 2,
+            height: 32,
+            fontSize: 13,
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {processing ? 'Agrupando...' : 'Rodar Agregador'}
+        </Button>
+      </Stack>
       <TableContainer sx={{ maxHeight: 480 }}>
         <Table size="small" stickyHeader>
           <TableHead>

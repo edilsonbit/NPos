@@ -64,7 +64,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
           variant="h6"
           sx={{ fontWeight: 700, color: '#1976d2', fontSize: 22, letterSpacing: 0.3 }}
         >
-          NPos
+          OmniPOS
         </Typography>
 
         {/* Subtítulo */}
@@ -77,33 +77,23 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
           <TextField
             fullWidth
             label="Email / Usuário"
-            variant="filled"
-            size="small"
+            variant="outlined"
+            size="medium"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
-            slotProps={{ inputLabel: { shrink: true } }}
-            sx={{
-              '& .MuiFilledInput-root': {
-                backgroundColor: '#dce8f7',
-                borderRadius: '4px 4px 0 0',
-                '&:hover': { backgroundColor: '#cddff5' },
-                '&.Mui-focused': { backgroundColor: '#dce8f7' },
-              },
-            }}
           />
 
           <TextField
             fullWidth
             label="Senha"
-            variant="filled"
-            size="small"
+            variant="outlined"
+            size="medium"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
             slotProps={{
-              inputLabel: { shrink: true },
               input: {
                 endAdornment: (
                   <InputAdornment position="end">
@@ -120,14 +110,6 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
                     </IconButton>
                   </InputAdornment>
                 ),
-              },
-            }}
-            sx={{
-              '& .MuiFilledInput-root': {
-                backgroundColor: '#dce8f7',
-                borderRadius: '4px 4px 0 0',
-                '&:hover': { backgroundColor: '#cddff5' },
-                '&.Mui-focused': { backgroundColor: '#dce8f7' },
               },
             }}
           />

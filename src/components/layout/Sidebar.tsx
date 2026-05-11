@@ -120,32 +120,12 @@ const Sidebar = ({ activePage, onNavigate }: SidebarProps) => (
         minHeight: 56,
       }}
     >
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-        <Box
-          sx={{
-            width: 34,
-            height: 34,
-            borderRadius: '6px',
-            background: 'linear-gradient(135deg, #f5a623 0%, #f76b1c 100%)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexShrink: 0,
-          }}
-        >
-          <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: 11, letterSpacing: 0.5 }}>
-            NP
-          </Typography>
-        </Box>
-        <Box>
-          <Typography sx={{ fontWeight: 700, fontSize: 13, color: '#1a1a2e', lineHeight: 1.2 }}>
-            NPos
-          </Typography>
-          <Typography sx={{ fontSize: 10, color: '#9e9e9e', lineHeight: 1 }}>
-            Boticário
-          </Typography>
-        </Box>
-      </Box>
+      <Box
+        component="img"
+        src="/images/logo_qas.png"
+        alt="Logo"
+        sx={{ height: 36, maxWidth: 180, objectFit: 'contain' }}
+      />
       <MenuIcon sx={{ color: '#bdbdbd', fontSize: 20, cursor: 'pointer' }} />
     </Box>
 

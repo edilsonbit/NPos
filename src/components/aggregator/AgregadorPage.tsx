@@ -11,6 +11,7 @@ import {
 import { DatePicker } from '@mui/x-date-pickers'
 import HubIcon from '@mui/icons-material/Hub'
 import SearchIcon from '@mui/icons-material/Search'
+import ClearIcon from '@mui/icons-material/Clear'
 import dayjs from 'dayjs'
 import { useMemo, useState } from 'react'
 import type { AggregatedCouponGroup, GroupFilters } from '../../domain/models'
@@ -195,6 +196,23 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
               }}
             >
               Pesquisar
+            </Button>
+            <Button
+              variant="outlined"
+              startIcon={<ClearIcon />}
+              onClick={() => setFilters(defaultFilters)}
+              sx={{
+                borderColor: '#e0e0e0',
+                color: '#757575',
+                '&:hover': { borderColor: '#bdbdbd', backgroundColor: '#f5f5f5' },
+                textTransform: 'none',
+                fontWeight: 600,
+                px: 2,
+                height: 40,
+                flexShrink: 0,
+              }}
+            >
+              Limpar
             </Button>
           </Stack>
         </Box>

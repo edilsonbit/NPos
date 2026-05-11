@@ -77,21 +77,43 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
           <TextField
             fullWidth
             label="Email / Usuário"
+            variant="filled"
             size="small"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             autoComplete="username"
             slotProps={{ inputLabel: { shrink: true } }}
+            sx={{
+              '& .MuiFilledInput-root': {
+                backgroundColor: '#eef3fb',
+                borderRadius: 1.5,
+                border: '1px solid #d0ddf0',
+                '&:before, &:after': { display: 'none' },
+                '&:hover': { backgroundColor: '#e6eef8' },
+                '&.Mui-focused': { backgroundColor: '#eef3fb', border: '1px solid #90b4e8' },
+              },
+            }}
           />
 
           <TextField
             fullWidth
             label="Senha"
+            variant="filled"
             size="small"
             type={showPassword ? 'text' : 'password'}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
+            sx={{
+              '& .MuiFilledInput-root': {
+                backgroundColor: '#eef3fb',
+                borderRadius: 1.5,
+                border: '1px solid #d0ddf0',
+                '&:before, &:after': { display: 'none' },
+                '&:hover': { backgroundColor: '#e6eef8' },
+                '&.Mui-focused': { backgroundColor: '#eef3fb', border: '1px solid #90b4e8' },
+              },
+            }}
             slotProps={{
               inputLabel: { shrink: true },
               input: {

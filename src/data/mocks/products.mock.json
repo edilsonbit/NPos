@@ -1,0 +1,962 @@
+[
+  {
+    "id": "P0001",
+    "code": "COD-10001",
+    "name": "Maquiagem Eudora Premium 1",
+    "category": "Maquiagem",
+    "brand": "Eudora",
+    "price": 23.45
+  },
+  {
+    "id": "P0002",
+    "code": "COD-10002",
+    "name": "Corpo e Banho Quem Disse Berenice Essencial 2",
+    "category": "Corpo e Banho",
+    "brand": "Quem Disse Berenice",
+    "price": 32.9
+  },
+  {
+    "id": "P0003",
+    "code": "COD-10003",
+    "name": "Cabelos Vult Premium 3",
+    "category": "Cabelos",
+    "brand": "Vult",
+    "price": 42.35
+  },
+  {
+    "id": "P0004",
+    "code": "COD-10004",
+    "name": "Skincare OUi Essencial 4",
+    "category": "Skincare",
+    "brand": "OUi",
+    "price": 51.8
+  },
+  {
+    "id": "P0005",
+    "code": "COD-10005",
+    "name": "Infantil Boticario Premium 5",
+    "category": "Infantil",
+    "brand": "Boticario",
+    "price": 50.75
+  },
+  {
+    "id": "P0006",
+    "code": "COD-10006",
+    "name": "Perfumaria Eudora Essencial 6",
+    "category": "Perfumaria",
+    "brand": "Eudora",
+    "price": 60.2
+  },
+  {
+    "id": "P0007",
+    "code": "COD-10007",
+    "name": "Maquiagem Quem Disse Berenice Premium 7",
+    "category": "Maquiagem",
+    "brand": "Quem Disse Berenice",
+    "price": 69.65
+  },
+  {
+    "id": "P0008",
+    "code": "COD-10008",
+    "name": "Corpo e Banho Vult Essencial 8",
+    "category": "Corpo e Banho",
+    "brand": "Vult",
+    "price": 79.1
+  },
+  {
+    "id": "P0009",
+    "code": "COD-10009",
+    "name": "Cabelos OUi Premium 9",
+    "category": "Cabelos",
+    "brand": "OUi",
+    "price": 88.55
+  },
+  {
+    "id": "P0010",
+    "code": "COD-10010",
+    "name": "Skincare Boticario Essencial 10",
+    "category": "Skincare",
+    "brand": "Boticario",
+    "price": 87.5
+  },
+  {
+    "id": "P0011",
+    "code": "COD-10011",
+    "name": "Infantil Eudora Premium 11",
+    "category": "Infantil",
+    "brand": "Eudora",
+    "price": 96.95
+  },
+  {
+    "id": "P0012",
+    "code": "COD-10012",
+    "name": "Perfumaria Quem Disse Berenice Essencial 12",
+    "category": "Perfumaria",
+    "brand": "Quem Disse Berenice",
+    "price": 106.4
+  },
+  {
+    "id": "P0013",
+    "code": "COD-10013",
+    "name": "Maquiagem Vult Premium 13",
+    "category": "Maquiagem",
+    "brand": "Vult",
+    "price": 115.85
+  },
+  {
+    "id": "P0014",
+    "code": "COD-10014",
+    "name": "Corpo e Banho OUi Essencial 14",
+    "category": "Corpo e Banho",
+    "brand": "OUi",
+    "price": 125.3
+  },
+  {
+    "id": "P0015",
+    "code": "COD-10015",
+    "name": "Cabelos Boticario Premium 15",
+    "category": "Cabelos",
+    "brand": "Boticario",
+    "price": 124.25
+  },
+  {
+    "id": "P0016",
+    "code": "COD-10016",
+    "name": "Skincare Eudora Essencial 16",
+    "category": "Skincare",
+    "brand": "Eudora",
+    "price": 133.7
+  },
+  {
+    "id": "P0017",
+    "code": "COD-10017",
+    "name": "Infantil Quem Disse Berenice Premium 17",
+    "category": "Infantil",
+    "brand": "Quem Disse Berenice",
+    "price": 18.2
+  },
+  {
+    "id": "P0018",
+    "code": "COD-10018",
+    "name": "Perfumaria Vult Essencial 18",
+    "category": "Perfumaria",
+    "brand": "Vult",
+    "price": 27.65
+  },
+  {
+    "id": "P0019",
+    "code": "COD-10019",
+    "name": "Maquiagem OUi Premium 19",
+    "category": "Maquiagem",
+    "brand": "OUi",
+    "price": 37.1
+  },
+  {
+    "id": "P0020",
+    "code": "COD-10020",
+    "name": "Corpo e Banho Boticario Essencial 20",
+    "category": "Corpo e Banho",
+    "brand": "Boticario",
+    "price": 36.05
+  },
+  {
+    "id": "P0021",
+    "code": "COD-10021",
+    "name": "Cabelos Eudora Premium 21",
+    "category": "Cabelos",
+    "brand": "Eudora",
+    "price": 45.5
+  },
+  {
+    "id": "P0022",
+    "code": "COD-10022",
+    "name": "Skincare Quem Disse Berenice Essencial 22",
+    "category": "Skincare",
+    "brand": "Quem Disse Berenice",
+    "price": 54.95
+  },
+  {
+    "id": "P0023",
+    "code": "COD-10023",
+    "name": "Infantil Vult Premium 23",
+    "category": "Infantil",
+    "brand": "Vult",
+    "price": 64.4
+  },
+  {
+    "id": "P0024",
+    "code": "COD-10024",
+    "name": "Perfumaria OUi Essencial 24",
+    "category": "Perfumaria",
+    "brand": "OUi",
+    "price": 73.85
+  },
+  {
+    "id": "P0025",
+    "code": "COD-10025",
+    "name": "Maquiagem Boticario Premium 25",
+    "category": "Maquiagem",
+    "brand": "Boticario",
+    "price": 72.8
+  },
+  {
+    "id": "P0026",
+    "code": "COD-10026",
+    "name": "Corpo e Banho Eudora Essencial 26",
+    "category": "Corpo e Banho",
+    "brand": "Eudora",
+    "price": 82.25
+  },
+  {
+    "id": "P0027",
+    "code": "COD-10027",
+    "name": "Cabelos Quem Disse Berenice Premium 27",
+    "category": "Cabelos",
+    "brand": "Quem Disse Berenice",
+    "price": 91.7
+  },
+  {
+    "id": "P0028",
+    "code": "COD-10028",
+    "name": "Skincare Vult Essencial 28",
+    "category": "Skincare",
+    "brand": "Vult",
+    "price": 101.15
+  },
+  {
+    "id": "P0029",
+    "code": "COD-10029",
+    "name": "Infantil OUi Premium 29",
+    "category": "Infantil",
+    "brand": "OUi",
+    "price": 110.6
+  },
+  {
+    "id": "P0030",
+    "code": "COD-10030",
+    "name": "Perfumaria Boticario Essencial 30",
+    "category": "Perfumaria",
+    "brand": "Boticario",
+    "price": 109.55
+  },
+  {
+    "id": "P0031",
+    "code": "COD-10031",
+    "name": "Maquiagem Eudora Premium 31",
+    "category": "Maquiagem",
+    "brand": "Eudora",
+    "price": 119
+  },
+  {
+    "id": "P0032",
+    "code": "COD-10032",
+    "name": "Corpo e Banho Quem Disse Berenice Essencial 32",
+    "category": "Corpo e Banho",
+    "brand": "Quem Disse Berenice",
+    "price": 128.45
+  },
+  {
+    "id": "P0033",
+    "code": "COD-10033",
+    "name": "Cabelos Vult Premium 33",
+    "category": "Cabelos",
+    "brand": "Vult",
+    "price": 137.9
+  },
+  {
+    "id": "P0034",
+    "code": "COD-10034",
+    "name": "Skincare OUi Essencial 34",
+    "category": "Skincare",
+    "brand": "OUi",
+    "price": 22.4
+  },
+  {
+    "id": "P0035",
+    "code": "COD-10035",
+    "name": "Infantil Boticario Premium 35",
+    "category": "Infantil",
+    "brand": "Boticario",
+    "price": 21.35
+  },
+  {
+    "id": "P0036",
+    "code": "COD-10036",
+    "name": "Perfumaria Eudora Essencial 36",
+    "category": "Perfumaria",
+    "brand": "Eudora",
+    "price": 30.8
+  },
+  {
+    "id": "P0037",
+    "code": "COD-10037",
+    "name": "Maquiagem Quem Disse Berenice Premium 37",
+    "category": "Maquiagem",
+    "brand": "Quem Disse Berenice",
+    "price": 40.25
+  },
+  {
+    "id": "P0038",
+    "code": "COD-10038",
+    "name": "Corpo e Banho Vult Essencial 38",
+    "category": "Corpo e Banho",
+    "brand": "Vult",
+    "price": 49.7
+  },
+  {
+    "id": "P0039",
+    "code": "COD-10039",
+    "name": "Cabelos OUi Premium 39",
+    "category": "Cabelos",
+    "brand": "OUi",
+    "price": 59.15
+  },
+  {
+    "id": "P0040",
+    "code": "COD-10040",
+    "name": "Skincare Boticario Essencial 40",
+    "category": "Skincare",
+    "brand": "Boticario",
+    "price": 58.1
+  },
+  {
+    "id": "P0041",
+    "code": "COD-10041",
+    "name": "Infantil Eudora Premium 41",
+    "category": "Infantil",
+    "brand": "Eudora",
+    "price": 67.55
+  },
+  {
+    "id": "P0042",
+    "code": "COD-10042",
+    "name": "Perfumaria Quem Disse Berenice Essencial 42",
+    "category": "Perfumaria",
+    "brand": "Quem Disse Berenice",
+    "price": 77
+  },
+  {
+    "id": "P0043",
+    "code": "COD-10043",
+    "name": "Maquiagem Vult Premium 43",
+    "category": "Maquiagem",
+    "brand": "Vult",
+    "price": 86.45
+  },
+  {
+    "id": "P0044",
+    "code": "COD-10044",
+    "name": "Corpo e Banho OUi Essencial 44",
+    "category": "Corpo e Banho",
+    "brand": "OUi",
+    "price": 95.9
+  },
+  {
+    "id": "P0045",
+    "code": "COD-10045",
+    "name": "Cabelos Boticario Premium 45",
+    "category": "Cabelos",
+    "brand": "Boticario",
+    "price": 94.85
+  },
+  {
+    "id": "P0046",
+    "code": "COD-10046",
+    "name": "Skincare Eudora Essencial 46",
+    "category": "Skincare",
+    "brand": "Eudora",
+    "price": 104.3
+  },
+  {
+    "id": "P0047",
+    "code": "COD-10047",
+    "name": "Infantil Quem Disse Berenice Premium 47",
+    "category": "Infantil",
+    "brand": "Quem Disse Berenice",
+    "price": 113.75
+  },
+  {
+    "id": "P0048",
+    "code": "COD-10048",
+    "name": "Perfumaria Vult Essencial 48",
+    "category": "Perfumaria",
+    "brand": "Vult",
+    "price": 123.2
+  },
+  {
+    "id": "P0049",
+    "code": "COD-10049",
+    "name": "Maquiagem OUi Premium 49",
+    "category": "Maquiagem",
+    "brand": "OUi",
+    "price": 132.65
+  },
+  {
+    "id": "P0050",
+    "code": "COD-10050",
+    "name": "Corpo e Banho Boticario Essencial 50",
+    "category": "Corpo e Banho",
+    "brand": "Boticario",
+    "price": 131.6
+  },
+  {
+    "id": "P0051",
+    "code": "COD-10051",
+    "name": "Cabelos Eudora Premium 51",
+    "category": "Cabelos",
+    "brand": "Eudora",
+    "price": 16.1
+  },
+  {
+    "id": "P0052",
+    "code": "COD-10052",
+    "name": "Skincare Quem Disse Berenice Essencial 52",
+    "category": "Skincare",
+    "brand": "Quem Disse Berenice",
+    "price": 25.55
+  },
+  {
+    "id": "P0053",
+    "code": "COD-10053",
+    "name": "Infantil Vult Premium 53",
+    "category": "Infantil",
+    "brand": "Vult",
+    "price": 35
+  },
+  {
+    "id": "P0054",
+    "code": "COD-10054",
+    "name": "Perfumaria OUi Essencial 54",
+    "category": "Perfumaria",
+    "brand": "OUi",
+    "price": 44.45
+  },
+  {
+    "id": "P0055",
+    "code": "COD-10055",
+    "name": "Maquiagem Boticario Premium 55",
+    "category": "Maquiagem",
+    "brand": "Boticario",
+    "price": 43.4
+  },
+  {
+    "id": "P0056",
+    "code": "COD-10056",
+    "name": "Corpo e Banho Eudora Essencial 56",
+    "category": "Corpo e Banho",
+    "brand": "Eudora",
+    "price": 52.85
+  },
+  {
+    "id": "P0057",
+    "code": "COD-10057",
+    "name": "Cabelos Quem Disse Berenice Premium 57",
+    "category": "Cabelos",
+    "brand": "Quem Disse Berenice",
+    "price": 62.3
+  },
+  {
+    "id": "P0058",
+    "code": "COD-10058",
+    "name": "Skincare Vult Essencial 58",
+    "category": "Skincare",
+    "brand": "Vult",
+    "price": 71.75
+  },
+  {
+    "id": "P0059",
+    "code": "COD-10059",
+    "name": "Infantil OUi Premium 59",
+    "category": "Infantil",
+    "brand": "OUi",
+    "price": 81.2
+  },
+  {
+    "id": "P0060",
+    "code": "COD-10060",
+    "name": "Perfumaria Boticario Essencial 60",
+    "category": "Perfumaria",
+    "brand": "Boticario",
+    "price": 80.15
+  },
+  {
+    "id": "P0061",
+    "code": "COD-10061",
+    "name": "Maquiagem Eudora Premium 61",
+    "category": "Maquiagem",
+    "brand": "Eudora",
+    "price": 89.6
+  },
+  {
+    "id": "P0062",
+    "code": "COD-10062",
+    "name": "Corpo e Banho Quem Disse Berenice Essencial 62",
+    "category": "Corpo e Banho",
+    "brand": "Quem Disse Berenice",
+    "price": 99.05
+  },
+  {
+    "id": "P0063",
+    "code": "COD-10063",
+    "name": "Cabelos Vult Premium 63",
+    "category": "Cabelos",
+    "brand": "Vult",
+    "price": 108.5
+  },
+  {
+    "id": "P0064",
+    "code": "COD-10064",
+    "name": "Skincare OUi Essencial 64",
+    "category": "Skincare",
+    "brand": "OUi",
+    "price": 117.95
+  },
+  {
+    "id": "P0065",
+    "code": "COD-10065",
+    "name": "Infantil Boticario Premium 65",
+    "category": "Infantil",
+    "brand": "Boticario",
+    "price": 116.9
+  },
+  {
+    "id": "P0066",
+    "code": "COD-10066",
+    "name": "Perfumaria Eudora Essencial 66",
+    "category": "Perfumaria",
+    "brand": "Eudora",
+    "price": 126.35
+  },
+  {
+    "id": "P0067",
+    "code": "COD-10067",
+    "name": "Maquiagem Quem Disse Berenice Premium 67",
+    "category": "Maquiagem",
+    "brand": "Quem Disse Berenice",
+    "price": 135.8
+  },
+  {
+    "id": "P0068",
+    "code": "COD-10068",
+    "name": "Corpo e Banho Vult Essencial 68",
+    "category": "Corpo e Banho",
+    "brand": "Vult",
+    "price": 20.3
+  },
+  {
+    "id": "P0069",
+    "code": "COD-10069",
+    "name": "Cabelos OUi Premium 69",
+    "category": "Cabelos",
+    "brand": "OUi",
+    "price": 29.75
+  },
+  {
+    "id": "P0070",
+    "code": "COD-10070",
+    "name": "Skincare Boticario Essencial 70",
+    "category": "Skincare",
+    "brand": "Boticario",
+    "price": 28.7
+  },
+  {
+    "id": "P0071",
+    "code": "COD-10071",
+    "name": "Infantil Eudora Premium 71",
+    "category": "Infantil",
+    "brand": "Eudora",
+    "price": 38.15
+  },
+  {
+    "id": "P0072",
+    "code": "COD-10072",
+    "name": "Perfumaria Quem Disse Berenice Essencial 72",
+    "category": "Perfumaria",
+    "brand": "Quem Disse Berenice",
+    "price": 47.6
+  },
+  {
+    "id": "P0073",
+    "code": "COD-10073",
+    "name": "Maquiagem Vult Premium 73",
+    "category": "Maquiagem",
+    "brand": "Vult",
+    "price": 57.05
+  },
+  {
+    "id": "P0074",
+    "code": "COD-10074",
+    "name": "Corpo e Banho OUi Essencial 74",
+    "category": "Corpo e Banho",
+    "brand": "OUi",
+    "price": 66.5
+  },
+  {
+    "id": "P0075",
+    "code": "COD-10075",
+    "name": "Cabelos Boticario Premium 75",
+    "category": "Cabelos",
+    "brand": "Boticario",
+    "price": 65.45
+  },
+  {
+    "id": "P0076",
+    "code": "COD-10076",
+    "name": "Skincare Eudora Essencial 76",
+    "category": "Skincare",
+    "brand": "Eudora",
+    "price": 74.9
+  },
+  {
+    "id": "P0077",
+    "code": "COD-10077",
+    "name": "Infantil Quem Disse Berenice Premium 77",
+    "category": "Infantil",
+    "brand": "Quem Disse Berenice",
+    "price": 84.35
+  },
+  {
+    "id": "P0078",
+    "code": "COD-10078",
+    "name": "Perfumaria Vult Essencial 78",
+    "category": "Perfumaria",
+    "brand": "Vult",
+    "price": 93.8
+  },
+  {
+    "id": "P0079",
+    "code": "COD-10079",
+    "name": "Maquiagem OUi Premium 79",
+    "category": "Maquiagem",
+    "brand": "OUi",
+    "price": 103.25
+  },
+  {
+    "id": "P0080",
+    "code": "COD-10080",
+    "name": "Corpo e Banho Boticario Essencial 80",
+    "category": "Corpo e Banho",
+    "brand": "Boticario",
+    "price": 102.2
+  },
+  {
+    "id": "P0081",
+    "code": "COD-10081",
+    "name": "Cabelos Eudora Premium 81",
+    "category": "Cabelos",
+    "brand": "Eudora",
+    "price": 111.65
+  },
+  {
+    "id": "P0082",
+    "code": "COD-10082",
+    "name": "Skincare Quem Disse Berenice Essencial 82",
+    "category": "Skincare",
+    "brand": "Quem Disse Berenice",
+    "price": 121.1
+  },
+  {
+    "id": "P0083",
+    "code": "COD-10083",
+    "name": "Infantil Vult Premium 83",
+    "category": "Infantil",
+    "brand": "Vult",
+    "price": 130.55
+  },
+  {
+    "id": "P0084",
+    "code": "COD-10084",
+    "name": "Perfumaria OUi Essencial 84",
+    "category": "Perfumaria",
+    "brand": "OUi",
+    "price": 140
+  },
+  {
+    "id": "P0085",
+    "code": "COD-10085",
+    "name": "Maquiagem Boticario Premium 85",
+    "category": "Maquiagem",
+    "brand": "Boticario",
+    "price": 14
+  },
+  {
+    "id": "P0086",
+    "code": "COD-10086",
+    "name": "Corpo e Banho Eudora Essencial 86",
+    "category": "Corpo e Banho",
+    "brand": "Eudora",
+    "price": 23.45
+  },
+  {
+    "id": "P0087",
+    "code": "COD-10087",
+    "name": "Cabelos Quem Disse Berenice Premium 87",
+    "category": "Cabelos",
+    "brand": "Quem Disse Berenice",
+    "price": 32.9
+  },
+  {
+    "id": "P0088",
+    "code": "COD-10088",
+    "name": "Skincare Vult Essencial 88",
+    "category": "Skincare",
+    "brand": "Vult",
+    "price": 42.35
+  },
+  {
+    "id": "P0089",
+    "code": "COD-10089",
+    "name": "Infantil OUi Premium 89",
+    "category": "Infantil",
+    "brand": "OUi",
+    "price": 51.8
+  },
+  {
+    "id": "P0090",
+    "code": "COD-10090",
+    "name": "Perfumaria Boticario Essencial 90",
+    "category": "Perfumaria",
+    "brand": "Boticario",
+    "price": 50.75
+  },
+  {
+    "id": "P0091",
+    "code": "COD-10091",
+    "name": "Maquiagem Eudora Premium 91",
+    "category": "Maquiagem",
+    "brand": "Eudora",
+    "price": 60.2
+  },
+  {
+    "id": "P0092",
+    "code": "COD-10092",
+    "name": "Corpo e Banho Quem Disse Berenice Essencial 92",
+    "category": "Corpo e Banho",
+    "brand": "Quem Disse Berenice",
+    "price": 69.65
+  },
+  {
+    "id": "P0093",
+    "code": "COD-10093",
+    "name": "Cabelos Vult Premium 93",
+    "category": "Cabelos",
+    "brand": "Vult",
+    "price": 79.1
+  },
+  {
+    "id": "P0094",
+    "code": "COD-10094",
+    "name": "Skincare OUi Essencial 94",
+    "category": "Skincare",
+    "brand": "OUi",
+    "price": 88.55
+  },
+  {
+    "id": "P0095",
+    "code": "COD-10095",
+    "name": "Infantil Boticario Premium 95",
+    "category": "Infantil",
+    "brand": "Boticario",
+    "price": 87.5
+  },
+  {
+    "id": "P0096",
+    "code": "COD-10096",
+    "name": "Perfumaria Eudora Essencial 96",
+    "category": "Perfumaria",
+    "brand": "Eudora",
+    "price": 96.95
+  },
+  {
+    "id": "P0097",
+    "code": "COD-10097",
+    "name": "Maquiagem Quem Disse Berenice Premium 97",
+    "category": "Maquiagem",
+    "brand": "Quem Disse Berenice",
+    "price": 106.4
+  },
+  {
+    "id": "P0098",
+    "code": "COD-10098",
+    "name": "Corpo e Banho Vult Essencial 98",
+    "category": "Corpo e Banho",
+    "brand": "Vult",
+    "price": 115.85
+  },
+  {
+    "id": "P0099",
+    "code": "COD-10099",
+    "name": "Cabelos OUi Premium 99",
+    "category": "Cabelos",
+    "brand": "OUi",
+    "price": 125.3
+  },
+  {
+    "id": "P0100",
+    "code": "COD-10100",
+    "name": "Skincare Boticario Essencial 100",
+    "category": "Skincare",
+    "brand": "Boticario",
+    "price": 124.25
+  },
+  {
+    "id": "P0101",
+    "code": "COD-10101",
+    "name": "Infantil Eudora Premium 101",
+    "category": "Infantil",
+    "brand": "Eudora",
+    "price": 133.7
+  },
+  {
+    "id": "P0102",
+    "code": "COD-10102",
+    "name": "Perfumaria Quem Disse Berenice Essencial 102",
+    "category": "Perfumaria",
+    "brand": "Quem Disse Berenice",
+    "price": 18.2
+  },
+  {
+    "id": "P0103",
+    "code": "COD-10103",
+    "name": "Maquiagem Vult Premium 103",
+    "category": "Maquiagem",
+    "brand": "Vult",
+    "price": 27.65
+  },
+  {
+    "id": "P0104",
+    "code": "COD-10104",
+    "name": "Corpo e Banho OUi Essencial 104",
+    "category": "Corpo e Banho",
+    "brand": "OUi",
+    "price": 37.1
+  },
+  {
+    "id": "P0105",
+    "code": "COD-10105",
+    "name": "Cabelos Boticario Premium 105",
+    "category": "Cabelos",
+    "brand": "Boticario",
+    "price": 36.05
+  },
+  {
+    "id": "P0106",
+    "code": "COD-10106",
+    "name": "Skincare Eudora Essencial 106",
+    "category": "Skincare",
+    "brand": "Eudora",
+    "price": 45.5
+  },
+  {
+    "id": "P0107",
+    "code": "COD-10107",
+    "name": "Infantil Quem Disse Berenice Premium 107",
+    "category": "Infantil",
+    "brand": "Quem Disse Berenice",
+    "price": 54.95
+  },
+  {
+    "id": "P0108",
+    "code": "COD-10108",
+    "name": "Perfumaria Vult Essencial 108",
+    "category": "Perfumaria",
+    "brand": "Vult",
+    "price": 64.4
+  },
+  {
+    "id": "P0109",
+    "code": "COD-10109",
+    "name": "Maquiagem OUi Premium 109",
+    "category": "Maquiagem",
+    "brand": "OUi",
+    "price": 73.85
+  },
+  {
+    "id": "P0110",
+    "code": "COD-10110",
+    "name": "Corpo e Banho Boticario Essencial 110",
+    "category": "Corpo e Banho",
+    "brand": "Boticario",
+    "price": 72.8
+  },
+  {
+    "id": "P0111",
+    "code": "COD-10111",
+    "name": "Cabelos Eudora Premium 111",
+    "category": "Cabelos",
+    "brand": "Eudora",
+    "price": 82.25
+  },
+  {
+    "id": "P0112",
+    "code": "COD-10112",
+    "name": "Skincare Quem Disse Berenice Essencial 112",
+    "category": "Skincare",
+    "brand": "Quem Disse Berenice",
+    "price": 91.7
+  },
+  {
+    "id": "P0113",
+    "code": "COD-10113",
+    "name": "Infantil Vult Premium 113",
+    "category": "Infantil",
+    "brand": "Vult",
+    "price": 101.15
+  },
+  {
+    "id": "P0114",
+    "code": "COD-10114",
+    "name": "Perfumaria OUi Essencial 114",
+    "category": "Perfumaria",
+    "brand": "OUi",
+    "price": 110.6
+  },
+  {
+    "id": "P0115",
+    "code": "COD-10115",
+    "name": "Maquiagem Boticario Premium 115",
+    "category": "Maquiagem",
+    "brand": "Boticario",
+    "price": 109.55
+  },
+  {
+    "id": "P0116",
+    "code": "COD-10116",
+    "name": "Corpo e Banho Eudora Essencial 116",
+    "category": "Corpo e Banho",
+    "brand": "Eudora",
+    "price": 119
+  },
+  {
+    "id": "P0117",
+    "code": "COD-10117",
+    "name": "Cabelos Quem Disse Berenice Premium 117",
+    "category": "Cabelos",
+    "brand": "Quem Disse Berenice",
+    "price": 128.45
+  },
+  {
+    "id": "P0118",
+    "code": "COD-10118",
+    "name": "Skincare Vult Essencial 118",
+    "category": "Skincare",
+    "brand": "Vult",
+    "price": 137.9
+  },
+  {
+    "id": "P0119",
+    "code": "COD-10119",
+    "name": "Infantil OUi Premium 119",
+    "category": "Infantil",
+    "brand": "OUi",
+    "price": 22.4
+  },
+  {
+    "id": "P0120",
+    "code": "COD-10120",
+    "name": "Perfumaria Boticario Essencial 120",
+    "category": "Perfumaria",
+    "brand": "Boticario",
+    "price": 21.35
+  }
+]

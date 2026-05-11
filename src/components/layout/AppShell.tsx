@@ -8,7 +8,7 @@ interface AppShellProps {
 }
 
 const AppShell = ({ children }: AppShellProps) => (
-  <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f0f4f8' }}>
+  <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f5f6fa' }}>
     <Sidebar />
     <Header />
     <Box
@@ -21,8 +21,8 @@ const AppShell = ({ children }: AppShellProps) => (
         flexDirection: 'column',
       }}
     >
-      <Toolbar sx={{ minHeight: '72px !important' }} />
-      <Box sx={{ p: 3, flexGrow: 1 }}>{children}</Box>
+      <Toolbar sx={{ minHeight: '56px !important' }} />
+      <Box sx={{ p: 2.5, flexGrow: 1 }}>{children}</Box>
     </Box>
   </Box>
 )

@@ -1,12 +1,8 @@
-import { AppBar, Box, Breadcrumbs, Link, Toolbar, Typography } from '@mui/material'
-import NavigateNextIcon from '@mui/icons-material/NavigateNext'
+import { AppBar, Avatar, Box, IconButton, Toolbar, Tooltip } from '@mui/material'
+import TranslateIcon from '@mui/icons-material/Translate'
 import { DRAWER_WIDTH } from './Sidebar'
 
-interface HeaderProps {
-  breadcrumb?: string
-}
-
-const Header = ({ breadcrumb = 'Cupons Fiscais' }: HeaderProps) => (
+const Header = () => (
   <AppBar
     position="fixed"
     elevation={0}
@@ -14,23 +10,31 @@ const Header = ({ breadcrumb = 'Cupons Fiscais' }: HeaderProps) => (
       width: `calc(100% - ${DRAWER_WIDTH}px)`,
       ml: `${DRAWER_WIDTH}px`,
       backgroundColor: '#fff',
-      borderBottom: '1px solid #e0e7ef',
-      color: '#1a2c3d',
+      borderBottom: '1px solid #e8ecf0',
+      color: '#1a1a2e',
     }}
   >
-    <Toolbar sx={{ minHeight: '72px !important', px: 3, justifyContent: 'space-between' }}>
-      <Box>
-        <Typography variant="subtitle2" sx={{ color: '#6b7a8d', fontSize: 12, mb: 0.25 }}>
-          NPos — Boticário
-        </Typography>
-        <Breadcrumbs separator={<NavigateNextIcon fontSize="inherit" />}>
-          <Link underline="hover" color="inherit" sx={{ fontSize: 13, color: '#6b7a8d', cursor: 'pointer' }}>
-            Início
-          </Link>
-          <Typography sx={{ fontSize: 13, fontWeight: 700, color: '#1a2c3d' }}>
-            {breadcrumb}
-          </Typography>
-        </Breadcrumbs>
+    <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'flex-end' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Tooltip title="Idioma">
+          <IconButton size="small" sx={{ color: '#757575' }}>
+            <TranslateIcon sx={{ fontSize: 20 }} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Perfil">
+          <Avatar
+            sx={{
+              width: 32,
+              height: 32,
+              backgroundColor: '#1976d2',
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
+          >
+            E
+          </Avatar>
+        </Tooltip>
       </Box>
     </Toolbar>
   </AppBar>

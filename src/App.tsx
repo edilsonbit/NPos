@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Stack, Typography } from '@mui/material'
+import { Box, CircularProgress, Paper, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { useEffect, useMemo, useState } from 'react'
 import {
@@ -124,26 +124,35 @@ const App = () => {
 
   return (
     <AppShell>
-      {/* Filtros avançados + botão Agregador */}
-      <CouponFiltersBar
-        coupons={coupons}
-        filters={filters}
-        filteredCount={filteredCoupons.length}
-        filteredTotal={filteredTotal}
-        onChange={setFilters}
-        onAggregate={() => void handleAggregate()}
-        processing={processing}
-      />
-
-      {/* Configuração dinâmica dos critérios do agregador */}
+      {/* Configuração dos critérios do agregador */}
       <AggregatorConfig criteria={criteria} onChange={setCriteria} />
 
-      {/* Tabela central de cupons com todos os campos */}
-      <CouponTable coupons={filteredCoupons} />
+      {/* Card principal: filtros + tabela (segue layout de referência) */}
+      <Paper
+        elevation={0}
+        sx={{
+          mt: 2,
+          borderRadius: 2,
+          border: '1px solid #e8ecf0',
+          overflow: 'hidden',
+          backgroundColor: '#fff',
+        }}
+      >
+        <CouponFiltersBar
+          coupons={coupons}
+          filters={filters}
+          filteredCount={filteredCoupons.length}
+          filteredTotal={filteredTotal}
+          onChange={setFilters}
+          onAggregate={() => void handleAggregate()}
+          processing={processing}
+        />
+        <CouponTable coupons={filteredCoupons} />
+      </Paper>
 
       {/* Visão agrupada em accordion com botão SAP por grupo */}
       {groups.length > 0 && (
-        <Box sx={{ mt: 3 }}>
+        <Box sx={{ mt: 2.5 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2c3d', mb: 1.5 }}>
             Visão Agrupada — {groups.length} grupos gerados
           </Typography>

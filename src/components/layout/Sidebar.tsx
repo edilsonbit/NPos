@@ -1,27 +1,88 @@
 import {
   Box,
-  Chip,
   Drawer,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Toolbar,
   Typography,
 } from '@mui/material'
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
+import ApiIcon from '@mui/icons-material/Api'
+import CloudIcon from '@mui/icons-material/Cloud'
+import CodeIcon from '@mui/icons-material/Code'
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows'
 import DashboardIcon from '@mui/icons-material/Dashboard'
+import ForkRightIcon from '@mui/icons-material/ForkRight'
+import GroupIcon from '@mui/icons-material/Group'
 import HubIcon from '@mui/icons-material/Hub'
-import SendIcon from '@mui/icons-material/Send'
-import SettingsIcon from '@mui/icons-material/Settings'
-import { appConfig } from '../../config/appConfig'
+import MenuIcon from '@mui/icons-material/Menu'
+import NotificationsIcon from '@mui/icons-material/Notifications'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import PersonIcon from '@mui/icons-material/Person'
+import ReceiptLongIcon from '@mui/icons-material/ReceiptLong'
+import ReplayIcon from '@mui/icons-material/Replay'
+import RouteIcon from '@mui/icons-material/Route'
+import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
+import WarningIcon from '@mui/icons-material/Warning'
+import { type ReactNode } from 'react'
 
-const DRAWER_WIDTH = 260
+const DRAWER_WIDTH = 240
 
-const menuItems = [
-  { icon: <DashboardIcon />, label: 'Cupons Fiscais' },
-  { icon: <HubIcon />, label: 'Agregador' },
-  { icon: <SendIcon />, label: 'Envio SAP' },
-  { icon: <SettingsIcon />, label: 'Configurações' },
+interface NavItem {
+  icon: ReactNode
+  label: string
+  active?: boolean
+}
+
+interface NavSection {
+  label: string
+  items: NavItem[]
+}
+
+const navSections: NavSection[] = [
+  {
+    label: 'Monitoramento',
+    items: [
+      { icon: <DashboardIcon sx={{ fontSize: 18 }} />, label: 'Dashboard' },
+      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Fiscais', active: true },
+      { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: 'Reenvio Pedido' },
+      { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: 'Edição Payload' },
+    ],
+  },
+  {
+    label: 'Relatórios',
+    items: [
+      { icon: <NotificationsIcon sx={{ fontSize: 18 }} />, label: 'Alerta das integrações' },
+      { icon: <WarningIcon sx={{ fontSize: 18 }} />, label: 'Pedidos não integrados' },
+    ],
+  },
+  {
+    label: 'Conciliação',
+    items: [
+      { icon: <AccountBalanceIcon sx={{ fontSize: 18 }} />, label: 'Taxa Administrativa' },
+      { icon: <OpenInNewIcon sx={{ fontSize: 18 }} />, label: 'Lançamentos Externos' },
+      { icon: <CompareArrowsIcon sx={{ fontSize: 18 }} />, label: 'Conciliação' },
+    ],
+  },
+  {
+    label: 'Cadastros',
+    items: [
+      { icon: <CloudIcon sx={{ fontSize: 18 }} />, label: 'Ambiente' },
+      { icon: <PersonIcon sx={{ fontSize: 18 }} />, label: 'Cliente' },
+      { icon: <SwapHorizIcon sx={{ fontSize: 18 }} />, label: 'De Para' },
+      { icon: <ApiIcon sx={{ fontSize: 18 }} />, label: 'Endpoint' },
+      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Integração' },
+      { icon: <ForkRightIcon sx={{ fontSize: 18 }} />, label: 'Passos Roteamento' },
+      { icon: <RouteIcon sx={{ fontSize: 18 }} />, label: 'Roteamento' },
+    ],
+  },
+  {
+    label: 'Configurações',
+    items: [
+      { icon: <GroupIcon sx={{ fontSize: 18 }} />, label: 'Usuários' },
+    ],
+  },
 ]
 
 const Sidebar = () => (
@@ -33,73 +94,115 @@ const Sidebar = () => (
       '& .MuiDrawer-paper': {
         width: DRAWER_WIDTH,
         boxSizing: 'border-box',
-        background: 'linear-gradient(160deg, #0d3b45 0%, #062930 100%)',
-        color: '#fff',
-        borderRight: 'none',
+        backgroundColor: '#fff',
+        borderRight: '1px solid #e8ecf0',
+        overflowX: 'hidden',
       },
     }}
   >
-    <Toolbar
+    {/* Logo */}
+    <Box
       sx={{
-        px: 3,
-        py: 2.5,
-        borderBottom: '1px solid rgba(255,255,255,0.08)',
-        minHeight: '72px !important',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        px: 2,
+        py: 1.25,
+        borderBottom: '1px solid #e8ecf0',
+        minHeight: 56,
       }}
     >
-      <Box>
-        <Typography variant="h6" sx={{ fontWeight: 800, color: '#fff', letterSpacing: 1 }}>
-          NPos
-        </Typography>
-        <Typography variant="caption" sx={{ color: 'rgba(255,255,255,0.55)', fontSize: 11 }}>
-          Boticário | Cupons Fiscais
-        </Typography>
-      </Box>
-    </Toolbar>
-
-    <List sx={{ pt: 2, px: 1 }}>
-      {menuItems.map((item, idx) => (
-        <ListItem
-          key={item.label}
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+        <Box
           sx={{
-            borderRadius: 2,
-            mb: 0.5,
-            cursor: 'pointer',
-            backgroundColor: idx === 0 ? 'rgba(255,255,255,0.12)' : 'transparent',
-            '&:hover': { backgroundColor: 'rgba(255,255,255,0.08)' },
-            transition: 'background 0.2s',
+            width: 34,
+            height: 34,
+            borderRadius: '6px',
+            background: 'linear-gradient(135deg, #f5a623 0%, #f76b1c 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
           }}
         >
-          <ListItemIcon sx={{ color: idx === 0 ? '#7ecfdc' : 'rgba(255,255,255,0.5)', minWidth: 38 }}>
-            {item.icon}
-          </ListItemIcon>
-          <ListItemText
-            primary={item.label}
-            slotProps={{
-              primary: {
-                style: {
-                  fontSize: 14,
-                  fontWeight: idx === 0 ? 600 : 400,
-                  color: idx === 0 ? '#fff' : 'rgba(255,255,255,0.65)',
-                },
-              },
-            }}
-          />
-        </ListItem>
-      ))}
-    </List>
+          <Typography sx={{ color: '#fff', fontWeight: 800, fontSize: 11, letterSpacing: 0.5 }}>
+            NP
+          </Typography>
+        </Box>
+        <Box>
+          <Typography sx={{ fontWeight: 700, fontSize: 13, color: '#1a1a2e', lineHeight: 1.2 }}>
+            NPos
+          </Typography>
+          <Typography sx={{ fontSize: 10, color: '#9e9e9e', lineHeight: 1 }}>
+            Boticário
+          </Typography>
+        </Box>
+      </Box>
+      <MenuIcon sx={{ color: '#bdbdbd', fontSize: 20, cursor: 'pointer' }} />
+    </Box>
 
-    <Box sx={{ mt: 'auto', p: 2, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-      <Chip
-        size="small"
-        label={`Origem: ${appConfig.dataSource}`}
-        sx={{
-          backgroundColor: appConfig.dataSource === 'firebase' ? '#2e7d32' : '#1565c0',
-          color: '#fff',
-          fontSize: 11,
-          fontWeight: 600,
-        }}
-      />
+    {/* Seções de navegação */}
+    <Box sx={{ overflowY: 'auto', overflowX: 'hidden', flexGrow: 1, pb: 2 }}>
+      {navSections.map((section) => (
+        <Box key={section.label}>
+          <Typography
+            sx={{
+              fontSize: 11,
+              fontWeight: 600,
+              color: '#9e9e9e',
+              letterSpacing: 0.6,
+              textTransform: 'uppercase',
+              px: 2,
+              pt: 2,
+              pb: 0.5,
+            }}
+          >
+            {section.label}
+          </Typography>
+          <List dense disablePadding>
+            {section.items.map((item) => (
+              <ListItem
+                key={item.label}
+                sx={{
+                  px: 1.5,
+                  py: 0.5,
+                  mx: 0.75,
+                  width: 'calc(100% - 12px)',
+                  borderRadius: '6px',
+                  cursor: 'pointer',
+                  backgroundColor: item.active ? '#1565c0' : 'transparent',
+                  '&:hover': {
+                    backgroundColor: item.active ? '#1565c0' : 'rgba(0,0,0,0.04)',
+                  },
+                  transition: 'background 0.15s',
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    color: item.active ? '#fff' : '#757575',
+                    minWidth: 30,
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.label}
+                  slotProps={{
+                    primary: {
+                      style: {
+                        fontSize: 13,
+                        fontWeight: item.active ? 600 : 400,
+                        color: item.active ? '#fff' : '#424242',
+                        lineHeight: 1.3,
+                      },
+                    },
+                  }}
+                />
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      ))}
     </Box>
   </Drawer>
 )

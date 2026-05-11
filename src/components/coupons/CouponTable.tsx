@@ -1,15 +1,18 @@
 import {
+  Box,
   Chip,
-  Paper,
   Table,
   TableBody,
   TableCell,
   TableContainer,
+  TableFooter,
   TableHead,
+  TablePagination,
   TableRow,
   Typography,
 } from '@mui/material'
 import dayjs from 'dayjs'
+import { useState } from 'react'
 import type { Coupon } from '../../domain/models'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -32,15 +35,17 @@ const headCells = [
 
 interface CouponTableProps {
   coupons: Coupon[]
-  maxRows?: number
 }
 
-const CouponTable = ({ coupons, maxRows = 200 }: CouponTableProps) => {
-  const rows = coupons.slice(0, maxRows)
+const CouponTable = ({ coupons }: CouponTableProps) => {
+  const [page, setPage] = useState(0)
+  const [rowsPerPage, setRowsPerPage] = useState(10)
+
+  const rows = coupons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 
   return (
-    <Paper elevation={0} sx={{ border: '1px solid #e0e7ef', borderRadius: 2 }}>
-      <TableContainer sx={{ maxHeight: 520 }}>
+    <Box>
+      <TableContainer sx={{ maxHeight: 480 }}>
         <Table size="small" stickyHeader>
           <TableHead>
             <TableRow>
@@ -48,12 +53,14 @@ const CouponTable = ({ coupons, maxRows = 200 }: CouponTableProps) => {
                 <TableCell
                   key={cell.id}
                   sx={{
-                    fontWeight: 700,
+                    fontWeight: 600,
                     fontSize: 12,
-                    backgroundColor: '#f8fafc',
-                    color: '#1a2c3d',
-                    borderBottom: '2px solid #e0e7ef',
+                    backgroundColor: '#1c2536',
+                    color: '#fff',
+                    borderBottom: 'none',
                     whiteSpace: 'nowrap',
+                    py: 1.5,
+                    '&.MuiTableCell-stickyHeader': { backgroundColor: '#1c2536' },
                   }}
                 >
                   {cell.label}
@@ -62,57 +69,90 @@ const CouponTable = ({ coupons, maxRows = 200 }: CouponTableProps) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((coupon) => (
-              <TableRow
-                key={coupon.id}
-                sx={{
-                  '&:hover': { backgroundColor: '#f5f8ff' },
-                  '&:last-child td': { border: 0 },
-                  opacity: coupon.status === 'cancelado' ? 0.5 : 1,
-                }}
-              >
-                <TableCell sx={{ fontSize: 12 }}>{coupon.couponNumber}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.nsu}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.storeId}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.acquirer}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.paymentMethod}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.productCode}</TableCell>
-                <TableCell sx={{ fontSize: 12, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                  {coupon.productName}
-                </TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{coupon.quantity}</TableCell>
-                <TableCell sx={{ fontSize: 12 }}>{currency.format(coupon.tax)}</TableCell>
-                <TableCell sx={{ fontSize: 12, fontWeight: 600 }}>{currency.format(coupon.amount)}</TableCell>
-                <TableCell>
-                  <Chip
-                    size="small"
-                    label={coupon.status}
-                    sx={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      height: 20,
-                      backgroundColor: coupon.status === 'ativo' ? '#e8f5e9' : '#ffebee',
-                      color: coupon.status === 'ativo' ? '#2e7d32' : '#c62828',
-                    }}
-                  />
-                </TableCell>
-                <TableCell sx={{ fontSize: 12, whiteSpace: 'nowrap' }}>
-                  {dayjs(coupon.createdAt).format('DD/MM/YYYY')}
-                </TableCell>
-                <TableCell sx={{ fontSize: 11, color: '#6b7a8d' }}>
-                  {coupon.idAgregador ?? '—'}
+            {rows.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={headCells.length} align="center" sx={{ py: 6, color: '#9e9e9e', fontSize: 13 }}>
+                  Nenhum Log encontrado
                 </TableCell>
               </TableRow>
-            ))}
+            ) : (
+              rows.map((coupon) => (
+                <TableRow
+                  key={coupon.id}
+                  sx={{
+                    '&:hover': { backgroundColor: '#f5f8ff' },
+                    '&:last-child td': { border: 0 },
+                    opacity: coupon.status === 'cancelado' ? 0.5 : 1,
+                  }}
+                >
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.couponNumber}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.nsu}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.storeId}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.acquirer}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.paymentMethod}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.productCode}</TableCell>
+                  <TableCell sx={{ fontSize: 12, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                    {coupon.productName}
+                  </TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{coupon.quantity}</TableCell>
+                  <TableCell sx={{ fontSize: 12 }}>{currency.format(coupon.tax)}</TableCell>
+                  <TableCell sx={{ fontSize: 12, fontWeight: 600 }}>{currency.format(coupon.amount)}</TableCell>
+                  <TableCell>
+                    <Chip
+                      size="small"
+                      label={coupon.status}
+                      sx={{
+                        fontSize: 10,
+                        fontWeight: 700,
+                        height: 20,
+                        backgroundColor: coupon.status === 'ativo' ? '#e8f5e9' : '#ffebee',
+                        color: coupon.status === 'ativo' ? '#2e7d32' : '#c62828',
+                      }}
+                    />
+                  </TableCell>
+                  <TableCell sx={{ fontSize: 12, whiteSpace: 'nowrap' }}>
+                    {dayjs(coupon.createdAt).format('DD/MM/YYYY')}
+                  </TableCell>
+                  <TableCell sx={{ fontSize: 11, color: '#6b7a8d' }}>
+                    {coupon.idAgregador ?? '—'}
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
           </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TablePagination
+                colSpan={headCells.length}
+                count={coupons.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                onPageChange={(_, newPage) => setPage(newPage)}
+                onRowsPerPageChange={(e) => {
+                  setRowsPerPage(parseInt(e.target.value, 10))
+                  setPage(0)
+                }}
+                labelRowsPerPage="Registros por página"
+                labelDisplayedRows={({ from, to, count }) =>
+                  `${from}-${to} de ${count !== -1 ? count : `mais de ${to}`}`
+                }
+                sx={{
+                  borderTop: '1px solid #e8ecf0',
+                  '& .MuiTablePagination-toolbar': { fontSize: 12 },
+                  '& .MuiTablePagination-selectLabel': { fontSize: 12 },
+                  '& .MuiTablePagination-displayedRows': { fontSize: 12 },
+                }}
+              />
+            </TableRow>
+          </TableFooter>
         </Table>
       </TableContainer>
-      {coupons.length > maxRows && (
-        <Typography variant="caption" sx={{ display: 'block', textAlign: 'center', p: 1, color: '#6b7a8d' }}>
-          Exibindo {maxRows} de {coupons.length} cupons
+      {coupons.length === 0 && (
+        <Typography variant="caption" sx={{ display: 'block', textAlign: 'center', p: 1, color: '#9e9e9e' }}>
+          Nenhum registro
         </Typography>
       )}
-    </Paper>
+    </Box>
   )
 }
 

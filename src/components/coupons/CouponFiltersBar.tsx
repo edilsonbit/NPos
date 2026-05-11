@@ -3,16 +3,16 @@ import {
   Button,
   Chip,
   MenuItem,
-  Paper,
   Stack,
   TextField,
-  Typography,
 } from '@mui/material'
-import FilterListIcon from '@mui/icons-material/FilterList'
 import HubIcon from '@mui/icons-material/Hub'
+import SearchIcon from '@mui/icons-material/Search'
 import type { Coupon, CouponFilters } from '../../domain/models'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
+
+const selectSx = { flex: 1, minWidth: 100 }
 
 interface CouponFiltersBarProps {
   coupons: Coupon[]
@@ -44,120 +44,126 @@ const CouponFiltersBar = ({
   const payMethods = [...new Set(coupons.map((c) => c.paymentMethod))].sort()
 
   return (
-    <Paper elevation={0} sx={{ border: '1px solid #e0e7ef', borderRadius: 2, p: 2.5, mb: 2.5 }}>
-      <Stack direction="row" sx={{ alignItems: 'center', mb: 2 }} spacing={1}>
-        <FilterListIcon sx={{ color: '#6b7a8d', fontSize: 18 }} />
-        <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#1a2c3d' }}>
-          Filtros
-        </Typography>
-      </Stack>
-
-      <Stack direction={{ xs: 'column', md: 'row' }} spacing={1.5} sx={{ flexWrap: 'wrap' }} useFlexGap>
+    <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
+      {/* Linha 1 — Selects (Cliente, Integração, Origem, Destino, Status, Erro) */}
+      <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
         <TextField
-          size="small"
-          label="Buscar (Nº Cupom / NSU / Produto)"
-          value={filters.search}
-          onChange={(e) => onChange(set(filters, 'search', e.target.value))}
-          sx={{ minWidth: 260 }}
-        />
-
-        <TextField
-          select
-          size="small"
-          label="Loja"
+          select size="small" label="Loja"
           value={filters.storeId}
           onChange={(e) => onChange(set(filters, 'storeId', e.target.value))}
-          sx={{ minWidth: 120 }}
+          sx={selectSx}
         >
-          <MenuItem value="">Todas</MenuItem>
+          <MenuItem value="">Todos</MenuItem>
           {stores.map((s) => <MenuItem key={s} value={s}>{s}</MenuItem>)}
         </TextField>
 
         <TextField
-          select
-          size="small"
-          label="Adquirente"
+          select size="small" label="Adquirente"
           value={filters.acquirer}
           onChange={(e) => onChange(set(filters, 'acquirer', e.target.value))}
-          sx={{ minWidth: 130 }}
+          sx={selectSx}
         >
-          <MenuItem value="">Todos</MenuItem>
+          <MenuItem value="">Todas</MenuItem>
           {acquirers.map((a) => <MenuItem key={a} value={a}>{a}</MenuItem>)}
         </TextField>
 
         <TextField
-          select
-          size="small"
-          label="Forma de Pagamento"
+          select size="small" label="Forma de Pagamento"
           value={filters.paymentMethod}
           onChange={(e) => onChange(set(filters, 'paymentMethod', e.target.value))}
-          sx={{ minWidth: 160 }}
+          sx={selectSx}
         >
           <MenuItem value="">Todas</MenuItem>
           {payMethods.map((p) => <MenuItem key={p} value={p}>{p}</MenuItem>)}
         </TextField>
 
+        <TextField select size="small" label="Origem" defaultValue="" sx={selectSx}>
+          <MenuItem value="">Todos</MenuItem>
+        </TextField>
+
         <TextField
-          select
-          size="small"
-          label="Status"
+          select size="small" label="Status"
           value={filters.status}
           onChange={(e) => onChange(set(filters, 'status', e.target.value as CouponFilters['status']))}
-          sx={{ minWidth: 120 }}
+          sx={selectSx}
         >
           <MenuItem value="">Todos</MenuItem>
           <MenuItem value="ativo">Ativo</MenuItem>
           <MenuItem value="cancelado">Cancelado</MenuItem>
         </TextField>
 
+        <TextField select size="small" label="Erro" defaultValue="" sx={selectSx}>
+          <MenuItem value="">Todos</MenuItem>
+        </TextField>
+      </Stack>
+
+      {/* Linha 2 — Datas, campos de texto, botões */}
+      <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
         <TextField
-          size="small"
-          label="De"
-          type="date"
+          size="small" label="Data Início" type="date"
           slotProps={{ inputLabel: { shrink: true } }}
           value={filters.dateFrom}
           onChange={(e) => onChange(set(filters, 'dateFrom', e.target.value))}
-          sx={{ minWidth: 140 }}
+          sx={{ width: 150 }}
         />
-
         <TextField
-          size="small"
-          label="Até"
-          type="date"
+          size="small" label="Data Fim" type="date"
           slotProps={{ inputLabel: { shrink: true } }}
           value={filters.dateTo}
           onChange={(e) => onChange(set(filters, 'dateTo', e.target.value))}
-          sx={{ minWidth: 140 }}
+          sx={{ width: 150 }}
         />
-      </Stack>
+        <TextField
+          size="small" label="Nº Cupom"
+          value={filters.search}
+          onChange={(e) => onChange(set(filters, 'search', e.target.value))}
+          sx={{ flex: 1 }}
+        />
+        <TextField size="small" label="NSU" sx={{ flex: 1 }} />
+        <TextField size="small" label="Produto" sx={{ flex: 1 }} />
+        <TextField size="small" label="IdAgregador" sx={{ flex: 1 }} />
 
-      <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mt: 2, flexWrap: 'wrap', gap: 1 }}>
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+        <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
+          {/* Chips de resultado */}
           <Chip
             size="small"
-            label={`${filteredCount} cupons`}
-            sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600 }}
+            label={`${filteredCount} | ${currency.format(filteredTotal)}`}
+            sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600, height: 32, borderRadius: 1 }}
           />
-          <Chip
-            size="small"
-            label={currency.format(filteredTotal)}
-            sx={{ backgroundColor: '#e8f5e9', color: '#2e7d32', fontWeight: 600 }}
-          />
-        </Stack>
-
-        <Box>
+          <Button
+            variant="contained"
+            startIcon={<SearchIcon />}
+            sx={{
+              backgroundColor: '#1976d2',
+              '&:hover': { backgroundColor: '#1565c0' },
+              textTransform: 'none',
+              fontWeight: 600,
+              px: 2,
+              height: 40,
+            }}
+          >
+            Pesquisar
+          </Button>
           <Button
             variant="contained"
             startIcon={<HubIcon />}
             onClick={onAggregate}
             disabled={processing || filteredCount === 0}
-            sx={{ backgroundColor: '#0d3b45', '&:hover': { backgroundColor: '#062930' }, px: 3 }}
+            sx={{
+              backgroundColor: '#0d3b45',
+              '&:hover': { backgroundColor: '#062930' },
+              textTransform: 'none',
+              fontWeight: 600,
+              px: 2,
+              height: 40,
+              whiteSpace: 'nowrap',
+            }}
           >
             {processing ? 'Agrupando...' : 'Rodar Agregador'}
           </Button>
         </Box>
       </Stack>
-    </Paper>
+    </Box>
   )
 }
 

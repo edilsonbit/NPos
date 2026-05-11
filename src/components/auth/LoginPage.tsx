@@ -42,9 +42,9 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
       <Paper
         elevation={2}
         sx={{
-          width: 360,
+          width: 390,
           borderRadius: 2,
-          p: 4,
+          p: '40px 48px',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

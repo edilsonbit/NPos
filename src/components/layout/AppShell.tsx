@@ -17,14 +17,15 @@ const AppShell = ({ activePage, onNavigate, children }: AppShellProps) => (
       component="main"
       sx={{
         flexGrow: 1,
-        width: `calc(100% - ${DRAWER_WIDTH}px)`,
-        ml: `${DRAWER_WIDTH}px`,
         display: 'flex',
         flexDirection: 'column',
+        minWidth: 0,
       }}
     >
       <Toolbar sx={{ minHeight: '56px !important' }} />
-      <Box sx={{ p: 2.5, flexGrow: 1 }}>{children}</Box>
+      <Box sx={{ p: 3, flexGrow: 1, minWidth: 0 }}>
+        {children}
+      </Box>
     </Box>
   </Box>
 )

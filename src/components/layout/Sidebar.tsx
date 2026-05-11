@@ -122,7 +122,7 @@ const Sidebar = ({ activePage, onNavigate }: SidebarProps) => (
     >
       <Box
         component="img"
-        src="/images/logo_qas.png"
+        src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
         alt="Logo"
         sx={{ height: 36, maxWidth: 180, objectFit: 'contain' }}
       />

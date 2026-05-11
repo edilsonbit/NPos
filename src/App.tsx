@@ -18,7 +18,9 @@ import type {
 } from './domain/models'
 
 const defaultFilters: CouponFilters = {
-  search: '',
+  couponNumber: '',
+  nsu: '',
+  productSearch: '',
   storeId: '',
   acquirer: '',
   paymentMethod: '',
@@ -57,13 +59,18 @@ const App = () => {
 
   const filteredCoupons = useMemo(() => {
     return coupons.filter((c) => {
-      const searchLower = filters.search.toLowerCase()
-      const matchSearch =
-        !filters.search ||
-        c.couponNumber.toLowerCase().includes(searchLower) ||
-        c.nsu.toLowerCase().includes(searchLower) ||
-        c.productCode.toLowerCase().includes(searchLower) ||
-        c.productName.toLowerCase().includes(searchLower)
+      const matchCouponNumber =
+        !filters.couponNumber ||
+        c.couponNumber.toLowerCase().includes(filters.couponNumber.toLowerCase())
+
+      const matchNsu =
+        !filters.nsu ||
+        c.nsu.toLowerCase().includes(filters.nsu.toLowerCase())
+
+      const matchProduct =
+        !filters.productSearch ||
+        c.productCode.toLowerCase().includes(filters.productSearch.toLowerCase()) ||
+        c.productName.toLowerCase().includes(filters.productSearch.toLowerCase())
 
       const matchFrom =
         !filters.dateFrom ||
@@ -74,7 +81,9 @@ const App = () => {
         dayjs(c.createdAt).isBefore(dayjs(filters.dateTo).add(1, 'day'))
 
       return (
-        matchSearch &&
+        matchCouponNumber &&
+        matchNsu &&
+        matchProduct &&
         (!filters.storeId || c.storeId === filters.storeId) &&
         (!filters.acquirer || c.acquirer === filters.acquirer) &&
         (!filters.paymentMethod || c.paymentMethod === filters.paymentMethod) &&

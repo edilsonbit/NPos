@@ -29,7 +29,9 @@ export interface Coupon {
 }
 
 export interface CouponFilters {
-  search: string
+  couponNumber: string
+  nsu: string
+  productSearch: string
   storeId: string
   acquirer: string
   paymentMethod: string

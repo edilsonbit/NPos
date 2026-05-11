@@ -45,7 +45,7 @@ const CouponFiltersBar = ({
 
   return (
     <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
-      {/* Linha 1 — Selects (Cliente, Integração, Origem, Destino, Status, Erro) */}
+      {/* Linha 1 — Selects (Loja, Adquirente, Forma de Pagamento, Status) */}
       <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
         <TextField
           select size="small" label="Loja"
@@ -77,10 +77,6 @@ const CouponFiltersBar = ({
           {payMethods.map((p) => <MenuItem key={p} value={p}>{p}</MenuItem>)}
         </TextField>
 
-        <TextField select size="small" label="Origem" defaultValue="" sx={selectSx}>
-          <MenuItem value="">Todos</MenuItem>
-        </TextField>
-
         <TextField
           select size="small" label="Status"
           value={filters.status}
@@ -90,10 +86,6 @@ const CouponFiltersBar = ({
           <MenuItem value="">Todos</MenuItem>
           <MenuItem value="ativo">Ativo</MenuItem>
           <MenuItem value="cancelado">Cancelado</MenuItem>
-        </TextField>
-
-        <TextField select size="small" label="Erro" defaultValue="" sx={selectSx}>
-          <MenuItem value="">Todos</MenuItem>
         </TextField>
       </Stack>
 
@@ -115,16 +107,24 @@ const CouponFiltersBar = ({
         />
         <TextField
           size="small" label="Nº Cupom"
-          value={filters.search}
-          onChange={(e) => onChange(set(filters, 'search', e.target.value))}
+          value={filters.couponNumber}
+          onChange={(e) => onChange(set(filters, 'couponNumber', e.target.value))}
           sx={{ flex: 1 }}
         />
-        <TextField size="small" label="NSU" sx={{ flex: 1 }} />
-        <TextField size="small" label="Produto" sx={{ flex: 1 }} />
-        <TextField size="small" label="IdAgregador" sx={{ flex: 1 }} />
+        <TextField
+          size="small" label="NSU"
+          value={filters.nsu}
+          onChange={(e) => onChange(set(filters, 'nsu', e.target.value))}
+          sx={{ flex: 1 }}
+        />
+        <TextField
+          size="small" label="Código / Nome do Produto"
+          value={filters.productSearch}
+          onChange={(e) => onChange(set(filters, 'productSearch', e.target.value))}
+          sx={{ flex: 2 }}
+        />
 
-        <Box sx={{ display: 'flex', gap: 1, flexShrink: 0 }}>
-          {/* Chips de resultado */}
+        <Box sx={{ display: 'flex', gap: 1, flexShrink: 0, alignItems: 'center' }}>
           <Chip
             size="small"
             label={`${filteredCount} | ${currency.format(filteredTotal)}`}

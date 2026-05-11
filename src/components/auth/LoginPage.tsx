@@ -54,7 +54,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
         {/* Logo */}
         <Box
           component="img"
-          src="/images/logo_qas.png"
+          src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
           alt="Logo"
           sx={{ height: 52, objectFit: 'contain', mb: 1 }}
         />

@@ -5,7 +5,7 @@ import {
   aggregateAndPersistCoupons,
   loadCouponsAndProducts,
 } from './application/couponService'
-import { AggregatedView } from './components/aggregator/AggregatedView'
+import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
@@ -116,6 +116,8 @@ const App = () => {
           return idAgregador ? { ...c, idAgregador } : c
         }),
       )
+      // Navega automaticamente para a página de Agregador
+      setActivePage('agregador')
     } finally {
       setProcessing(false)
     }
@@ -136,40 +138,30 @@ const App = () => {
     <AppShell activePage={activePage} onNavigate={setActivePage}>
       {activePage === 'config-agregador' ? (
         <AggregatorConfig criteria={criteria} onChange={setCriteria} />
+      ) : activePage === 'agregador' ? (
+        <AgregadorPage groups={groups} onGoToCupons={() => setActivePage('cupons')} />
       ) : (
-        <>
-          {/* Card principal: filtros + tabela (segue layout de referência) */}
-          <Paper
-            elevation={0}
-            sx={{
-              borderRadius: 2,
-              border: '1px solid #e8ecf0',
-              overflow: 'hidden',
-              backgroundColor: '#fff',
-            }}
-          >
-            <CouponFiltersBar
-              coupons={coupons}
-              filters={filters}
-              filteredCount={filteredCoupons.length}
-              filteredTotal={filteredTotal}
-              onChange={setFilters}
-              onAggregate={() => void handleAggregate()}
-              processing={processing}
-            />
-            <CouponTable coupons={filteredCoupons} />
-          </Paper>
-
-          {/* Visão agrupada em accordion com botão SAP por grupo */}
-          {groups.length > 0 && (
-            <Box sx={{ mt: 2.5 }}>
-              <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2c3d', mb: 1.5 }}>
-                Visão Agrupada — {groups.length} grupos gerados
-              </Typography>
-              <AggregatedView groups={groups} />
-            </Box>
-          )}
-        </>
+        /* Página padrão: Cupons Fiscais */
+        <Paper
+          elevation={0}
+          sx={{
+            borderRadius: 2,
+            border: '1px solid #e8ecf0',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+          }}
+        >
+          <CouponFiltersBar
+            coupons={coupons}
+            filters={filters}
+            filteredCount={filteredCoupons.length}
+            filteredTotal={filteredTotal}
+            onChange={setFilters}
+            onAggregate={() => void handleAggregate()}
+            processing={processing}
+          />
+          <CouponTable coupons={filteredCoupons} />
+        </Paper>
       )}
     </AppShell>
   )

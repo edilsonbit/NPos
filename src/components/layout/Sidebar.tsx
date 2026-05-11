@@ -47,6 +47,7 @@ const navSections: NavSection[] = [
     items: [
       { icon: <DashboardIcon sx={{ fontSize: 18 }} />, label: 'Dashboard', pageKey: 'dashboard' },
       { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Fiscais', pageKey: 'cupons' },
+      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'agregador' },
       { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: 'Reenvio Pedido', pageKey: 'reenvio' },
       { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: 'Edição Payload', pageKey: 'payload' },
     ],

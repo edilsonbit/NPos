@@ -48,6 +48,16 @@ export interface AggregationCriteria {
   byDate: boolean
 }
 
+export interface GroupFilters {
+  idAgregador: string
+  storeId: string
+  acquirer: string
+  paymentMethod: string
+  productSearch: string
+  dateFrom: string
+  dateTo: string
+}
+
 export interface AggregatedCouponGroup {
   idAgregador: string
   aggregatedAt: string

@@ -7,6 +7,7 @@ import {
 } from './application/couponService'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
+import { LoginPage } from './components/auth/LoginPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
@@ -38,6 +39,7 @@ const defaultCriteria: AggregationCriteria = {
 }
 
 const App = () => {
+  const [authenticated, setAuthenticated] = useState(false)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [filters, setFilters] = useState<CouponFilters>(defaultFilters)
   const [criteria, setCriteria] = useState<AggregationCriteria>(defaultCriteria)
@@ -121,6 +123,10 @@ const App = () => {
     } finally {
       setProcessing(false)
     }
+  }
+
+  if (!authenticated) {
+    return <LoginPage onLogin={() => setAuthenticated(true)} />
   }
 
   if (loading) {

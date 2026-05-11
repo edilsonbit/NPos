@@ -6,8 +6,10 @@ import {
   Stack,
   TextField,
 } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers'
 import HubIcon from '@mui/icons-material/Hub'
 import SearchIcon from '@mui/icons-material/Search'
+import dayjs from 'dayjs'
 import type { Coupon, CouponFilters } from '../../domain/models'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -91,19 +93,19 @@ const CouponFiltersBar = ({
 
       {/* Linha 2 — Datas, campos de texto, botões */}
       <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
-        <TextField
-          size="small" label="Data Início" type="date"
-          slotProps={{ inputLabel: { shrink: true } }}
-          value={filters.dateFrom}
-          onChange={(e) => onChange(set(filters, 'dateFrom', e.target.value))}
-          sx={{ width: 150 }}
+        <DatePicker
+          label="Data Início"
+          format="DD/MM/YYYY"
+          value={filters.dateFrom ? dayjs(filters.dateFrom) : null}
+          onChange={(v) => onChange(set(filters, 'dateFrom', v ? v.format('YYYY-MM-DD') : ''))}
+          slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
         />
-        <TextField
-          size="small" label="Data Fim" type="date"
-          slotProps={{ inputLabel: { shrink: true } }}
-          value={filters.dateTo}
-          onChange={(e) => onChange(set(filters, 'dateTo', e.target.value))}
-          sx={{ width: 150 }}
+        <DatePicker
+          label="Data Fim"
+          format="DD/MM/YYYY"
+          value={filters.dateTo ? dayjs(filters.dateTo) : null}
+          onChange={(v) => onChange(set(filters, 'dateTo', v ? v.format('YYYY-MM-DD') : ''))}
+          slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
         />
         <TextField
           size="small" label="Nº Cupom"

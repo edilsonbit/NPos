@@ -1,7 +1,7 @@
 import { Box, Toolbar } from '@mui/material'
 import { type ReactNode } from 'react'
 import { Header } from './Header'
-import { DRAWER_WIDTH, Sidebar } from './Sidebar'
+import { Sidebar } from './Sidebar'
 
 interface AppShellProps {
   activePage: string

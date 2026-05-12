@@ -72,15 +72,31 @@ export interface AggregatedCouponGroup {
   totalAmount: number
 }
 
+export interface SapPayloadItem {
+  couponNumber: string
+  nsu: string
+  productCode: string
+  productName: string
+  quantity: number
+  unitPrice: number
+  tax: number
+  amount: number
+  status: CouponStatus
+  createdAt: string
+}
+
 export interface SapPayload {
-  storeId: string
   idAgregador: string
+  storeId: string
+  date: string
   aggregatedAt: string
   productCode: string
   productName: string
   acquirer: string
   paymentMethod: string
   totalAmount: number
+  couponCount: number
+  items: SapPayloadItem[]
 }
 
 export interface AggregatorPersistPayload {

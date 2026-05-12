@@ -18,14 +18,8 @@ export class MockCouponRepository implements CouponRepository {
     return structuredClone(couponsState)
   }
 
-  async updateAggregatorIds(payload: AggregatorPersistPayload[]): Promise<void> {
-    const map = new Map(payload.map((item) => [item.couponId, item.idAgregador]))
-    for (const coupon of couponsState) {
-      const idAgregador = map.get(coupon.id)
-      if (idAgregador) {
-        coupon.idAgregador = idAgregador
-      }
-    }
+  async updateAggregatorIds(_payload: AggregatorPersistPayload[]): Promise<void> {
+    // idAgregador foi movido para AggregatedCouponGroup — nada a persistir no mock
   }
 }
 

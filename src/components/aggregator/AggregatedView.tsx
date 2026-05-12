@@ -19,7 +19,7 @@ import SendIcon from '@mui/icons-material/Send'
 import HubIcon from '@mui/icons-material/Hub'
 import dayjs from 'dayjs'
 import { memo, useState } from 'react'
-import type { AggregatedCouponGroup, SapPayload } from '../../domain/models'
+import type { AggregatedCouponGroup, SapPayload, SapPayloadItem } from '../../domain/models'
 import { SapPayloadDialog } from './SapPayloadDialog'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -48,15 +48,30 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
 
   const handleSap = (group: AggregatedCouponGroup, e: React.MouseEvent) => {
     e.stopPropagation()
+    const items: SapPayloadItem[] = group.coupons.map((c) => ({
+      couponNumber: c.couponNumber,
+      nsu: c.nsu,
+      productCode: c.productCode,
+      productName: c.productName,
+      quantity: c.quantity,
+      unitPrice: c.unitPrice,
+      tax: c.tax,
+      amount: c.amount,
+      status: c.status,
+      createdAt: c.createdAt,
+    }))
     setSapPayload({
-      storeId: group.storeId,
       idAgregador: group.idAgregador,
+      storeId: group.storeId,
+      date: group.date,
       aggregatedAt: group.aggregatedAt,
       productCode: group.productCode,
       productName: group.productName,
       acquirer: group.acquirer,
       paymentMethod: group.paymentMethod,
       totalAmount: group.totalAmount,
+      couponCount: group.coupons.length,
+      items,
     })
   }
 

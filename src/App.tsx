@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Paper, Stack, Typography } from '@mui/material'
+import { Backdrop, Box, CircularProgress, Fade, Paper, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { useEffect, useMemo, useState } from 'react'
 import {
@@ -42,6 +42,8 @@ const App = () => {
   const [authenticated, setAuthenticated] = useState(false)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [filters, setFilters] = useState<CouponFilters>(defaultFilters)
+  const [appliedFilters, setAppliedFilters] = useState<CouponFilters>(defaultFilters)
+  const [filtering, setFiltering] = useState(false)
   const [criteria, setCriteria] = useState<AggregationCriteria>(defaultCriteria)
   const [groups, setGroups] = useState<AggregatedCouponGroup[]>([])
   const [loading, setLoading] = useState(true)
@@ -60,42 +62,62 @@ const App = () => {
     void bootstrap()
   }, [])
 
+  const triggerFilter = (newFilters: CouponFilters) => {
+    setFiltering(true)
+    setTimeout(() => {
+      setAppliedFilters(newFilters)
+      setFiltering(false)
+    }, 500)
+  }
+
+  const handleSearch = () => triggerFilter(filters)
+
+  const handleInstantChange = (newFilters: CouponFilters) => {
+    setFilters(newFilters)
+    triggerFilter(newFilters)
+  }
+
+  const handleClear = () => {
+    setFilters(defaultFilters)
+    triggerFilter(defaultFilters)
+  }
+
   const filteredCoupons = useMemo(() => {
     return coupons.filter((c) => {
       const matchCouponNumber =
-        !filters.couponNumber ||
-        c.couponNumber.toLowerCase().includes(filters.couponNumber.toLowerCase())
+        !appliedFilters.couponNumber ||
+        c.couponNumber.toLowerCase().includes(appliedFilters.couponNumber.toLowerCase())
 
       const matchNsu =
-        !filters.nsu ||
-        c.nsu.toLowerCase().includes(filters.nsu.toLowerCase())
+        !appliedFilters.nsu ||
+        c.nsu.toLowerCase().includes(appliedFilters.nsu.toLowerCase())
 
       const matchProduct =
-        !filters.productSearch ||
-        c.productCode.toLowerCase().includes(filters.productSearch.toLowerCase()) ||
-        c.productName.toLowerCase().includes(filters.productSearch.toLowerCase())
+        !appliedFilters.productSearch ||
+        c.productCode.toLowerCase().includes(appliedFilters.productSearch.toLowerCase()) ||
+        c.productName.toLowerCase().includes(appliedFilters.productSearch.toLowerCase())
 
       const matchFrom =
-        !filters.dateFrom ||
-        dayjs(c.createdAt).isAfter(dayjs(filters.dateFrom).subtract(1, 'day'))
+        !appliedFilters.dateFrom ||
+        dayjs(c.createdAt).isAfter(dayjs(appliedFilters.dateFrom).subtract(1, 'day'))
 
       const matchTo =
-        !filters.dateTo ||
-        dayjs(c.createdAt).isBefore(dayjs(filters.dateTo).add(1, 'day'))
+        !appliedFilters.dateTo ||
+        dayjs(c.createdAt).isBefore(dayjs(appliedFilters.dateTo).add(1, 'day'))
 
       return (
         matchCouponNumber &&
         matchNsu &&
         matchProduct &&
-        (!filters.storeId || c.storeId === filters.storeId) &&
-        (!filters.acquirer || c.acquirer === filters.acquirer) &&
-        (!filters.paymentMethod || c.paymentMethod === filters.paymentMethod) &&
-        (!filters.status || c.status === filters.status) &&
+        (!appliedFilters.storeId || c.storeId === appliedFilters.storeId) &&
+        (!appliedFilters.acquirer || c.acquirer === appliedFilters.acquirer) &&
+        (!appliedFilters.paymentMethod || c.paymentMethod === appliedFilters.paymentMethod) &&
+        (!appliedFilters.status || c.status === appliedFilters.status) &&
         matchFrom &&
         matchTo
       )
     })
-  }, [coupons, filters])
+  }, [coupons, appliedFilters])
 
   const filteredTotal = useMemo(
     () => filteredCoupons.reduce((acc, c) => acc + c.amount, 0),
@@ -106,19 +128,12 @@ const App = () => {
     if (!filteredCoupons.length) return
     setProcessing(true)
     try {
-      const grouped = await aggregateAndPersistCoupons(filteredCoupons, criteria)
+      // Delay mínimo de 1.5s para o loading ser visível
+      const [grouped] = await Promise.all([
+        aggregateAndPersistCoupons(filteredCoupons, criteria),
+        new Promise((res) => setTimeout(res, 1500)),
+      ])
       setGroups(grouped)
-
-      const idMap = new Map(
-        grouped.flatMap((g) => g.coupons.map((c) => [c.id, g.idAgregador])),
-      )
-      setCoupons((prev) =>
-        prev.map((c) => {
-          const idAgregador = idMap.get(c.id)
-          return idAgregador ? { ...c, idAgregador } : c
-        }),
-      )
-      // Navega automaticamente para a página de Agregador
       setActivePage('agregador')
     } finally {
       setProcessing(false)
@@ -141,6 +156,32 @@ const App = () => {
   }
 
   return (
+    <>
+    <Backdrop
+      open={processing}
+      sx={{ zIndex: 2000, flexDirection: 'column', gap: 3, backgroundColor: 'rgba(13,59,69,0.82)' }}
+    >
+      <Fade in={processing}>
+        <Stack spacing={2.5} sx={{ alignItems: 'center' }}>
+          <Box sx={{ position: 'relative', display: 'inline-flex' }}>
+            <CircularProgress size={72} thickness={3} sx={{ color: '#f08f4f' }} />
+            <CircularProgress
+              size={72}
+              thickness={3}
+              variant="determinate"
+              value={100}
+              sx={{ color: 'rgba(255,255,255,0.15)', position: 'absolute', left: 0 }}
+            />
+          </Box>
+          <Typography variant="h6" sx={{ color: '#fff', fontWeight: 700, letterSpacing: 0.5 }}>
+            Rodando Agregador...
+          </Typography>
+          <Typography variant="body2" sx={{ color: 'rgba(255,255,255,0.7)' }}>
+            Agrupando {filteredCoupons.length} registros
+          </Typography>
+        </Stack>
+      </Fade>
+    </Backdrop>
     <AppShell activePage={activePage} onNavigate={setActivePage}>
       {activePage === 'config-agregador' ? (
         <AggregatorConfig criteria={criteria} onChange={setCriteria} />
@@ -161,7 +202,9 @@ const App = () => {
             coupons={coupons}
             filters={filters}
             onChange={setFilters}
-            onClear={() => setFilters(defaultFilters)}
+            onInstantChange={handleInstantChange}
+            onClear={handleClear}
+            onSearch={handleSearch}
           />
           <CouponTable
             coupons={filteredCoupons}
@@ -169,10 +212,12 @@ const App = () => {
             filteredTotal={filteredTotal}
             onAggregate={() => void handleAggregate()}
             processing={processing}
+            filtering={filtering}
           />
         </Paper>
       )}
     </AppShell>
+    </>
   )
 }
 

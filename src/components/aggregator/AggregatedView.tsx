@@ -18,7 +18,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import SendIcon from '@mui/icons-material/Send'
 import HubIcon from '@mui/icons-material/Hub'
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import type { AggregatedCouponGroup, SapPayload } from '../../domain/models'
 import { SapPayloadDialog } from './SapPayloadDialog'
 
@@ -28,7 +28,7 @@ interface AggregatedViewProps {
   groups: AggregatedCouponGroup[]
 }
 
-const AggregatedView = ({ groups }: AggregatedViewProps) => {
+const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
   const [sapPayload, setSapPayload] = useState<SapPayload | null>(null)
 
   if (groups.length === 0) {
@@ -203,6 +203,6 @@ const AggregatedView = ({ groups }: AggregatedViewProps) => {
       />
     </>
   )
-}
+})
 
 export { AggregatedView }

@@ -31,11 +31,11 @@ const defaultFilters: CouponFilters = {
 }
 
 const defaultCriteria: AggregationCriteria = {
-  byProduct: false,
+  byProduct: true,
   byStore: true,
   byAcquirer: true,
-  byPaymentMethod: false,
-  byDate: false,
+  byPaymentMethod: true,
+  byDate: true,
 }
 
 const App = () => {

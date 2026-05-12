@@ -1,4 +1,4 @@
-export type CouponStatus = 'ativo' | 'cancelado'
+export type CouponStatus = 'autorizado' | 'cancelado'
 
 export interface Product {
   id: string

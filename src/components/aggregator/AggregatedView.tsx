@@ -178,8 +178,8 @@ const AggregatedView = ({ groups }: AggregatedViewProps) => {
                               fontSize: 9,
                               height: 18,
                               fontWeight: 700,
-                              backgroundColor: c.status === 'ativo' ? '#e8f5e9' : '#ffebee',
-                              color: c.status === 'ativo' ? '#2e7d32' : '#c62828',
+                              backgroundColor: c.status === 'autorizado' ? '#e8f5e9' : '#ffebee',
+                              color: c.status === 'autorizado' ? '#2e7d32' : '#c62828',
                             }}
                           />
                         </TableCell>

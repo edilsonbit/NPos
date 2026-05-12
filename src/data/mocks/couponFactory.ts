@@ -2,7 +2,7 @@ import type { Coupon, CouponStatus, Product } from '../../domain/models'
 
 const stores = ['LJ001', 'LJ014', 'LJ021', 'LJ089', 'LJ110']
 const acquirers = ['Cielo', 'Stone', 'Rede', 'Getnet']
-const paymentMethods = ['PIX', 'Cartão de Crédito']
+const paymentMethods = ['PIX', 'Cartão de Crédito', 'Dinheiro', 'Cartão de Débito']
 
 export const createProduct = (index: number, overrides?: Partial<Product>): Product => {
   const categories = ['Perfumaria', 'Maquiagem', 'Corpo e Banho', 'Cabelos', 'Skincare']

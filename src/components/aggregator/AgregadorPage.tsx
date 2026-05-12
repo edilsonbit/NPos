@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Chip,
+  LinearProgress,
   MenuItem,
   Paper,
   Stack,
@@ -21,6 +22,7 @@ const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: '
 
 const defaultFilters: GroupFilters = {
   idAgregador: '',
+  couponNumber: '',
   storeId: '',
   acquirer: '',
   paymentMethod: '',
@@ -35,33 +37,59 @@ interface AgregadorPageProps {
 }
 
 const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
-  const [filters, setFilters] = useState<GroupFilters>(defaultFilters)
+  const [pendingFilters, setPendingFilters] = useState<GroupFilters>(defaultFilters)
+  const [appliedFilters, setAppliedFilters] = useState<GroupFilters>(defaultFilters)
+  const [searching, setSearching] = useState(false)
+
+  const triggerSearch = (newFilters: GroupFilters) => {
+    setSearching(true)
+    setTimeout(() => {
+      setAppliedFilters(newFilters)
+      setSearching(false)
+    }, 500)
+  }
+
+  const setField = <K extends keyof GroupFilters>(key: K, value: GroupFilters[K]) =>
+    setPendingFilters((prev) => ({ ...prev, [key]: value }))
+
+  // Selects e datas: atualiza pending E aplica imediatamente com loading
+  const setInstantField = <K extends keyof GroupFilters>(key: K, value: GroupFilters[K]) => {
+    const newFilters = { ...pendingFilters, [key]: value }
+    setPendingFilters(newFilters)
+    triggerSearch(newFilters)
+  }
+
+  const handleSearch = () => triggerSearch(pendingFilters)
+
+  const handleClear = () => {
+    setPendingFilters(defaultFilters)
+    triggerSearch(defaultFilters)
+  }
 
   const stores = useMemo(() => [...new Set(groups.map((g) => g.storeId))].sort(), [groups])
   const acquirers = useMemo(() => [...new Set(groups.map((g) => g.acquirer))].sort(), [groups])
   const payMethods = useMemo(() => [...new Set(groups.map((g) => g.paymentMethod))].sort(), [groups])
 
   const filtered = useMemo(() => {
+    const f = appliedFilters
     return groups.filter((g) => {
-      const matchId = !filters.idAgregador || g.idAgregador.toLowerCase().includes(filters.idAgregador.toLowerCase())
-      const matchStore = !filters.storeId || g.storeId === filters.storeId
-      const matchAcquirer = !filters.acquirer || g.acquirer === filters.acquirer
-      const matchPayment = !filters.paymentMethod || g.paymentMethod === filters.paymentMethod
+      const matchId = !f.idAgregador || g.idAgregador.toLowerCase().includes(f.idAgregador.toLowerCase())
+      const matchNF = !f.couponNumber || g.coupons.some((c) => c.couponNumber.toLowerCase().includes(f.couponNumber.toLowerCase()))
+      const matchStore = !f.storeId || g.storeId === f.storeId
+      const matchAcquirer = !f.acquirer || g.acquirer === f.acquirer
+      const matchPayment = !f.paymentMethod || g.paymentMethod === f.paymentMethod
       const matchProduct =
-        !filters.productSearch ||
-        g.productCode.toLowerCase().includes(filters.productSearch.toLowerCase()) ||
-        g.productName.toLowerCase().includes(filters.productSearch.toLowerCase())
-      const matchFrom = !filters.dateFrom || dayjs(g.date).isAfter(dayjs(filters.dateFrom).subtract(1, 'day'))
-      const matchTo = !filters.dateTo || dayjs(g.date).isBefore(dayjs(filters.dateTo).add(1, 'day'))
-      return matchId && matchStore && matchAcquirer && matchPayment && matchProduct && matchFrom && matchTo
+        !f.productSearch ||
+        g.productCode.toLowerCase().includes(f.productSearch.toLowerCase()) ||
+        g.productName.toLowerCase().includes(f.productSearch.toLowerCase())
+      const matchFrom = !f.dateFrom || dayjs(g.date).isAfter(dayjs(f.dateFrom).subtract(1, 'day'))
+      const matchTo = !f.dateTo || dayjs(g.date).isBefore(dayjs(f.dateTo).add(1, 'day'))
+      return matchId && matchNF && matchStore && matchAcquirer && matchPayment && matchProduct && matchFrom && matchTo
     })
-  }, [groups, filters])
+  }, [groups, appliedFilters])
 
   const totalAgregado = useMemo(() => filtered.reduce((acc, g) => acc + g.totalAmount, 0), [filtered])
   const totalCupons = useMemo(() => filtered.reduce((acc, g) => acc + g.coupons.length, 0), [filtered])
-
-  const set = <K extends keyof GroupFilters>(key: K, value: GroupFilters[K]) =>
-    setFilters((prev) => ({ ...prev, [key]: value }))
 
   if (groups.length === 0) {
     return (
@@ -125,8 +153,8 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
           <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
             <TextField
               select size="small" label="Loja"
-              value={filters.storeId}
-              onChange={(e) => set('storeId', e.target.value)}
+              value={pendingFilters.storeId}
+              onChange={(e) => setInstantField('storeId', e.target.value)}
               sx={{ flex: 1 }}
             >
               <MenuItem value="">Todas</MenuItem>
@@ -135,8 +163,8 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
 
             <TextField
               select size="small" label="Adquirente"
-              value={filters.acquirer}
-              onChange={(e) => set('acquirer', e.target.value)}
+              value={pendingFilters.acquirer}
+              onChange={(e) => setInstantField('acquirer', e.target.value)}
               sx={{ flex: 1 }}
             >
               <MenuItem value="">Todos</MenuItem>
@@ -145,8 +173,8 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
 
             <TextField
               select size="small" label="Forma de Pagamento"
-              value={filters.paymentMethod}
-              onChange={(e) => set('paymentMethod', e.target.value)}
+              value={pendingFilters.paymentMethod}
+              onChange={(e) => setInstantField('paymentMethod', e.target.value)}
               sx={{ flex: 1 }}
             >
               <MenuItem value="">Todas</MenuItem>
@@ -159,32 +187,39 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
             <DatePicker
               label="Data Início"
               format="DD/MM/YYYY"
-              value={filters.dateFrom ? dayjs(filters.dateFrom) : null}
-              onChange={(v) => set('dateFrom', v ? v.format('YYYY-MM-DD') : '')}
+              value={pendingFilters.dateFrom ? dayjs(pendingFilters.dateFrom) : null}
+              onChange={(v) => setInstantField('dateFrom', v ? v.format('YYYY-MM-DD') : '')}
               slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
             />
             <DatePicker
               label="Data Fim"
               format="DD/MM/YYYY"
-              value={filters.dateTo ? dayjs(filters.dateTo) : null}
-              onChange={(v) => set('dateTo', v ? v.format('YYYY-MM-DD') : '')}
+              value={pendingFilters.dateTo ? dayjs(pendingFilters.dateTo) : null}
+              onChange={(v) => setInstantField('dateTo', v ? v.format('YYYY-MM-DD') : '')}
               slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
             />
             <TextField
+              size="small" label="Nº do Cupom Fiscal"
+              value={pendingFilters.couponNumber}
+              onChange={(e) => setField('couponNumber', e.target.value)}
+              sx={{ flex: 1 }}
+            />
+            <TextField
               size="small" label="IdAgregador"
-              value={filters.idAgregador}
-              onChange={(e) => set('idAgregador', e.target.value)}
+              value={pendingFilters.idAgregador}
+              onChange={(e) => setField('idAgregador', e.target.value)}
               sx={{ flex: 1 }}
             />
             <TextField
               size="small" label="Código / Nome do Produto"
-              value={filters.productSearch}
-              onChange={(e) => set('productSearch', e.target.value)}
+              value={pendingFilters.productSearch}
+              onChange={(e) => setField('productSearch', e.target.value)}
               sx={{ flex: 2 }}
             />
             <Button
               variant="contained"
               startIcon={<SearchIcon />}
+              onClick={handleSearch}
               sx={{
                 backgroundColor: '#1976d2',
                 '&:hover': { backgroundColor: '#1565c0' },
@@ -200,7 +235,7 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
             <Button
               variant="outlined"
               startIcon={<ClearIcon />}
-              onClick={() => setFilters(defaultFilters)}
+              onClick={handleClear}
               sx={{
                 borderColor: '#e0e0e0',
                 color: '#757575',
@@ -216,6 +251,11 @@ const AgregadorPage = ({ groups, onGoToCupons }: AgregadorPageProps) => {
             </Button>
           </Stack>
         </Box>
+
+        {/* LinearProgress durante o filtro */}
+        {searching && (
+          <LinearProgress sx={{ height: 3, backgroundColor: '#e3f0ff', '& .MuiLinearProgress-bar': { backgroundColor: '#1976d2' } }} />
+        )}
 
         {/* Lista de grupos em accordion */}
         <Box sx={{ p: 2 }}>

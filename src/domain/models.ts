@@ -49,6 +49,7 @@ export interface AggregationCriteria {
 
 export interface GroupFilters {
   idAgregador: string
+  couponNumber: string
   storeId: string
   acquirer: string
   paymentMethod: string

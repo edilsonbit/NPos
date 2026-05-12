@@ -17,7 +17,9 @@ interface CouponFiltersBarProps {
     coupons: Coupon[]
     filters: CouponFilters
     onChange: (filters: CouponFilters) => void
+    onInstantChange: (filters: CouponFilters) => void
     onClear: () => void
+    onSearch: () => void
 }
 
 const set = <K extends keyof CouponFilters>(
@@ -30,7 +32,9 @@ const CouponFiltersBar = ({
     coupons,
     filters,
     onChange,
+    onInstantChange,
     onClear,
+    onSearch,
 }: CouponFiltersBarProps) => {
     const stores = [...new Set(coupons.map((c) => c.storeId))].sort()
     const acquirers = [...new Set(coupons.map((c) => c.acquirer))].sort()
@@ -43,7 +47,7 @@ const CouponFiltersBar = ({
                 <TextField
                     select size="small" label="Loja"
                     value={filters.storeId}
-                    onChange={(e) => onChange(set(filters, 'storeId', e.target.value))}
+                    onChange={(e) => onInstantChange(set(filters, 'storeId', e.target.value))}
                     sx={selectSx}
                 >
                     <MenuItem value="">Todos</MenuItem>
@@ -53,7 +57,7 @@ const CouponFiltersBar = ({
                 <TextField
                     select size="small" label="Adquirente"
                     value={filters.acquirer}
-                    onChange={(e) => onChange(set(filters, 'acquirer', e.target.value))}
+                    onChange={(e) => onInstantChange(set(filters, 'acquirer', e.target.value))}
                     sx={selectSx}
                 >
                     <MenuItem value="">Todas</MenuItem>
@@ -63,7 +67,7 @@ const CouponFiltersBar = ({
                 <TextField
                     select size="small" label="Forma de Pagamento"
                     value={filters.paymentMethod}
-                    onChange={(e) => onChange(set(filters, 'paymentMethod', e.target.value))}
+                    onChange={(e) => onInstantChange(set(filters, 'paymentMethod', e.target.value))}
                     sx={selectSx}
                 >
                     <MenuItem value="">Todas</MenuItem>
@@ -73,7 +77,7 @@ const CouponFiltersBar = ({
                 <TextField
                     select size="small" label="Status"
                     value={filters.status}
-                    onChange={(e) => onChange(set(filters, 'status', e.target.value as CouponFilters['status']))}
+                    onChange={(e) => onInstantChange(set(filters, 'status', e.target.value as CouponFilters['status']))}
                     sx={selectSx}
                 >
                     <MenuItem value="">Todos</MenuItem>
@@ -88,14 +92,14 @@ const CouponFiltersBar = ({
                     label="Data Início"
                     format="DD/MM/YYYY"
                     value={filters.dateFrom ? dayjs(filters.dateFrom) : null}
-                    onChange={(v) => onChange(set(filters, 'dateFrom', v ? v.format('YYYY-MM-DD') : ''))}
+                    onChange={(v) => onInstantChange(set(filters, 'dateFrom', v ? v.format('YYYY-MM-DD') : ''))}
                     slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
                 />
                 <DatePicker
                     label="Data Fim"
                     format="DD/MM/YYYY"
                     value={filters.dateTo ? dayjs(filters.dateTo) : null}
-                    onChange={(v) => onChange(set(filters, 'dateTo', v ? v.format('YYYY-MM-DD') : ''))}
+                    onChange={(v) => onInstantChange(set(filters, 'dateTo', v ? v.format('YYYY-MM-DD') : ''))}
                     slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
                 />
                 <TextField
@@ -121,6 +125,7 @@ const CouponFiltersBar = ({
                     <Button
                         variant="contained"
                         startIcon={<SearchIcon />}
+                        onClick={onSearch}
                         sx={{
                             backgroundColor: '#1976d2',
                             '&:hover': { backgroundColor: '#1565c0' },

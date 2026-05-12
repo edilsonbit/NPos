@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Chip,
+  LinearProgress,
   Stack,
   Table,
   TableBody,
@@ -41,9 +42,10 @@ interface CouponTableProps {
   filteredTotal: number
   onAggregate: () => void
   processing: boolean
+  filtering?: boolean
 }
 
-const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, processing }: CouponTableProps) => {
+const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, processing, filtering }: CouponTableProps) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
 
@@ -87,6 +89,9 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
           {processing ? 'Agrupando...' : 'Rodar Agregador'}
         </Button>
       </Stack>
+      {filtering && (
+        <LinearProgress sx={{ height: 3, backgroundColor: '#e3f0ff', '& .MuiLinearProgress-bar': { backgroundColor: '#1976d2' } }} />
+      )}
       <TableContainer sx={{ maxHeight: 480 }}>
         <Table size="small" stickyHeader>
           <TableHead>

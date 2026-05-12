@@ -59,6 +59,7 @@ export const aggregateCoupons = (
     productName: firstOf(groupedCoupons, 'productName'),
     acquirer: firstOf(groupedCoupons, 'acquirer'),
     paymentMethod: firstOf(groupedCoupons, 'paymentMethod'),
+    couponIds: groupedCoupons.map((c) => c.id),
     coupons: groupedCoupons,
     totalAmount: Number(
       groupedCoupons.reduce((acc, item) => acc + item.amount, 0).toFixed(2),

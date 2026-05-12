@@ -33,7 +33,6 @@ const headCells = [
   { id: 'amount', label: 'Valor Total' },
   { id: 'status', label: 'Status' },
   { id: 'createdAt', label: 'Data' },
-  { id: 'idAgregador', label: 'IdAgregador' },
 ]
 
 interface CouponTableProps {
@@ -155,9 +154,6 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
                   </TableCell>
                   <TableCell sx={{ fontSize: 12, whiteSpace: 'nowrap' }}>
                     {dayjs(coupon.createdAt).format('DD/MM/YYYY')}
-                  </TableCell>
-                  <TableCell sx={{ fontSize: 11, color: '#6b7a8d' }}>
-                    {coupon.idAgregador ?? '—'}
                   </TableCell>
                 </TableRow>
               ))

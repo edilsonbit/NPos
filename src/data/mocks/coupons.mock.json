@@ -14,8 +14,7 @@
     "quantity": 1,
     "unitPrice": 23.45,
     "tax": 1.64,
-    "amount": 25.09,
-    "idAgregador": null
+    "amount": 25.09
   },
   {
     "id": "C00002",
@@ -32,8 +31,7 @@
     "quantity": 2,
     "unitPrice": 23.92,
     "tax": 3.35,
-    "amount": 51.19,
-    "idAgregador": null
+    "amount": 51.19
   },
   {
     "id": "C00003",
@@ -50,8 +48,7 @@
     "quantity": 3,
     "unitPrice": 24.39,
     "tax": 5.12,
-    "amount": 78.29,
-    "idAgregador": null
+    "amount": 78.29
   },
   {
     "id": "C00004",
@@ -68,8 +65,7 @@
     "quantity": 1,
     "unitPrice": 23.45,
     "tax": 1.64,
-    "amount": 25.09,
-    "idAgregador": null
+    "amount": 25.09
   },
   {
     "id": "C00005",
@@ -86,8 +82,7 @@
     "quantity": 2,
     "unitPrice": 23.92,
     "tax": 3.35,
-    "amount": 51.19,
-    "idAgregador": null
+    "amount": 51.19
   },
   {
     "id": "C00006",
@@ -104,8 +99,7 @@
     "quantity": 3,
     "unitPrice": 24.39,
     "tax": 5.12,
-    "amount": 78.29,
-    "idAgregador": null
+    "amount": 78.29
   },
   {
     "id": "C00007",
@@ -122,8 +116,7 @@
     "quantity": 4,
     "unitPrice": 24.86,
     "tax": 6.96,
-    "amount": 106.4,
-    "idAgregador": null
+    "amount": 106.4
   },
   {
     "id": "C00008",
@@ -140,8 +133,7 @@
     "quantity": 1,
     "unitPrice": 23.45,
     "tax": 1.64,
-    "amount": 25.09,
-    "idAgregador": null
+    "amount": 25.09
   },
   {
     "id": "C00009",
@@ -158,8 +150,7 @@
     "quantity": 2,
     "unitPrice": 23.92,
     "tax": 3.35,
-    "amount": 51.19,
-    "idAgregador": null
+    "amount": 51.19
   },
   {
     "id": "C00010",
@@ -176,8 +167,7 @@
     "quantity": 3,
     "unitPrice": 24.39,
     "tax": 5.12,
-    "amount": 78.29,
-    "idAgregador": null
+    "amount": 78.29
   },
   {
     "id": "C00011",
@@ -194,8 +184,7 @@
     "quantity": 4,
     "unitPrice": 24.86,
     "tax": 6.96,
-    "amount": 106.4,
-    "idAgregador": null
+    "amount": 106.4
   },
   {
     "id": "C00012",
@@ -212,8 +201,7 @@
     "quantity": 1,
     "unitPrice": 25.33,
     "tax": 1.77,
-    "amount": 27.1,
-    "idAgregador": null
+    "amount": 27.1
   },
   {
     "id": "C00013",
@@ -230,8 +218,7 @@
     "quantity": 1,
     "unitPrice": 23.45,
     "tax": 1.64,
-    "amount": 25.09,
-    "idAgregador": null
+    "amount": 25.09
   },
   {
     "id": "C00014",
@@ -248,8 +235,7 @@
     "quantity": 2,
     "unitPrice": 23.92,
     "tax": 3.35,
-    "amount": 51.19,
-    "idAgregador": null
+    "amount": 51.19
   },
   {
     "id": "C00015",
@@ -266,8 +252,7 @@
     "quantity": 3,
     "unitPrice": 24.39,
     "tax": 5.12,
-    "amount": 78.29,
-    "idAgregador": null
+    "amount": 78.29
   },
   {
     "id": "C00016",
@@ -284,8 +269,7 @@
     "quantity": 4,
     "unitPrice": 24.86,
     "tax": 6.96,
-    "amount": 106.4,
-    "idAgregador": null
+    "amount": 106.4
   },
   {
     "id": "C00017",
@@ -302,8 +286,7 @@
     "quantity": 1,
     "unitPrice": 25.33,
     "tax": 1.77,
-    "amount": 27.1,
-    "idAgregador": null
+    "amount": 27.1
   },
   {
     "id": "C00018",
@@ -320,8 +303,7 @@
     "quantity": 2,
     "unitPrice": 25.8,
     "tax": 3.61,
-    "amount": 55.21,
-    "idAgregador": null
+    "amount": 55.21
   },
   {
     "id": "C00019",
@@ -338,8 +320,7 @@
     "quantity": 1,
     "unitPrice": 60.2,
     "tax": 4.21,
-    "amount": 64.41,
-    "idAgregador": null
+    "amount": 64.41
   },
   {
     "id": "C00020",
@@ -356,8 +337,7 @@
     "quantity": 2,
     "unitPrice": 60.67,
     "tax": 8.49,
-    "amount": 129.83,
-    "idAgregador": null
+    "amount": 129.83
   },
   {
     "id": "C00021",
@@ -374,8 +354,7 @@
     "quantity": 3,
     "unitPrice": 61.14,
     "tax": 12.84,
-    "amount": 196.26,
-    "idAgregador": null
+    "amount": 196.26
   },
   {
     "id": "C00022",
@@ -392,8 +371,7 @@
     "quantity": 1,
     "unitPrice": 60.2,
     "tax": 4.21,
-    "amount": 64.41,
-    "idAgregador": null
+    "amount": 64.41
   },
   {
     "id": "C00023",
@@ -410,8 +388,7 @@
     "quantity": 2,
     "unitPrice": 60.67,
     "tax": 8.49,
-    "amount": 129.83,
-    "idAgregador": null
+    "amount": 129.83
   },
   {
     "id": "C00024",
@@ -428,8 +405,7 @@
     "quantity": 3,
     "unitPrice": 61.14,
     "tax": 12.84,
-    "amount": 196.26,
-    "idAgregador": null
+    "amount": 196.26
   },
   {
     "id": "C00025",
@@ -446,8 +422,7 @@
     "quantity": 4,
     "unitPrice": 61.61,
     "tax": 17.25,
-    "amount": 263.69,
-    "idAgregador": null
+    "amount": 263.69
   },
   {
     "id": "C00026",
@@ -464,8 +439,7 @@
     "quantity": 1,
     "unitPrice": 60.2,
     "tax": 4.21,
-    "amount": 64.41,
-    "idAgregador": null
+    "amount": 64.41
   },
   {
     "id": "C00027",
@@ -482,8 +456,7 @@
     "quantity": 2,
     "unitPrice": 60.67,
     "tax": 8.49,
-    "amount": 129.83,
-    "idAgregador": null
+    "amount": 129.83
   },
   {
     "id": "C00028",
@@ -500,8 +473,7 @@
     "quantity": 3,
     "unitPrice": 61.14,
     "tax": 12.84,
-    "amount": 196.26,
-    "idAgregador": null
+    "amount": 196.26
   },
   {
     "id": "C00029",
@@ -518,8 +490,7 @@
     "quantity": 4,
     "unitPrice": 61.61,
     "tax": 17.25,
-    "amount": 263.69,
-    "idAgregador": null
+    "amount": 263.69
   },
   {
     "id": "C00030",
@@ -536,8 +507,7 @@
     "quantity": 1,
     "unitPrice": 62.08,
     "tax": 4.35,
-    "amount": 66.43,
-    "idAgregador": null
+    "amount": 66.43
   },
   {
     "id": "C00031",
@@ -554,8 +524,7 @@
     "quantity": 1,
     "unitPrice": 60.2,
     "tax": 4.21,
-    "amount": 64.41,
-    "idAgregador": null
+    "amount": 64.41
   },
   {
     "id": "C00032",
@@ -572,8 +541,7 @@
     "quantity": 2,
     "unitPrice": 60.67,
     "tax": 8.49,
-    "amount": 129.83,
-    "idAgregador": null
+    "amount": 129.83
   },
   {
     "id": "C00033",
@@ -590,8 +558,7 @@
     "quantity": 3,
     "unitPrice": 61.14,
     "tax": 12.84,
-    "amount": 196.26,
-    "idAgregador": null
+    "amount": 196.26
   },
   {
     "id": "C00034",
@@ -608,8 +575,7 @@
     "quantity": 4,
     "unitPrice": 61.61,
     "tax": 17.25,
-    "amount": 263.69,
-    "idAgregador": null
+    "amount": 263.69
   },
   {
     "id": "C00035",
@@ -626,8 +592,7 @@
     "quantity": 1,
     "unitPrice": 62.08,
     "tax": 4.35,
-    "amount": 66.43,
-    "idAgregador": null
+    "amount": 66.43
   },
   {
     "id": "C00036",
@@ -644,8 +609,7 @@
     "quantity": 2,
     "unitPrice": 62.55,
     "tax": 8.76,
-    "amount": 133.86,
-    "idAgregador": null
+    "amount": 133.86
   },
   {
     "id": "C00037",
@@ -662,8 +626,7 @@
     "quantity": 1,
     "unitPrice": 96.95,
     "tax": 6.79,
-    "amount": 103.74,
-    "idAgregador": null
+    "amount": 103.74
   },
   {
     "id": "C00038",
@@ -680,8 +643,7 @@
     "quantity": 2,
     "unitPrice": 97.42,
     "tax": 13.64,
-    "amount": 208.48,
-    "idAgregador": null
+    "amount": 208.48
   },
   {
     "id": "C00039",
@@ -698,8 +660,7 @@
     "quantity": 3,
     "unitPrice": 97.89,
     "tax": 20.56,
-    "amount": 314.23,
-    "idAgregador": null
+    "amount": 314.23
   },
   {
     "id": "C00040",
@@ -716,8 +677,7 @@
     "quantity": 1,
     "unitPrice": 96.95,
     "tax": 6.79,
-    "amount": 103.74,
-    "idAgregador": null
+    "amount": 103.74
   },
   {
     "id": "C00041",
@@ -734,8 +694,7 @@
     "quantity": 2,
     "unitPrice": 97.42,
     "tax": 13.64,
-    "amount": 208.48,
-    "idAgregador": null
+    "amount": 208.48
   },
   {
     "id": "C00042",
@@ -752,8 +711,7 @@
     "quantity": 3,
     "unitPrice": 97.89,
     "tax": 20.56,
-    "amount": 314.23,
-    "idAgregador": null
+    "amount": 314.23
   },
   {
     "id": "C00043",
@@ -770,8 +728,7 @@
     "quantity": 4,
     "unitPrice": 98.36,
     "tax": 27.54,
-    "amount": 420.98,
-    "idAgregador": null
+    "amount": 420.98
   },
   {
     "id": "C00044",
@@ -788,8 +745,7 @@
     "quantity": 1,
     "unitPrice": 96.95,
     "tax": 6.79,
-    "amount": 103.74,
-    "idAgregador": null
+    "amount": 103.74
   },
   {
     "id": "C00045",
@@ -806,8 +762,7 @@
     "quantity": 2,
     "unitPrice": 97.42,
     "tax": 13.64,
-    "amount": 208.48,
-    "idAgregador": null
+    "amount": 208.48
   },
   {
     "id": "C00046",
@@ -824,8 +779,7 @@
     "quantity": 3,
     "unitPrice": 97.89,
     "tax": 20.56,
-    "amount": 314.23,
-    "idAgregador": null
+    "amount": 314.23
   },
   {
     "id": "C00047",
@@ -842,8 +796,7 @@
     "quantity": 4,
     "unitPrice": 98.36,
     "tax": 27.54,
-    "amount": 420.98,
-    "idAgregador": null
+    "amount": 420.98
   },
   {
     "id": "C00048",
@@ -860,8 +813,7 @@
     "quantity": 1,
     "unitPrice": 98.83,
     "tax": 6.92,
-    "amount": 105.75,
-    "idAgregador": null
+    "amount": 105.75
   },
   {
     "id": "C00049",
@@ -878,8 +830,7 @@
     "quantity": 1,
     "unitPrice": 96.95,
     "tax": 6.79,
-    "amount": 103.74,
-    "idAgregador": null
+    "amount": 103.74
   },
   {
     "id": "C00050",
@@ -896,8 +847,7 @@
     "quantity": 2,
     "unitPrice": 97.42,
     "tax": 13.64,
-    "amount": 208.48,
-    "idAgregador": null
+    "amount": 208.48
   },
   {
     "id": "C00051",
@@ -914,8 +864,7 @@
     "quantity": 3,
     "unitPrice": 97.89,
     "tax": 20.56,
-    "amount": 314.23,
-    "idAgregador": null
+    "amount": 314.23
   },
   {
     "id": "C00052",
@@ -932,8 +881,7 @@
     "quantity": 4,
     "unitPrice": 98.36,
     "tax": 27.54,
-    "amount": 420.98,
-    "idAgregador": null
+    "amount": 420.98
   },
   {
     "id": "C00053",
@@ -950,8 +898,7 @@
     "quantity": 1,
     "unitPrice": 98.83,
     "tax": 6.92,
-    "amount": 105.75,
-    "idAgregador": null
+    "amount": 105.75
   },
   {
     "id": "C00054",
@@ -968,8 +915,7 @@
     "quantity": 2,
     "unitPrice": 99.3,
     "tax": 13.9,
-    "amount": 212.5,
-    "idAgregador": null
+    "amount": 212.5
   },
   {
     "id": "C00055",
@@ -986,8 +932,7 @@
     "quantity": 1,
     "unitPrice": 133.7,
     "tax": 9.36,
-    "amount": 143.06,
-    "idAgregador": null
+    "amount": 143.06
   },
   {
     "id": "C00056",
@@ -1004,8 +949,7 @@
     "quantity": 2,
     "unitPrice": 134.17,
     "tax": 18.78,
-    "amount": 287.12,
-    "idAgregador": null
+    "amount": 287.12
   },
   {
     "id": "C00057",
@@ -1022,8 +966,7 @@
     "quantity": 3,
     "unitPrice": 134.64,
     "tax": 28.27,
-    "amount": 432.19,
-    "idAgregador": null
+    "amount": 432.19
   },
   {
     "id": "C00058",
@@ -1040,8 +983,7 @@
     "quantity": 1,
     "unitPrice": 133.7,
     "tax": 9.36,
-    "amount": 143.06,
-    "idAgregador": null
+    "amount": 143.06
   },
   {
     "id": "C00059",
@@ -1058,8 +1000,7 @@
     "quantity": 2,
     "unitPrice": 134.17,
     "tax": 18.78,
-    "amount": 287.12,
-    "idAgregador": null
+    "amount": 287.12
   },
   {
     "id": "C00060",
@@ -1076,8 +1017,7 @@
     "quantity": 3,
     "unitPrice": 134.64,
     "tax": 28.27,
-    "amount": 432.19,
-    "idAgregador": null
+    "amount": 432.19
   },
   {
     "id": "C00061",
@@ -1094,8 +1034,7 @@
     "quantity": 4,
     "unitPrice": 135.11,
     "tax": 37.83,
-    "amount": 578.27,
-    "idAgregador": null
+    "amount": 578.27
   },
   {
     "id": "C00062",
@@ -1112,8 +1051,7 @@
     "quantity": 1,
     "unitPrice": 133.7,
     "tax": 9.36,
-    "amount": 143.06,
-    "idAgregador": null
+    "amount": 143.06
   },
   {
     "id": "C00063",
@@ -1130,8 +1068,7 @@
     "quantity": 2,
     "unitPrice": 134.17,
     "tax": 18.78,
-    "amount": 287.12,
-    "idAgregador": null
+    "amount": 287.12
   },
   {
     "id": "C00064",
@@ -1148,8 +1085,7 @@
     "quantity": 3,
     "unitPrice": 134.64,
     "tax": 28.27,
-    "amount": 432.19,
-    "idAgregador": null
+    "amount": 432.19
   },
   {
     "id": "C00065",
@@ -1166,8 +1102,7 @@
     "quantity": 4,
     "unitPrice": 135.11,
     "tax": 37.83,
-    "amount": 578.27,
-    "idAgregador": null
+    "amount": 578.27
   },
   {
     "id": "C00066",
@@ -1184,8 +1119,7 @@
     "quantity": 1,
     "unitPrice": 135.58,
     "tax": 9.49,
-    "amount": 145.07,
-    "idAgregador": null
+    "amount": 145.07
   },
   {
     "id": "C00067",
@@ -1202,8 +1136,7 @@
     "quantity": 1,
     "unitPrice": 133.7,
     "tax": 9.36,
-    "amount": 143.06,
-    "idAgregador": null
+    "amount": 143.06
   },
   {
     "id": "C00068",
@@ -1220,8 +1153,7 @@
     "quantity": 2,
     "unitPrice": 134.17,
     "tax": 18.78,
-    "amount": 287.12,
-    "idAgregador": null
+    "amount": 287.12
   },
   {
     "id": "C00069",
@@ -1238,8 +1170,7 @@
     "quantity": 3,
     "unitPrice": 134.64,
     "tax": 28.27,
-    "amount": 432.19,
-    "idAgregador": null
+    "amount": 432.19
   },
   {
     "id": "C00070",
@@ -1256,8 +1187,7 @@
     "quantity": 4,
     "unitPrice": 135.11,
     "tax": 37.83,
-    "amount": 578.27,
-    "idAgregador": null
+    "amount": 578.27
   },
   {
     "id": "C00071",
@@ -1274,8 +1204,7 @@
     "quantity": 1,
     "unitPrice": 135.58,
     "tax": 9.49,
-    "amount": 145.07,
-    "idAgregador": null
+    "amount": 145.07
   },
   {
     "id": "C00072",
@@ -1292,8 +1221,7 @@
     "quantity": 2,
     "unitPrice": 136.05,
     "tax": 19.05,
-    "amount": 291.15,
-    "idAgregador": null
+    "amount": 291.15
   },
   {
     "id": "C00073",
@@ -1310,8 +1238,7 @@
     "quantity": 1,
     "unitPrice": 45.5,
     "tax": 3.19,
-    "amount": 48.69,
-    "idAgregador": null
+    "amount": 48.69
   },
   {
     "id": "C00074",
@@ -1328,8 +1255,7 @@
     "quantity": 2,
     "unitPrice": 45.97,
     "tax": 6.44,
-    "amount": 98.38,
-    "idAgregador": null
+    "amount": 98.38
   },
   {
     "id": "C00075",
@@ -1346,8 +1272,7 @@
     "quantity": 3,
     "unitPrice": 46.44,
     "tax": 9.75,
-    "amount": 149.07,
-    "idAgregador": null
+    "amount": 149.07
   },
   {
     "id": "C00076",
@@ -1364,8 +1289,7 @@
     "quantity": 1,
     "unitPrice": 45.5,
     "tax": 3.19,
-    "amount": 48.69,
-    "idAgregador": null
+    "amount": 48.69
   },
   {
     "id": "C00077",
@@ -1382,8 +1306,7 @@
     "quantity": 2,
     "unitPrice": 45.97,
     "tax": 6.44,
-    "amount": 98.38,
-    "idAgregador": null
+    "amount": 98.38
   },
   {
     "id": "C00078",
@@ -1400,8 +1323,7 @@
     "quantity": 3,
     "unitPrice": 46.44,
     "tax": 9.75,
-    "amount": 149.07,
-    "idAgregador": null
+    "amount": 149.07
   },
   {
     "id": "C00079",
@@ -1418,8 +1340,7 @@
     "quantity": 4,
     "unitPrice": 46.91,
     "tax": 13.13,
-    "amount": 200.77,
-    "idAgregador": null
+    "amount": 200.77
   },
   {
     "id": "C00080",
@@ -1436,8 +1357,7 @@
     "quantity": 1,
     "unitPrice": 45.5,
     "tax": 3.19,
-    "amount": 48.69,
-    "idAgregador": null
+    "amount": 48.69
   },
   {
     "id": "C00081",
@@ -1454,8 +1374,7 @@
     "quantity": 2,
     "unitPrice": 45.97,
     "tax": 6.44,
-    "amount": 98.38,
-    "idAgregador": null
+    "amount": 98.38
   },
   {
     "id": "C00082",
@@ -1472,8 +1391,7 @@
     "quantity": 3,
     "unitPrice": 46.44,
     "tax": 9.75,
-    "amount": 149.07,
-    "idAgregador": null
+    "amount": 149.07
   },
   {
     "id": "C00083",
@@ -1490,8 +1408,7 @@
     "quantity": 4,
     "unitPrice": 46.91,
     "tax": 13.13,
-    "amount": 200.77,
-    "idAgregador": null
+    "amount": 200.77
   },
   {
     "id": "C00084",
@@ -1508,8 +1425,7 @@
     "quantity": 1,
     "unitPrice": 47.38,
     "tax": 3.32,
-    "amount": 50.7,
-    "idAgregador": null
+    "amount": 50.7
   },
   {
     "id": "C00085",
@@ -1526,8 +1442,7 @@
     "quantity": 1,
     "unitPrice": 45.5,
     "tax": 3.19,
-    "amount": 48.69,
-    "idAgregador": null
+    "amount": 48.69
   },
   {
     "id": "C00086",
@@ -1544,8 +1459,7 @@
     "quantity": 2,
     "unitPrice": 45.97,
     "tax": 6.44,
-    "amount": 98.38,
-    "idAgregador": null
+    "amount": 98.38
   },
   {
     "id": "C00087",
@@ -1562,8 +1476,7 @@
     "quantity": 3,
     "unitPrice": 46.44,
     "tax": 9.75,
-    "amount": 149.07,
-    "idAgregador": null
+    "amount": 149.07
   },
   {
     "id": "C00088",
@@ -1580,8 +1493,7 @@
     "quantity": 4,
     "unitPrice": 46.91,
     "tax": 13.13,
-    "amount": 200.77,
-    "idAgregador": null
+    "amount": 200.77
   },
   {
     "id": "C00089",
@@ -1598,8 +1510,7 @@
     "quantity": 1,
     "unitPrice": 47.38,
     "tax": 3.32,
-    "amount": 50.7,
-    "idAgregador": null
+    "amount": 50.7
   },
   {
     "id": "C00090",
@@ -1616,8 +1527,7 @@
     "quantity": 2,
     "unitPrice": 47.85,
     "tax": 6.7,
-    "amount": 102.4,
-    "idAgregador": null
+    "amount": 102.4
   },
   {
     "id": "C00091",
@@ -1634,8 +1544,7 @@
     "quantity": 1,
     "unitPrice": 82.25,
     "tax": 5.76,
-    "amount": 88.01,
-    "idAgregador": null
+    "amount": 88.01
   },
   {
     "id": "C00092",
@@ -1652,8 +1561,7 @@
     "quantity": 2,
     "unitPrice": 82.72,
     "tax": 11.58,
-    "amount": 177.02,
-    "idAgregador": null
+    "amount": 177.02
   },
   {
     "id": "C00093",
@@ -1670,8 +1578,7 @@
     "quantity": 3,
     "unitPrice": 83.19,
     "tax": 17.47,
-    "amount": 267.04,
-    "idAgregador": null
+    "amount": 267.04
   },
   {
     "id": "C00094",
@@ -1688,8 +1595,7 @@
     "quantity": 1,
     "unitPrice": 82.25,
     "tax": 5.76,
-    "amount": 88.01,
-    "idAgregador": null
+    "amount": 88.01
   },
   {
     "id": "C00095",
@@ -1706,8 +1612,7 @@
     "quantity": 2,
     "unitPrice": 82.72,
     "tax": 11.58,
-    "amount": 177.02,
-    "idAgregador": null
+    "amount": 177.02
   },
   {
     "id": "C00096",
@@ -1724,8 +1629,7 @@
     "quantity": 3,
     "unitPrice": 83.19,
     "tax": 17.47,
-    "amount": 267.04,
-    "idAgregador": null
+    "amount": 267.04
   },
   {
     "id": "C00097",
@@ -1742,8 +1646,7 @@
     "quantity": 4,
     "unitPrice": 83.66,
     "tax": 23.42,
-    "amount": 358.06,
-    "idAgregador": null
+    "amount": 358.06
   },
   {
     "id": "C00098",
@@ -1760,8 +1663,7 @@
     "quantity": 1,
     "unitPrice": 82.25,
     "tax": 5.76,
-    "amount": 88.01,
-    "idAgregador": null
+    "amount": 88.01
   },
   {
     "id": "C00099",
@@ -1778,8 +1680,7 @@
     "quantity": 2,
     "unitPrice": 82.72,
     "tax": 11.58,
-    "amount": 177.02,
-    "idAgregador": null
+    "amount": 177.02
   },
   {
     "id": "C00100",
@@ -1796,8 +1697,7 @@
     "quantity": 3,
     "unitPrice": 83.19,
     "tax": 17.47,
-    "amount": 267.04,
-    "idAgregador": null
+    "amount": 267.04
   },
   {
     "id": "C00101",
@@ -1814,8 +1714,7 @@
     "quantity": 4,
     "unitPrice": 83.66,
     "tax": 23.42,
-    "amount": 358.06,
-    "idAgregador": null
+    "amount": 358.06
   },
   {
     "id": "C00102",
@@ -1832,8 +1731,7 @@
     "quantity": 1,
     "unitPrice": 84.13,
     "tax": 5.89,
-    "amount": 90.02,
-    "idAgregador": null
+    "amount": 90.02
   },
   {
     "id": "C00103",
@@ -1850,8 +1748,7 @@
     "quantity": 1,
     "unitPrice": 82.25,
     "tax": 5.76,
-    "amount": 88.01,
-    "idAgregador": null
+    "amount": 88.01
   },
   {
     "id": "C00104",
@@ -1868,8 +1765,7 @@
     "quantity": 2,
     "unitPrice": 82.72,
     "tax": 11.58,
-    "amount": 177.02,
-    "idAgregador": null
+    "amount": 177.02
   },
   {
     "id": "C00105",
@@ -1886,8 +1782,7 @@
     "quantity": 3,
     "unitPrice": 83.19,
     "tax": 17.47,
-    "amount": 267.04,
-    "idAgregador": null
+    "amount": 267.04
   },
   {
     "id": "C00106",
@@ -1904,8 +1799,7 @@
     "quantity": 4,
     "unitPrice": 83.66,
     "tax": 23.42,
-    "amount": 358.06,
-    "idAgregador": null
+    "amount": 358.06
   },
   {
     "id": "C00107",
@@ -1922,8 +1816,7 @@
     "quantity": 1,
     "unitPrice": 84.13,
     "tax": 5.89,
-    "amount": 90.02,
-    "idAgregador": null
+    "amount": 90.02
   },
   {
     "id": "C00108",
@@ -1940,8 +1833,7 @@
     "quantity": 2,
     "unitPrice": 84.6,
     "tax": 11.84,
-    "amount": 181.04,
-    "idAgregador": null
+    "amount": 181.04
   },
   {
     "id": "C00109",
@@ -1958,8 +1850,7 @@
     "quantity": 1,
     "unitPrice": 32.9,
     "tax": 2.3,
-    "amount": 35.2,
-    "idAgregador": null
+    "amount": 35.2
   },
   {
     "id": "C00110",
@@ -1976,8 +1867,7 @@
     "quantity": 2,
     "unitPrice": 33.37,
     "tax": 4.67,
-    "amount": 71.41,
-    "idAgregador": null
+    "amount": 71.41
   },
   {
     "id": "C00111",
@@ -1994,8 +1884,7 @@
     "quantity": 3,
     "unitPrice": 33.84,
     "tax": 7.11,
-    "amount": 108.63,
-    "idAgregador": null
+    "amount": 108.63
   },
   {
     "id": "C00112",
@@ -2012,8 +1901,7 @@
     "quantity": 4,
     "unitPrice": 34.31,
     "tax": 9.61,
-    "amount": 146.85,
-    "idAgregador": null
+    "amount": 146.85
   },
   {
     "id": "C00113",
@@ -2030,8 +1918,7 @@
     "quantity": 1,
     "unitPrice": 32.9,
     "tax": 2.3,
-    "amount": 35.2,
-    "idAgregador": null
+    "amount": 35.2
   },
   {
     "id": "C00114",
@@ -2048,8 +1935,7 @@
     "quantity": 2,
     "unitPrice": 33.37,
     "tax": 4.67,
-    "amount": 71.41,
-    "idAgregador": null
+    "amount": 71.41
   },
   {
     "id": "C00115",
@@ -2066,8 +1952,7 @@
     "quantity": 3,
     "unitPrice": 33.84,
     "tax": 7.11,
-    "amount": 108.63,
-    "idAgregador": null
+    "amount": 108.63
   },
   {
     "id": "C00116",
@@ -2084,8 +1969,7 @@
     "quantity": 4,
     "unitPrice": 34.31,
     "tax": 9.61,
-    "amount": 146.85,
-    "idAgregador": null
+    "amount": 146.85
   },
   {
     "id": "C00117",
@@ -2102,8 +1986,7 @@
     "quantity": 1,
     "unitPrice": 34.78,
     "tax": 2.43,
-    "amount": 37.21,
-    "idAgregador": null
+    "amount": 37.21
   },
   {
     "id": "C00118",
@@ -2120,8 +2003,7 @@
     "quantity": 1,
     "unitPrice": 32.9,
     "tax": 2.3,
-    "amount": 35.2,
-    "idAgregador": null
+    "amount": 35.2
   },
   {
     "id": "C00119",
@@ -2138,8 +2020,7 @@
     "quantity": 2,
     "unitPrice": 33.37,
     "tax": 4.67,
-    "amount": 71.41,
-    "idAgregador": null
+    "amount": 71.41
   },
   {
     "id": "C00120",
@@ -2156,8 +2037,7 @@
     "quantity": 3,
     "unitPrice": 33.84,
     "tax": 7.11,
-    "amount": 108.63,
-    "idAgregador": null
+    "amount": 108.63
   },
   {
     "id": "C00121",
@@ -2174,8 +2054,7 @@
     "quantity": 4,
     "unitPrice": 34.31,
     "tax": 9.61,
-    "amount": 146.85,
-    "idAgregador": null
+    "amount": 146.85
   },
   {
     "id": "C00122",
@@ -2192,8 +2071,7 @@
     "quantity": 1,
     "unitPrice": 34.78,
     "tax": 2.43,
-    "amount": 37.21,
-    "idAgregador": null
+    "amount": 37.21
   },
   {
     "id": "C00123",
@@ -2210,8 +2088,7 @@
     "quantity": 2,
     "unitPrice": 35.25,
     "tax": 4.94,
-    "amount": 75.44,
-    "idAgregador": null
+    "amount": 75.44
   },
   {
     "id": "C00124",
@@ -2228,8 +2105,7 @@
     "quantity": 1,
     "unitPrice": 32.9,
     "tax": 2.3,
-    "amount": 35.2,
-    "idAgregador": null
+    "amount": 35.2
   },
   {
     "id": "C00125",
@@ -2246,8 +2122,7 @@
     "quantity": 2,
     "unitPrice": 33.37,
     "tax": 4.67,
-    "amount": 71.41,
-    "idAgregador": null
+    "amount": 71.41
   },
   {
     "id": "C00126",
@@ -2264,8 +2139,7 @@
     "quantity": 3,
     "unitPrice": 33.84,
     "tax": 7.11,
-    "amount": 108.63,
-    "idAgregador": null
+    "amount": 108.63
   },
   {
     "id": "C00127",
@@ -2282,8 +2156,7 @@
     "quantity": 4,
     "unitPrice": 34.31,
     "tax": 9.61,
-    "amount": 146.85,
-    "idAgregador": null
+    "amount": 146.85
   },
   {
     "id": "C00128",
@@ -2300,8 +2173,7 @@
     "quantity": 1,
     "unitPrice": 34.78,
     "tax": 2.43,
-    "amount": 37.21,
-    "idAgregador": null
+    "amount": 37.21
   },
   {
     "id": "C00129",
@@ -2318,8 +2190,7 @@
     "quantity": 2,
     "unitPrice": 35.25,
     "tax": 4.94,
-    "amount": 75.44,
-    "idAgregador": null
+    "amount": 75.44
   },
   {
     "id": "C00130",
@@ -2336,8 +2207,7 @@
     "quantity": 3,
     "unitPrice": 35.72,
     "tax": 7.5,
-    "amount": 114.66,
-    "idAgregador": null
+    "amount": 114.66
   },
   {
     "id": "C00131",
@@ -2354,8 +2224,7 @@
     "quantity": 1,
     "unitPrice": 69.65,
     "tax": 4.88,
-    "amount": 74.53,
-    "idAgregador": null
+    "amount": 74.53
   },
   {
     "id": "C00132",
@@ -2372,8 +2241,7 @@
     "quantity": 2,
     "unitPrice": 70.12,
     "tax": 9.82,
-    "amount": 150.06,
-    "idAgregador": null
+    "amount": 150.06
   },
   {
     "id": "C00133",
@@ -2390,8 +2258,7 @@
     "quantity": 3,
     "unitPrice": 70.59,
     "tax": 14.82,
-    "amount": 226.59,
-    "idAgregador": null
+    "amount": 226.59
   },
   {
     "id": "C00134",
@@ -2408,8 +2275,7 @@
     "quantity": 4,
     "unitPrice": 71.06,
     "tax": 19.9,
-    "amount": 304.14,
-    "idAgregador": null
+    "amount": 304.14
   },
   {
     "id": "C00135",
@@ -2426,8 +2292,7 @@
     "quantity": 1,
     "unitPrice": 69.65,
     "tax": 4.88,
-    "amount": 74.53,
-    "idAgregador": null
+    "amount": 74.53
   },
   {
     "id": "C00136",
@@ -2444,8 +2309,7 @@
     "quantity": 2,
     "unitPrice": 70.12,
     "tax": 9.82,
-    "amount": 150.06,
-    "idAgregador": null
+    "amount": 150.06
   },
   {
     "id": "C00137",
@@ -2462,8 +2326,7 @@
     "quantity": 3,
     "unitPrice": 70.59,
     "tax": 14.82,
-    "amount": 226.59,
-    "idAgregador": null
+    "amount": 226.59
   },
   {
     "id": "C00138",
@@ -2480,8 +2343,7 @@
     "quantity": 4,
     "unitPrice": 71.06,
     "tax": 19.9,
-    "amount": 304.14,
-    "idAgregador": null
+    "amount": 304.14
   },
   {
     "id": "C00139",
@@ -2498,8 +2360,7 @@
     "quantity": 1,
     "unitPrice": 71.53,
     "tax": 5.01,
-    "amount": 76.54,
-    "idAgregador": null
+    "amount": 76.54
   },
   {
     "id": "C00140",
@@ -2516,8 +2377,7 @@
     "quantity": 1,
     "unitPrice": 69.65,
     "tax": 4.88,
-    "amount": 74.53,
-    "idAgregador": null
+    "amount": 74.53
   },
   {
     "id": "C00141",
@@ -2534,8 +2394,7 @@
     "quantity": 2,
     "unitPrice": 70.12,
     "tax": 9.82,
-    "amount": 150.06,
-    "idAgregador": null
+    "amount": 150.06
   },
   {
     "id": "C00142",
@@ -2552,8 +2411,7 @@
     "quantity": 3,
     "unitPrice": 70.59,
     "tax": 14.82,
-    "amount": 226.59,
-    "idAgregador": null
+    "amount": 226.59
   },
   {
     "id": "C00143",
@@ -2570,8 +2428,7 @@
     "quantity": 4,
     "unitPrice": 71.06,
     "tax": 19.9,
-    "amount": 304.14,
-    "idAgregador": null
+    "amount": 304.14
   },
   {
     "id": "C00144",
@@ -2588,8 +2445,7 @@
     "quantity": 1,
     "unitPrice": 71.53,
     "tax": 5.01,
-    "amount": 76.54,
-    "idAgregador": null
+    "amount": 76.54
   },
   {
     "id": "C00145",
@@ -2606,8 +2462,7 @@
     "quantity": 2,
     "unitPrice": 72,
     "tax": 10.08,
-    "amount": 154.08,
-    "idAgregador": null
+    "amount": 154.08
   },
   {
     "id": "C00146",
@@ -2624,8 +2479,7 @@
     "quantity": 1,
     "unitPrice": 69.65,
     "tax": 4.88,
-    "amount": 74.53,
-    "idAgregador": null
+    "amount": 74.53
   },
   {
     "id": "C00147",
@@ -2642,8 +2496,7 @@
     "quantity": 2,
     "unitPrice": 70.12,
     "tax": 9.82,
-    "amount": 150.06,
-    "idAgregador": null
+    "amount": 150.06
   },
   {
     "id": "C00148",
@@ -2660,8 +2513,7 @@
     "quantity": 3,
     "unitPrice": 70.59,
     "tax": 14.82,
-    "amount": 226.59,
-    "idAgregador": null
+    "amount": 226.59
   },
   {
     "id": "C00149",
@@ -2678,8 +2530,7 @@
     "quantity": 4,
     "unitPrice": 71.06,
     "tax": 19.9,
-    "amount": 304.14,
-    "idAgregador": null
+    "amount": 304.14
   },
   {
     "id": "C00150",
@@ -2696,8 +2547,7 @@
     "quantity": 1,
     "unitPrice": 71.53,
     "tax": 5.01,
-    "amount": 76.54,
-    "idAgregador": null
+    "amount": 76.54
   },
   {
     "id": "C00151",
@@ -2714,8 +2564,7 @@
     "quantity": 2,
     "unitPrice": 72,
     "tax": 10.08,
-    "amount": 154.08,
-    "idAgregador": null
+    "amount": 154.08
   },
   {
     "id": "C00152",
@@ -2732,8 +2581,7 @@
     "quantity": 3,
     "unitPrice": 72.47,
     "tax": 15.22,
-    "amount": 232.63,
-    "idAgregador": null
+    "amount": 232.63
   },
   {
     "id": "C00153",
@@ -2750,8 +2598,7 @@
     "quantity": 1,
     "unitPrice": 106.4,
     "tax": 7.45,
-    "amount": 113.85,
-    "idAgregador": null
+    "amount": 113.85
   },
   {
     "id": "C00154",
@@ -2768,8 +2615,7 @@
     "quantity": 2,
     "unitPrice": 106.87,
     "tax": 14.96,
-    "amount": 228.7,
-    "idAgregador": null
+    "amount": 228.7
   },
   {
     "id": "C00155",
@@ -2786,8 +2632,7 @@
     "quantity": 3,
     "unitPrice": 107.34,
     "tax": 22.54,
-    "amount": 344.56,
-    "idAgregador": null
+    "amount": 344.56
   },
   {
     "id": "C00156",
@@ -2804,8 +2649,7 @@
     "quantity": 4,
     "unitPrice": 107.81,
     "tax": 30.19,
-    "amount": 461.43,
-    "idAgregador": null
+    "amount": 461.43
   },
   {
     "id": "C00157",
@@ -2822,8 +2666,7 @@
     "quantity": 1,
     "unitPrice": 106.4,
     "tax": 7.45,
-    "amount": 113.85,
-    "idAgregador": null
+    "amount": 113.85
   },
   {
     "id": "C00158",
@@ -2840,8 +2683,7 @@
     "quantity": 2,
     "unitPrice": 106.87,
     "tax": 14.96,
-    "amount": 228.7,
-    "idAgregador": null
+    "amount": 228.7
   },
   {
     "id": "C00159",
@@ -2858,8 +2700,7 @@
     "quantity": 3,
     "unitPrice": 107.34,
     "tax": 22.54,
-    "amount": 344.56,
-    "idAgregador": null
+    "amount": 344.56
   },
   {
     "id": "C00160",
@@ -2876,8 +2717,7 @@
     "quantity": 4,
     "unitPrice": 107.81,
     "tax": 30.19,
-    "amount": 461.43,
-    "idAgregador": null
+    "amount": 461.43
   },
   {
     "id": "C00161",
@@ -2894,8 +2734,7 @@
     "quantity": 1,
     "unitPrice": 108.28,
     "tax": 7.58,
-    "amount": 115.86,
-    "idAgregador": null
+    "amount": 115.86
   },
   {
     "id": "C00162",
@@ -2912,8 +2751,7 @@
     "quantity": 1,
     "unitPrice": 106.4,
     "tax": 7.45,
-    "amount": 113.85,
-    "idAgregador": null
+    "amount": 113.85
   },
   {
     "id": "C00163",
@@ -2930,8 +2768,7 @@
     "quantity": 2,
     "unitPrice": 106.87,
     "tax": 14.96,
-    "amount": 228.7,
-    "idAgregador": null
+    "amount": 228.7
   },
   {
     "id": "C00164",
@@ -2948,8 +2785,7 @@
     "quantity": 3,
     "unitPrice": 107.34,
     "tax": 22.54,
-    "amount": 344.56,
-    "idAgregador": null
+    "amount": 344.56
   },
   {
     "id": "C00165",
@@ -2966,8 +2802,7 @@
     "quantity": 4,
     "unitPrice": 107.81,
     "tax": 30.19,
-    "amount": 461.43,
-    "idAgregador": null
+    "amount": 461.43
   },
   {
     "id": "C00166",
@@ -2984,8 +2819,7 @@
     "quantity": 1,
     "unitPrice": 108.28,
     "tax": 7.58,
-    "amount": 115.86,
-    "idAgregador": null
+    "amount": 115.86
   },
   {
     "id": "C00167",
@@ -3002,8 +2836,7 @@
     "quantity": 2,
     "unitPrice": 108.75,
     "tax": 15.23,
-    "amount": 232.73,
-    "idAgregador": null
+    "amount": 232.73
   },
   {
     "id": "C00168",
@@ -3020,8 +2853,7 @@
     "quantity": 1,
     "unitPrice": 106.4,
     "tax": 7.45,
-    "amount": 113.85,
-    "idAgregador": null
+    "amount": 113.85
   },
   {
     "id": "C00169",
@@ -3038,8 +2870,7 @@
     "quantity": 2,
     "unitPrice": 106.87,
     "tax": 14.96,
-    "amount": 228.7,
-    "idAgregador": null
+    "amount": 228.7
   },
   {
     "id": "C00170",
@@ -3056,8 +2887,7 @@
     "quantity": 3,
     "unitPrice": 107.34,
     "tax": 22.54,
-    "amount": 344.56,
-    "idAgregador": null
+    "amount": 344.56
   },
   {
     "id": "C00171",
@@ -3074,8 +2904,7 @@
     "quantity": 4,
     "unitPrice": 107.81,
     "tax": 30.19,
-    "amount": 461.43,
-    "idAgregador": null
+    "amount": 461.43
   },
   {
     "id": "C00172",
@@ -3092,8 +2921,7 @@
     "quantity": 1,
     "unitPrice": 108.28,
     "tax": 7.58,
-    "amount": 115.86,
-    "idAgregador": null
+    "amount": 115.86
   },
   {
     "id": "C00173",
@@ -3110,8 +2938,7 @@
     "quantity": 2,
     "unitPrice": 108.75,
     "tax": 15.23,
-    "amount": 232.73,
-    "idAgregador": null
+    "amount": 232.73
   },
   {
     "id": "C00174",
@@ -3128,8 +2955,7 @@
     "quantity": 3,
     "unitPrice": 109.22,
     "tax": 22.94,
-    "amount": 350.6,
-    "idAgregador": null
+    "amount": 350.6
   },
   {
     "id": "C00175",
@@ -3146,8 +2972,7 @@
     "quantity": 1,
     "unitPrice": 18.2,
     "tax": 1.27,
-    "amount": 19.47,
-    "idAgregador": null
+    "amount": 19.47
   },
   {
     "id": "C00176",
@@ -3164,8 +2989,7 @@
     "quantity": 2,
     "unitPrice": 18.67,
     "tax": 2.61,
-    "amount": 39.95,
-    "idAgregador": null
+    "amount": 39.95
   },
   {
     "id": "C00177",
@@ -3182,8 +3006,7 @@
     "quantity": 3,
     "unitPrice": 19.14,
     "tax": 4.02,
-    "amount": 61.44,
-    "idAgregador": null
+    "amount": 61.44
   },
   {
     "id": "C00178",
@@ -3200,8 +3023,7 @@
     "quantity": 4,
     "unitPrice": 19.61,
     "tax": 5.49,
-    "amount": 83.93,
-    "idAgregador": null
+    "amount": 83.93
   },
   {
     "id": "C00179",
@@ -3218,8 +3040,7 @@
     "quantity": 1,
     "unitPrice": 18.2,
     "tax": 1.27,
-    "amount": 19.47,
-    "idAgregador": null
+    "amount": 19.47
   },
   {
     "id": "C00180",
@@ -3236,8 +3057,7 @@
     "quantity": 2,
     "unitPrice": 18.67,
     "tax": 2.61,
-    "amount": 39.95,
-    "idAgregador": null
+    "amount": 39.95
   },
   {
     "id": "C00181",
@@ -3254,8 +3074,7 @@
     "quantity": 3,
     "unitPrice": 19.14,
     "tax": 4.02,
-    "amount": 61.44,
-    "idAgregador": null
+    "amount": 61.44
   },
   {
     "id": "C00182",
@@ -3272,8 +3091,7 @@
     "quantity": 4,
     "unitPrice": 19.61,
     "tax": 5.49,
-    "amount": 83.93,
-    "idAgregador": null
+    "amount": 83.93
   },
   {
     "id": "C00183",
@@ -3290,8 +3108,7 @@
     "quantity": 1,
     "unitPrice": 20.08,
     "tax": 1.41,
-    "amount": 21.49,
-    "idAgregador": null
+    "amount": 21.49
   },
   {
     "id": "C00184",
@@ -3308,8 +3125,7 @@
     "quantity": 1,
     "unitPrice": 18.2,
     "tax": 1.27,
-    "amount": 19.47,
-    "idAgregador": null
+    "amount": 19.47
   },
   {
     "id": "C00185",
@@ -3326,8 +3142,7 @@
     "quantity": 2,
     "unitPrice": 18.67,
     "tax": 2.61,
-    "amount": 39.95,
-    "idAgregador": null
+    "amount": 39.95
   },
   {
     "id": "C00186",
@@ -3344,8 +3159,7 @@
     "quantity": 3,
     "unitPrice": 19.14,
     "tax": 4.02,
-    "amount": 61.44,
-    "idAgregador": null
+    "amount": 61.44
   },
   {
     "id": "C00187",
@@ -3362,8 +3176,7 @@
     "quantity": 4,
     "unitPrice": 19.61,
     "tax": 5.49,
-    "amount": 83.93,
-    "idAgregador": null
+    "amount": 83.93
   },
   {
     "id": "C00188",
@@ -3380,8 +3193,7 @@
     "quantity": 1,
     "unitPrice": 20.08,
     "tax": 1.41,
-    "amount": 21.49,
-    "idAgregador": null
+    "amount": 21.49
   },
   {
     "id": "C00189",
@@ -3398,8 +3210,7 @@
     "quantity": 2,
     "unitPrice": 20.55,
     "tax": 2.88,
-    "amount": 43.98,
-    "idAgregador": null
+    "amount": 43.98
   },
   {
     "id": "C00190",
@@ -3416,8 +3227,7 @@
     "quantity": 1,
     "unitPrice": 18.2,
     "tax": 1.27,
-    "amount": 19.47,
-    "idAgregador": null
+    "amount": 19.47
   },
   {
     "id": "C00191",
@@ -3434,8 +3244,7 @@
     "quantity": 2,
     "unitPrice": 18.67,
     "tax": 2.61,
-    "amount": 39.95,
-    "idAgregador": null
+    "amount": 39.95
   },
   {
     "id": "C00192",
@@ -3452,8 +3261,7 @@
     "quantity": 3,
     "unitPrice": 19.14,
     "tax": 4.02,
-    "amount": 61.44,
-    "idAgregador": null
+    "amount": 61.44
   },
   {
     "id": "C00193",
@@ -3470,8 +3278,7 @@
     "quantity": 4,
     "unitPrice": 19.61,
     "tax": 5.49,
-    "amount": 83.93,
-    "idAgregador": null
+    "amount": 83.93
   },
   {
     "id": "C00194",
@@ -3488,8 +3295,7 @@
     "quantity": 1,
     "unitPrice": 20.08,
     "tax": 1.41,
-    "amount": 21.49,
-    "idAgregador": null
+    "amount": 21.49
   },
   {
     "id": "C00195",
@@ -3506,8 +3312,7 @@
     "quantity": 2,
     "unitPrice": 20.55,
     "tax": 2.88,
-    "amount": 43.98,
-    "idAgregador": null
+    "amount": 43.98
   },
   {
     "id": "C00196",
@@ -3524,8 +3329,7 @@
     "quantity": 3,
     "unitPrice": 21.02,
     "tax": 4.41,
-    "amount": 67.47,
-    "idAgregador": null
+    "amount": 67.47
   },
   {
     "id": "C00197",
@@ -3542,8 +3346,7 @@
     "quantity": 1,
     "unitPrice": 54.95,
     "tax": 3.85,
-    "amount": 58.8,
-    "idAgregador": null
+    "amount": 58.8
   },
   {
     "id": "C00198",
@@ -3560,8 +3363,7 @@
     "quantity": 2,
     "unitPrice": 55.42,
     "tax": 7.76,
-    "amount": 118.6,
-    "idAgregador": null
+    "amount": 118.6
   },
   {
     "id": "C00199",
@@ -3578,8 +3380,7 @@
     "quantity": 3,
     "unitPrice": 55.89,
     "tax": 11.74,
-    "amount": 179.41,
-    "idAgregador": null
+    "amount": 179.41
   },
   {
     "id": "C00200",
@@ -3596,8 +3397,7 @@
     "quantity": 4,
     "unitPrice": 56.36,
     "tax": 15.78,
-    "amount": 241.22,
-    "idAgregador": null
+    "amount": 241.22
   },
   {
     "id": "C00201",
@@ -3614,8 +3414,7 @@
     "quantity": 1,
     "unitPrice": 54.95,
     "tax": 3.85,
-    "amount": 58.8,
-    "idAgregador": null
+    "amount": 58.8
   },
   {
     "id": "C00202",
@@ -3632,8 +3431,7 @@
     "quantity": 2,
     "unitPrice": 55.42,
     "tax": 7.76,
-    "amount": 118.6,
-    "idAgregador": null
+    "amount": 118.6
   },
   {
     "id": "C00203",
@@ -3650,8 +3448,7 @@
     "quantity": 3,
     "unitPrice": 55.89,
     "tax": 11.74,
-    "amount": 179.41,
-    "idAgregador": null
+    "amount": 179.41
   },
   {
     "id": "C00204",
@@ -3668,8 +3465,7 @@
     "quantity": 4,
     "unitPrice": 56.36,
     "tax": 15.78,
-    "amount": 241.22,
-    "idAgregador": null
+    "amount": 241.22
   },
   {
     "id": "C00205",
@@ -3686,8 +3482,7 @@
     "quantity": 1,
     "unitPrice": 56.83,
     "tax": 3.98,
-    "amount": 60.81,
-    "idAgregador": null
+    "amount": 60.81
   },
   {
     "id": "C00206",
@@ -3704,8 +3499,7 @@
     "quantity": 1,
     "unitPrice": 54.95,
     "tax": 3.85,
-    "amount": 58.8,
-    "idAgregador": null
+    "amount": 58.8
   },
   {
     "id": "C00207",
@@ -3722,8 +3516,7 @@
     "quantity": 2,
     "unitPrice": 55.42,
     "tax": 7.76,
-    "amount": 118.6,
-    "idAgregador": null
+    "amount": 118.6
   },
   {
     "id": "C00208",
@@ -3740,8 +3533,7 @@
     "quantity": 3,
     "unitPrice": 55.89,
     "tax": 11.74,
-    "amount": 179.41,
-    "idAgregador": null
+    "amount": 179.41
   },
   {
     "id": "C00209",
@@ -3758,8 +3550,7 @@
     "quantity": 4,
     "unitPrice": 56.36,
     "tax": 15.78,
-    "amount": 241.22,
-    "idAgregador": null
+    "amount": 241.22
   },
   {
     "id": "C00210",
@@ -3776,8 +3567,7 @@
     "quantity": 1,
     "unitPrice": 56.83,
     "tax": 3.98,
-    "amount": 60.81,
-    "idAgregador": null
+    "amount": 60.81
   },
   {
     "id": "C00211",
@@ -3794,8 +3584,7 @@
     "quantity": 2,
     "unitPrice": 57.3,
     "tax": 8.02,
-    "amount": 122.62,
-    "idAgregador": null
+    "amount": 122.62
   },
   {
     "id": "C00212",
@@ -3812,8 +3601,7 @@
     "quantity": 1,
     "unitPrice": 54.95,
     "tax": 3.85,
-    "amount": 58.8,
-    "idAgregador": null
+    "amount": 58.8
   },
   {
     "id": "C00213",
@@ -3830,8 +3618,7 @@
     "quantity": 2,
     "unitPrice": 55.42,
     "tax": 7.76,
-    "amount": 118.6,
-    "idAgregador": null
+    "amount": 118.6
   },
   {
     "id": "C00214",
@@ -3848,8 +3635,7 @@
     "quantity": 3,
     "unitPrice": 55.89,
     "tax": 11.74,
-    "amount": 179.41,
-    "idAgregador": null
+    "amount": 179.41
   },
   {
     "id": "C00215",
@@ -3866,8 +3652,7 @@
     "quantity": 4,
     "unitPrice": 56.36,
     "tax": 15.78,
-    "amount": 241.22,
-    "idAgregador": null
+    "amount": 241.22
   },
   {
     "id": "C00216",
@@ -3884,8 +3669,7 @@
     "quantity": 1,
     "unitPrice": 56.83,
     "tax": 3.98,
-    "amount": 60.81,
-    "idAgregador": null
+    "amount": 60.81
   },
   {
     "id": "C00217",
@@ -3902,8 +3686,7 @@
     "quantity": 2,
     "unitPrice": 57.3,
     "tax": 8.02,
-    "amount": 122.62,
-    "idAgregador": null
+    "amount": 122.62
   },
   {
     "id": "C00218",
@@ -3920,8 +3703,7 @@
     "quantity": 3,
     "unitPrice": 57.77,
     "tax": 12.13,
-    "amount": 185.44,
-    "idAgregador": null
+    "amount": 185.44
   },
   {
     "id": "C00219",
@@ -3938,8 +3720,7 @@
     "quantity": 1,
     "unitPrice": 91.7,
     "tax": 6.42,
-    "amount": 98.12,
-    "idAgregador": null
+    "amount": 98.12
   },
   {
     "id": "C00220",
@@ -3956,8 +3737,7 @@
     "quantity": 2,
     "unitPrice": 92.17,
     "tax": 12.9,
-    "amount": 197.24,
-    "idAgregador": null
+    "amount": 197.24
   },
   {
     "id": "C00221",
@@ -3974,8 +3754,7 @@
     "quantity": 3,
     "unitPrice": 92.64,
     "tax": 19.45,
-    "amount": 297.37,
-    "idAgregador": null
+    "amount": 297.37
   },
   {
     "id": "C00222",
@@ -3992,8 +3771,7 @@
     "quantity": 4,
     "unitPrice": 93.11,
     "tax": 26.07,
-    "amount": 398.51,
-    "idAgregador": null
+    "amount": 398.51
   },
   {
     "id": "C00223",
@@ -4010,8 +3788,7 @@
     "quantity": 1,
     "unitPrice": 91.7,
     "tax": 6.42,
-    "amount": 98.12,
-    "idAgregador": null
+    "amount": 98.12
   },
   {
     "id": "C00224",
@@ -4028,8 +3805,7 @@
     "quantity": 2,
     "unitPrice": 92.17,
     "tax": 12.9,
-    "amount": 197.24,
-    "idAgregador": null
+    "amount": 197.24
   },
   {
     "id": "C00225",
@@ -4046,8 +3822,7 @@
     "quantity": 3,
     "unitPrice": 92.64,
     "tax": 19.45,
-    "amount": 297.37,
-    "idAgregador": null
+    "amount": 297.37
   },
   {
     "id": "C00226",
@@ -4064,8 +3839,7 @@
     "quantity": 4,
     "unitPrice": 93.11,
     "tax": 26.07,
-    "amount": 398.51,
-    "idAgregador": null
+    "amount": 398.51
   },
   {
     "id": "C00227",
@@ -4082,8 +3856,7 @@
     "quantity": 1,
     "unitPrice": 93.58,
     "tax": 6.55,
-    "amount": 100.13,
-    "idAgregador": null
+    "amount": 100.13
   },
   {
     "id": "C00228",
@@ -4100,8 +3873,7 @@
     "quantity": 1,
     "unitPrice": 91.7,
     "tax": 6.42,
-    "amount": 98.12,
-    "idAgregador": null
+    "amount": 98.12
   },
   {
     "id": "C00229",
@@ -4118,8 +3890,7 @@
     "quantity": 2,
     "unitPrice": 92.17,
     "tax": 12.9,
-    "amount": 197.24,
-    "idAgregador": null
+    "amount": 197.24
   },
   {
     "id": "C00230",
@@ -4136,8 +3907,7 @@
     "quantity": 3,
     "unitPrice": 92.64,
     "tax": 19.45,
-    "amount": 297.37,
-    "idAgregador": null
+    "amount": 297.37
   },
   {
     "id": "C00231",
@@ -4154,8 +3924,7 @@
     "quantity": 4,
     "unitPrice": 93.11,
     "tax": 26.07,
-    "amount": 398.51,
-    "idAgregador": null
+    "amount": 398.51
   },
   {
     "id": "C00232",
@@ -4172,8 +3941,7 @@
     "quantity": 1,
     "unitPrice": 93.58,
     "tax": 6.55,
-    "amount": 100.13,
-    "idAgregador": null
+    "amount": 100.13
   },
   {
     "id": "C00233",
@@ -4190,8 +3958,7 @@
     "quantity": 2,
     "unitPrice": 94.05,
     "tax": 13.17,
-    "amount": 201.27,
-    "idAgregador": null
+    "amount": 201.27
   },
   {
     "id": "C00234",
@@ -4208,8 +3975,7 @@
     "quantity": 1,
     "unitPrice": 91.7,
     "tax": 6.42,
-    "amount": 98.12,
-    "idAgregador": null
+    "amount": 98.12
   },
   {
     "id": "C00235",
@@ -4226,8 +3992,7 @@
     "quantity": 2,
     "unitPrice": 92.17,
     "tax": 12.9,
-    "amount": 197.24,
-    "idAgregador": null
+    "amount": 197.24
   },
   {
     "id": "C00236",
@@ -4244,8 +4009,7 @@
     "quantity": 3,
     "unitPrice": 92.64,
     "tax": 19.45,
-    "amount": 297.37,
-    "idAgregador": null
+    "amount": 297.37
   },
   {
     "id": "C00237",
@@ -4262,8 +4026,7 @@
     "quantity": 4,
     "unitPrice": 93.11,
     "tax": 26.07,
-    "amount": 398.51,
-    "idAgregador": null
+    "amount": 398.51
   },
   {
     "id": "C00238",
@@ -4280,8 +4043,7 @@
     "quantity": 1,
     "unitPrice": 93.58,
     "tax": 6.55,
-    "amount": 100.13,
-    "idAgregador": null
+    "amount": 100.13
   },
   {
     "id": "C00239",
@@ -4298,8 +4060,7 @@
     "quantity": 2,
     "unitPrice": 94.05,
     "tax": 13.17,
-    "amount": 201.27,
-    "idAgregador": null
+    "amount": 201.27
   },
   {
     "id": "C00240",
@@ -4316,8 +4077,7 @@
     "quantity": 3,
     "unitPrice": 94.52,
     "tax": 19.85,
-    "amount": 303.41,
-    "idAgregador": null
+    "amount": 303.41
   },
   {
     "id": "C00241",
@@ -4334,8 +4094,7 @@
     "quantity": 1,
     "unitPrice": 42.35,
     "tax": 2.96,
-    "amount": 45.31,
-    "idAgregador": null
+    "amount": 45.31
   },
   {
     "id": "C00242",
@@ -4352,8 +4111,7 @@
     "quantity": 2,
     "unitPrice": 42.82,
     "tax": 5.99,
-    "amount": 91.63,
-    "idAgregador": null
+    "amount": 91.63
   },
   {
     "id": "C00243",
@@ -4370,8 +4128,7 @@
     "quantity": 3,
     "unitPrice": 43.29,
     "tax": 9.09,
-    "amount": 138.96,
-    "idAgregador": null
+    "amount": 138.96
   },
   {
     "id": "C00244",
@@ -4388,8 +4145,7 @@
     "quantity": 4,
     "unitPrice": 43.76,
     "tax": 12.25,
-    "amount": 187.29,
-    "idAgregador": null
+    "amount": 187.29
   },
   {
     "id": "C00245",
@@ -4406,8 +4162,7 @@
     "quantity": 1,
     "unitPrice": 44.23,
     "tax": 3.1,
-    "amount": 47.33,
-    "idAgregador": null
+    "amount": 47.33
   },
   {
     "id": "C00246",
@@ -4424,8 +4179,7 @@
     "quantity": 1,
     "unitPrice": 42.35,
     "tax": 2.96,
-    "amount": 45.31,
-    "idAgregador": null
+    "amount": 45.31
   },
   {
     "id": "C00247",
@@ -4442,8 +4196,7 @@
     "quantity": 2,
     "unitPrice": 42.82,
     "tax": 5.99,
-    "amount": 91.63,
-    "idAgregador": null
+    "amount": 91.63
   },
   {
     "id": "C00248",
@@ -4460,8 +4213,7 @@
     "quantity": 3,
     "unitPrice": 43.29,
     "tax": 9.09,
-    "amount": 138.96,
-    "idAgregador": null
+    "amount": 138.96
   },
   {
     "id": "C00249",
@@ -4478,8 +4230,7 @@
     "quantity": 4,
     "unitPrice": 43.76,
     "tax": 12.25,
-    "amount": 187.29,
-    "idAgregador": null
+    "amount": 187.29
   },
   {
     "id": "C00250",
@@ -4496,8 +4247,7 @@
     "quantity": 1,
     "unitPrice": 44.23,
     "tax": 3.1,
-    "amount": 47.33,
-    "idAgregador": null
+    "amount": 47.33
   },
   {
     "id": "C00251",
@@ -4514,8 +4264,7 @@
     "quantity": 2,
     "unitPrice": 44.7,
     "tax": 6.26,
-    "amount": 95.66,
-    "idAgregador": null
+    "amount": 95.66
   },
   {
     "id": "C00252",
@@ -4532,8 +4281,7 @@
     "quantity": 1,
     "unitPrice": 42.35,
     "tax": 2.96,
-    "amount": 45.31,
-    "idAgregador": null
+    "amount": 45.31
   },
   {
     "id": "C00253",
@@ -4550,8 +4298,7 @@
     "quantity": 2,
     "unitPrice": 42.82,
     "tax": 5.99,
-    "amount": 91.63,
-    "idAgregador": null
+    "amount": 91.63
   },
   {
     "id": "C00254",
@@ -4568,8 +4315,7 @@
     "quantity": 3,
     "unitPrice": 43.29,
     "tax": 9.09,
-    "amount": 138.96,
-    "idAgregador": null
+    "amount": 138.96
   },
   {
     "id": "C00255",
@@ -4586,8 +4332,7 @@
     "quantity": 4,
     "unitPrice": 43.76,
     "tax": 12.25,
-    "amount": 187.29,
-    "idAgregador": null
+    "amount": 187.29
   },
   {
     "id": "C00256",
@@ -4604,8 +4349,7 @@
     "quantity": 1,
     "unitPrice": 44.23,
     "tax": 3.1,
-    "amount": 47.33,
-    "idAgregador": null
+    "amount": 47.33
   },
   {
     "id": "C00257",
@@ -4622,8 +4366,7 @@
     "quantity": 2,
     "unitPrice": 44.7,
     "tax": 6.26,
-    "amount": 95.66,
-    "idAgregador": null
+    "amount": 95.66
   },
   {
     "id": "C00258",
@@ -4640,8 +4383,7 @@
     "quantity": 3,
     "unitPrice": 45.17,
     "tax": 9.49,
-    "amount": 145,
-    "idAgregador": null
+    "amount": 145
   },
   {
     "id": "C00259",
@@ -4658,8 +4400,7 @@
     "quantity": 1,
     "unitPrice": 42.35,
     "tax": 2.96,
-    "amount": 45.31,
-    "idAgregador": null
+    "amount": 45.31
   },
   {
     "id": "C00260",
@@ -4676,8 +4417,7 @@
     "quantity": 2,
     "unitPrice": 42.82,
     "tax": 5.99,
-    "amount": 91.63,
-    "idAgregador": null
+    "amount": 91.63
   },
   {
     "id": "C00261",
@@ -4694,8 +4434,7 @@
     "quantity": 3,
     "unitPrice": 43.29,
     "tax": 9.09,
-    "amount": 138.96,
-    "idAgregador": null
+    "amount": 138.96
   },
   {
     "id": "C00262",
@@ -4712,8 +4451,7 @@
     "quantity": 1,
     "unitPrice": 79.1,
     "tax": 5.54,
-    "amount": 84.64,
-    "idAgregador": null
+    "amount": 84.64
   },
   {
     "id": "C00263",
@@ -4730,8 +4468,7 @@
     "quantity": 2,
     "unitPrice": 79.57,
     "tax": 11.14,
-    "amount": 170.28,
-    "idAgregador": null
+    "amount": 170.28
   },
   {
     "id": "C00264",
@@ -4748,8 +4485,7 @@
     "quantity": 3,
     "unitPrice": 80.04,
     "tax": 16.81,
-    "amount": 256.93,
-    "idAgregador": null
+    "amount": 256.93
   },
   {
     "id": "C00265",
@@ -4766,8 +4502,7 @@
     "quantity": 4,
     "unitPrice": 80.51,
     "tax": 22.54,
-    "amount": 344.58,
-    "idAgregador": null
+    "amount": 344.58
   },
   {
     "id": "C00266",
@@ -4784,8 +4519,7 @@
     "quantity": 1,
     "unitPrice": 80.98,
     "tax": 5.67,
-    "amount": 86.65,
-    "idAgregador": null
+    "amount": 86.65
   },
   {
     "id": "C00267",
@@ -4802,8 +4536,7 @@
     "quantity": 1,
     "unitPrice": 79.1,
     "tax": 5.54,
-    "amount": 84.64,
-    "idAgregador": null
+    "amount": 84.64
   },
   {
     "id": "C00268",
@@ -4820,8 +4553,7 @@
     "quantity": 2,
     "unitPrice": 79.57,
     "tax": 11.14,
-    "amount": 170.28,
-    "idAgregador": null
+    "amount": 170.28
   },
   {
     "id": "C00269",
@@ -4838,8 +4570,7 @@
     "quantity": 3,
     "unitPrice": 80.04,
     "tax": 16.81,
-    "amount": 256.93,
-    "idAgregador": null
+    "amount": 256.93
   },
   {
     "id": "C00270",
@@ -4856,8 +4587,7 @@
     "quantity": 4,
     "unitPrice": 80.51,
     "tax": 22.54,
-    "amount": 344.58,
-    "idAgregador": null
+    "amount": 344.58
   },
   {
     "id": "C00271",
@@ -4874,8 +4604,7 @@
     "quantity": 1,
     "unitPrice": 80.98,
     "tax": 5.67,
-    "amount": 86.65,
-    "idAgregador": null
+    "amount": 86.65
   },
   {
     "id": "C00272",
@@ -4892,8 +4621,7 @@
     "quantity": 2,
     "unitPrice": 81.45,
     "tax": 11.4,
-    "amount": 174.3,
-    "idAgregador": null
+    "amount": 174.3
   },
   {
     "id": "C00273",
@@ -4910,8 +4638,7 @@
     "quantity": 1,
     "unitPrice": 79.1,
     "tax": 5.54,
-    "amount": 84.64,
-    "idAgregador": null
+    "amount": 84.64
   },
   {
     "id": "C00274",
@@ -4928,8 +4655,7 @@
     "quantity": 2,
     "unitPrice": 79.57,
     "tax": 11.14,
-    "amount": 170.28,
-    "idAgregador": null
+    "amount": 170.28
   },
   {
     "id": "C00275",
@@ -4946,8 +4672,7 @@
     "quantity": 3,
     "unitPrice": 80.04,
     "tax": 16.81,
-    "amount": 256.93,
-    "idAgregador": null
+    "amount": 256.93
   },
   {
     "id": "C00276",
@@ -4964,8 +4689,7 @@
     "quantity": 4,
     "unitPrice": 80.51,
     "tax": 22.54,
-    "amount": 344.58,
-    "idAgregador": null
+    "amount": 344.58
   },
   {
     "id": "C00277",
@@ -4982,8 +4706,7 @@
     "quantity": 1,
     "unitPrice": 80.98,
     "tax": 5.67,
-    "amount": 86.65,
-    "idAgregador": null
+    "amount": 86.65
   },
   {
     "id": "C00278",
@@ -5000,8 +4723,7 @@
     "quantity": 2,
     "unitPrice": 81.45,
     "tax": 11.4,
-    "amount": 174.3,
-    "idAgregador": null
+    "amount": 174.3
   },
   {
     "id": "C00279",
@@ -5018,8 +4740,7 @@
     "quantity": 3,
     "unitPrice": 81.92,
     "tax": 17.2,
-    "amount": 262.96,
-    "idAgregador": null
+    "amount": 262.96
   },
   {
     "id": "C00280",
@@ -5036,8 +4757,7 @@
     "quantity": 1,
     "unitPrice": 79.1,
     "tax": 5.54,
-    "amount": 84.64,
-    "idAgregador": null
+    "amount": 84.64
   },
   {
     "id": "C00281",
@@ -5054,8 +4774,7 @@
     "quantity": 2,
     "unitPrice": 79.57,
     "tax": 11.14,
-    "amount": 170.28,
-    "idAgregador": null
+    "amount": 170.28
   },
   {
     "id": "C00282",
@@ -5072,8 +4791,7 @@
     "quantity": 3,
     "unitPrice": 80.04,
     "tax": 16.81,
-    "amount": 256.93,
-    "idAgregador": null
+    "amount": 256.93
   },
   {
     "id": "C00283",
@@ -5090,8 +4808,7 @@
     "quantity": 1,
     "unitPrice": 115.85,
     "tax": 8.11,
-    "amount": 123.96,
-    "idAgregador": null
+    "amount": 123.96
   },
   {
     "id": "C00284",
@@ -5108,8 +4825,7 @@
     "quantity": 2,
     "unitPrice": 116.32,
     "tax": 16.28,
-    "amount": 248.92,
-    "idAgregador": null
+    "amount": 248.92
   },
   {
     "id": "C00285",
@@ -5126,8 +4842,7 @@
     "quantity": 3,
     "unitPrice": 116.79,
     "tax": 24.53,
-    "amount": 374.9,
-    "idAgregador": null
+    "amount": 374.9
   },
   {
     "id": "C00286",
@@ -5144,8 +4859,7 @@
     "quantity": 4,
     "unitPrice": 117.26,
     "tax": 32.83,
-    "amount": 501.87,
-    "idAgregador": null
+    "amount": 501.87
   },
   {
     "id": "C00287",
@@ -5162,8 +4876,7 @@
     "quantity": 1,
     "unitPrice": 117.73,
     "tax": 8.24,
-    "amount": 125.97,
-    "idAgregador": null
+    "amount": 125.97
   },
   {
     "id": "C00288",
@@ -5180,8 +4893,7 @@
     "quantity": 1,
     "unitPrice": 115.85,
     "tax": 8.11,
-    "amount": 123.96,
-    "idAgregador": null
+    "amount": 123.96
   },
   {
     "id": "C00289",
@@ -5198,8 +4910,7 @@
     "quantity": 2,
     "unitPrice": 116.32,
     "tax": 16.28,
-    "amount": 248.92,
-    "idAgregador": null
+    "amount": 248.92
   },
   {
     "id": "C00290",
@@ -5216,8 +4927,7 @@
     "quantity": 3,
     "unitPrice": 116.79,
     "tax": 24.53,
-    "amount": 374.9,
-    "idAgregador": null
+    "amount": 374.9
   },
   {
     "id": "C00291",
@@ -5234,8 +4944,7 @@
     "quantity": 4,
     "unitPrice": 117.26,
     "tax": 32.83,
-    "amount": 501.87,
-    "idAgregador": null
+    "amount": 501.87
   },
   {
     "id": "C00292",
@@ -5252,8 +4961,7 @@
     "quantity": 1,
     "unitPrice": 117.73,
     "tax": 8.24,
-    "amount": 125.97,
-    "idAgregador": null
+    "amount": 125.97
   },
   {
     "id": "C00293",
@@ -5270,8 +4978,7 @@
     "quantity": 2,
     "unitPrice": 118.2,
     "tax": 16.55,
-    "amount": 252.95,
-    "idAgregador": null
+    "amount": 252.95
   },
   {
     "id": "C00294",
@@ -5288,8 +4995,7 @@
     "quantity": 1,
     "unitPrice": 115.85,
     "tax": 8.11,
-    "amount": 123.96,
-    "idAgregador": null
+    "amount": 123.96
   },
   {
     "id": "C00295",
@@ -5306,8 +5012,7 @@
     "quantity": 2,
     "unitPrice": 116.32,
     "tax": 16.28,
-    "amount": 248.92,
-    "idAgregador": null
+    "amount": 248.92
   },
   {
     "id": "C00296",
@@ -5324,8 +5029,7 @@
     "quantity": 3,
     "unitPrice": 116.79,
     "tax": 24.53,
-    "amount": 374.9,
-    "idAgregador": null
+    "amount": 374.9
   },
   {
     "id": "C00297",
@@ -5342,8 +5046,7 @@
     "quantity": 4,
     "unitPrice": 117.26,
     "tax": 32.83,
-    "amount": 501.87,
-    "idAgregador": null
+    "amount": 501.87
   },
   {
     "id": "C00298",
@@ -5360,8 +5063,7 @@
     "quantity": 1,
     "unitPrice": 117.73,
     "tax": 8.24,
-    "amount": 125.97,
-    "idAgregador": null
+    "amount": 125.97
   },
   {
     "id": "C00299",
@@ -5378,8 +5080,7 @@
     "quantity": 2,
     "unitPrice": 118.2,
     "tax": 16.55,
-    "amount": 252.95,
-    "idAgregador": null
+    "amount": 252.95
   },
   {
     "id": "C00300",
@@ -5396,8 +5097,7 @@
     "quantity": 3,
     "unitPrice": 118.67,
     "tax": 24.92,
-    "amount": 380.93,
-    "idAgregador": null
+    "amount": 380.93
   },
   {
     "id": "C00301",
@@ -5414,8 +5114,7 @@
     "quantity": 1,
     "unitPrice": 115.85,
     "tax": 8.11,
-    "amount": 123.96,
-    "idAgregador": null
+    "amount": 123.96
   },
   {
     "id": "C00302",
@@ -5432,8 +5131,7 @@
     "quantity": 2,
     "unitPrice": 116.32,
     "tax": 16.28,
-    "amount": 248.92,
-    "idAgregador": null
+    "amount": 248.92
   },
   {
     "id": "C00303",
@@ -5450,8 +5148,7 @@
     "quantity": 3,
     "unitPrice": 116.79,
     "tax": 24.53,
-    "amount": 374.9,
-    "idAgregador": null
+    "amount": 374.9
   },
   {
     "id": "C00304",
@@ -5468,8 +5165,7 @@
     "quantity": 1,
     "unitPrice": 27.65,
     "tax": 1.94,
-    "amount": 29.59,
-    "idAgregador": null
+    "amount": 29.59
   },
   {
     "id": "C00305",
@@ -5486,8 +5182,7 @@
     "quantity": 2,
     "unitPrice": 28.12,
     "tax": 3.94,
-    "amount": 60.18,
-    "idAgregador": null
+    "amount": 60.18
   },
   {
     "id": "C00306",
@@ -5504,8 +5199,7 @@
     "quantity": 3,
     "unitPrice": 28.59,
     "tax": 6,
-    "amount": 91.77,
-    "idAgregador": null
+    "amount": 91.77
   },
   {
     "id": "C00307",
@@ -5522,8 +5216,7 @@
     "quantity": 4,
     "unitPrice": 29.06,
     "tax": 8.14,
-    "amount": 124.38,
-    "idAgregador": null
+    "amount": 124.38
   },
   {
     "id": "C00308",
@@ -5540,8 +5233,7 @@
     "quantity": 1,
     "unitPrice": 29.53,
     "tax": 2.07,
-    "amount": 31.6,
-    "idAgregador": null
+    "amount": 31.6
   },
   {
     "id": "C00309",
@@ -5558,8 +5250,7 @@
     "quantity": 1,
     "unitPrice": 27.65,
     "tax": 1.94,
-    "amount": 29.59,
-    "idAgregador": null
+    "amount": 29.59
   },
   {
     "id": "C00310",
@@ -5576,8 +5267,7 @@
     "quantity": 2,
     "unitPrice": 28.12,
     "tax": 3.94,
-    "amount": 60.18,
-    "idAgregador": null
+    "amount": 60.18
   },
   {
     "id": "C00311",
@@ -5594,8 +5284,7 @@
     "quantity": 3,
     "unitPrice": 28.59,
     "tax": 6,
-    "amount": 91.77,
-    "idAgregador": null
+    "amount": 91.77
   },
   {
     "id": "C00312",
@@ -5612,8 +5301,7 @@
     "quantity": 4,
     "unitPrice": 29.06,
     "tax": 8.14,
-    "amount": 124.38,
-    "idAgregador": null
+    "amount": 124.38
   },
   {
     "id": "C00313",
@@ -5630,8 +5318,7 @@
     "quantity": 1,
     "unitPrice": 29.53,
     "tax": 2.07,
-    "amount": 31.6,
-    "idAgregador": null
+    "amount": 31.6
   },
   {
     "id": "C00314",
@@ -5648,8 +5335,7 @@
     "quantity": 2,
     "unitPrice": 30,
     "tax": 4.2,
-    "amount": 64.2,
-    "idAgregador": null
+    "amount": 64.2
   },
   {
     "id": "C00315",
@@ -5666,8 +5352,7 @@
     "quantity": 1,
     "unitPrice": 27.65,
     "tax": 1.94,
-    "amount": 29.59,
-    "idAgregador": null
+    "amount": 29.59
   },
   {
     "id": "C00316",
@@ -5684,8 +5369,7 @@
     "quantity": 2,
     "unitPrice": 28.12,
     "tax": 3.94,
-    "amount": 60.18,
-    "idAgregador": null
+    "amount": 60.18
   },
   {
     "id": "C00317",
@@ -5702,8 +5386,7 @@
     "quantity": 3,
     "unitPrice": 28.59,
     "tax": 6,
-    "amount": 91.77,
-    "idAgregador": null
+    "amount": 91.77
   },
   {
     "id": "C00318",
@@ -5720,8 +5403,7 @@
     "quantity": 4,
     "unitPrice": 29.06,
     "tax": 8.14,
-    "amount": 124.38,
-    "idAgregador": null
+    "amount": 124.38
   },
   {
     "id": "C00319",
@@ -5738,8 +5420,7 @@
     "quantity": 1,
     "unitPrice": 29.53,
     "tax": 2.07,
-    "amount": 31.6,
-    "idAgregador": null
+    "amount": 31.6
   },
   {
     "id": "C00320",
@@ -5756,8 +5437,7 @@
     "quantity": 2,
     "unitPrice": 30,
     "tax": 4.2,
-    "amount": 64.2,
-    "idAgregador": null
+    "amount": 64.2
   },
   {
     "id": "C00321",
@@ -5774,8 +5454,7 @@
     "quantity": 3,
     "unitPrice": 30.47,
     "tax": 6.4,
-    "amount": 97.81,
-    "idAgregador": null
+    "amount": 97.81
   },
   {
     "id": "C00322",
@@ -5792,8 +5471,7 @@
     "quantity": 1,
     "unitPrice": 27.65,
     "tax": 1.94,
-    "amount": 29.59,
-    "idAgregador": null
+    "amount": 29.59
   },
   {
     "id": "C00323",
@@ -5810,8 +5488,7 @@
     "quantity": 2,
     "unitPrice": 28.12,
     "tax": 3.94,
-    "amount": 60.18,
-    "idAgregador": null
+    "amount": 60.18
   },
   {
     "id": "C00324",
@@ -5828,8 +5505,7 @@
     "quantity": 3,
     "unitPrice": 28.59,
     "tax": 6,
-    "amount": 91.77,
-    "idAgregador": null
+    "amount": 91.77
   },
   {
     "id": "C00325",
@@ -5846,8 +5522,7 @@
     "quantity": 1,
     "unitPrice": 64.4,
     "tax": 4.51,
-    "amount": 68.91,
-    "idAgregador": null
+    "amount": 68.91
   },
   {
     "id": "C00326",
@@ -5864,8 +5539,7 @@
     "quantity": 2,
     "unitPrice": 64.87,
     "tax": 9.08,
-    "amount": 138.82,
-    "idAgregador": null
+    "amount": 138.82
   },
   {
     "id": "C00327",
@@ -5882,8 +5556,7 @@
     "quantity": 3,
     "unitPrice": 65.34,
     "tax": 13.72,
-    "amount": 209.74,
-    "idAgregador": null
+    "amount": 209.74
   },
   {
     "id": "C00328",
@@ -5900,8 +5573,7 @@
     "quantity": 4,
     "unitPrice": 65.81,
     "tax": 18.43,
-    "amount": 281.67,
-    "idAgregador": null
+    "amount": 281.67
   },
   {
     "id": "C00329",
@@ -5918,8 +5590,7 @@
     "quantity": 1,
     "unitPrice": 66.28,
     "tax": 4.64,
-    "amount": 70.92,
-    "idAgregador": null
+    "amount": 70.92
   },
   {
     "id": "C00330",
@@ -5936,8 +5607,7 @@
     "quantity": 1,
     "unitPrice": 64.4,
     "tax": 4.51,
-    "amount": 68.91,
-    "idAgregador": null
+    "amount": 68.91
   },
   {
     "id": "C00331",
@@ -5954,8 +5624,7 @@
     "quantity": 2,
     "unitPrice": 64.87,
     "tax": 9.08,
-    "amount": 138.82,
-    "idAgregador": null
+    "amount": 138.82
   },
   {
     "id": "C00332",
@@ -5972,8 +5641,7 @@
     "quantity": 3,
     "unitPrice": 65.34,
     "tax": 13.72,
-    "amount": 209.74,
-    "idAgregador": null
+    "amount": 209.74
   },
   {
     "id": "C00333",
@@ -5990,8 +5658,7 @@
     "quantity": 4,
     "unitPrice": 65.81,
     "tax": 18.43,
-    "amount": 281.67,
-    "idAgregador": null
+    "amount": 281.67
   },
   {
     "id": "C00334",
@@ -6008,8 +5675,7 @@
     "quantity": 1,
     "unitPrice": 66.28,
     "tax": 4.64,
-    "amount": 70.92,
-    "idAgregador": null
+    "amount": 70.92
   },
   {
     "id": "C00335",
@@ -6026,8 +5692,7 @@
     "quantity": 2,
     "unitPrice": 66.75,
     "tax": 9.35,
-    "amount": 142.85,
-    "idAgregador": null
+    "amount": 142.85
   },
   {
     "id": "C00336",
@@ -6044,8 +5709,7 @@
     "quantity": 1,
     "unitPrice": 64.4,
     "tax": 4.51,
-    "amount": 68.91,
-    "idAgregador": null
+    "amount": 68.91
   },
   {
     "id": "C00337",
@@ -6062,8 +5726,7 @@
     "quantity": 2,
     "unitPrice": 64.87,
     "tax": 9.08,
-    "amount": 138.82,
-    "idAgregador": null
+    "amount": 138.82
   },
   {
     "id": "C00338",
@@ -6080,8 +5743,7 @@
     "quantity": 3,
     "unitPrice": 65.34,
     "tax": 13.72,
-    "amount": 209.74,
-    "idAgregador": null
+    "amount": 209.74
   },
   {
     "id": "C00339",
@@ -6098,8 +5760,7 @@
     "quantity": 4,
     "unitPrice": 65.81,
     "tax": 18.43,
-    "amount": 281.67,
-    "idAgregador": null
+    "amount": 281.67
   },
   {
     "id": "C00340",
@@ -6116,8 +5777,7 @@
     "quantity": 1,
     "unitPrice": 66.28,
     "tax": 4.64,
-    "amount": 70.92,
-    "idAgregador": null
+    "amount": 70.92
   },
   {
     "id": "C00341",
@@ -6134,8 +5794,7 @@
     "quantity": 2,
     "unitPrice": 66.75,
     "tax": 9.35,
-    "amount": 142.85,
-    "idAgregador": null
+    "amount": 142.85
   },
   {
     "id": "C00342",
@@ -6152,8 +5811,7 @@
     "quantity": 3,
     "unitPrice": 67.22,
     "tax": 14.12,
-    "amount": 215.78,
-    "idAgregador": null
+    "amount": 215.78
   },
   {
     "id": "C00343",
@@ -6170,8 +5828,7 @@
     "quantity": 1,
     "unitPrice": 64.4,
     "tax": 4.51,
-    "amount": 68.91,
-    "idAgregador": null
+    "amount": 68.91
   },
   {
     "id": "C00344",
@@ -6188,8 +5845,7 @@
     "quantity": 2,
     "unitPrice": 64.87,
     "tax": 9.08,
-    "amount": 138.82,
-    "idAgregador": null
+    "amount": 138.82
   },
   {
     "id": "C00345",
@@ -6206,8 +5862,7 @@
     "quantity": 3,
     "unitPrice": 65.34,
     "tax": 13.72,
-    "amount": 209.74,
-    "idAgregador": null
+    "amount": 209.74
   },
   {
     "id": "C00346",
@@ -6224,8 +5879,7 @@
     "quantity": 1,
     "unitPrice": 101.15,
     "tax": 7.08,
-    "amount": 108.23,
-    "idAgregador": null
+    "amount": 108.23
   },
   {
     "id": "C00347",
@@ -6242,8 +5896,7 @@
     "quantity": 2,
     "unitPrice": 101.62,
     "tax": 14.23,
-    "amount": 217.47,
-    "idAgregador": null
+    "amount": 217.47
   },
   {
     "id": "C00348",
@@ -6260,8 +5913,7 @@
     "quantity": 3,
     "unitPrice": 102.09,
     "tax": 21.44,
-    "amount": 327.71,
-    "idAgregador": null
+    "amount": 327.71
   },
   {
     "id": "C00349",
@@ -6278,8 +5930,7 @@
     "quantity": 4,
     "unitPrice": 102.56,
     "tax": 28.72,
-    "amount": 438.96,
-    "idAgregador": null
+    "amount": 438.96
   },
   {
     "id": "C00350",
@@ -6296,8 +5947,7 @@
     "quantity": 1,
     "unitPrice": 103.03,
     "tax": 7.21,
-    "amount": 110.24,
-    "idAgregador": null
+    "amount": 110.24
   },
   {
     "id": "C00351",
@@ -6314,8 +5964,7 @@
     "quantity": 1,
     "unitPrice": 101.15,
     "tax": 7.08,
-    "amount": 108.23,
-    "idAgregador": null
+    "amount": 108.23
   },
   {
     "id": "C00352",
@@ -6332,8 +5981,7 @@
     "quantity": 2,
     "unitPrice": 101.62,
     "tax": 14.23,
-    "amount": 217.47,
-    "idAgregador": null
+    "amount": 217.47
   },
   {
     "id": "C00353",
@@ -6350,8 +5998,7 @@
     "quantity": 3,
     "unitPrice": 102.09,
     "tax": 21.44,
-    "amount": 327.71,
-    "idAgregador": null
+    "amount": 327.71
   },
   {
     "id": "C00354",
@@ -6368,8 +6015,7 @@
     "quantity": 4,
     "unitPrice": 102.56,
     "tax": 28.72,
-    "amount": 438.96,
-    "idAgregador": null
+    "amount": 438.96
   },
   {
     "id": "C00355",
@@ -6386,8 +6032,7 @@
     "quantity": 1,
     "unitPrice": 103.03,
     "tax": 7.21,
-    "amount": 110.24,
-    "idAgregador": null
+    "amount": 110.24
   },
   {
     "id": "C00356",
@@ -6404,8 +6049,7 @@
     "quantity": 2,
     "unitPrice": 103.5,
     "tax": 14.49,
-    "amount": 221.49,
-    "idAgregador": null
+    "amount": 221.49
   },
   {
     "id": "C00357",
@@ -6422,8 +6066,7 @@
     "quantity": 1,
     "unitPrice": 101.15,
     "tax": 7.08,
-    "amount": 108.23,
-    "idAgregador": null
+    "amount": 108.23
   },
   {
     "id": "C00358",
@@ -6440,8 +6083,7 @@
     "quantity": 2,
     "unitPrice": 101.62,
     "tax": 14.23,
-    "amount": 217.47,
-    "idAgregador": null
+    "amount": 217.47
   },
   {
     "id": "C00359",
@@ -6458,8 +6100,7 @@
     "quantity": 3,
     "unitPrice": 102.09,
     "tax": 21.44,
-    "amount": 327.71,
-    "idAgregador": null
+    "amount": 327.71
   },
   {
     "id": "C00360",
@@ -6476,8 +6117,7 @@
     "quantity": 4,
     "unitPrice": 102.56,
     "tax": 28.72,
-    "amount": 438.96,
-    "idAgregador": null
+    "amount": 438.96
   },
   {
     "id": "C00361",
@@ -6494,8 +6134,7 @@
     "quantity": 1,
     "unitPrice": 103.03,
     "tax": 7.21,
-    "amount": 110.24,
-    "idAgregador": null
+    "amount": 110.24
   },
   {
     "id": "C00362",
@@ -6512,8 +6151,7 @@
     "quantity": 2,
     "unitPrice": 103.5,
     "tax": 14.49,
-    "amount": 221.49,
-    "idAgregador": null
+    "amount": 221.49
   },
   {
     "id": "C00363",
@@ -6530,8 +6168,7 @@
     "quantity": 3,
     "unitPrice": 103.97,
     "tax": 21.83,
-    "amount": 333.74,
-    "idAgregador": null
+    "amount": 333.74
   },
   {
     "id": "C00364",
@@ -6548,8 +6185,7 @@
     "quantity": 1,
     "unitPrice": 101.15,
     "tax": 7.08,
-    "amount": 108.23,
-    "idAgregador": null
+    "amount": 108.23
   },
   {
     "id": "C00365",
@@ -6566,8 +6202,7 @@
     "quantity": 2,
     "unitPrice": 101.62,
     "tax": 14.23,
-    "amount": 217.47,
-    "idAgregador": null
+    "amount": 217.47
   },
   {
     "id": "C00366",
@@ -6584,8 +6219,7 @@
     "quantity": 3,
     "unitPrice": 102.09,
     "tax": 21.44,
-    "amount": 327.71,
-    "idAgregador": null
+    "amount": 327.71
   },
   {
     "id": "C00367",
@@ -6602,8 +6236,7 @@
     "quantity": 1,
     "unitPrice": 51.8,
     "tax": 3.63,
-    "amount": 55.43,
-    "idAgregador": null
+    "amount": 55.43
   },
   {
     "id": "C00368",
@@ -6620,8 +6253,7 @@
     "quantity": 2,
     "unitPrice": 52.27,
     "tax": 7.32,
-    "amount": 111.86,
-    "idAgregador": null
+    "amount": 111.86
   },
   {
     "id": "C00369",
@@ -6638,8 +6270,7 @@
     "quantity": 3,
     "unitPrice": 52.74,
     "tax": 11.08,
-    "amount": 169.3,
-    "idAgregador": null
+    "amount": 169.3
   },
   {
     "id": "C00370",
@@ -6656,8 +6287,7 @@
     "quantity": 4,
     "unitPrice": 53.21,
     "tax": 14.9,
-    "amount": 227.74,
-    "idAgregador": null
+    "amount": 227.74
   },
   {
     "id": "C00371",
@@ -6674,8 +6304,7 @@
     "quantity": 1,
     "unitPrice": 53.68,
     "tax": 3.76,
-    "amount": 57.44,
-    "idAgregador": null
+    "amount": 57.44
   },
   {
     "id": "C00372",
@@ -6692,8 +6321,7 @@
     "quantity": 2,
     "unitPrice": 54.15,
     "tax": 7.58,
-    "amount": 115.88,
-    "idAgregador": null
+    "amount": 115.88
   },
   {
     "id": "C00373",
@@ -6710,8 +6338,7 @@
     "quantity": 1,
     "unitPrice": 51.8,
     "tax": 3.63,
-    "amount": 55.43,
-    "idAgregador": null
+    "amount": 55.43
   },
   {
     "id": "C00374",
@@ -6728,8 +6355,7 @@
     "quantity": 2,
     "unitPrice": 52.27,
     "tax": 7.32,
-    "amount": 111.86,
-    "idAgregador": null
+    "amount": 111.86
   },
   {
     "id": "C00375",
@@ -6746,8 +6372,7 @@
     "quantity": 3,
     "unitPrice": 52.74,
     "tax": 11.08,
-    "amount": 169.3,
-    "idAgregador": null
+    "amount": 169.3
   },
   {
     "id": "C00376",
@@ -6764,8 +6389,7 @@
     "quantity": 4,
     "unitPrice": 53.21,
     "tax": 14.9,
-    "amount": 227.74,
-    "idAgregador": null
+    "amount": 227.74
   },
   {
     "id": "C00377",
@@ -6782,8 +6406,7 @@
     "quantity": 1,
     "unitPrice": 53.68,
     "tax": 3.76,
-    "amount": 57.44,
-    "idAgregador": null
+    "amount": 57.44
   },
   {
     "id": "C00378",
@@ -6800,8 +6423,7 @@
     "quantity": 2,
     "unitPrice": 54.15,
     "tax": 7.58,
-    "amount": 115.88,
-    "idAgregador": null
+    "amount": 115.88
   },
   {
     "id": "C00379",
@@ -6818,8 +6440,7 @@
     "quantity": 3,
     "unitPrice": 54.62,
     "tax": 11.47,
-    "amount": 175.33,
-    "idAgregador": null
+    "amount": 175.33
   },
   {
     "id": "C00380",
@@ -6836,8 +6457,7 @@
     "quantity": 1,
     "unitPrice": 51.8,
     "tax": 3.63,
-    "amount": 55.43,
-    "idAgregador": null
+    "amount": 55.43
   },
   {
     "id": "C00381",
@@ -6854,8 +6474,7 @@
     "quantity": 2,
     "unitPrice": 52.27,
     "tax": 7.32,
-    "amount": 111.86,
-    "idAgregador": null
+    "amount": 111.86
   },
   {
     "id": "C00382",
@@ -6872,8 +6491,7 @@
     "quantity": 3,
     "unitPrice": 52.74,
     "tax": 11.08,
-    "amount": 169.3,
-    "idAgregador": null
+    "amount": 169.3
   },
   {
     "id": "C00383",
@@ -6890,8 +6508,7 @@
     "quantity": 1,
     "unitPrice": 51.8,
     "tax": 3.63,
-    "amount": 55.43,
-    "idAgregador": null
+    "amount": 55.43
   },
   {
     "id": "C00384",
@@ -6908,8 +6525,7 @@
     "quantity": 2,
     "unitPrice": 52.27,
     "tax": 7.32,
-    "amount": 111.86,
-    "idAgregador": null
+    "amount": 111.86
   },
   {
     "id": "C00385",
@@ -6926,8 +6542,7 @@
     "quantity": 3,
     "unitPrice": 52.74,
     "tax": 11.08,
-    "amount": 169.3,
-    "idAgregador": null
+    "amount": 169.3
   },
   {
     "id": "C00386",
@@ -6944,8 +6559,7 @@
     "quantity": 4,
     "unitPrice": 53.21,
     "tax": 14.9,
-    "amount": 227.74,
-    "idAgregador": null
+    "amount": 227.74
   },
   {
     "id": "C00387",
@@ -6962,8 +6576,7 @@
     "quantity": 1,
     "unitPrice": 88.55,
     "tax": 6.2,
-    "amount": 94.75,
-    "idAgregador": null
+    "amount": 94.75
   },
   {
     "id": "C00388",
@@ -6980,8 +6593,7 @@
     "quantity": 2,
     "unitPrice": 89.02,
     "tax": 12.46,
-    "amount": 190.5,
-    "idAgregador": null
+    "amount": 190.5
   },
   {
     "id": "C00389",
@@ -6998,8 +6610,7 @@
     "quantity": 3,
     "unitPrice": 89.49,
     "tax": 18.79,
-    "amount": 287.26,
-    "idAgregador": null
+    "amount": 287.26
   },
   {
     "id": "C00390",
@@ -7016,8 +6627,7 @@
     "quantity": 4,
     "unitPrice": 89.96,
     "tax": 25.19,
-    "amount": 385.03,
-    "idAgregador": null
+    "amount": 385.03
   },
   {
     "id": "C00391",
@@ -7034,8 +6644,7 @@
     "quantity": 1,
     "unitPrice": 90.43,
     "tax": 6.33,
-    "amount": 96.76,
-    "idAgregador": null
+    "amount": 96.76
   },
   {
     "id": "C00392",
@@ -7052,8 +6661,7 @@
     "quantity": 2,
     "unitPrice": 90.9,
     "tax": 12.73,
-    "amount": 194.53,
-    "idAgregador": null
+    "amount": 194.53
   },
   {
     "id": "C00393",
@@ -7070,8 +6678,7 @@
     "quantity": 1,
     "unitPrice": 88.55,
     "tax": 6.2,
-    "amount": 94.75,
-    "idAgregador": null
+    "amount": 94.75
   },
   {
     "id": "C00394",
@@ -7088,8 +6695,7 @@
     "quantity": 2,
     "unitPrice": 89.02,
     "tax": 12.46,
-    "amount": 190.5,
-    "idAgregador": null
+    "amount": 190.5
   },
   {
     "id": "C00395",
@@ -7106,8 +6712,7 @@
     "quantity": 3,
     "unitPrice": 89.49,
     "tax": 18.79,
-    "amount": 287.26,
-    "idAgregador": null
+    "amount": 287.26
   },
   {
     "id": "C00396",
@@ -7124,8 +6729,7 @@
     "quantity": 4,
     "unitPrice": 89.96,
     "tax": 25.19,
-    "amount": 385.03,
-    "idAgregador": null
+    "amount": 385.03
   },
   {
     "id": "C00397",
@@ -7142,8 +6746,7 @@
     "quantity": 1,
     "unitPrice": 90.43,
     "tax": 6.33,
-    "amount": 96.76,
-    "idAgregador": null
+    "amount": 96.76
   },
   {
     "id": "C00398",
@@ -7160,8 +6763,7 @@
     "quantity": 2,
     "unitPrice": 90.9,
     "tax": 12.73,
-    "amount": 194.53,
-    "idAgregador": null
+    "amount": 194.53
   },
   {
     "id": "C00399",
@@ -7178,8 +6780,7 @@
     "quantity": 3,
     "unitPrice": 91.37,
     "tax": 19.19,
-    "amount": 293.3,
-    "idAgregador": null
+    "amount": 293.3
   },
   {
     "id": "C00400",
@@ -7196,8 +6797,7 @@
     "quantity": 1,
     "unitPrice": 88.55,
     "tax": 6.2,
-    "amount": 94.75,
-    "idAgregador": null
+    "amount": 94.75
   },
   {
     "id": "C00401",
@@ -7214,8 +6814,7 @@
     "quantity": 2,
     "unitPrice": 89.02,
     "tax": 12.46,
-    "amount": 190.5,
-    "idAgregador": null
+    "amount": 190.5
   },
   {
     "id": "C00402",
@@ -7232,8 +6831,7 @@
     "quantity": 3,
     "unitPrice": 89.49,
     "tax": 18.79,
-    "amount": 287.26,
-    "idAgregador": null
+    "amount": 287.26
   },
   {
     "id": "C00403",
@@ -7250,8 +6848,7 @@
     "quantity": 1,
     "unitPrice": 88.55,
     "tax": 6.2,
-    "amount": 94.75,
-    "idAgregador": null
+    "amount": 94.75
   },
   {
     "id": "C00404",
@@ -7268,8 +6865,7 @@
     "quantity": 2,
     "unitPrice": 89.02,
     "tax": 12.46,
-    "amount": 190.5,
-    "idAgregador": null
+    "amount": 190.5
   },
   {
     "id": "C00405",
@@ -7286,8 +6882,7 @@
     "quantity": 3,
     "unitPrice": 89.49,
     "tax": 18.79,
-    "amount": 287.26,
-    "idAgregador": null
+    "amount": 287.26
   },
   {
     "id": "C00406",
@@ -7304,8 +6899,7 @@
     "quantity": 4,
     "unitPrice": 89.96,
     "tax": 25.19,
-    "amount": 385.03,
-    "idAgregador": null
+    "amount": 385.03
   },
   {
     "id": "C00407",
@@ -7322,8 +6916,7 @@
     "quantity": 1,
     "unitPrice": 125.3,
     "tax": 8.77,
-    "amount": 134.07,
-    "idAgregador": null
+    "amount": 134.07
   },
   {
     "id": "C00408",
@@ -7340,8 +6933,7 @@
     "quantity": 2,
     "unitPrice": 125.77,
     "tax": 17.61,
-    "amount": 269.15,
-    "idAgregador": null
+    "amount": 269.15
   },
   {
     "id": "C00409",
@@ -7358,8 +6950,7 @@
     "quantity": 3,
     "unitPrice": 126.24,
     "tax": 26.51,
-    "amount": 405.23,
-    "idAgregador": null
+    "amount": 405.23
   },
   {
     "id": "C00410",
@@ -7376,8 +6967,7 @@
     "quantity": 4,
     "unitPrice": 126.71,
     "tax": 35.48,
-    "amount": 542.32,
-    "idAgregador": null
+    "amount": 542.32
   },
   {
     "id": "C00411",
@@ -7394,8 +6984,7 @@
     "quantity": 1,
     "unitPrice": 127.18,
     "tax": 8.9,
-    "amount": 136.08,
-    "idAgregador": null
+    "amount": 136.08
   },
   {
     "id": "C00412",
@@ -7412,8 +7001,7 @@
     "quantity": 2,
     "unitPrice": 127.65,
     "tax": 17.87,
-    "amount": 273.17,
-    "idAgregador": null
+    "amount": 273.17
   },
   {
     "id": "C00413",
@@ -7430,8 +7018,7 @@
     "quantity": 1,
     "unitPrice": 125.3,
     "tax": 8.77,
-    "amount": 134.07,
-    "idAgregador": null
+    "amount": 134.07
   },
   {
     "id": "C00414",
@@ -7448,8 +7035,7 @@
     "quantity": 2,
     "unitPrice": 125.77,
     "tax": 17.61,
-    "amount": 269.15,
-    "idAgregador": null
+    "amount": 269.15
   },
   {
     "id": "C00415",
@@ -7466,8 +7052,7 @@
     "quantity": 3,
     "unitPrice": 126.24,
     "tax": 26.51,
-    "amount": 405.23,
-    "idAgregador": null
+    "amount": 405.23
   },
   {
     "id": "C00416",
@@ -7484,8 +7069,7 @@
     "quantity": 4,
     "unitPrice": 126.71,
     "tax": 35.48,
-    "amount": 542.32,
-    "idAgregador": null
+    "amount": 542.32
   },
   {
     "id": "C00417",
@@ -7502,8 +7086,7 @@
     "quantity": 1,
     "unitPrice": 127.18,
     "tax": 8.9,
-    "amount": 136.08,
-    "idAgregador": null
+    "amount": 136.08
   },
   {
     "id": "C00418",
@@ -7520,8 +7103,7 @@
     "quantity": 2,
     "unitPrice": 127.65,
     "tax": 17.87,
-    "amount": 273.17,
-    "idAgregador": null
+    "amount": 273.17
   },
   {
     "id": "C00419",
@@ -7538,8 +7120,7 @@
     "quantity": 3,
     "unitPrice": 128.12,
     "tax": 26.91,
-    "amount": 411.27,
-    "idAgregador": null
+    "amount": 411.27
   },
   {
     "id": "C00420",
@@ -7556,8 +7137,7 @@
     "quantity": 1,
     "unitPrice": 125.3,
     "tax": 8.77,
-    "amount": 134.07,
-    "idAgregador": null
+    "amount": 134.07
   },
   {
     "id": "C00421",
@@ -7574,8 +7154,7 @@
     "quantity": 2,
     "unitPrice": 125.77,
     "tax": 17.61,
-    "amount": 269.15,
-    "idAgregador": null
+    "amount": 269.15
   },
   {
     "id": "C00422",
@@ -7592,8 +7171,7 @@
     "quantity": 3,
     "unitPrice": 126.24,
     "tax": 26.51,
-    "amount": 405.23,
-    "idAgregador": null
+    "amount": 405.23
   },
   {
     "id": "C00423",
@@ -7610,8 +7188,7 @@
     "quantity": 1,
     "unitPrice": 125.3,
     "tax": 8.77,
-    "amount": 134.07,
-    "idAgregador": null
+    "amount": 134.07
   },
   {
     "id": "C00424",
@@ -7628,8 +7205,7 @@
     "quantity": 2,
     "unitPrice": 125.77,
     "tax": 17.61,
-    "amount": 269.15,
-    "idAgregador": null
+    "amount": 269.15
   },
   {
     "id": "C00425",
@@ -7646,8 +7222,7 @@
     "quantity": 3,
     "unitPrice": 126.24,
     "tax": 26.51,
-    "amount": 405.23,
-    "idAgregador": null
+    "amount": 405.23
   },
   {
     "id": "C00426",
@@ -7664,8 +7239,7 @@
     "quantity": 4,
     "unitPrice": 126.71,
     "tax": 35.48,
-    "amount": 542.32,
-    "idAgregador": null
+    "amount": 542.32
   },
   {
     "id": "C00427",
@@ -7682,8 +7256,7 @@
     "quantity": 1,
     "unitPrice": 37.1,
     "tax": 2.6,
-    "amount": 39.7,
-    "idAgregador": null
+    "amount": 39.7
   },
   {
     "id": "C00428",
@@ -7700,8 +7273,7 @@
     "quantity": 2,
     "unitPrice": 37.57,
     "tax": 5.26,
-    "amount": 80.4,
-    "idAgregador": null
+    "amount": 80.4
   },
   {
     "id": "C00429",
@@ -7718,8 +7290,7 @@
     "quantity": 3,
     "unitPrice": 38.04,
     "tax": 7.99,
-    "amount": 122.11,
-    "idAgregador": null
+    "amount": 122.11
   },
   {
     "id": "C00430",
@@ -7736,8 +7307,7 @@
     "quantity": 4,
     "unitPrice": 38.51,
     "tax": 10.78,
-    "amount": 164.82,
-    "idAgregador": null
+    "amount": 164.82
   },
   {
     "id": "C00431",
@@ -7754,8 +7324,7 @@
     "quantity": 1,
     "unitPrice": 38.98,
     "tax": 2.73,
-    "amount": 41.71,
-    "idAgregador": null
+    "amount": 41.71
   },
   {
     "id": "C00432",
@@ -7772,8 +7341,7 @@
     "quantity": 2,
     "unitPrice": 39.45,
     "tax": 5.52,
-    "amount": 84.42,
-    "idAgregador": null
+    "amount": 84.42
   },
   {
     "id": "C00433",
@@ -7790,8 +7358,7 @@
     "quantity": 1,
     "unitPrice": 37.1,
     "tax": 2.6,
-    "amount": 39.7,
-    "idAgregador": null
+    "amount": 39.7
   },
   {
     "id": "C00434",
@@ -7808,8 +7375,7 @@
     "quantity": 2,
     "unitPrice": 37.57,
     "tax": 5.26,
-    "amount": 80.4,
-    "idAgregador": null
+    "amount": 80.4
   },
   {
     "id": "C00435",
@@ -7826,8 +7392,7 @@
     "quantity": 3,
     "unitPrice": 38.04,
     "tax": 7.99,
-    "amount": 122.11,
-    "idAgregador": null
+    "amount": 122.11
   },
   {
     "id": "C00436",
@@ -7844,8 +7409,7 @@
     "quantity": 4,
     "unitPrice": 38.51,
     "tax": 10.78,
-    "amount": 164.82,
-    "idAgregador": null
+    "amount": 164.82
   },
   {
     "id": "C00437",
@@ -7862,8 +7426,7 @@
     "quantity": 1,
     "unitPrice": 38.98,
     "tax": 2.73,
-    "amount": 41.71,
-    "idAgregador": null
+    "amount": 41.71
   },
   {
     "id": "C00438",
@@ -7880,8 +7443,7 @@
     "quantity": 2,
     "unitPrice": 39.45,
     "tax": 5.52,
-    "amount": 84.42,
-    "idAgregador": null
+    "amount": 84.42
   },
   {
     "id": "C00439",
@@ -7898,8 +7460,7 @@
     "quantity": 3,
     "unitPrice": 39.92,
     "tax": 8.38,
-    "amount": 128.14,
-    "idAgregador": null
+    "amount": 128.14
   },
   {
     "id": "C00440",
@@ -7916,8 +7477,7 @@
     "quantity": 1,
     "unitPrice": 37.1,
     "tax": 2.6,
-    "amount": 39.7,
-    "idAgregador": null
+    "amount": 39.7
   },
   {
     "id": "C00441",
@@ -7934,8 +7494,7 @@
     "quantity": 2,
     "unitPrice": 37.57,
     "tax": 5.26,
-    "amount": 80.4,
-    "idAgregador": null
+    "amount": 80.4
   },
   {
     "id": "C00442",
@@ -7952,8 +7511,7 @@
     "quantity": 3,
     "unitPrice": 38.04,
     "tax": 7.99,
-    "amount": 122.11,
-    "idAgregador": null
+    "amount": 122.11
   },
   {
     "id": "C00443",
@@ -7970,8 +7528,7 @@
     "quantity": 1,
     "unitPrice": 37.1,
     "tax": 2.6,
-    "amount": 39.7,
-    "idAgregador": null
+    "amount": 39.7
   },
   {
     "id": "C00444",
@@ -7988,8 +7545,7 @@
     "quantity": 2,
     "unitPrice": 37.57,
     "tax": 5.26,
-    "amount": 80.4,
-    "idAgregador": null
+    "amount": 80.4
   },
   {
     "id": "C00445",
@@ -8006,8 +7562,7 @@
     "quantity": 3,
     "unitPrice": 38.04,
     "tax": 7.99,
-    "amount": 122.11,
-    "idAgregador": null
+    "amount": 122.11
   },
   {
     "id": "C00446",
@@ -8024,8 +7579,7 @@
     "quantity": 4,
     "unitPrice": 38.51,
     "tax": 10.78,
-    "amount": 164.82,
-    "idAgregador": null
+    "amount": 164.82
   },
   {
     "id": "C00447",
@@ -8042,8 +7596,7 @@
     "quantity": 1,
     "unitPrice": 73.85,
     "tax": 5.17,
-    "amount": 79.02,
-    "idAgregador": null
+    "amount": 79.02
   },
   {
     "id": "C00448",
@@ -8060,8 +7613,7 @@
     "quantity": 2,
     "unitPrice": 74.32,
     "tax": 10.4,
-    "amount": 159.04,
-    "idAgregador": null
+    "amount": 159.04
   },
   {
     "id": "C00449",
@@ -8078,8 +7630,7 @@
     "quantity": 3,
     "unitPrice": 74.79,
     "tax": 15.71,
-    "amount": 240.08,
-    "idAgregador": null
+    "amount": 240.08
   },
   {
     "id": "C00450",
@@ -8096,8 +7647,7 @@
     "quantity": 4,
     "unitPrice": 75.26,
     "tax": 21.07,
-    "amount": 322.11,
-    "idAgregador": null
+    "amount": 322.11
   },
   {
     "id": "C00451",
@@ -8114,8 +7664,7 @@
     "quantity": 1,
     "unitPrice": 75.73,
     "tax": 5.3,
-    "amount": 81.03,
-    "idAgregador": null
+    "amount": 81.03
   },
   {
     "id": "C00452",
@@ -8132,8 +7681,7 @@
     "quantity": 2,
     "unitPrice": 76.2,
     "tax": 10.67,
-    "amount": 163.07,
-    "idAgregador": null
+    "amount": 163.07
   },
   {
     "id": "C00453",
@@ -8150,8 +7698,7 @@
     "quantity": 1,
     "unitPrice": 73.85,
     "tax": 5.17,
-    "amount": 79.02,
-    "idAgregador": null
+    "amount": 79.02
   },
   {
     "id": "C00454",
@@ -8168,8 +7715,7 @@
     "quantity": 2,
     "unitPrice": 74.32,
     "tax": 10.4,
-    "amount": 159.04,
-    "idAgregador": null
+    "amount": 159.04
   },
   {
     "id": "C00455",
@@ -8186,8 +7732,7 @@
     "quantity": 3,
     "unitPrice": 74.79,
     "tax": 15.71,
-    "amount": 240.08,
-    "idAgregador": null
+    "amount": 240.08
   },
   {
     "id": "C00456",
@@ -8204,8 +7749,7 @@
     "quantity": 4,
     "unitPrice": 75.26,
     "tax": 21.07,
-    "amount": 322.11,
-    "idAgregador": null
+    "amount": 322.11
   },
   {
     "id": "C00457",
@@ -8222,8 +7766,7 @@
     "quantity": 1,
     "unitPrice": 75.73,
     "tax": 5.3,
-    "amount": 81.03,
-    "idAgregador": null
+    "amount": 81.03
   },
   {
     "id": "C00458",
@@ -8240,8 +7783,7 @@
     "quantity": 2,
     "unitPrice": 76.2,
     "tax": 10.67,
-    "amount": 163.07,
-    "idAgregador": null
+    "amount": 163.07
   },
   {
     "id": "C00459",
@@ -8258,8 +7800,7 @@
     "quantity": 3,
     "unitPrice": 76.67,
     "tax": 16.1,
-    "amount": 246.11,
-    "idAgregador": null
+    "amount": 246.11
   },
   {
     "id": "C00460",
@@ -8276,8 +7817,7 @@
     "quantity": 1,
     "unitPrice": 73.85,
     "tax": 5.17,
-    "amount": 79.02,
-    "idAgregador": null
+    "amount": 79.02
   },
   {
     "id": "C00461",
@@ -8294,8 +7834,7 @@
     "quantity": 2,
     "unitPrice": 74.32,
     "tax": 10.4,
-    "amount": 159.04,
-    "idAgregador": null
+    "amount": 159.04
   },
   {
     "id": "C00462",
@@ -8312,8 +7851,7 @@
     "quantity": 3,
     "unitPrice": 74.79,
     "tax": 15.71,
-    "amount": 240.08,
-    "idAgregador": null
+    "amount": 240.08
   },
   {
     "id": "C00463",
@@ -8330,8 +7868,7 @@
     "quantity": 1,
     "unitPrice": 73.85,
     "tax": 5.17,
-    "amount": 79.02,
-    "idAgregador": null
+    "amount": 79.02
   },
   {
     "id": "C00464",
@@ -8348,8 +7885,7 @@
     "quantity": 2,
     "unitPrice": 74.32,
     "tax": 10.4,
-    "amount": 159.04,
-    "idAgregador": null
+    "amount": 159.04
   },
   {
     "id": "C00465",
@@ -8366,8 +7902,7 @@
     "quantity": 3,
     "unitPrice": 74.79,
     "tax": 15.71,
-    "amount": 240.08,
-    "idAgregador": null
+    "amount": 240.08
   },
   {
     "id": "C00466",
@@ -8384,8 +7919,7 @@
     "quantity": 4,
     "unitPrice": 75.26,
     "tax": 21.07,
-    "amount": 322.11,
-    "idAgregador": null
+    "amount": 322.11
   },
   {
     "id": "C00467",
@@ -8402,8 +7936,7 @@
     "quantity": 1,
     "unitPrice": 110.6,
     "tax": 7.74,
-    "amount": 118.34,
-    "idAgregador": null
+    "amount": 118.34
   },
   {
     "id": "C00468",
@@ -8420,8 +7953,7 @@
     "quantity": 2,
     "unitPrice": 111.07,
     "tax": 15.55,
-    "amount": 237.69,
-    "idAgregador": null
+    "amount": 237.69
   },
   {
     "id": "C00469",
@@ -8438,8 +7970,7 @@
     "quantity": 3,
     "unitPrice": 111.54,
     "tax": 23.42,
-    "amount": 358.04,
-    "idAgregador": null
+    "amount": 358.04
   },
   {
     "id": "C00470",
@@ -8456,8 +7987,7 @@
     "quantity": 4,
     "unitPrice": 112.01,
     "tax": 31.36,
-    "amount": 479.4,
-    "idAgregador": null
+    "amount": 479.4
   },
   {
     "id": "C00471",
@@ -8474,8 +8004,7 @@
     "quantity": 1,
     "unitPrice": 112.48,
     "tax": 7.87,
-    "amount": 120.35,
-    "idAgregador": null
+    "amount": 120.35
   },
   {
     "id": "C00472",
@@ -8492,8 +8021,7 @@
     "quantity": 2,
     "unitPrice": 112.95,
     "tax": 15.81,
-    "amount": 241.71,
-    "idAgregador": null
+    "amount": 241.71
   },
   {
     "id": "C00473",
@@ -8510,8 +8038,7 @@
     "quantity": 1,
     "unitPrice": 110.6,
     "tax": 7.74,
-    "amount": 118.34,
-    "idAgregador": null
+    "amount": 118.34
   },
   {
     "id": "C00474",
@@ -8528,8 +8055,7 @@
     "quantity": 2,
     "unitPrice": 111.07,
     "tax": 15.55,
-    "amount": 237.69,
-    "idAgregador": null
+    "amount": 237.69
   },
   {
     "id": "C00475",
@@ -8546,8 +8072,7 @@
     "quantity": 3,
     "unitPrice": 111.54,
     "tax": 23.42,
-    "amount": 358.04,
-    "idAgregador": null
+    "amount": 358.04
   },
   {
     "id": "C00476",
@@ -8564,8 +8089,7 @@
     "quantity": 4,
     "unitPrice": 112.01,
     "tax": 31.36,
-    "amount": 479.4,
-    "idAgregador": null
+    "amount": 479.4
   },
   {
     "id": "C00477",
@@ -8582,8 +8106,7 @@
     "quantity": 1,
     "unitPrice": 112.48,
     "tax": 7.87,
-    "amount": 120.35,
-    "idAgregador": null
+    "amount": 120.35
   },
   {
     "id": "C00478",
@@ -8600,8 +8123,7 @@
     "quantity": 2,
     "unitPrice": 112.95,
     "tax": 15.81,
-    "amount": 241.71,
-    "idAgregador": null
+    "amount": 241.71
   },
   {
     "id": "C00479",
@@ -8618,8 +8140,7 @@
     "quantity": 3,
     "unitPrice": 113.42,
     "tax": 23.82,
-    "amount": 364.08,
-    "idAgregador": null
+    "amount": 364.08
   },
   {
     "id": "C00480",
@@ -8636,8 +8157,7 @@
     "quantity": 1,
     "unitPrice": 110.6,
     "tax": 7.74,
-    "amount": 118.34,
-    "idAgregador": null
+    "amount": 118.34
   },
   {
     "id": "C00481",
@@ -8654,8 +8174,7 @@
     "quantity": 2,
     "unitPrice": 111.07,
     "tax": 15.55,
-    "amount": 237.69,
-    "idAgregador": null
+    "amount": 237.69
   },
   {
     "id": "C00482",
@@ -8672,8 +8191,7 @@
     "quantity": 3,
     "unitPrice": 111.54,
     "tax": 23.42,
-    "amount": 358.04,
-    "idAgregador": null
+    "amount": 358.04
   },
   {
     "id": "C00483",
@@ -8690,8 +8208,7 @@
     "quantity": 1,
     "unitPrice": 110.6,
     "tax": 7.74,
-    "amount": 118.34,
-    "idAgregador": null
+    "amount": 118.34
   },
   {
     "id": "C00484",
@@ -8708,8 +8225,7 @@
     "quantity": 2,
     "unitPrice": 111.07,
     "tax": 15.55,
-    "amount": 237.69,
-    "idAgregador": null
+    "amount": 237.69
   },
   {
     "id": "C00485",
@@ -8726,8 +8242,7 @@
     "quantity": 3,
     "unitPrice": 111.54,
     "tax": 23.42,
-    "amount": 358.04,
-    "idAgregador": null
+    "amount": 358.04
   },
   {
     "id": "C00486",
@@ -8744,8 +8259,7 @@
     "quantity": 4,
     "unitPrice": 112.01,
     "tax": 31.36,
-    "amount": 479.4,
-    "idAgregador": null
+    "amount": 479.4
   },
   {
     "id": "C00487",
@@ -8762,8 +8276,7 @@
     "quantity": 1,
     "unitPrice": 50.75,
     "tax": 3.55,
-    "amount": 54.3,
-    "idAgregador": null
+    "amount": 54.3
   },
   {
     "id": "C00488",
@@ -8780,8 +8293,7 @@
     "quantity": 2,
     "unitPrice": 51.22,
     "tax": 7.17,
-    "amount": 109.61,
-    "idAgregador": null
+    "amount": 109.61
   },
   {
     "id": "C00489",
@@ -8798,8 +8310,7 @@
     "quantity": 3,
     "unitPrice": 51.69,
     "tax": 10.85,
-    "amount": 165.92,
-    "idAgregador": null
+    "amount": 165.92
   },
   {
     "id": "C00490",
@@ -8816,8 +8327,7 @@
     "quantity": 4,
     "unitPrice": 52.16,
     "tax": 14.6,
-    "amount": 223.24,
-    "idAgregador": null
+    "amount": 223.24
   },
   {
     "id": "C00491",
@@ -8834,8 +8344,7 @@
     "quantity": 1,
     "unitPrice": 52.63,
     "tax": 3.68,
-    "amount": 56.31,
-    "idAgregador": null
+    "amount": 56.31
   },
   {
     "id": "C00492",
@@ -8852,8 +8361,7 @@
     "quantity": 2,
     "unitPrice": 53.1,
     "tax": 7.43,
-    "amount": 113.63,
-    "idAgregador": null
+    "amount": 113.63
   },
   {
     "id": "C00493",
@@ -8870,8 +8378,7 @@
     "quantity": 3,
     "unitPrice": 53.57,
     "tax": 11.25,
-    "amount": 171.96,
-    "idAgregador": null
+    "amount": 171.96
   },
   {
     "id": "C00494",
@@ -8888,8 +8395,7 @@
     "quantity": 1,
     "unitPrice": 50.75,
     "tax": 3.55,
-    "amount": 54.3,
-    "idAgregador": null
+    "amount": 54.3
   },
   {
     "id": "C00495",
@@ -8906,8 +8412,7 @@
     "quantity": 2,
     "unitPrice": 51.22,
     "tax": 7.17,
-    "amount": 109.61,
-    "idAgregador": null
+    "amount": 109.61
   },
   {
     "id": "C00496",
@@ -8924,8 +8429,7 @@
     "quantity": 3,
     "unitPrice": 51.69,
     "tax": 10.85,
-    "amount": 165.92,
-    "idAgregador": null
+    "amount": 165.92
   },
   {
     "id": "C00497",
@@ -8942,8 +8446,7 @@
     "quantity": 1,
     "unitPrice": 50.75,
     "tax": 3.55,
-    "amount": 54.3,
-    "idAgregador": null
+    "amount": 54.3
   },
   {
     "id": "C00498",
@@ -8960,8 +8463,7 @@
     "quantity": 2,
     "unitPrice": 51.22,
     "tax": 7.17,
-    "amount": 109.61,
-    "idAgregador": null
+    "amount": 109.61
   },
   {
     "id": "C00499",
@@ -8978,8 +8480,7 @@
     "quantity": 3,
     "unitPrice": 51.69,
     "tax": 10.85,
-    "amount": 165.92,
-    "idAgregador": null
+    "amount": 165.92
   },
   {
     "id": "C00500",
@@ -8996,8 +8497,7 @@
     "quantity": 4,
     "unitPrice": 52.16,
     "tax": 14.6,
-    "amount": 223.24,
-    "idAgregador": null
+    "amount": 223.24
   },
   {
     "id": "C00501",
@@ -9014,8 +8514,7 @@
     "quantity": 1,
     "unitPrice": 50.75,
     "tax": 3.55,
-    "amount": 54.3,
-    "idAgregador": null
+    "amount": 54.3
   },
   {
     "id": "C00502",
@@ -9032,8 +8531,7 @@
     "quantity": 2,
     "unitPrice": 51.22,
     "tax": 7.17,
-    "amount": 109.61,
-    "idAgregador": null
+    "amount": 109.61
   },
   {
     "id": "C00503",
@@ -9050,8 +8548,7 @@
     "quantity": 3,
     "unitPrice": 51.69,
     "tax": 10.85,
-    "amount": 165.92,
-    "idAgregador": null
+    "amount": 165.92
   },
   {
     "id": "C00504",
@@ -9068,8 +8565,7 @@
     "quantity": 4,
     "unitPrice": 52.16,
     "tax": 14.6,
-    "amount": 223.24,
-    "idAgregador": null
+    "amount": 223.24
   },
   {
     "id": "C00505",
@@ -9086,8 +8582,7 @@
     "quantity": 1,
     "unitPrice": 52.63,
     "tax": 3.68,
-    "amount": 56.31,
-    "idAgregador": null
+    "amount": 56.31
   },
   {
     "id": "C00506",
@@ -9104,8 +8599,7 @@
     "quantity": 1,
     "unitPrice": 87.5,
     "tax": 6.13,
-    "amount": 93.63,
-    "idAgregador": null
+    "amount": 93.63
   },
   {
     "id": "C00507",
@@ -9122,8 +8616,7 @@
     "quantity": 2,
     "unitPrice": 87.97,
     "tax": 12.32,
-    "amount": 188.26,
-    "idAgregador": null
+    "amount": 188.26
   },
   {
     "id": "C00508",
@@ -9140,8 +8633,7 @@
     "quantity": 3,
     "unitPrice": 88.44,
     "tax": 18.57,
-    "amount": 283.89,
-    "idAgregador": null
+    "amount": 283.89
   },
   {
     "id": "C00509",
@@ -9158,8 +8650,7 @@
     "quantity": 4,
     "unitPrice": 88.91,
     "tax": 24.89,
-    "amount": 380.53,
-    "idAgregador": null
+    "amount": 380.53
   },
   {
     "id": "C00510",
@@ -9176,8 +8667,7 @@
     "quantity": 1,
     "unitPrice": 89.38,
     "tax": 6.26,
-    "amount": 95.64,
-    "idAgregador": null
+    "amount": 95.64
   },
   {
     "id": "C00511",
@@ -9194,8 +8684,7 @@
     "quantity": 2,
     "unitPrice": 89.85,
     "tax": 12.58,
-    "amount": 192.28,
-    "idAgregador": null
+    "amount": 192.28
   },
   {
     "id": "C00512",
@@ -9212,8 +8701,7 @@
     "quantity": 3,
     "unitPrice": 90.32,
     "tax": 18.97,
-    "amount": 289.93,
-    "idAgregador": null
+    "amount": 289.93
   },
   {
     "id": "C00513",
@@ -9230,8 +8718,7 @@
     "quantity": 1,
     "unitPrice": 87.5,
     "tax": 6.13,
-    "amount": 93.63,
-    "idAgregador": null
+    "amount": 93.63
   },
   {
     "id": "C00514",
@@ -9248,8 +8735,7 @@
     "quantity": 2,
     "unitPrice": 87.97,
     "tax": 12.32,
-    "amount": 188.26,
-    "idAgregador": null
+    "amount": 188.26
   },
   {
     "id": "C00515",
@@ -9266,8 +8752,7 @@
     "quantity": 3,
     "unitPrice": 88.44,
     "tax": 18.57,
-    "amount": 283.89,
-    "idAgregador": null
+    "amount": 283.89
   },
   {
     "id": "C00516",
@@ -9284,8 +8769,7 @@
     "quantity": 1,
     "unitPrice": 87.5,
     "tax": 6.13,
-    "amount": 93.63,
-    "idAgregador": null
+    "amount": 93.63
   },
   {
     "id": "C00517",
@@ -9302,8 +8786,7 @@
     "quantity": 2,
     "unitPrice": 87.97,
     "tax": 12.32,
-    "amount": 188.26,
-    "idAgregador": null
+    "amount": 188.26
   },
   {
     "id": "C00518",
@@ -9320,8 +8803,7 @@
     "quantity": 3,
     "unitPrice": 88.44,
     "tax": 18.57,
-    "amount": 283.89,
-    "idAgregador": null
+    "amount": 283.89
   },
   {
     "id": "C00519",
@@ -9338,8 +8820,7 @@
     "quantity": 4,
     "unitPrice": 88.91,
     "tax": 24.89,
-    "amount": 380.53,
-    "idAgregador": null
+    "amount": 380.53
   },
   {
     "id": "C00520",
@@ -9356,8 +8837,7 @@
     "quantity": 1,
     "unitPrice": 87.5,
     "tax": 6.13,
-    "amount": 93.63,
-    "idAgregador": null
+    "amount": 93.63
   },
   {
     "id": "C00521",
@@ -9374,8 +8854,7 @@
     "quantity": 2,
     "unitPrice": 87.97,
     "tax": 12.32,
-    "amount": 188.26,
-    "idAgregador": null
+    "amount": 188.26
   },
   {
     "id": "C00522",
@@ -9392,8 +8871,7 @@
     "quantity": 3,
     "unitPrice": 88.44,
     "tax": 18.57,
-    "amount": 283.89,
-    "idAgregador": null
+    "amount": 283.89
   },
   {
     "id": "C00523",
@@ -9410,8 +8888,7 @@
     "quantity": 4,
     "unitPrice": 88.91,
     "tax": 24.89,
-    "amount": 380.53,
-    "idAgregador": null
+    "amount": 380.53
   },
   {
     "id": "C00524",
@@ -9428,8 +8905,7 @@
     "quantity": 1,
     "unitPrice": 89.38,
     "tax": 6.26,
-    "amount": 95.64,
-    "idAgregador": null
+    "amount": 95.64
   },
   {
     "id": "C00525",
@@ -9446,8 +8922,7 @@
     "quantity": 1,
     "unitPrice": 124.25,
     "tax": 8.7,
-    "amount": 132.95,
-    "idAgregador": null
+    "amount": 132.95
   },
   {
     "id": "C00526",
@@ -9464,8 +8939,7 @@
     "quantity": 2,
     "unitPrice": 124.72,
     "tax": 17.46,
-    "amount": 266.9,
-    "idAgregador": null
+    "amount": 266.9
   },
   {
     "id": "C00527",
@@ -9482,8 +8956,7 @@
     "quantity": 3,
     "unitPrice": 125.19,
     "tax": 26.29,
-    "amount": 401.86,
-    "idAgregador": null
+    "amount": 401.86
   },
   {
     "id": "C00528",
@@ -9500,8 +8973,7 @@
     "quantity": 4,
     "unitPrice": 125.66,
     "tax": 35.18,
-    "amount": 537.82,
-    "idAgregador": null
+    "amount": 537.82
   },
   {
     "id": "C00529",
@@ -9518,8 +8990,7 @@
     "quantity": 1,
     "unitPrice": 126.13,
     "tax": 8.83,
-    "amount": 134.96,
-    "idAgregador": null
+    "amount": 134.96
   },
   {
     "id": "C00530",
@@ -9536,8 +9007,7 @@
     "quantity": 2,
     "unitPrice": 126.6,
     "tax": 17.72,
-    "amount": 270.92,
-    "idAgregador": null
+    "amount": 270.92
   },
   {
     "id": "C00531",
@@ -9554,8 +9024,7 @@
     "quantity": 3,
     "unitPrice": 127.07,
     "tax": 26.68,
-    "amount": 407.89,
-    "idAgregador": null
+    "amount": 407.89
   },
   {
     "id": "C00532",
@@ -9572,8 +9041,7 @@
     "quantity": 1,
     "unitPrice": 124.25,
     "tax": 8.7,
-    "amount": 132.95,
-    "idAgregador": null
+    "amount": 132.95
   },
   {
     "id": "C00533",
@@ -9590,8 +9058,7 @@
     "quantity": 2,
     "unitPrice": 124.72,
     "tax": 17.46,
-    "amount": 266.9,
-    "idAgregador": null
+    "amount": 266.9
   },
   {
     "id": "C00534",
@@ -9608,8 +9075,7 @@
     "quantity": 3,
     "unitPrice": 125.19,
     "tax": 26.29,
-    "amount": 401.86,
-    "idAgregador": null
+    "amount": 401.86
   },
   {
     "id": "C00535",
@@ -9626,8 +9092,7 @@
     "quantity": 1,
     "unitPrice": 124.25,
     "tax": 8.7,
-    "amount": 132.95,
-    "idAgregador": null
+    "amount": 132.95
   },
   {
     "id": "C00536",
@@ -9644,8 +9109,7 @@
     "quantity": 2,
     "unitPrice": 124.72,
     "tax": 17.46,
-    "amount": 266.9,
-    "idAgregador": null
+    "amount": 266.9
   },
   {
     "id": "C00537",
@@ -9662,8 +9126,7 @@
     "quantity": 3,
     "unitPrice": 125.19,
     "tax": 26.29,
-    "amount": 401.86,
-    "idAgregador": null
+    "amount": 401.86
   },
   {
     "id": "C00538",
@@ -9680,8 +9143,7 @@
     "quantity": 4,
     "unitPrice": 125.66,
     "tax": 35.18,
-    "amount": 537.82,
-    "idAgregador": null
+    "amount": 537.82
   },
   {
     "id": "C00539",
@@ -9698,8 +9160,7 @@
     "quantity": 1,
     "unitPrice": 124.25,
     "tax": 8.7,
-    "amount": 132.95,
-    "idAgregador": null
+    "amount": 132.95
   },
   {
     "id": "C00540",
@@ -9716,8 +9177,7 @@
     "quantity": 2,
     "unitPrice": 124.72,
     "tax": 17.46,
-    "amount": 266.9,
-    "idAgregador": null
+    "amount": 266.9
   },
   {
     "id": "C00541",
@@ -9734,8 +9194,7 @@
     "quantity": 3,
     "unitPrice": 125.19,
     "tax": 26.29,
-    "amount": 401.86,
-    "idAgregador": null
+    "amount": 401.86
   },
   {
     "id": "C00542",
@@ -9752,8 +9211,7 @@
     "quantity": 4,
     "unitPrice": 125.66,
     "tax": 35.18,
-    "amount": 537.82,
-    "idAgregador": null
+    "amount": 537.82
   },
   {
     "id": "C00543",
@@ -9770,8 +9228,7 @@
     "quantity": 1,
     "unitPrice": 126.13,
     "tax": 8.83,
-    "amount": 134.96,
-    "idAgregador": null
+    "amount": 134.96
   },
   {
     "id": "C00544",
@@ -9788,8 +9245,7 @@
     "quantity": 1,
     "unitPrice": 36.05,
     "tax": 2.52,
-    "amount": 38.57,
-    "idAgregador": null
+    "amount": 38.57
   },
   {
     "id": "C00545",
@@ -9806,8 +9262,7 @@
     "quantity": 2,
     "unitPrice": 36.52,
     "tax": 5.11,
-    "amount": 78.15,
-    "idAgregador": null
+    "amount": 78.15
   },
   {
     "id": "C00546",
@@ -9824,8 +9279,7 @@
     "quantity": 3,
     "unitPrice": 36.99,
     "tax": 7.77,
-    "amount": 118.74,
-    "idAgregador": null
+    "amount": 118.74
   },
   {
     "id": "C00547",
@@ -9842,8 +9296,7 @@
     "quantity": 4,
     "unitPrice": 37.46,
     "tax": 10.49,
-    "amount": 160.33,
-    "idAgregador": null
+    "amount": 160.33
   },
   {
     "id": "C00548",
@@ -9860,8 +9313,7 @@
     "quantity": 1,
     "unitPrice": 37.93,
     "tax": 2.66,
-    "amount": 40.59,
-    "idAgregador": null
+    "amount": 40.59
   },
   {
     "id": "C00549",
@@ -9878,8 +9330,7 @@
     "quantity": 2,
     "unitPrice": 38.4,
     "tax": 5.38,
-    "amount": 82.18,
-    "idAgregador": null
+    "amount": 82.18
   },
   {
     "id": "C00550",
@@ -9896,8 +9347,7 @@
     "quantity": 3,
     "unitPrice": 38.87,
     "tax": 8.16,
-    "amount": 124.77,
-    "idAgregador": null
+    "amount": 124.77
   },
   {
     "id": "C00551",
@@ -9914,8 +9364,7 @@
     "quantity": 1,
     "unitPrice": 36.05,
     "tax": 2.52,
-    "amount": 38.57,
-    "idAgregador": null
+    "amount": 38.57
   },
   {
     "id": "C00552",
@@ -9932,8 +9381,7 @@
     "quantity": 2,
     "unitPrice": 36.52,
     "tax": 5.11,
-    "amount": 78.15,
-    "idAgregador": null
+    "amount": 78.15
   },
   {
     "id": "C00553",
@@ -9950,8 +9398,7 @@
     "quantity": 3,
     "unitPrice": 36.99,
     "tax": 7.77,
-    "amount": 118.74,
-    "idAgregador": null
+    "amount": 118.74
   },
   {
     "id": "C00554",
@@ -9968,8 +9415,7 @@
     "quantity": 1,
     "unitPrice": 36.05,
     "tax": 2.52,
-    "amount": 38.57,
-    "idAgregador": null
+    "amount": 38.57
   },
   {
     "id": "C00555",
@@ -9986,8 +9432,7 @@
     "quantity": 2,
     "unitPrice": 36.52,
     "tax": 5.11,
-    "amount": 78.15,
-    "idAgregador": null
+    "amount": 78.15
   },
   {
     "id": "C00556",
@@ -10004,8 +9449,7 @@
     "quantity": 3,
     "unitPrice": 36.99,
     "tax": 7.77,
-    "amount": 118.74,
-    "idAgregador": null
+    "amount": 118.74
   },
   {
     "id": "C00557",
@@ -10022,8 +9466,7 @@
     "quantity": 4,
     "unitPrice": 37.46,
     "tax": 10.49,
-    "amount": 160.33,
-    "idAgregador": null
+    "amount": 160.33
   },
   {
     "id": "C00558",
@@ -10040,8 +9483,7 @@
     "quantity": 1,
     "unitPrice": 36.05,
     "tax": 2.52,
-    "amount": 38.57,
-    "idAgregador": null
+    "amount": 38.57
   },
   {
     "id": "C00559",
@@ -10058,8 +9500,7 @@
     "quantity": 2,
     "unitPrice": 36.52,
     "tax": 5.11,
-    "amount": 78.15,
-    "idAgregador": null
+    "amount": 78.15
   },
   {
     "id": "C00560",
@@ -10076,8 +9517,7 @@
     "quantity": 3,
     "unitPrice": 36.99,
     "tax": 7.77,
-    "amount": 118.74,
-    "idAgregador": null
+    "amount": 118.74
   },
   {
     "id": "C00561",
@@ -10094,8 +9534,7 @@
     "quantity": 4,
     "unitPrice": 37.46,
     "tax": 10.49,
-    "amount": 160.33,
-    "idAgregador": null
+    "amount": 160.33
   },
   {
     "id": "C00562",
@@ -10112,8 +9551,7 @@
     "quantity": 1,
     "unitPrice": 37.93,
     "tax": 2.66,
-    "amount": 40.59,
-    "idAgregador": null
+    "amount": 40.59
   },
   {
     "id": "C00563",
@@ -10130,8 +9568,7 @@
     "quantity": 1,
     "unitPrice": 72.8,
     "tax": 5.1,
-    "amount": 77.9,
-    "idAgregador": null
+    "amount": 77.9
   },
   {
     "id": "C00564",
@@ -10148,8 +9585,7 @@
     "quantity": 2,
     "unitPrice": 73.27,
     "tax": 10.26,
-    "amount": 156.8,
-    "idAgregador": null
+    "amount": 156.8
   },
   {
     "id": "C00565",
@@ -10166,8 +9602,7 @@
     "quantity": 3,
     "unitPrice": 73.74,
     "tax": 15.49,
-    "amount": 236.71,
-    "idAgregador": null
+    "amount": 236.71
   },
   {
     "id": "C00566",
@@ -10184,8 +9619,7 @@
     "quantity": 4,
     "unitPrice": 74.21,
     "tax": 20.78,
-    "amount": 317.62,
-    "idAgregador": null
+    "amount": 317.62
   },
   {
     "id": "C00567",
@@ -10202,8 +9636,7 @@
     "quantity": 1,
     "unitPrice": 74.68,
     "tax": 5.23,
-    "amount": 79.91,
-    "idAgregador": null
+    "amount": 79.91
   },
   {
     "id": "C00568",
@@ -10220,8 +9653,7 @@
     "quantity": 2,
     "unitPrice": 75.15,
     "tax": 10.52,
-    "amount": 160.82,
-    "idAgregador": null
+    "amount": 160.82
   },
   {
     "id": "C00569",
@@ -10238,8 +9670,7 @@
     "quantity": 3,
     "unitPrice": 75.62,
     "tax": 15.88,
-    "amount": 242.74,
-    "idAgregador": null
+    "amount": 242.74
   },
   {
     "id": "C00570",
@@ -10256,8 +9687,7 @@
     "quantity": 1,
     "unitPrice": 72.8,
     "tax": 5.1,
-    "amount": 77.9,
-    "idAgregador": null
+    "amount": 77.9
   },
   {
     "id": "C00571",
@@ -10274,8 +9704,7 @@
     "quantity": 2,
     "unitPrice": 73.27,
     "tax": 10.26,
-    "amount": 156.8,
-    "idAgregador": null
+    "amount": 156.8
   },
   {
     "id": "C00572",
@@ -10292,8 +9721,7 @@
     "quantity": 3,
     "unitPrice": 73.74,
     "tax": 15.49,
-    "amount": 236.71,
-    "idAgregador": null
+    "amount": 236.71
   },
   {
     "id": "C00573",
@@ -10310,8 +9738,7 @@
     "quantity": 1,
     "unitPrice": 72.8,
     "tax": 5.1,
-    "amount": 77.9,
-    "idAgregador": null
+    "amount": 77.9
   },
   {
     "id": "C00574",
@@ -10328,8 +9755,7 @@
     "quantity": 2,
     "unitPrice": 73.27,
     "tax": 10.26,
-    "amount": 156.8,
-    "idAgregador": null
+    "amount": 156.8
   },
   {
     "id": "C00575",
@@ -10346,8 +9772,7 @@
     "quantity": 3,
     "unitPrice": 73.74,
     "tax": 15.49,
-    "amount": 236.71,
-    "idAgregador": null
+    "amount": 236.71
   },
   {
     "id": "C00576",
@@ -10364,8 +9789,7 @@
     "quantity": 4,
     "unitPrice": 74.21,
     "tax": 20.78,
-    "amount": 317.62,
-    "idAgregador": null
+    "amount": 317.62
   },
   {
     "id": "C00577",
@@ -10382,8 +9806,7 @@
     "quantity": 1,
     "unitPrice": 72.8,
     "tax": 5.1,
-    "amount": 77.9,
-    "idAgregador": null
+    "amount": 77.9
   },
   {
     "id": "C00578",
@@ -10400,8 +9823,7 @@
     "quantity": 2,
     "unitPrice": 73.27,
     "tax": 10.26,
-    "amount": 156.8,
-    "idAgregador": null
+    "amount": 156.8
   },
   {
     "id": "C00579",
@@ -10418,8 +9840,7 @@
     "quantity": 3,
     "unitPrice": 73.74,
     "tax": 15.49,
-    "amount": 236.71,
-    "idAgregador": null
+    "amount": 236.71
   },
   {
     "id": "C00580",
@@ -10436,8 +9857,7 @@
     "quantity": 4,
     "unitPrice": 74.21,
     "tax": 20.78,
-    "amount": 317.62,
-    "idAgregador": null
+    "amount": 317.62
   },
   {
     "id": "C00581",
@@ -10454,8 +9874,7 @@
     "quantity": 1,
     "unitPrice": 74.68,
     "tax": 5.23,
-    "amount": 79.91,
-    "idAgregador": null
+    "amount": 79.91
   },
   {
     "id": "C00582",
@@ -10472,8 +9891,7 @@
     "quantity": 1,
     "unitPrice": 109.55,
     "tax": 7.67,
-    "amount": 117.22,
-    "idAgregador": null
+    "amount": 117.22
   },
   {
     "id": "C00583",
@@ -10490,8 +9908,7 @@
     "quantity": 2,
     "unitPrice": 110.02,
     "tax": 15.4,
-    "amount": 235.44,
-    "idAgregador": null
+    "amount": 235.44
   },
   {
     "id": "C00584",
@@ -10508,8 +9925,7 @@
     "quantity": 3,
     "unitPrice": 110.49,
     "tax": 23.2,
-    "amount": 354.67,
-    "idAgregador": null
+    "amount": 354.67
   },
   {
     "id": "C00585",
@@ -10526,8 +9942,7 @@
     "quantity": 4,
     "unitPrice": 110.96,
     "tax": 31.07,
-    "amount": 474.91,
-    "idAgregador": null
+    "amount": 474.91
   },
   {
     "id": "C00586",
@@ -10544,8 +9959,7 @@
     "quantity": 1,
     "unitPrice": 111.43,
     "tax": 7.8,
-    "amount": 119.23,
-    "idAgregador": null
+    "amount": 119.23
   },
   {
     "id": "C00587",
@@ -10562,8 +9976,7 @@
     "quantity": 2,
     "unitPrice": 111.9,
     "tax": 15.67,
-    "amount": 239.47,
-    "idAgregador": null
+    "amount": 239.47
   },
   {
     "id": "C00588",
@@ -10580,8 +9993,7 @@
     "quantity": 3,
     "unitPrice": 112.37,
     "tax": 23.6,
-    "amount": 360.71,
-    "idAgregador": null
+    "amount": 360.71
   },
   {
     "id": "C00589",
@@ -10598,8 +10010,7 @@
     "quantity": 1,
     "unitPrice": 109.55,
     "tax": 7.67,
-    "amount": 117.22,
-    "idAgregador": null
+    "amount": 117.22
   },
   {
     "id": "C00590",
@@ -10616,8 +10027,7 @@
     "quantity": 2,
     "unitPrice": 110.02,
     "tax": 15.4,
-    "amount": 235.44,
-    "idAgregador": null
+    "amount": 235.44
   },
   {
     "id": "C00591",
@@ -10634,8 +10044,7 @@
     "quantity": 3,
     "unitPrice": 110.49,
     "tax": 23.2,
-    "amount": 354.67,
-    "idAgregador": null
+    "amount": 354.67
   },
   {
     "id": "C00592",
@@ -10652,8 +10061,7 @@
     "quantity": 1,
     "unitPrice": 109.55,
     "tax": 7.67,
-    "amount": 117.22,
-    "idAgregador": null
+    "amount": 117.22
   },
   {
     "id": "C00593",
@@ -10670,8 +10078,7 @@
     "quantity": 2,
     "unitPrice": 110.02,
     "tax": 15.4,
-    "amount": 235.44,
-    "idAgregador": null
+    "amount": 235.44
   },
   {
     "id": "C00594",
@@ -10688,8 +10095,7 @@
     "quantity": 3,
     "unitPrice": 110.49,
     "tax": 23.2,
-    "amount": 354.67,
-    "idAgregador": null
+    "amount": 354.67
   },
   {
     "id": "C00595",
@@ -10706,8 +10112,7 @@
     "quantity": 4,
     "unitPrice": 110.96,
     "tax": 31.07,
-    "amount": 474.91,
-    "idAgregador": null
+    "amount": 474.91
   },
   {
     "id": "C00596",
@@ -10724,8 +10129,7 @@
     "quantity": 1,
     "unitPrice": 109.55,
     "tax": 7.67,
-    "amount": 117.22,
-    "idAgregador": null
+    "amount": 117.22
   },
   {
     "id": "C00597",
@@ -10742,8 +10146,7 @@
     "quantity": 2,
     "unitPrice": 110.02,
     "tax": 15.4,
-    "amount": 235.44,
-    "idAgregador": null
+    "amount": 235.44
   },
   {
     "id": "C00598",
@@ -10760,8 +10163,7 @@
     "quantity": 3,
     "unitPrice": 110.49,
     "tax": 23.2,
-    "amount": 354.67,
-    "idAgregador": null
+    "amount": 354.67
   },
   {
     "id": "C00599",
@@ -10778,8 +10180,7 @@
     "quantity": 4,
     "unitPrice": 110.96,
     "tax": 31.07,
-    "amount": 474.91,
-    "idAgregador": null
+    "amount": 474.91
   },
   {
     "id": "C00600",
@@ -10796,7 +10197,6 @@
     "quantity": 1,
     "unitPrice": 111.43,
     "tax": 7.8,
-    "amount": 119.23,
-    "idAgregador": null
+    "amount": 119.23
   }
 ]

@@ -25,7 +25,6 @@ export interface Coupon {
   unitPrice: number
   tax: number
   amount: number
-  idAgregador: string | null
 }
 
 export interface CouponFilters {
@@ -67,6 +66,7 @@ export interface AggregatedCouponGroup {
   productName: string
   acquirer: string
   paymentMethod: string
+  couponIds: string[]
   coupons: Coupon[]
   totalAmount: number
 }

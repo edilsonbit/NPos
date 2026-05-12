@@ -46,7 +46,6 @@ export const createCoupon = (index: number, product: Product, overrides?: Partia
     unitPrice,
     tax,
     amount,
-    idAgregador: null,
     ...overrides,
   }
 }

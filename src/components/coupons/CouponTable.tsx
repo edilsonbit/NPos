@@ -143,13 +143,13 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
                   <TableCell>
                     <Chip
                       size="small"
-                      label={coupon.status === 'ativo' ? 'Autorizado' : coupon.status}
+                      label={coupon.status === 'autorizado' ? 'Autorizado' : 'Cancelado'}
                       sx={{
                         fontSize: 10,
                         fontWeight: 700,
                         height: 20,
-                        backgroundColor: coupon.status === 'ativo' ? '#e8f5e9' : '#ffebee',
-                        color: coupon.status === 'ativo' ? '#2e7d32' : '#c62828',
+                        backgroundColor: coupon.status === 'autorizado' ? '#e8f5e9' : '#ffebee',
+                        color: coupon.status === 'autorizado' ? '#2e7d32' : '#c62828',
                       }}
                     />
                   </TableCell>

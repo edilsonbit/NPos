@@ -77,7 +77,7 @@ const CouponFiltersBar = ({
                     sx={selectSx}
                 >
                     <MenuItem value="">Todos</MenuItem>
-                    <MenuItem value="ativo">Autorizado</MenuItem>
+                    <MenuItem value="autorizado">Autorizado</MenuItem>
                     <MenuItem value="cancelado">Cancelado</MenuItem>
                 </TextField>
             </Stack>

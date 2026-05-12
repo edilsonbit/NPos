@@ -28,7 +28,7 @@ export const createCoupon = (index: number, product: Product, overrides?: Partia
   const tax = Number((unitPrice * qty * 0.07).toFixed(2))
   const amount = Number((qty * unitPrice + tax).toFixed(2))
   const ts = new Date(new Date('2026-03-01T08:00:00Z').getTime() + index * 3600 * 1000 * 4).toISOString()
-  const statuses: CouponStatus[] = ['ativo', 'ativo', 'ativo', 'cancelado']
+  const statuses: CouponStatus[] = ['autorizado', 'autorizado', 'autorizado', 'cancelado']
 
   return {
     id: `C${String(index).padStart(5, '0')}`,

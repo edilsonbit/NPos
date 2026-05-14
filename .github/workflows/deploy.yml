@@ -32,13 +32,11 @@ jobs:
 
       - name: Create production env
         run: |
-          cat > .env.production << 'EOF'
-          VITE_DATA_SOURCE=firebase
-          VITE_FIREBASE_API_KEY=AIzaSyCSugFTAyZBQAiaixEq0TIlGevf1y2T3sk
-          VITE_FIREBASE_AUTH_DOMAIN=ics-npos.firebaseapp.com
-          VITE_FIREBASE_PROJECT_ID=ics-npos
-          VITE_FIREBASE_APP_ID=1:664455694791:web:1e1642282499befd36f1e2
-          EOF
+          printf 'VITE_DATA_SOURCE=firebase\n' > .env.production
+          printf 'VITE_FIREBASE_API_KEY=AIzaSyCSugFTAyZBQAiaixEq0TIlGevf1y2T3sk\n' >> .env.production
+          printf 'VITE_FIREBASE_AUTH_DOMAIN=ics-npos.firebaseapp.com\n' >> .env.production
+          printf 'VITE_FIREBASE_PROJECT_ID=ics-npos\n' >> .env.production
+          printf 'VITE_FIREBASE_APP_ID=1:664455694791:web:1e1642282499befd36f1e2\n' >> .env.production
 
       - run: npm run build
 

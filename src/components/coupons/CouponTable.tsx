@@ -12,12 +12,15 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  TableSortLabel,
   Typography,
 } from '@mui/material'
 import HubIcon from '@mui/icons-material/Hub'
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import type { Coupon } from '../../domain/models'
+
+type SortDir = 'asc' | 'desc'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
@@ -48,8 +51,39 @@ interface CouponTableProps {
 const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, processing, filtering }: CouponTableProps) => {
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
+  const [sortField, setSortField] = useState<string | null>(null)
+  const [sortDir, setSortDir] = useState<SortDir>('asc')
 
-  const rows = coupons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+  const handleSort = (fieldId: string) => {
+    if (sortField === fieldId) {
+      if (sortDir === 'asc') {
+        setSortDir('desc')
+      } else {
+        setSortField(null)
+      }
+    } else {
+      setSortField(fieldId)
+      setSortDir('asc')
+    }
+    setPage(0)
+  }
+
+  const sortedCoupons = useMemo(() => {
+    if (!sortField) return coupons
+    return [...coupons].sort((a, b) => {
+      const aVal = a[sortField as keyof Coupon]
+      const bVal = b[sortField as keyof Coupon]
+      let cmp = 0
+      if (typeof aVal === 'number' && typeof bVal === 'number') {
+        cmp = aVal - bVal
+      } else {
+        cmp = String(aVal ?? '').localeCompare(String(bVal ?? ''))
+      }
+      return sortDir === 'asc' ? cmp : -cmp
+    })
+  }, [coupons, sortField, sortDir])
+
+  const rows = sortedCoupons.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
 
   return (
     <Box>
@@ -99,6 +133,7 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
               {headCells.map((cell) => (
                 <TableCell
                   key={cell.id}
+                  sortDirection={sortField === cell.id ? sortDir : false}
                   sx={{
                     fontWeight: 600,
                     fontSize: 12,
@@ -110,7 +145,18 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
                     '&.MuiTableCell-stickyHeader': { backgroundColor: '#1c2536' },
                   }}
                 >
-                  {cell.label}
+                  <TableSortLabel
+                    active={sortField === cell.id}
+                    direction={sortField === cell.id ? sortDir : 'asc'}
+                    onClick={() => handleSort(cell.id)}
+                    sx={{
+                      color: '#fff !important',
+                      '&.Mui-active': { color: '#90caf9 !important' },
+                      '& .MuiTableSortLabel-icon': { color: '#90caf9 !important' },
+                    }}
+                  >
+                    {cell.label}
+                  </TableSortLabel>
                 </TableCell>
               ))}
             </TableRow>

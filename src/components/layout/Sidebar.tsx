@@ -9,6 +9,7 @@ import {
 } from '@mui/material'
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
 import ApiIcon from '@mui/icons-material/Api'
+import BugReportIcon from '@mui/icons-material/BugReport'
 import CloudIcon from '@mui/icons-material/Cloud'
 import CodeIcon from '@mui/icons-material/Code'
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows'
@@ -50,6 +51,7 @@ const navSections: NavSection[] = [
       { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'agregador' },
       { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: 'Reenvio Pedido', pageKey: 'reenvio' },
       { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: 'Edição Payload', pageKey: 'payload' },
+      { icon: <BugReportIcon sx={{ fontSize: 18 }} />, label: 'API Tester', pageKey: 'api-tester' },
     ],
   },
   {

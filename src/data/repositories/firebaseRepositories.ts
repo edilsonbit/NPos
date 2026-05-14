@@ -19,7 +19,7 @@ export class FirebaseCouponRepository implements CouponRepository {
   async list(): Promise<Coupon[]> {
     const db = getFirebaseDb()
     const snapshot = await getDocs(collection(db, 'coupons'))
-    return snapshot.docs.map((item) => item.data() as Coupon)
+    return snapshot.docs.map((item) => ({ ...(item.data() as Coupon), id: item.id }))
   }
 
   async updateAggregatorIds(payload: AggregatorPersistPayload[]): Promise<void> {

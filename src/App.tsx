@@ -1,5 +1,6 @@
 import { Backdrop, Box, CircularProgress, Fade, Paper, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
+import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect, useMemo, useState } from 'react'
 import {
   aggregateAndPersistCoupons,
@@ -11,6 +12,7 @@ import { LoginPage } from './components/auth/LoginPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
+import { getFirebaseAuth } from './firebase/client'
 import type {
   AggregatedCouponGroup,
   AggregationCriteria,
@@ -39,7 +41,7 @@ const defaultCriteria: AggregationCriteria = {
 }
 
 const App = () => {
-  const [authenticated, setAuthenticated] = useState(false)
+  const [authenticated, setAuthenticated] = useState<boolean | null>(null)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [filters, setFilters] = useState<CouponFilters>(defaultFilters)
   const [appliedFilters, setAppliedFilters] = useState<CouponFilters>(defaultFilters)
@@ -49,6 +51,14 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
   const [activePage, setActivePage] = useState('cupons')
+
+  useEffect(() => {
+    const auth = getFirebaseAuth()
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setAuthenticated(!!user)
+    })
+    return unsubscribe
+  }, [])
 
   useEffect(() => {
     const bootstrap = async () => {
@@ -138,6 +148,14 @@ const App = () => {
     } finally {
       setProcessing(false)
     }
+  }
+
+  if (authenticated === null) {
+    return (
+      <Box sx={{ minHeight: '100vh', display: 'grid', placeItems: 'center' }}>
+        <CircularProgress sx={{ color: '#0d3b45' }} />
+      </Box>
+    )
   }
 
   if (!authenticated) {

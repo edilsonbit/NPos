@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Checkbox,
+  CircularProgress,
   FormControlLabel,
   IconButton,
   InputAdornment,
@@ -12,7 +13,9 @@ import {
 } from '@mui/material'
 import Visibility from '@mui/icons-material/Visibility'
 import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
+import { getFirebaseAuth } from '../../firebase/client'
 
 interface LoginPageProps {
   onLogin: () => void
@@ -23,10 +26,22 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
   const [keepLogged, setKeepLogged] = useState(true)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    onLogin()
+    setError('')
+    setLoading(true)
+    try {
+      const auth = getFirebaseAuth()
+      await signInWithEmailAndPassword(auth, username, password)
+      onLogin()
+    } catch {
+      setError('Email ou senha inválidos.')
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -144,6 +159,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
             type="submit"
             fullWidth
             variant="contained"
+            disabled={loading}
             sx={{
               mt: 0.5,
               backgroundColor: '#1976d2',
@@ -155,8 +171,14 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
               borderRadius: 1,
             }}
           >
-            Logar
+            {loading ? <CircularProgress size={22} sx={{ color: '#fff' }} /> : 'Logar'}
           </Button>
+
+          {error && (
+            <Typography variant="body2" color="error" sx={{ textAlign: 'center', mt: 0.5 }}>
+              {error}
+            </Typography>
+          )}
         </Box>
       </Paper>
     </Box>

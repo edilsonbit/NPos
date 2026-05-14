@@ -85,7 +85,7 @@ const navSections: NavSection[] = [
     label: 'Configurações',
     items: [
       { icon: <GroupIcon sx={{ fontSize: 18 }} />, label: 'Usuários', pageKey: 'usuarios' },
-      { icon: <TuneIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'config-agregador (beta)' },
+      { icon: <TuneIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'config-agregador' },
     ],
   },
 ]

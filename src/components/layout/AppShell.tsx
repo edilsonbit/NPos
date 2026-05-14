@@ -7,12 +7,14 @@ interface AppShellProps {
   activePage: string
   onNavigate: (pageKey: string) => void
   children: ReactNode
+  userEmail?: string
+  onLogout?: () => void
 }
 
-const AppShell = ({ activePage, onNavigate, children }: AppShellProps) => (
+const AppShell = ({ activePage, onNavigate, children, userEmail, onLogout }: AppShellProps) => (
   <Box sx={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f5f6fa' }}>
     <Sidebar activePage={activePage} onNavigate={onNavigate} />
-    <Header />
+    <Header userEmail={userEmail} onLogout={onLogout} />
     <Box
       component="main"
       sx={{

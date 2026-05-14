@@ -1,6 +1,6 @@
 import { Backdrop, Box, CircularProgress, Fade, Paper, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
-import { onAuthStateChanged } from 'firebase/auth'
+import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { useEffect, useMemo, useState } from 'react'
 import {
   aggregateAndPersistCoupons,
@@ -60,6 +60,7 @@ const saveCriteria = (c: AggregationCriteria) => {
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null)
+  const [userEmail, setUserEmail] = useState<string | undefined>(undefined)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [filters, setFilters] = useState<CouponFilters>(defaultFilters)
   const [appliedFilters, setAppliedFilters] = useState<CouponFilters>(defaultFilters)
@@ -79,6 +80,7 @@ const App = () => {
     const auth = getFirebaseAuth()
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setAuthenticated(!!user)
+      setUserEmail(user?.email ?? undefined)
     })
     return unsubscribe
   }, [])
@@ -223,7 +225,12 @@ const App = () => {
         </Stack>
       </Fade>
     </Backdrop>
-    <AppShell activePage={activePage} onNavigate={setActivePage}>
+    <AppShell
+      activePage={activePage}
+      onNavigate={setActivePage}
+      userEmail={userEmail}
+      onLogout={() => void signOut(getFirebaseAuth())}
+    >
       {activePage === 'dashboard' ? (
         <DashboardPage coupons={coupons} />
       ) : activePage === 'config-agregador' ? (

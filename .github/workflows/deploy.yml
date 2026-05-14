@@ -37,6 +37,7 @@ jobs:
           printf 'VITE_FIREBASE_AUTH_DOMAIN=ics-npos.firebaseapp.com\n' >> .env.production
           printf 'VITE_FIREBASE_PROJECT_ID=ics-npos\n' >> .env.production
           printf 'VITE_FIREBASE_APP_ID=1:664455694791:web:1e1642282499befd36f1e2\n' >> .env.production
+          printf 'VITE_FIREBASE_USE_EMULATOR=false\n' >> .env.production
 
       - run: npm run build
 

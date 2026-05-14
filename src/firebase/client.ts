@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app'
-import { getFirestore } from 'firebase/firestore'
+import { connectFirestoreEmulator, getFirestore } from 'firebase/firestore'
 
 let dbInstance: ReturnType<typeof getFirestore> | null = null
+let emulatorConnected = false
 
 export const getFirebaseDb = () => {
   if (dbInstance) {
@@ -27,5 +28,14 @@ export const getFirebaseDb = () => {
   })
 
   dbInstance = getFirestore(app)
+
+  const useEmulator = import.meta.env.VITE_FIREBASE_USE_EMULATOR === 'true'
+  if (useEmulator && !emulatorConnected) {
+    const emulatorHost = import.meta.env.VITE_FIREBASE_EMULATOR_HOST ?? '127.0.0.1'
+    const emulatorPort = Number(import.meta.env.VITE_FIREBASE_EMULATOR_PORT ?? '8080')
+    connectFirestoreEmulator(dbInstance, emulatorHost, emulatorPort)
+    emulatorConnected = true
+  }
+
   return dbInstance
 }

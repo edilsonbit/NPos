@@ -1,0 +1,29 @@
+{
+  "name": "npos-functions",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "engines": {
+    "node": "24"
+  },
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "serve": "npm run build; firebase emulators:start --only functions,firestore",
+    "deploy": "firebase deploy --only functions",
+    "lint": "echo \"No lint configured for functions\"",
+    "seed:firestore": "node scripts/seed-firestore.mjs",
+    "seed:firestore:dry": "node scripts/seed-firestore.mjs --dry-run"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.4.0",
+    "firebase-functions": "^6.6.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^4.17.23",
+    "typescript": "^5.8.3"
+  }
+}

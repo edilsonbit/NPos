@@ -8,6 +8,7 @@ import {
 } from './application/couponService'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
+import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
@@ -205,6 +206,8 @@ const App = () => {
         <AggregatorConfig criteria={criteria} onChange={setCriteria} />
       ) : activePage === 'agregador' ? (
         <AgregadorPage groups={groups} onGoToCupons={() => setActivePage('cupons')} />
+      ) : activePage === 'api-tester' ? (
+        <ApiTesterPage />
       ) : (
         /* Página padrão: Cupons Fiscais */
         <Paper

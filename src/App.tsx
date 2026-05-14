@@ -42,13 +42,34 @@ const defaultCriteria: AggregationCriteria = {
   byDate: true,
 }
 
+const CRITERIA_KEY = 'npos:aggregator:criteria'
+
+const loadCriteria = (): AggregationCriteria => {
+  try {
+    const raw = localStorage.getItem(CRITERIA_KEY)
+    if (raw) return { ...defaultCriteria, ...JSON.parse(raw) }
+  } catch {
+    // ignore
+  }
+  return defaultCriteria
+}
+
+const saveCriteria = (c: AggregationCriteria) => {
+  localStorage.setItem(CRITERIA_KEY, JSON.stringify(c))
+}
+
 const App = () => {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null)
   const [coupons, setCoupons] = useState<Coupon[]>([])
   const [filters, setFilters] = useState<CouponFilters>(defaultFilters)
   const [appliedFilters, setAppliedFilters] = useState<CouponFilters>(defaultFilters)
   const [filtering, setFiltering] = useState(false)
-  const [criteria, setCriteria] = useState<AggregationCriteria>(defaultCriteria)
+  const [criteria, setCriteria] = useState<AggregationCriteria>(loadCriteria)
+
+  const handleCriteriaChange = (next: AggregationCriteria) => {
+    saveCriteria(next)
+    setCriteria(next)
+  }
   const [groups, setGroups] = useState<AggregatedCouponGroup[]>([])
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
@@ -206,7 +227,13 @@ const App = () => {
       {activePage === 'dashboard' ? (
         <DashboardPage coupons={coupons} />
       ) : activePage === 'config-agregador' ? (
-        <AggregatorConfig criteria={criteria} onChange={setCriteria} />
+        <AggregatorConfig
+          criteria={criteria}
+          onChange={handleCriteriaChange}
+          couponCount={filteredCoupons.length}
+          onAggregate={() => void handleAggregate()}
+          processing={processing}
+        />
       ) : activePage === 'agregador' ? (
         <AgregadorPage groups={groups} onGoToCupons={() => setActivePage('cupons')} />
       ) : activePage === 'api-tester' ? (

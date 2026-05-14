@@ -15,9 +15,11 @@
     "@mui/icons-material": "^9.0.1",
     "@mui/material": "^9.0.1",
     "@mui/x-date-pickers": "^9.1.0",
+    "apexcharts": "^5.11.0",
     "dayjs": "^1.11.20",
     "firebase": "^12.13.0",
     "react": "^19.2.6",
+    "react-apexcharts": "^2.1.0",
     "react-dom": "^19.2.6"
   },
   "devDependencies": {

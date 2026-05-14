@@ -10,6 +10,7 @@ import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
 import { LoginPage } from './components/auth/LoginPage'
+import { DashboardPage } from './components/dashboard/DashboardPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
@@ -51,7 +52,7 @@ const App = () => {
   const [groups, setGroups] = useState<AggregatedCouponGroup[]>([])
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
-  const [activePage, setActivePage] = useState('cupons')
+  const [activePage, setActivePage] = useState('dashboard')
 
   useEffect(() => {
     const auth = getFirebaseAuth()
@@ -202,7 +203,9 @@ const App = () => {
       </Fade>
     </Backdrop>
     <AppShell activePage={activePage} onNavigate={setActivePage}>
-      {activePage === 'config-agregador' ? (
+      {activePage === 'dashboard' ? (
+        <DashboardPage coupons={coupons} />
+      ) : activePage === 'config-agregador' ? (
         <AggregatorConfig criteria={criteria} onChange={setCriteria} />
       ) : activePage === 'agregador' ? (
         <AgregadorPage groups={groups} onGoToCupons={() => setActivePage('cupons')} />

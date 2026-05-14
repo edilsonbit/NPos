@@ -193,13 +193,29 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
                   <TableCell>
                     <Chip
                       size="small"
-                      label={coupon.status === 'autorizado' ? 'Autorizado' : 'Cancelado'}
+                      label={
+                        coupon.status === 'autorizado'
+                          ? 'Autorizado'
+                          : (coupon.status as string) === 'agrupado'
+                            ? 'Agrupado'
+                            : 'Cancelado'
+                      }
                       sx={{
                         fontSize: 10,
                         fontWeight: 700,
                         height: 20,
-                        backgroundColor: coupon.status === 'autorizado' ? '#e8f5e9' : '#ffebee',
-                        color: coupon.status === 'autorizado' ? '#2e7d32' : '#c62828',
+                        backgroundColor:
+                          coupon.status === 'autorizado'
+                            ? '#e8f5e9'
+                            : (coupon.status as string) === 'agrupado'
+                              ? '#e3f2fd'
+                              : '#ffebee',
+                        color:
+                          coupon.status === 'autorizado'
+                            ? '#2e7d32'
+                            : (coupon.status as string) === 'agrupado'
+                              ? '#1565c0'
+                              : '#c62828',
                       }}
                     />
                   </TableCell>

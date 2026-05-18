@@ -61,7 +61,7 @@ const Header = ({ userEmail, onLogout }: HeaderProps) => {
         {userEmail && (
           <Box sx={{ px: 2, py: 1.5 }}>
             <Typography variant="caption" color="text.secondary">Logado como</Typography>
-            <Typography variant="body2" fontWeight={600} noWrap>{userEmail}</Typography>
+            <Typography variant="body2" noWrap sx={{ fontWeight: 600 }}>{userEmail}</Typography>
           </Box>
         )}
         <Divider />

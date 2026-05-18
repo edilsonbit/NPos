@@ -79,7 +79,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
           variant="h6"
           sx={{ fontWeight: 700, color: '#1976d2', fontSize: 22, letterSpacing: 0.3 }}
         >
-          NPOS
+          OmniPOS
         </Typography>
 
         {/* Subtítulo */}

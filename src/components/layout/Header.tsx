@@ -42,10 +42,7 @@ const Header = () => {
   const open = Boolean(anchorEl)
 
   useEffect(() => {
-    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    if (saved !== language) {
-      localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
-    }
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
   }, [language])
 
   return (

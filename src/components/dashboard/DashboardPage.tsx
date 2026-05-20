@@ -13,6 +13,7 @@ import { useMemo, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 import type { ApexOptions } from 'apexcharts'
 import type { Coupon } from '../../domain/models'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 interface Props {
   coupons: Coupon[]
@@ -94,6 +95,7 @@ function ChartCard({ title, badge, children }: { title: string; badge?: string; 
 // Main component
 // ─────────────────────────────────────────────
 export function DashboardPage({ coupons }: Props) {
+  const { t } = useLanguage()
   // ── Filtro de período ─────────────────────
   const [dateFrom, setDateFrom] = useState<Dayjs | null>(null)
   const [dateTo, setDateTo] = useState<Dayjs | null>(null)
@@ -252,7 +254,7 @@ export function DashboardPage({ coupons }: Props) {
 
   const donutStatusOpts: ApexOptions = {
     chart: { type: 'donut', fontFamily: 'inherit' },
-    labels: ['Autorizado', 'Agrupado', 'Cancelado'],
+    labels: t.dashboard.charts.statusLabels,
     colors: [PALETTE[2], PALETTE[4], PALETTE[3]],
     legend: { position: 'bottom', fontSize: '12px' },
     dataLabels: { style: { fontSize: '12px' } },
@@ -270,10 +272,10 @@ export function DashboardPage({ coupons }: Props) {
       >
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#0d3b45' }}>
-            Dashboard
+            {t.dashboard.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Visão geral dos cupons fiscais em tempo real
+            {t.dashboard.subtitle}
           </Typography>
         </Box>
 
@@ -282,11 +284,11 @@ export function DashboardPage({ coupons }: Props) {
           <Stack direction="row" sx={{ alignItems: 'center', gap: 0.5 }}>
             <FilterListIcon sx={{ fontSize: 18, color: '#0d3b45' }} />
             <Typography variant="body2" sx={{ fontWeight: 600, color: '#0d3b45', whiteSpace: 'nowrap' }}>
-              Período:
+              {t.dashboard.period}
             </Typography>
           </Stack>
           <DatePicker
-            label="De"
+            label={t.dashboard.from}
             value={dateFrom}
             onChange={(v) => setDateFrom(v)}
             maxDate={dateTo ?? undefined}
@@ -296,7 +298,7 @@ export function DashboardPage({ coupons }: Props) {
             }}
           />
           <DatePicker
-            label="Até"
+            label={t.dashboard.to}
             value={dateTo}
             onChange={(v) => setDateTo(v)}
             minDate={dateFrom ?? undefined}
@@ -312,11 +314,11 @@ export function DashboardPage({ coupons }: Props) {
               onClick={() => { setDateFrom(null); setDateTo(null) }}
               sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' } }}
             >
-              Limpar
+              {t.dashboard.clear}
             </Button>
           )}
           <Chip
-            label={`${filteredCoupons.length.toLocaleString('pt-BR')} registros`}
+            label={`${filteredCoupons.length.toLocaleString('pt-BR')} ${t.dashboard.records}`}
             sx={{ backgroundColor: '#0d3b45', color: '#fff', fontWeight: 600 }}
           />
         </Stack>
@@ -326,36 +328,36 @@ export function DashboardPage({ coupons }: Props) {
       <Grid container spacing={2} sx={{ mb: 3 }}>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
-            label="Total de Cupons"
+            label={t.dashboard.kpi.totalCoupons}
             value={filteredCoupons.length.toLocaleString('pt-BR')}
-            sub={`${authorized.length.toLocaleString('pt-BR')} com receita`}
+            sub={`${authorized.length.toLocaleString('pt-BR')} ${t.dashboard.kpi.withRevenue}`}
             color="#0d3b45"
             icon={<ReceiptLongIcon />}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
-            label="Faturamento Total"
+            label={t.dashboard.kpi.totalRevenue}
             value={fmtBRL(totalRevenue)}
-            sub="cupons autorizados"
+            sub={t.dashboard.kpi.authorizedCoupons}
             color="#3db8a4"
             icon={<TrendingUpIcon />}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
-            label="Ticket Médio"
+            label={t.dashboard.kpi.avgTicket}
             value={fmtBRL(avgTicket)}
-            sub="por cupom autorizado"
+            sub={t.dashboard.kpi.perAuthorizedCoupon}
             color="#f08f4f"
             icon={<ShoppingCartIcon />}
           />
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
-            label="Taxa de Cancelamento"
+            label={t.dashboard.kpi.cancellationRate}
             value={`${cancelRate.toFixed(1)}%`}
-            sub={`${cancelled.length} cancelados`}
+            sub={`${cancelled.length} ${t.dashboard.kpi.cancelled}`}
             color="#e85d6a"
             icon={<CancelIcon />}
           />
@@ -365,12 +367,12 @@ export function DashboardPage({ coupons }: Props) {
       {/* Row 2: Line chart (full width) */}
       <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid size={{ xs: 12 }}>
-          <ChartCard title="Faturamento Diário" badge="Autorizados">
+          <ChartCard title={t.dashboard.charts.dailyRevenue} badge={t.dashboard.charts.authorized}>
             <ReactApexChart
               type="area"
               height={240}
               options={lineOpts}
-              series={[{ name: 'Faturamento', data: revenueByDay.values }]}
+              series={[{ name: t.dashboard.charts.revenue, data: revenueByDay.values }]}
             />
           </ChartCard>
         </Grid>
@@ -379,17 +381,17 @@ export function DashboardPage({ coupons }: Props) {
       {/* Row 3: Bar stores + Donut payment */}
       <Grid container spacing={2} sx={{ mb: 2 }}>
         <Grid size={{ xs: 12, md: 7 }}>
-          <ChartCard title="Faturamento por Loja">
+          <ChartCard title={t.dashboard.charts.revenueByStore}>
             <ReactApexChart
               type="bar"
               height={260}
               options={barStoreOpts}
-              series={[{ name: 'Faturamento', data: byStore.values }]}
+              series={[{ name: t.dashboard.charts.revenue, data: byStore.values }]}
             />
           </ChartCard>
         </Grid>
         <Grid size={{ xs: 12, md: 5 }}>
-          <ChartCard title="Meios de Pagamento">
+          <ChartCard title={t.dashboard.charts.paymentMethods}>
             <ReactApexChart
               type="donut"
               height={260}
@@ -403,17 +405,17 @@ export function DashboardPage({ coupons }: Props) {
       {/* Row 4: Bar products + Acquirer + Status */}
       <Grid container spacing={2}>
         <Grid size={{ xs: 12, md: 6 }}>
-          <ChartCard title="Top Produtos por Receita" badge="Top 8">
+          <ChartCard title={t.dashboard.charts.topProducts} badge={t.dashboard.charts.top8}>
             <ReactApexChart
               type="bar"
               height={280}
               options={barProductOpts}
-              series={[{ name: 'Receita', data: topProducts.values }]}
+              series={[{ name: t.dashboard.charts.revenue, data: topProducts.values }]}
             />
           </ChartCard>
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-          <ChartCard title="Por Adquirente">
+          <ChartCard title={t.dashboard.charts.byAcquirer}>
             <ReactApexChart
               type="donut"
               height={280}
@@ -423,7 +425,7 @@ export function DashboardPage({ coupons }: Props) {
           </ChartCard>
         </Grid>
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
-          <ChartCard title="Status dos Cupons">
+          <ChartCard title={t.dashboard.charts.couponStatus}>
             <ReactApexChart
               type="donut"
               height={280}

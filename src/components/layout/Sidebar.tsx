@@ -28,6 +28,8 @@ import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
 import TuneIcon from '@mui/icons-material/Tune'
 import WarningIcon from '@mui/icons-material/Warning'
 import { type ReactNode } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
+import type { Translations } from '../../i18n/translations'
 
 const DRAWER_WIDTH = 240
 const DRAWER_WIDTH_COLLAPSED = 64
@@ -43,51 +45,51 @@ interface NavSection {
   items: NavItem[]
 }
 
-const navSections: NavSection[] = [
+const getNavSections = (t: Translations): NavSection[] => [
   {
-    label: 'Monitoramento',
+    label: t.sidebar.sections.monitoring,
     items: [
-      { icon: <DashboardIcon sx={{ fontSize: 18 }} />, label: 'Dashboard', pageKey: 'dashboard' },
-      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Fiscais', pageKey: 'cupons' },
-      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Cancelados', pageKey: 'cupons-cancelados' },
-      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'agregador' },
-      { icon: <BugReportIcon sx={{ fontSize: 18 }} />, label: 'API Tester', pageKey: 'api-tester' },
-      { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: 'Reenvio Pedido', pageKey: 'reenvio' },
-      { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: 'Edição Payload', pageKey: 'payload' },
+      { icon: <DashboardIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.dashboard, pageKey: 'dashboard' },
+      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.fiscalCoupons, pageKey: 'cupons' },
+      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.cancelledCoupons, pageKey: 'cupons-cancelados' },
+      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.aggregator, pageKey: 'agregador' },
+      { icon: <BugReportIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.apiTester, pageKey: 'api-tester' },
+      { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.orderResend, pageKey: 'reenvio' },
+      { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.payloadEditor, pageKey: 'payload' },
     ],
   },
   {
-    label: 'Relatórios',
+    label: t.sidebar.sections.reports,
     items: [
-      { icon: <NotificationsIcon sx={{ fontSize: 18 }} />, label: 'Alerta das integrações', pageKey: 'alertas' },
-      { icon: <WarningIcon sx={{ fontSize: 18 }} />, label: 'Pedidos não integrados', pageKey: 'pedidos-ni' },
+      { icon: <NotificationsIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.integrationAlerts, pageKey: 'alertas' },
+      { icon: <WarningIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.nonIntegrated, pageKey: 'pedidos-ni' },
     ],
   },
   {
-    label: 'Conciliação',
+    label: t.sidebar.sections.reconciliation,
     items: [
-      { icon: <AccountBalanceIcon sx={{ fontSize: 18 }} />, label: 'Taxa Administrativa', pageKey: 'taxa' },
-      { icon: <OpenInNewIcon sx={{ fontSize: 18 }} />, label: 'Lançamentos Externos', pageKey: 'lancamentos' },
-      { icon: <CompareArrowsIcon sx={{ fontSize: 18 }} />, label: 'Conciliação', pageKey: 'conciliacao' },
+      { icon: <AccountBalanceIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.adminFee, pageKey: 'taxa' },
+      { icon: <OpenInNewIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.externalEntries, pageKey: 'lancamentos' },
+      { icon: <CompareArrowsIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.reconciliation, pageKey: 'conciliacao' },
     ],
   },
   {
-    label: 'Cadastros',
+    label: t.sidebar.sections.records,
     items: [
-      { icon: <CloudIcon sx={{ fontSize: 18 }} />, label: 'Ambiente', pageKey: 'ambiente' },
-      { icon: <PersonIcon sx={{ fontSize: 18 }} />, label: 'Cliente', pageKey: 'cliente' },
-      { icon: <SwapHorizIcon sx={{ fontSize: 18 }} />, label: 'De Para', pageKey: 'depara' },
-      { icon: <ApiIcon sx={{ fontSize: 18 }} />, label: 'Endpoint', pageKey: 'endpoint' },
-      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Integração', pageKey: 'integracao' },
-      { icon: <ForkRightIcon sx={{ fontSize: 18 }} />, label: 'Passos Roteamento', pageKey: 'passos' },
-      { icon: <RouteIcon sx={{ fontSize: 18 }} />, label: 'Roteamento', pageKey: 'roteamento' },
+      { icon: <CloudIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.environment, pageKey: 'ambiente' },
+      { icon: <PersonIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.client, pageKey: 'cliente' },
+      { icon: <SwapHorizIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.depara, pageKey: 'depara' },
+      { icon: <ApiIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.endpoint, pageKey: 'endpoint' },
+      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.integration, pageKey: 'integracao' },
+      { icon: <ForkRightIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.routingSteps, pageKey: 'passos' },
+      { icon: <RouteIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.routing, pageKey: 'roteamento' },
     ],
   },
   {
-    label: 'Configurações',
+    label: t.sidebar.sections.settings,
     items: [
-      { icon: <GroupIcon sx={{ fontSize: 18 }} />, label: 'Usuários', pageKey: 'usuarios' },
-      { icon: <TuneIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'config-agregador' },
+      { icon: <GroupIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.users, pageKey: 'usuarios' },
+      { icon: <TuneIcon sx={{ fontSize: 18 }} />, label: t.sidebar.items.aggregatorConfig, pageKey: 'config-agregador' },
     ],
   },
 ]
@@ -99,6 +101,8 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ activePage, onNavigate, collapsed }: SidebarProps) => {
+  const { t } = useLanguage()
+  const navSections = getNavSections(t)
   const width = collapsed ? DRAWER_WIDTH_COLLAPSED : DRAWER_WIDTH
 
   return (

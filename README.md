@@ -1,28 +1,31 @@
-# NPos - POC Agrupador de Cupons Fiscais
+# NPos - OmniPOS — Conciliacao Fiscal
 
 POC tecnica para demo executiva do cliente Boticario, com front-end em React + TypeScript + Vite + MUI e arquitetura desacoplada da fonte de dados.
 
 ## Stack
 
-- React
-- TypeScript
-- Vite
-- Material UI
-- Firebase Firestore (opcional na POC)
+- React 19
+- TypeScript 6
+- Vite 8
+- Material UI v9
+- Firebase Firestore
 - Modo mock com massa de dados local
 
 ## Funcionalidades implementadas
 
-- Listagem de cupons em tabela
-- Filtros avancados (busca, loja, adquirente, pagamento, status, periodo)
-- Configuracao dinamica dos criterios de agrupamento (checkboxes)
-- Acao "Rodar Agregador" com regra pura e testavel
-- Visao agrupada em Accordion (MUI)
-- Botao "Enviar para SAP" com simulacao da integracao
-- Persistencia de `idAgregador` nos cupons
+- **Dashboard** com KPIs e graficos (ApexCharts): total de cupons, valor total, cupons por loja/forma de pagamento/dia
+- **Listagem de cupons** em tabela paginada com linha expandivel por produto
+- **Filtros avancados** (busca, loja, adquirente, pagamento, status, situacao, periodo)
+- **Configuracao dinamica** dos criterios de agrupamento (checkboxes com persistencia no `localStorage`)
+- **Acao "Agregar Cupons"** com regra pura e testavel, persistencia do `idAgregador` no Firestore
+- **Visao agrupada** com filtros, paginacao e modal de payload SAP/ERP
+- **Desfazer agregacao** por grupo ou por numeros de cupom
+- **Enviar grupos ao ERP** com confirmacao e feedback visual
+- **Cupons Cancelados** — pagina dedicada com filtros e acao "Enviar Cancelados ao ERP"
+- **Alerta das Integracoes** — log geral de todas as operacoes realizadas (agregacao, desfazer, envio ERP), com filtros, tabela e modal de detalhes
 - Massa de simulacao robusta:
   - `products.mock.json` com 120 produtos
-  - `coupons.mock.json` com 360 cupons
+  - `coupons.mock.json` com 360+ cupons
 
 ## Arquitetura
 
@@ -32,7 +35,8 @@ POC tecnica para demo executiva do cliente Boticario, com front-end em React + T
   - interfaces de repositorio em `src/domain/repositories.ts`
   - regra de agrupamento pura em `src/domain/aggregateCoupons.ts`
 - Aplicacao:
-  - orquestracao em `src/application/couponService.ts`
+  - orquestracao de cupons em `src/application/couponService.ts`
+  - log de atividades em `src/application/activityLogService.ts`
 - Dados (adapters):
   - mock em `src/data/repositories/mockRepositories.ts`
   - firebase em `src/data/repositories/firebaseRepositories.ts`
@@ -43,6 +47,7 @@ POC tecnica para demo executiva do cliente Boticario, com front-end em React + T
 ### Regra de desacoplamento
 
 Nenhum componente visual acessa Firebase diretamente. A UI consome apenas servicos da camada de aplicacao, que usa interfaces de repositorio.
+
 
 ## Como executar
 

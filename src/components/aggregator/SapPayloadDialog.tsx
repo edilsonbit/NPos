@@ -18,13 +18,13 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CloseIcon from '@mui/icons-material/Close'
 import dayjs from 'dayjs'
-import type { SapPayload } from '../../domain/models'
+import type { ErpPayload } from '../../domain/models'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
 
-interface SapPayloadDialogProps {
+interface ErpPayloadDialogProps {
   open: boolean
-  payload: SapPayload | null
+  payload: ErpPayload | null
   onClose: () => void
 }
 
@@ -35,7 +35,7 @@ const Field = ({ label, value }: { label: string; value: string }) => (
   </Stack>
 )
 
-const SapPayloadDialog = ({ open, payload, onClose }: SapPayloadDialogProps) => {
+const ErpPayloadDialog = ({ open, payload, onClose }: ErpPayloadDialogProps) => {
   if (!payload) return null
 
   return (
@@ -55,7 +55,7 @@ const SapPayloadDialog = ({ open, payload, onClose }: SapPayloadDialogProps) => 
           <CheckCircleIcon sx={{ color: '#4caf50', fontSize: 20 }} />
           <Box>
             <Typography sx={{ fontWeight: 700, fontSize: 15, lineHeight: 1.2 }}>
-              Payload enviado ao SAP
+              Payload enviado ao ERP
             </Typography>
             <Typography sx={{ fontSize: 11, color: 'rgba(255,255,255,0.65)', lineHeight: 1.2 }}>
               Simulação de integração — agrupamento {payload.idAgregador}
@@ -190,5 +190,5 @@ const SapPayloadDialog = ({ open, payload, onClose }: SapPayloadDialogProps) => 
   )
 }
 
-export { SapPayloadDialog }
+export { ErpPayloadDialog }
 

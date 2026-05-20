@@ -1,15 +1,15 @@
 import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useState } from 'react'
-import { DRAWER_WIDTH } from './Sidebar'
-
 interface HeaderProps {
   userEmail?: string
   onLogout?: () => void
+  onToggleSidebar: () => void
 }
 
-const Header = ({ userEmail, onLogout }: HeaderProps) => {
+const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const letter = userEmail ? userEmail[0].toUpperCase() : 'U'
 
@@ -18,14 +18,28 @@ const Header = ({ userEmail, onLogout }: HeaderProps) => {
       position="fixed"
       elevation={0}
       sx={{
-        width: `calc(100% - ${DRAWER_WIDTH}px)`,
-        ml: `${DRAWER_WIDTH}px`,
+        width: '100%',
+        top: 0,
         backgroundColor: '#fff',
         borderBottom: '1px solid #e8ecf0',
         color: '#1a1a2e',
+        zIndex: 1200,
       }}
     >
-      <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'flex-end' }}>
+      <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box
+            component="img"
+            src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
+            alt="Logo"
+            sx={{ height: 36, objectFit: 'contain' }}
+          />
+          <Tooltip title="Alternar menu">
+            <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575' }}>
+              <MenuIcon sx={{ fontSize: 22 }} />
+            </IconButton>
+          </Tooltip>
+        </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Tooltip title="Idioma">
             <IconButton size="small" sx={{ color: '#757575' }}>

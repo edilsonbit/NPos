@@ -25,12 +25,18 @@ const languageOptions: LanguageOption[] = [
   { code: 'pt', label: 'Português' },
   { code: 'en', label: 'English', subtitle: '(Inglês)' },
   { code: 'es', label: 'Español', subtitle: '(Espanhol)' },
-] 
+]
 
 const languageAriaLabel: Record<LanguageOption['code'], string> = {
   pt: 'Seletor de idioma',
   en: 'Language selector',
   es: 'Selector de idioma',
+}
+
+const languageTooltipLabel: Record<LanguageOption['code'], string> = {
+  pt: 'Idioma',
+  en: 'Language',
+  es: 'Idioma',
 }
 
 type LanguageCode = (typeof languageOptions)[number]['code']
@@ -79,7 +85,7 @@ const Header = () => {
     >
       <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'flex-end' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Tooltip title="Idioma">
+          <Tooltip title={languageTooltipLabel[language]}>
             <IconButton
               size="small"
               aria-label={languageAriaLabel[language]}

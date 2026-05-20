@@ -2,7 +2,7 @@
   {
     "id": "C00001",
     "couponNumber": "NF-700001",
-    "nsu": "900000001",
+    "nsu": "900700002",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -19,7 +19,7 @@
   {
     "id": "C00002",
     "couponNumber": "NF-700001",
-    "nsu": "900000002",
+    "nsu": "900700002",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -36,7 +36,7 @@
   {
     "id": "C00003",
     "couponNumber": "NF-700001",
-    "nsu": "900000003",
+    "nsu": "900700002",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -53,7 +53,7 @@
   {
     "id": "C00004",
     "couponNumber": "NF-700002",
-    "nsu": "900000004",
+    "nsu": "900700003",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -70,7 +70,7 @@
   {
     "id": "C00005",
     "couponNumber": "NF-700002",
-    "nsu": "900000005",
+    "nsu": "900700003",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -87,7 +87,7 @@
   {
     "id": "C00006",
     "couponNumber": "NF-700003",
-    "nsu": "900000006",
+    "nsu": "900700004",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -104,7 +104,7 @@
   {
     "id": "C00007",
     "couponNumber": "NF-700003",
-    "nsu": "900000007",
+    "nsu": "900700004",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -121,7 +121,7 @@
   {
     "id": "C00008",
     "couponNumber": "NF-700003",
-    "nsu": "900000008",
+    "nsu": "900700004",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -138,7 +138,7 @@
   {
     "id": "C00009",
     "couponNumber": "NF-700004",
-    "nsu": "900000009",
+    "nsu": "900700005",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -155,7 +155,7 @@
   {
     "id": "C00010",
     "couponNumber": "NF-700004",
-    "nsu": "900000010",
+    "nsu": "900700005",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -172,7 +172,7 @@
   {
     "id": "C00011",
     "couponNumber": "NF-700005",
-    "nsu": "900000011",
+    "nsu": "900700006",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -189,7 +189,7 @@
   {
     "id": "C00012",
     "couponNumber": "NF-700005",
-    "nsu": "900000012",
+    "nsu": "900700006",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -206,7 +206,7 @@
   {
     "id": "C00013",
     "couponNumber": "NF-700005",
-    "nsu": "900000013",
+    "nsu": "900700006",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -223,7 +223,7 @@
   {
     "id": "C00014",
     "couponNumber": "NF-700006",
-    "nsu": "900000014",
+    "nsu": "900700007",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -240,7 +240,7 @@
   {
     "id": "C00015",
     "couponNumber": "NF-700006",
-    "nsu": "900000015",
+    "nsu": "900700007",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -257,7 +257,7 @@
   {
     "id": "C00016",
     "couponNumber": "NF-700007",
-    "nsu": "900000016",
+    "nsu": "900700008",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -274,7 +274,7 @@
   {
     "id": "C00017",
     "couponNumber": "NF-700007",
-    "nsu": "900000017",
+    "nsu": "900700008",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -291,7 +291,7 @@
   {
     "id": "C00018",
     "couponNumber": "NF-700007",
-    "nsu": "900000018",
+    "nsu": "900700008",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -308,7 +308,7 @@
   {
     "id": "C00019",
     "couponNumber": "NF-700008",
-    "nsu": "900000019",
+    "nsu": "900700009",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -325,7 +325,7 @@
   {
     "id": "C00020",
     "couponNumber": "NF-700008",
-    "nsu": "900000020",
+    "nsu": "900700009",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -342,7 +342,7 @@
   {
     "id": "C00021",
     "couponNumber": "NF-700009",
-    "nsu": "900000021",
+    "nsu": "900700010",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -359,7 +359,7 @@
   {
     "id": "C00022",
     "couponNumber": "NF-700009",
-    "nsu": "900000022",
+    "nsu": "900700010",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -376,7 +376,7 @@
   {
     "id": "C00023",
     "couponNumber": "NF-700009",
-    "nsu": "900000023",
+    "nsu": "900700010",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -393,7 +393,7 @@
   {
     "id": "C00024",
     "couponNumber": "NF-700010",
-    "nsu": "900000024",
+    "nsu": "900700011",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -410,7 +410,7 @@
   {
     "id": "C00025",
     "couponNumber": "NF-700010",
-    "nsu": "900000025",
+    "nsu": "900700011",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -427,7 +427,7 @@
   {
     "id": "C00026",
     "couponNumber": "NF-700011",
-    "nsu": "900000026",
+    "nsu": "900700012",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -444,7 +444,7 @@
   {
     "id": "C00027",
     "couponNumber": "NF-700011",
-    "nsu": "900000027",
+    "nsu": "900700012",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -461,7 +461,7 @@
   {
     "id": "C00028",
     "couponNumber": "NF-700011",
-    "nsu": "900000028",
+    "nsu": "900700012",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -478,7 +478,7 @@
   {
     "id": "C00029",
     "couponNumber": "NF-700012",
-    "nsu": "900000029",
+    "nsu": "900700013",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -495,7 +495,7 @@
   {
     "id": "C00030",
     "couponNumber": "NF-700012",
-    "nsu": "900000030",
+    "nsu": "900700013",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -512,7 +512,7 @@
   {
     "id": "C00031",
     "couponNumber": "NF-700013",
-    "nsu": "900000031",
+    "nsu": "900700014",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -529,7 +529,7 @@
   {
     "id": "C00032",
     "couponNumber": "NF-700013",
-    "nsu": "900000032",
+    "nsu": "900700014",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -546,7 +546,7 @@
   {
     "id": "C00033",
     "couponNumber": "NF-700013",
-    "nsu": "900000033",
+    "nsu": "900700014",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -563,7 +563,7 @@
   {
     "id": "C00034",
     "couponNumber": "NF-700014",
-    "nsu": "900000034",
+    "nsu": "900700015",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -580,7 +580,7 @@
   {
     "id": "C00035",
     "couponNumber": "NF-700014",
-    "nsu": "900000035",
+    "nsu": "900700015",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -597,7 +597,7 @@
   {
     "id": "C00036",
     "couponNumber": "NF-700015",
-    "nsu": "900000036",
+    "nsu": "900700016",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -614,7 +614,7 @@
   {
     "id": "C00037",
     "couponNumber": "NF-700015",
-    "nsu": "900000037",
+    "nsu": "900700016",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -631,7 +631,7 @@
   {
     "id": "C00038",
     "couponNumber": "NF-700015",
-    "nsu": "900000038",
+    "nsu": "900700016",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -648,7 +648,7 @@
   {
     "id": "C00039",
     "couponNumber": "NF-700016",
-    "nsu": "900000039",
+    "nsu": "900700017",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -665,7 +665,7 @@
   {
     "id": "C00040",
     "couponNumber": "NF-700016",
-    "nsu": "900000040",
+    "nsu": "900700017",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -682,7 +682,7 @@
   {
     "id": "C00041",
     "couponNumber": "NF-700017",
-    "nsu": "900000041",
+    "nsu": "900700018",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -699,7 +699,7 @@
   {
     "id": "C00042",
     "couponNumber": "NF-700017",
-    "nsu": "900000042",
+    "nsu": "900700018",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -716,7 +716,7 @@
   {
     "id": "C00043",
     "couponNumber": "NF-700017",
-    "nsu": "900000043",
+    "nsu": "900700018",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -733,7 +733,7 @@
   {
     "id": "C00044",
     "couponNumber": "NF-700018",
-    "nsu": "900000044",
+    "nsu": "900700019",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -750,7 +750,7 @@
   {
     "id": "C00045",
     "couponNumber": "NF-700018",
-    "nsu": "900000045",
+    "nsu": "900700019",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -767,7 +767,7 @@
   {
     "id": "C00046",
     "couponNumber": "NF-700019",
-    "nsu": "900000046",
+    "nsu": "900700020",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -784,7 +784,7 @@
   {
     "id": "C00047",
     "couponNumber": "NF-700019",
-    "nsu": "900000047",
+    "nsu": "900700020",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -801,7 +801,7 @@
   {
     "id": "C00048",
     "couponNumber": "NF-700019",
-    "nsu": "900000048",
+    "nsu": "900700020",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -818,7 +818,7 @@
   {
     "id": "C00049",
     "couponNumber": "NF-700020",
-    "nsu": "900000049",
+    "nsu": "900700021",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -835,7 +835,7 @@
   {
     "id": "C00050",
     "couponNumber": "NF-700020",
-    "nsu": "900000050",
+    "nsu": "900700021",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -852,7 +852,7 @@
   {
     "id": "C00051",
     "couponNumber": "NF-700021",
-    "nsu": "900000051",
+    "nsu": "900700022",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -869,7 +869,7 @@
   {
     "id": "C00052",
     "couponNumber": "NF-700021",
-    "nsu": "900000052",
+    "nsu": "900700022",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -886,7 +886,7 @@
   {
     "id": "C00053",
     "couponNumber": "NF-700021",
-    "nsu": "900000053",
+    "nsu": "900700022",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -903,7 +903,7 @@
   {
     "id": "C00054",
     "couponNumber": "NF-700022",
-    "nsu": "900000054",
+    "nsu": "900700023",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -920,7 +920,7 @@
   {
     "id": "C00055",
     "couponNumber": "NF-700022",
-    "nsu": "900000055",
+    "nsu": "900700023",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -937,7 +937,7 @@
   {
     "id": "C00056",
     "couponNumber": "NF-700023",
-    "nsu": "900000056",
+    "nsu": "900700024",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -954,7 +954,7 @@
   {
     "id": "C00057",
     "couponNumber": "NF-700023",
-    "nsu": "900000057",
+    "nsu": "900700024",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -971,7 +971,7 @@
   {
     "id": "C00058",
     "couponNumber": "NF-700023",
-    "nsu": "900000058",
+    "nsu": "900700024",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -988,7 +988,7 @@
   {
     "id": "C00059",
     "couponNumber": "NF-700024",
-    "nsu": "900000059",
+    "nsu": "900700025",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1005,7 +1005,7 @@
   {
     "id": "C00060",
     "couponNumber": "NF-700024",
-    "nsu": "900000060",
+    "nsu": "900700025",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1022,7 +1022,7 @@
   {
     "id": "C00061",
     "couponNumber": "NF-700025",
-    "nsu": "900000061",
+    "nsu": "900700026",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1039,7 +1039,7 @@
   {
     "id": "C00062",
     "couponNumber": "NF-700025",
-    "nsu": "900000062",
+    "nsu": "900700026",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1056,7 +1056,7 @@
   {
     "id": "C00063",
     "couponNumber": "NF-700025",
-    "nsu": "900000063",
+    "nsu": "900700026",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1073,7 +1073,7 @@
   {
     "id": "C00064",
     "couponNumber": "NF-700026",
-    "nsu": "900000064",
+    "nsu": "900700027",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1090,7 +1090,7 @@
   {
     "id": "C00065",
     "couponNumber": "NF-700026",
-    "nsu": "900000065",
+    "nsu": "900700027",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1107,7 +1107,7 @@
   {
     "id": "C00066",
     "couponNumber": "NF-700027",
-    "nsu": "900000066",
+    "nsu": "900700028",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1124,7 +1124,7 @@
   {
     "id": "C00067",
     "couponNumber": "NF-700027",
-    "nsu": "900000067",
+    "nsu": "900700028",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1141,7 +1141,7 @@
   {
     "id": "C00068",
     "couponNumber": "NF-700027",
-    "nsu": "900000068",
+    "nsu": "900700028",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1158,7 +1158,7 @@
   {
     "id": "C00069",
     "couponNumber": "NF-700028",
-    "nsu": "900000069",
+    "nsu": "900700029",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1175,7 +1175,7 @@
   {
     "id": "C00070",
     "couponNumber": "NF-700028",
-    "nsu": "900000070",
+    "nsu": "900700029",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1192,7 +1192,7 @@
   {
     "id": "C00071",
     "couponNumber": "NF-700029",
-    "nsu": "900000071",
+    "nsu": "900700030",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1209,7 +1209,7 @@
   {
     "id": "C00072",
     "couponNumber": "NF-700029",
-    "nsu": "900000072",
+    "nsu": "900700030",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1226,7 +1226,7 @@
   {
     "id": "C00073",
     "couponNumber": "NF-700029",
-    "nsu": "900000073",
+    "nsu": "900700030",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1243,7 +1243,7 @@
   {
     "id": "C00074",
     "couponNumber": "NF-700030",
-    "nsu": "900000074",
+    "nsu": "900700031",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1260,7 +1260,7 @@
   {
     "id": "C00075",
     "couponNumber": "NF-700030",
-    "nsu": "900000075",
+    "nsu": "900700031",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1277,7 +1277,7 @@
   {
     "id": "C00076",
     "couponNumber": "NF-700031",
-    "nsu": "900000076",
+    "nsu": "900700032",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1294,7 +1294,7 @@
   {
     "id": "C00077",
     "couponNumber": "NF-700031",
-    "nsu": "900000077",
+    "nsu": "900700032",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1311,7 +1311,7 @@
   {
     "id": "C00078",
     "couponNumber": "NF-700031",
-    "nsu": "900000078",
+    "nsu": "900700032",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1328,7 +1328,7 @@
   {
     "id": "C00079",
     "couponNumber": "NF-700032",
-    "nsu": "900000079",
+    "nsu": "900700033",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1345,7 +1345,7 @@
   {
     "id": "C00080",
     "couponNumber": "NF-700032",
-    "nsu": "900000080",
+    "nsu": "900700033",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1362,7 +1362,7 @@
   {
     "id": "C00081",
     "couponNumber": "NF-700033",
-    "nsu": "900000081",
+    "nsu": "900700034",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1379,7 +1379,7 @@
   {
     "id": "C00082",
     "couponNumber": "NF-700033",
-    "nsu": "900000082",
+    "nsu": "900700034",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1396,7 +1396,7 @@
   {
     "id": "C00083",
     "couponNumber": "NF-700033",
-    "nsu": "900000083",
+    "nsu": "900700034",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1413,7 +1413,7 @@
   {
     "id": "C00084",
     "couponNumber": "NF-700034",
-    "nsu": "900000084",
+    "nsu": "900700035",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1430,7 +1430,7 @@
   {
     "id": "C00085",
     "couponNumber": "NF-700034",
-    "nsu": "900000085",
+    "nsu": "900700035",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1447,7 +1447,7 @@
   {
     "id": "C00086",
     "couponNumber": "NF-700035",
-    "nsu": "900000086",
+    "nsu": "900700036",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1464,7 +1464,7 @@
   {
     "id": "C00087",
     "couponNumber": "NF-700035",
-    "nsu": "900000087",
+    "nsu": "900700036",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1481,7 +1481,7 @@
   {
     "id": "C00088",
     "couponNumber": "NF-700035",
-    "nsu": "900000088",
+    "nsu": "900700036",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1498,7 +1498,7 @@
   {
     "id": "C00089",
     "couponNumber": "NF-700036",
-    "nsu": "900000089",
+    "nsu": "900700037",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1515,7 +1515,7 @@
   {
     "id": "C00090",
     "couponNumber": "NF-700036",
-    "nsu": "900000090",
+    "nsu": "900700037",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -1532,7 +1532,7 @@
   {
     "id": "C00091",
     "couponNumber": "NF-700037",
-    "nsu": "900000091",
+    "nsu": "900700038",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1549,7 +1549,7 @@
   {
     "id": "C00092",
     "couponNumber": "NF-700037",
-    "nsu": "900000092",
+    "nsu": "900700038",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1566,7 +1566,7 @@
   {
     "id": "C00093",
     "couponNumber": "NF-700037",
-    "nsu": "900000093",
+    "nsu": "900700038",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1583,7 +1583,7 @@
   {
     "id": "C00094",
     "couponNumber": "NF-700038",
-    "nsu": "900000094",
+    "nsu": "900700039",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1600,7 +1600,7 @@
   {
     "id": "C00095",
     "couponNumber": "NF-700038",
-    "nsu": "900000095",
+    "nsu": "900700039",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1617,7 +1617,7 @@
   {
     "id": "C00096",
     "couponNumber": "NF-700039",
-    "nsu": "900000096",
+    "nsu": "900700040",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1634,7 +1634,7 @@
   {
     "id": "C00097",
     "couponNumber": "NF-700039",
-    "nsu": "900000097",
+    "nsu": "900700040",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1651,7 +1651,7 @@
   {
     "id": "C00098",
     "couponNumber": "NF-700039",
-    "nsu": "900000098",
+    "nsu": "900700040",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1668,7 +1668,7 @@
   {
     "id": "C00099",
     "couponNumber": "NF-700040",
-    "nsu": "900000099",
+    "nsu": "900700041",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1685,7 +1685,7 @@
   {
     "id": "C00100",
     "couponNumber": "NF-700040",
-    "nsu": "900000100",
+    "nsu": "900700041",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -1702,7 +1702,7 @@
   {
     "id": "C00101",
     "couponNumber": "NF-700041",
-    "nsu": "900000101",
+    "nsu": "900700042",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1719,7 +1719,7 @@
   {
     "id": "C00102",
     "couponNumber": "NF-700041",
-    "nsu": "900000102",
+    "nsu": "900700042",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1736,7 +1736,7 @@
   {
     "id": "C00103",
     "couponNumber": "NF-700041",
-    "nsu": "900000103",
+    "nsu": "900700042",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1753,7 +1753,7 @@
   {
     "id": "C00104",
     "couponNumber": "NF-700042",
-    "nsu": "900000104",
+    "nsu": "900700043",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1770,7 +1770,7 @@
   {
     "id": "C00105",
     "couponNumber": "NF-700042",
-    "nsu": "900000105",
+    "nsu": "900700043",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1787,7 +1787,7 @@
   {
     "id": "C00106",
     "couponNumber": "NF-700043",
-    "nsu": "900000106",
+    "nsu": "900700044",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1804,7 +1804,7 @@
   {
     "id": "C00107",
     "couponNumber": "NF-700043",
-    "nsu": "900000107",
+    "nsu": "900700044",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1821,7 +1821,7 @@
   {
     "id": "C00108",
     "couponNumber": "NF-700043",
-    "nsu": "900000108",
+    "nsu": "900700044",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1838,7 +1838,7 @@
   {
     "id": "C00109",
     "couponNumber": "NF-700044",
-    "nsu": "900000109",
+    "nsu": "900700045",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1855,7 +1855,7 @@
   {
     "id": "C00110",
     "couponNumber": "NF-700044",
-    "nsu": "900000110",
+    "nsu": "900700045",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -1872,7 +1872,7 @@
   {
     "id": "C00111",
     "couponNumber": "NF-700045",
-    "nsu": "900000111",
+    "nsu": "900700046",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1889,7 +1889,7 @@
   {
     "id": "C00112",
     "couponNumber": "NF-700045",
-    "nsu": "900000112",
+    "nsu": "900700046",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1906,7 +1906,7 @@
   {
     "id": "C00113",
     "couponNumber": "NF-700045",
-    "nsu": "900000113",
+    "nsu": "900700046",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1923,7 +1923,7 @@
   {
     "id": "C00114",
     "couponNumber": "NF-700046",
-    "nsu": "900000114",
+    "nsu": "900700047",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1940,7 +1940,7 @@
   {
     "id": "C00115",
     "couponNumber": "NF-700046",
-    "nsu": "900000115",
+    "nsu": "900700047",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1957,7 +1957,7 @@
   {
     "id": "C00116",
     "couponNumber": "NF-700047",
-    "nsu": "900000116",
+    "nsu": "900700048",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1974,7 +1974,7 @@
   {
     "id": "C00117",
     "couponNumber": "NF-700047",
-    "nsu": "900000117",
+    "nsu": "900700048",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -1991,7 +1991,7 @@
   {
     "id": "C00118",
     "couponNumber": "NF-700047",
-    "nsu": "900000118",
+    "nsu": "900700048",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -2008,7 +2008,7 @@
   {
     "id": "C00119",
     "couponNumber": "NF-700048",
-    "nsu": "900000119",
+    "nsu": "900700049",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -2025,7 +2025,7 @@
   {
     "id": "C00120",
     "couponNumber": "NF-700048",
-    "nsu": "900000120",
+    "nsu": "900700049",
     "storeId": "LJ001",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -2042,7 +2042,7 @@
   {
     "id": "C00121",
     "couponNumber": "NF-700049",
-    "nsu": "900000121",
+    "nsu": "900700050",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2059,7 +2059,7 @@
   {
     "id": "C00122",
     "couponNumber": "NF-700049",
-    "nsu": "900000122",
+    "nsu": "900700050",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2076,7 +2076,7 @@
   {
     "id": "C00123",
     "couponNumber": "NF-700049",
-    "nsu": "900000123",
+    "nsu": "900700050",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2093,7 +2093,7 @@
   {
     "id": "C00124",
     "couponNumber": "NF-700050",
-    "nsu": "900000124",
+    "nsu": "900700051",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2110,7 +2110,7 @@
   {
     "id": "C00125",
     "couponNumber": "NF-700050",
-    "nsu": "900000125",
+    "nsu": "900700051",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2127,7 +2127,7 @@
   {
     "id": "C00126",
     "couponNumber": "NF-700051",
-    "nsu": "900000126",
+    "nsu": "900700052",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2144,7 +2144,7 @@
   {
     "id": "C00127",
     "couponNumber": "NF-700051",
-    "nsu": "900000127",
+    "nsu": "900700052",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2161,7 +2161,7 @@
   {
     "id": "C00128",
     "couponNumber": "NF-700051",
-    "nsu": "900000128",
+    "nsu": "900700052",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2178,7 +2178,7 @@
   {
     "id": "C00129",
     "couponNumber": "NF-700052",
-    "nsu": "900000129",
+    "nsu": "900700053",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2195,7 +2195,7 @@
   {
     "id": "C00130",
     "couponNumber": "NF-700052",
-    "nsu": "900000130",
+    "nsu": "900700053",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2212,7 +2212,7 @@
   {
     "id": "C00131",
     "couponNumber": "NF-700053",
-    "nsu": "900000131",
+    "nsu": "900700054",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2229,7 +2229,7 @@
   {
     "id": "C00132",
     "couponNumber": "NF-700053",
-    "nsu": "900000132",
+    "nsu": "900700054",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2246,7 +2246,7 @@
   {
     "id": "C00133",
     "couponNumber": "NF-700053",
-    "nsu": "900000133",
+    "nsu": "900700054",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2263,7 +2263,7 @@
   {
     "id": "C00134",
     "couponNumber": "NF-700054",
-    "nsu": "900000134",
+    "nsu": "900700055",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2280,7 +2280,7 @@
   {
     "id": "C00135",
     "couponNumber": "NF-700054",
-    "nsu": "900000135",
+    "nsu": "900700055",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2297,7 +2297,7 @@
   {
     "id": "C00136",
     "couponNumber": "NF-700055",
-    "nsu": "900000136",
+    "nsu": "900700056",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2314,7 +2314,7 @@
   {
     "id": "C00137",
     "couponNumber": "NF-700055",
-    "nsu": "900000137",
+    "nsu": "900700056",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2331,7 +2331,7 @@
   {
     "id": "C00138",
     "couponNumber": "NF-700055",
-    "nsu": "900000138",
+    "nsu": "900700056",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2348,7 +2348,7 @@
   {
     "id": "C00139",
     "couponNumber": "NF-700056",
-    "nsu": "900000139",
+    "nsu": "900700057",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2365,7 +2365,7 @@
   {
     "id": "C00140",
     "couponNumber": "NF-700056",
-    "nsu": "900000140",
+    "nsu": "900700057",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2382,7 +2382,7 @@
   {
     "id": "C00141",
     "couponNumber": "NF-700057",
-    "nsu": "900000141",
+    "nsu": "900700058",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2399,7 +2399,7 @@
   {
     "id": "C00142",
     "couponNumber": "NF-700057",
-    "nsu": "900000142",
+    "nsu": "900700058",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2416,7 +2416,7 @@
   {
     "id": "C00143",
     "couponNumber": "NF-700057",
-    "nsu": "900000143",
+    "nsu": "900700058",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2433,7 +2433,7 @@
   {
     "id": "C00144",
     "couponNumber": "NF-700058",
-    "nsu": "900000144",
+    "nsu": "900700059",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2450,7 +2450,7 @@
   {
     "id": "C00145",
     "couponNumber": "NF-700058",
-    "nsu": "900000145",
+    "nsu": "900700059",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2467,7 +2467,7 @@
   {
     "id": "C00146",
     "couponNumber": "NF-700059",
-    "nsu": "900000146",
+    "nsu": "900700060",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2484,7 +2484,7 @@
   {
     "id": "C00147",
     "couponNumber": "NF-700059",
-    "nsu": "900000147",
+    "nsu": "900700060",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2501,7 +2501,7 @@
   {
     "id": "C00148",
     "couponNumber": "NF-700059",
-    "nsu": "900000148",
+    "nsu": "900700060",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2518,7 +2518,7 @@
   {
     "id": "C00149",
     "couponNumber": "NF-700060",
-    "nsu": "900000149",
+    "nsu": "900700061",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2535,7 +2535,7 @@
   {
     "id": "C00150",
     "couponNumber": "NF-700060",
-    "nsu": "900000150",
+    "nsu": "900700061",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -2552,7 +2552,7 @@
   {
     "id": "C00151",
     "couponNumber": "NF-700061",
-    "nsu": "900000151",
+    "nsu": "900700062",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2569,7 +2569,7 @@
   {
     "id": "C00152",
     "couponNumber": "NF-700061",
-    "nsu": "900000152",
+    "nsu": "900700062",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2586,7 +2586,7 @@
   {
     "id": "C00153",
     "couponNumber": "NF-700061",
-    "nsu": "900000153",
+    "nsu": "900700062",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2603,7 +2603,7 @@
   {
     "id": "C00154",
     "couponNumber": "NF-700062",
-    "nsu": "900000154",
+    "nsu": "900700063",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2620,7 +2620,7 @@
   {
     "id": "C00155",
     "couponNumber": "NF-700062",
-    "nsu": "900000155",
+    "nsu": "900700063",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2637,7 +2637,7 @@
   {
     "id": "C00156",
     "couponNumber": "NF-700063",
-    "nsu": "900000156",
+    "nsu": "900700064",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2654,7 +2654,7 @@
   {
     "id": "C00157",
     "couponNumber": "NF-700063",
-    "nsu": "900000157",
+    "nsu": "900700064",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2671,7 +2671,7 @@
   {
     "id": "C00158",
     "couponNumber": "NF-700063",
-    "nsu": "900000158",
+    "nsu": "900700064",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2688,7 +2688,7 @@
   {
     "id": "C00159",
     "couponNumber": "NF-700064",
-    "nsu": "900000159",
+    "nsu": "900700065",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2705,7 +2705,7 @@
   {
     "id": "C00160",
     "couponNumber": "NF-700064",
-    "nsu": "900000160",
+    "nsu": "900700065",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -2722,7 +2722,7 @@
   {
     "id": "C00161",
     "couponNumber": "NF-700065",
-    "nsu": "900000161",
+    "nsu": "900700066",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2739,7 +2739,7 @@
   {
     "id": "C00162",
     "couponNumber": "NF-700065",
-    "nsu": "900000162",
+    "nsu": "900700066",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2756,7 +2756,7 @@
   {
     "id": "C00163",
     "couponNumber": "NF-700065",
-    "nsu": "900000163",
+    "nsu": "900700066",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2773,7 +2773,7 @@
   {
     "id": "C00164",
     "couponNumber": "NF-700066",
-    "nsu": "900000164",
+    "nsu": "900700067",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2790,7 +2790,7 @@
   {
     "id": "C00165",
     "couponNumber": "NF-700066",
-    "nsu": "900000165",
+    "nsu": "900700067",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2807,7 +2807,7 @@
   {
     "id": "C00166",
     "couponNumber": "NF-700067",
-    "nsu": "900000166",
+    "nsu": "900700068",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2824,7 +2824,7 @@
   {
     "id": "C00167",
     "couponNumber": "NF-700067",
-    "nsu": "900000167",
+    "nsu": "900700068",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2841,7 +2841,7 @@
   {
     "id": "C00168",
     "couponNumber": "NF-700067",
-    "nsu": "900000168",
+    "nsu": "900700068",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2858,7 +2858,7 @@
   {
     "id": "C00169",
     "couponNumber": "NF-700068",
-    "nsu": "900000169",
+    "nsu": "900700069",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2875,7 +2875,7 @@
   {
     "id": "C00170",
     "couponNumber": "NF-700068",
-    "nsu": "900000170",
+    "nsu": "900700069",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -2892,7 +2892,7 @@
   {
     "id": "C00171",
     "couponNumber": "NF-700069",
-    "nsu": "900000171",
+    "nsu": "900700070",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2909,7 +2909,7 @@
   {
     "id": "C00172",
     "couponNumber": "NF-700069",
-    "nsu": "900000172",
+    "nsu": "900700070",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2926,7 +2926,7 @@
   {
     "id": "C00173",
     "couponNumber": "NF-700069",
-    "nsu": "900000173",
+    "nsu": "900700070",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2943,7 +2943,7 @@
   {
     "id": "C00174",
     "couponNumber": "NF-700070",
-    "nsu": "900000174",
+    "nsu": "900700071",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2960,7 +2960,7 @@
   {
     "id": "C00175",
     "couponNumber": "NF-700070",
-    "nsu": "900000175",
+    "nsu": "900700071",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2977,7 +2977,7 @@
   {
     "id": "C00176",
     "couponNumber": "NF-700071",
-    "nsu": "900000176",
+    "nsu": "900700072",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -2994,7 +2994,7 @@
   {
     "id": "C00177",
     "couponNumber": "NF-700071",
-    "nsu": "900000177",
+    "nsu": "900700072",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3011,7 +3011,7 @@
   {
     "id": "C00178",
     "couponNumber": "NF-700071",
-    "nsu": "900000178",
+    "nsu": "900700072",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3028,7 +3028,7 @@
   {
     "id": "C00179",
     "couponNumber": "NF-700072",
-    "nsu": "900000179",
+    "nsu": "900700073",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3045,7 +3045,7 @@
   {
     "id": "C00180",
     "couponNumber": "NF-700072",
-    "nsu": "900000180",
+    "nsu": "900700073",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3062,7 +3062,7 @@
   {
     "id": "C00181",
     "couponNumber": "NF-700073",
-    "nsu": "900000181",
+    "nsu": "900700074",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3079,7 +3079,7 @@
   {
     "id": "C00182",
     "couponNumber": "NF-700073",
-    "nsu": "900000182",
+    "nsu": "900700074",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3096,7 +3096,7 @@
   {
     "id": "C00183",
     "couponNumber": "NF-700073",
-    "nsu": "900000183",
+    "nsu": "900700074",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3113,7 +3113,7 @@
   {
     "id": "C00184",
     "couponNumber": "NF-700074",
-    "nsu": "900000184",
+    "nsu": "900700075",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3130,7 +3130,7 @@
   {
     "id": "C00185",
     "couponNumber": "NF-700074",
-    "nsu": "900000185",
+    "nsu": "900700075",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3147,7 +3147,7 @@
   {
     "id": "C00186",
     "couponNumber": "NF-700075",
-    "nsu": "900000186",
+    "nsu": "900700076",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3164,7 +3164,7 @@
   {
     "id": "C00187",
     "couponNumber": "NF-700075",
-    "nsu": "900000187",
+    "nsu": "900700076",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3181,7 +3181,7 @@
   {
     "id": "C00188",
     "couponNumber": "NF-700075",
-    "nsu": "900000188",
+    "nsu": "900700076",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3198,7 +3198,7 @@
   {
     "id": "C00189",
     "couponNumber": "NF-700076",
-    "nsu": "900000189",
+    "nsu": "900700077",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3215,7 +3215,7 @@
   {
     "id": "C00190",
     "couponNumber": "NF-700076",
-    "nsu": "900000190",
+    "nsu": "900700077",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3232,7 +3232,7 @@
   {
     "id": "C00191",
     "couponNumber": "NF-700077",
-    "nsu": "900000191",
+    "nsu": "900700078",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3249,7 +3249,7 @@
   {
     "id": "C00192",
     "couponNumber": "NF-700077",
-    "nsu": "900000192",
+    "nsu": "900700078",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3266,7 +3266,7 @@
   {
     "id": "C00193",
     "couponNumber": "NF-700077",
-    "nsu": "900000193",
+    "nsu": "900700078",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3283,7 +3283,7 @@
   {
     "id": "C00194",
     "couponNumber": "NF-700078",
-    "nsu": "900000194",
+    "nsu": "900700079",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3300,7 +3300,7 @@
   {
     "id": "C00195",
     "couponNumber": "NF-700078",
-    "nsu": "900000195",
+    "nsu": "900700079",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3317,7 +3317,7 @@
   {
     "id": "C00196",
     "couponNumber": "NF-700079",
-    "nsu": "900000196",
+    "nsu": "900700080",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3334,7 +3334,7 @@
   {
     "id": "C00197",
     "couponNumber": "NF-700079",
-    "nsu": "900000197",
+    "nsu": "900700080",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3351,7 +3351,7 @@
   {
     "id": "C00198",
     "couponNumber": "NF-700079",
-    "nsu": "900000198",
+    "nsu": "900700080",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3368,7 +3368,7 @@
   {
     "id": "C00199",
     "couponNumber": "NF-700080",
-    "nsu": "900000199",
+    "nsu": "900700081",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3385,7 +3385,7 @@
   {
     "id": "C00200",
     "couponNumber": "NF-700080",
-    "nsu": "900000200",
+    "nsu": "900700081",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3402,7 +3402,7 @@
   {
     "id": "C00201",
     "couponNumber": "NF-700081",
-    "nsu": "900000201",
+    "nsu": "900700082",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3419,7 +3419,7 @@
   {
     "id": "C00202",
     "couponNumber": "NF-700081",
-    "nsu": "900000202",
+    "nsu": "900700082",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3436,7 +3436,7 @@
   {
     "id": "C00203",
     "couponNumber": "NF-700081",
-    "nsu": "900000203",
+    "nsu": "900700082",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3453,7 +3453,7 @@
   {
     "id": "C00204",
     "couponNumber": "NF-700082",
-    "nsu": "900000204",
+    "nsu": "900700083",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3470,7 +3470,7 @@
   {
     "id": "C00205",
     "couponNumber": "NF-700082",
-    "nsu": "900000205",
+    "nsu": "900700083",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3487,7 +3487,7 @@
   {
     "id": "C00206",
     "couponNumber": "NF-700083",
-    "nsu": "900000206",
+    "nsu": "900700084",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3504,7 +3504,7 @@
   {
     "id": "C00207",
     "couponNumber": "NF-700083",
-    "nsu": "900000207",
+    "nsu": "900700084",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3521,7 +3521,7 @@
   {
     "id": "C00208",
     "couponNumber": "NF-700083",
-    "nsu": "900000208",
+    "nsu": "900700084",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3538,7 +3538,7 @@
   {
     "id": "C00209",
     "couponNumber": "NF-700084",
-    "nsu": "900000209",
+    "nsu": "900700085",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3555,7 +3555,7 @@
   {
     "id": "C00210",
     "couponNumber": "NF-700084",
-    "nsu": "900000210",
+    "nsu": "900700085",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "PIX",
@@ -3572,7 +3572,7 @@
   {
     "id": "C00211",
     "couponNumber": "NF-700085",
-    "nsu": "900000211",
+    "nsu": "900700086",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3589,7 +3589,7 @@
   {
     "id": "C00212",
     "couponNumber": "NF-700085",
-    "nsu": "900000212",
+    "nsu": "900700086",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3606,7 +3606,7 @@
   {
     "id": "C00213",
     "couponNumber": "NF-700085",
-    "nsu": "900000213",
+    "nsu": "900700086",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3623,7 +3623,7 @@
   {
     "id": "C00214",
     "couponNumber": "NF-700086",
-    "nsu": "900000214",
+    "nsu": "900700087",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3640,7 +3640,7 @@
   {
     "id": "C00215",
     "couponNumber": "NF-700086",
-    "nsu": "900000215",
+    "nsu": "900700087",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3657,7 +3657,7 @@
   {
     "id": "C00216",
     "couponNumber": "NF-700087",
-    "nsu": "900000216",
+    "nsu": "900700088",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3674,7 +3674,7 @@
   {
     "id": "C00217",
     "couponNumber": "NF-700087",
-    "nsu": "900000217",
+    "nsu": "900700088",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3691,7 +3691,7 @@
   {
     "id": "C00218",
     "couponNumber": "NF-700087",
-    "nsu": "900000218",
+    "nsu": "900700088",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3708,7 +3708,7 @@
   {
     "id": "C00219",
     "couponNumber": "NF-700088",
-    "nsu": "900000219",
+    "nsu": "900700089",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3725,7 +3725,7 @@
   {
     "id": "C00220",
     "couponNumber": "NF-700088",
-    "nsu": "900000220",
+    "nsu": "900700089",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Crédito",
@@ -3742,7 +3742,7 @@
   {
     "id": "C00221",
     "couponNumber": "NF-700089",
-    "nsu": "900000221",
+    "nsu": "900700090",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3759,7 +3759,7 @@
   {
     "id": "C00222",
     "couponNumber": "NF-700089",
-    "nsu": "900000222",
+    "nsu": "900700090",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3776,7 +3776,7 @@
   {
     "id": "C00223",
     "couponNumber": "NF-700089",
-    "nsu": "900000223",
+    "nsu": "900700090",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3793,7 +3793,7 @@
   {
     "id": "C00224",
     "couponNumber": "NF-700090",
-    "nsu": "900000224",
+    "nsu": "900700091",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3810,7 +3810,7 @@
   {
     "id": "C00225",
     "couponNumber": "NF-700090",
-    "nsu": "900000225",
+    "nsu": "900700091",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3827,7 +3827,7 @@
   {
     "id": "C00226",
     "couponNumber": "NF-700091",
-    "nsu": "900000226",
+    "nsu": "900700092",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3844,7 +3844,7 @@
   {
     "id": "C00227",
     "couponNumber": "NF-700091",
-    "nsu": "900000227",
+    "nsu": "900700092",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3861,7 +3861,7 @@
   {
     "id": "C00228",
     "couponNumber": "NF-700091",
-    "nsu": "900000228",
+    "nsu": "900700092",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3878,7 +3878,7 @@
   {
     "id": "C00229",
     "couponNumber": "NF-700092",
-    "nsu": "900000229",
+    "nsu": "900700093",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3895,7 +3895,7 @@
   {
     "id": "C00230",
     "couponNumber": "NF-700092",
-    "nsu": "900000230",
+    "nsu": "900700093",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Dinheiro",
@@ -3912,7 +3912,7 @@
   {
     "id": "C00231",
     "couponNumber": "NF-700093",
-    "nsu": "900000231",
+    "nsu": "900700094",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3929,7 +3929,7 @@
   {
     "id": "C00232",
     "couponNumber": "NF-700093",
-    "nsu": "900000232",
+    "nsu": "900700094",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3946,7 +3946,7 @@
   {
     "id": "C00233",
     "couponNumber": "NF-700093",
-    "nsu": "900000233",
+    "nsu": "900700094",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3963,7 +3963,7 @@
   {
     "id": "C00234",
     "couponNumber": "NF-700094",
-    "nsu": "900000234",
+    "nsu": "900700095",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3980,7 +3980,7 @@
   {
     "id": "C00235",
     "couponNumber": "NF-700094",
-    "nsu": "900000235",
+    "nsu": "900700095",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -3997,7 +3997,7 @@
   {
     "id": "C00236",
     "couponNumber": "NF-700095",
-    "nsu": "900000236",
+    "nsu": "900700096",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -4014,7 +4014,7 @@
   {
     "id": "C00237",
     "couponNumber": "NF-700095",
-    "nsu": "900000237",
+    "nsu": "900700096",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -4031,7 +4031,7 @@
   {
     "id": "C00238",
     "couponNumber": "NF-700095",
-    "nsu": "900000238",
+    "nsu": "900700096",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -4048,7 +4048,7 @@
   {
     "id": "C00239",
     "couponNumber": "NF-700096",
-    "nsu": "900000239",
+    "nsu": "900700097",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -4065,7 +4065,7 @@
   {
     "id": "C00240",
     "couponNumber": "NF-700096",
-    "nsu": "900000240",
+    "nsu": "900700097",
     "storeId": "LJ014",
     "acquirer": "Stone",
     "paymentMethod": "Cartão de Débito",
@@ -4082,7 +4082,7 @@
   {
     "id": "C00241",
     "couponNumber": "NF-700097",
-    "nsu": "900000241",
+    "nsu": "900700098",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4099,7 +4099,7 @@
   {
     "id": "C00242",
     "couponNumber": "NF-700097",
-    "nsu": "900000242",
+    "nsu": "900700098",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4116,7 +4116,7 @@
   {
     "id": "C00243",
     "couponNumber": "NF-700097",
-    "nsu": "900000243",
+    "nsu": "900700098",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4133,7 +4133,7 @@
   {
     "id": "C00244",
     "couponNumber": "NF-700098",
-    "nsu": "900000244",
+    "nsu": "900700099",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4150,7 +4150,7 @@
   {
     "id": "C00245",
     "couponNumber": "NF-700098",
-    "nsu": "900000245",
+    "nsu": "900700099",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4167,7 +4167,7 @@
   {
     "id": "C00246",
     "couponNumber": "NF-700099",
-    "nsu": "900000246",
+    "nsu": "900700100",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4184,7 +4184,7 @@
   {
     "id": "C00247",
     "couponNumber": "NF-700099",
-    "nsu": "900000247",
+    "nsu": "900700100",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4201,7 +4201,7 @@
   {
     "id": "C00248",
     "couponNumber": "NF-700099",
-    "nsu": "900000248",
+    "nsu": "900700100",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4218,7 +4218,7 @@
   {
     "id": "C00249",
     "couponNumber": "NF-700100",
-    "nsu": "900000249",
+    "nsu": "900700101",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4235,7 +4235,7 @@
   {
     "id": "C00250",
     "couponNumber": "NF-700100",
-    "nsu": "900000250",
+    "nsu": "900700101",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4252,7 +4252,7 @@
   {
     "id": "C00251",
     "couponNumber": "NF-700101",
-    "nsu": "900000251",
+    "nsu": "900700102",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4269,7 +4269,7 @@
   {
     "id": "C00252",
     "couponNumber": "NF-700101",
-    "nsu": "900000252",
+    "nsu": "900700102",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4286,7 +4286,7 @@
   {
     "id": "C00253",
     "couponNumber": "NF-700101",
-    "nsu": "900000253",
+    "nsu": "900700102",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4303,7 +4303,7 @@
   {
     "id": "C00254",
     "couponNumber": "NF-700102",
-    "nsu": "900000254",
+    "nsu": "900700103",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4320,7 +4320,7 @@
   {
     "id": "C00255",
     "couponNumber": "NF-700102",
-    "nsu": "900000255",
+    "nsu": "900700103",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4337,7 +4337,7 @@
   {
     "id": "C00256",
     "couponNumber": "NF-700103",
-    "nsu": "900000256",
+    "nsu": "900700104",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4354,7 +4354,7 @@
   {
     "id": "C00257",
     "couponNumber": "NF-700103",
-    "nsu": "900000257",
+    "nsu": "900700104",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4371,7 +4371,7 @@
   {
     "id": "C00258",
     "couponNumber": "NF-700103",
-    "nsu": "900000258",
+    "nsu": "900700104",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4388,7 +4388,7 @@
   {
     "id": "C00259",
     "couponNumber": "NF-700104",
-    "nsu": "900000259",
+    "nsu": "900700105",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4405,7 +4405,7 @@
   {
     "id": "C00260",
     "couponNumber": "NF-700104",
-    "nsu": "900000260",
+    "nsu": "900700105",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4422,7 +4422,7 @@
   {
     "id": "C00261",
     "couponNumber": "NF-700105",
-    "nsu": "900000261",
+    "nsu": "900700106",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4439,7 +4439,7 @@
   {
     "id": "C00262",
     "couponNumber": "NF-700105",
-    "nsu": "900000262",
+    "nsu": "900700106",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4456,7 +4456,7 @@
   {
     "id": "C00263",
     "couponNumber": "NF-700105",
-    "nsu": "900000263",
+    "nsu": "900700106",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4473,7 +4473,7 @@
   {
     "id": "C00264",
     "couponNumber": "NF-700106",
-    "nsu": "900000264",
+    "nsu": "900700107",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4490,7 +4490,7 @@
   {
     "id": "C00265",
     "couponNumber": "NF-700106",
-    "nsu": "900000265",
+    "nsu": "900700107",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4507,7 +4507,7 @@
   {
     "id": "C00266",
     "couponNumber": "NF-700107",
-    "nsu": "900000266",
+    "nsu": "900700108",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4524,7 +4524,7 @@
   {
     "id": "C00267",
     "couponNumber": "NF-700107",
-    "nsu": "900000267",
+    "nsu": "900700108",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4541,7 +4541,7 @@
   {
     "id": "C00268",
     "couponNumber": "NF-700107",
-    "nsu": "900000268",
+    "nsu": "900700108",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4558,7 +4558,7 @@
   {
     "id": "C00269",
     "couponNumber": "NF-700108",
-    "nsu": "900000269",
+    "nsu": "900700109",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4575,7 +4575,7 @@
   {
     "id": "C00270",
     "couponNumber": "NF-700108",
-    "nsu": "900000270",
+    "nsu": "900700109",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -4592,7 +4592,7 @@
   {
     "id": "C00271",
     "couponNumber": "NF-700109",
-    "nsu": "900000271",
+    "nsu": "900700110",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4609,7 +4609,7 @@
   {
     "id": "C00272",
     "couponNumber": "NF-700109",
-    "nsu": "900000272",
+    "nsu": "900700110",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4626,7 +4626,7 @@
   {
     "id": "C00273",
     "couponNumber": "NF-700109",
-    "nsu": "900000273",
+    "nsu": "900700110",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4643,7 +4643,7 @@
   {
     "id": "C00274",
     "couponNumber": "NF-700110",
-    "nsu": "900000274",
+    "nsu": "900700111",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4660,7 +4660,7 @@
   {
     "id": "C00275",
     "couponNumber": "NF-700110",
-    "nsu": "900000275",
+    "nsu": "900700111",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4677,7 +4677,7 @@
   {
     "id": "C00276",
     "couponNumber": "NF-700111",
-    "nsu": "900000276",
+    "nsu": "900700112",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4694,7 +4694,7 @@
   {
     "id": "C00277",
     "couponNumber": "NF-700111",
-    "nsu": "900000277",
+    "nsu": "900700112",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4711,7 +4711,7 @@
   {
     "id": "C00278",
     "couponNumber": "NF-700111",
-    "nsu": "900000278",
+    "nsu": "900700112",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4728,7 +4728,7 @@
   {
     "id": "C00279",
     "couponNumber": "NF-700112",
-    "nsu": "900000279",
+    "nsu": "900700113",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4745,7 +4745,7 @@
   {
     "id": "C00280",
     "couponNumber": "NF-700112",
-    "nsu": "900000280",
+    "nsu": "900700113",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -4762,7 +4762,7 @@
   {
     "id": "C00281",
     "couponNumber": "NF-700113",
-    "nsu": "900000281",
+    "nsu": "900700114",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4779,7 +4779,7 @@
   {
     "id": "C00282",
     "couponNumber": "NF-700113",
-    "nsu": "900000282",
+    "nsu": "900700114",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4796,7 +4796,7 @@
   {
     "id": "C00283",
     "couponNumber": "NF-700113",
-    "nsu": "900000283",
+    "nsu": "900700114",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4813,7 +4813,7 @@
   {
     "id": "C00284",
     "couponNumber": "NF-700114",
-    "nsu": "900000284",
+    "nsu": "900700115",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4830,7 +4830,7 @@
   {
     "id": "C00285",
     "couponNumber": "NF-700114",
-    "nsu": "900000285",
+    "nsu": "900700115",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4847,7 +4847,7 @@
   {
     "id": "C00286",
     "couponNumber": "NF-700115",
-    "nsu": "900000286",
+    "nsu": "900700116",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4864,7 +4864,7 @@
   {
     "id": "C00287",
     "couponNumber": "NF-700115",
-    "nsu": "900000287",
+    "nsu": "900700116",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4881,7 +4881,7 @@
   {
     "id": "C00288",
     "couponNumber": "NF-700115",
-    "nsu": "900000288",
+    "nsu": "900700116",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4898,7 +4898,7 @@
   {
     "id": "C00289",
     "couponNumber": "NF-700116",
-    "nsu": "900000289",
+    "nsu": "900700117",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4915,7 +4915,7 @@
   {
     "id": "C00290",
     "couponNumber": "NF-700116",
-    "nsu": "900000290",
+    "nsu": "900700117",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -4932,7 +4932,7 @@
   {
     "id": "C00291",
     "couponNumber": "NF-700117",
-    "nsu": "900000291",
+    "nsu": "900700118",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4949,7 +4949,7 @@
   {
     "id": "C00292",
     "couponNumber": "NF-700117",
-    "nsu": "900000292",
+    "nsu": "900700118",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4966,7 +4966,7 @@
   {
     "id": "C00293",
     "couponNumber": "NF-700117",
-    "nsu": "900000293",
+    "nsu": "900700118",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -4983,7 +4983,7 @@
   {
     "id": "C00294",
     "couponNumber": "NF-700118",
-    "nsu": "900000294",
+    "nsu": "900700119",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5000,7 +5000,7 @@
   {
     "id": "C00295",
     "couponNumber": "NF-700118",
-    "nsu": "900000295",
+    "nsu": "900700119",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5017,7 +5017,7 @@
   {
     "id": "C00296",
     "couponNumber": "NF-700119",
-    "nsu": "900000296",
+    "nsu": "900700120",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5034,7 +5034,7 @@
   {
     "id": "C00297",
     "couponNumber": "NF-700119",
-    "nsu": "900000297",
+    "nsu": "900700120",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5051,7 +5051,7 @@
   {
     "id": "C00298",
     "couponNumber": "NF-700119",
-    "nsu": "900000298",
+    "nsu": "900700120",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5068,7 +5068,7 @@
   {
     "id": "C00299",
     "couponNumber": "NF-700120",
-    "nsu": "900000299",
+    "nsu": "900700121",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5085,7 +5085,7 @@
   {
     "id": "C00300",
     "couponNumber": "NF-700120",
-    "nsu": "900000300",
+    "nsu": "900700121",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5102,7 +5102,7 @@
   {
     "id": "C00301",
     "couponNumber": "NF-700121",
-    "nsu": "900000301",
+    "nsu": "900700122",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5119,7 +5119,7 @@
   {
     "id": "C00302",
     "couponNumber": "NF-700121",
-    "nsu": "900000302",
+    "nsu": "900700122",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5136,7 +5136,7 @@
   {
     "id": "C00303",
     "couponNumber": "NF-700121",
-    "nsu": "900000303",
+    "nsu": "900700122",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5153,7 +5153,7 @@
   {
     "id": "C00304",
     "couponNumber": "NF-700122",
-    "nsu": "900000304",
+    "nsu": "900700123",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5170,7 +5170,7 @@
   {
     "id": "C00305",
     "couponNumber": "NF-700122",
-    "nsu": "900000305",
+    "nsu": "900700123",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5187,7 +5187,7 @@
   {
     "id": "C00306",
     "couponNumber": "NF-700123",
-    "nsu": "900000306",
+    "nsu": "900700124",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5204,7 +5204,7 @@
   {
     "id": "C00307",
     "couponNumber": "NF-700123",
-    "nsu": "900000307",
+    "nsu": "900700124",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5221,7 +5221,7 @@
   {
     "id": "C00308",
     "couponNumber": "NF-700123",
-    "nsu": "900000308",
+    "nsu": "900700124",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5238,7 +5238,7 @@
   {
     "id": "C00309",
     "couponNumber": "NF-700124",
-    "nsu": "900000309",
+    "nsu": "900700125",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5255,7 +5255,7 @@
   {
     "id": "C00310",
     "couponNumber": "NF-700124",
-    "nsu": "900000310",
+    "nsu": "900700125",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5272,7 +5272,7 @@
   {
     "id": "C00311",
     "couponNumber": "NF-700125",
-    "nsu": "900000311",
+    "nsu": "900700126",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5289,7 +5289,7 @@
   {
     "id": "C00312",
     "couponNumber": "NF-700125",
-    "nsu": "900000312",
+    "nsu": "900700126",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5306,7 +5306,7 @@
   {
     "id": "C00313",
     "couponNumber": "NF-700125",
-    "nsu": "900000313",
+    "nsu": "900700126",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5323,7 +5323,7 @@
   {
     "id": "C00314",
     "couponNumber": "NF-700126",
-    "nsu": "900000314",
+    "nsu": "900700127",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5340,7 +5340,7 @@
   {
     "id": "C00315",
     "couponNumber": "NF-700126",
-    "nsu": "900000315",
+    "nsu": "900700127",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5357,7 +5357,7 @@
   {
     "id": "C00316",
     "couponNumber": "NF-700127",
-    "nsu": "900000316",
+    "nsu": "900700128",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5374,7 +5374,7 @@
   {
     "id": "C00317",
     "couponNumber": "NF-700127",
-    "nsu": "900000317",
+    "nsu": "900700128",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5391,7 +5391,7 @@
   {
     "id": "C00318",
     "couponNumber": "NF-700127",
-    "nsu": "900000318",
+    "nsu": "900700128",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5408,7 +5408,7 @@
   {
     "id": "C00319",
     "couponNumber": "NF-700128",
-    "nsu": "900000319",
+    "nsu": "900700129",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5425,7 +5425,7 @@
   {
     "id": "C00320",
     "couponNumber": "NF-700128",
-    "nsu": "900000320",
+    "nsu": "900700129",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5442,7 +5442,7 @@
   {
     "id": "C00321",
     "couponNumber": "NF-700129",
-    "nsu": "900000321",
+    "nsu": "900700130",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5459,7 +5459,7 @@
   {
     "id": "C00322",
     "couponNumber": "NF-700129",
-    "nsu": "900000322",
+    "nsu": "900700130",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5476,7 +5476,7 @@
   {
     "id": "C00323",
     "couponNumber": "NF-700129",
-    "nsu": "900000323",
+    "nsu": "900700130",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5493,7 +5493,7 @@
   {
     "id": "C00324",
     "couponNumber": "NF-700130",
-    "nsu": "900000324",
+    "nsu": "900700131",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5510,7 +5510,7 @@
   {
     "id": "C00325",
     "couponNumber": "NF-700130",
-    "nsu": "900000325",
+    "nsu": "900700131",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5527,7 +5527,7 @@
   {
     "id": "C00326",
     "couponNumber": "NF-700131",
-    "nsu": "900000326",
+    "nsu": "900700132",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5544,7 +5544,7 @@
   {
     "id": "C00327",
     "couponNumber": "NF-700131",
-    "nsu": "900000327",
+    "nsu": "900700132",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5561,7 +5561,7 @@
   {
     "id": "C00328",
     "couponNumber": "NF-700131",
-    "nsu": "900000328",
+    "nsu": "900700132",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5578,7 +5578,7 @@
   {
     "id": "C00329",
     "couponNumber": "NF-700132",
-    "nsu": "900000329",
+    "nsu": "900700133",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5595,7 +5595,7 @@
   {
     "id": "C00330",
     "couponNumber": "NF-700132",
-    "nsu": "900000330",
+    "nsu": "900700133",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "PIX",
@@ -5612,7 +5612,7 @@
   {
     "id": "C00331",
     "couponNumber": "NF-700133",
-    "nsu": "900000331",
+    "nsu": "900700134",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5629,7 +5629,7 @@
   {
     "id": "C00332",
     "couponNumber": "NF-700133",
-    "nsu": "900000332",
+    "nsu": "900700134",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5646,7 +5646,7 @@
   {
     "id": "C00333",
     "couponNumber": "NF-700133",
-    "nsu": "900000333",
+    "nsu": "900700134",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5663,7 +5663,7 @@
   {
     "id": "C00334",
     "couponNumber": "NF-700134",
-    "nsu": "900000334",
+    "nsu": "900700135",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5680,7 +5680,7 @@
   {
     "id": "C00335",
     "couponNumber": "NF-700134",
-    "nsu": "900000335",
+    "nsu": "900700135",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5697,7 +5697,7 @@
   {
     "id": "C00336",
     "couponNumber": "NF-700135",
-    "nsu": "900000336",
+    "nsu": "900700136",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5714,7 +5714,7 @@
   {
     "id": "C00337",
     "couponNumber": "NF-700135",
-    "nsu": "900000337",
+    "nsu": "900700136",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5731,7 +5731,7 @@
   {
     "id": "C00338",
     "couponNumber": "NF-700135",
-    "nsu": "900000338",
+    "nsu": "900700136",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5748,7 +5748,7 @@
   {
     "id": "C00339",
     "couponNumber": "NF-700136",
-    "nsu": "900000339",
+    "nsu": "900700137",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5765,7 +5765,7 @@
   {
     "id": "C00340",
     "couponNumber": "NF-700136",
-    "nsu": "900000340",
+    "nsu": "900700137",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Crédito",
@@ -5782,7 +5782,7 @@
   {
     "id": "C00341",
     "couponNumber": "NF-700137",
-    "nsu": "900000341",
+    "nsu": "900700138",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5799,7 +5799,7 @@
   {
     "id": "C00342",
     "couponNumber": "NF-700137",
-    "nsu": "900000342",
+    "nsu": "900700138",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5816,7 +5816,7 @@
   {
     "id": "C00343",
     "couponNumber": "NF-700137",
-    "nsu": "900000343",
+    "nsu": "900700138",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5833,7 +5833,7 @@
   {
     "id": "C00344",
     "couponNumber": "NF-700138",
-    "nsu": "900000344",
+    "nsu": "900700139",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5850,7 +5850,7 @@
   {
     "id": "C00345",
     "couponNumber": "NF-700138",
-    "nsu": "900000345",
+    "nsu": "900700139",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5867,7 +5867,7 @@
   {
     "id": "C00346",
     "couponNumber": "NF-700139",
-    "nsu": "900000346",
+    "nsu": "900700140",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5884,7 +5884,7 @@
   {
     "id": "C00347",
     "couponNumber": "NF-700139",
-    "nsu": "900000347",
+    "nsu": "900700140",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5901,7 +5901,7 @@
   {
     "id": "C00348",
     "couponNumber": "NF-700139",
-    "nsu": "900000348",
+    "nsu": "900700140",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5918,7 +5918,7 @@
   {
     "id": "C00349",
     "couponNumber": "NF-700140",
-    "nsu": "900000349",
+    "nsu": "900700141",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5935,7 +5935,7 @@
   {
     "id": "C00350",
     "couponNumber": "NF-700140",
-    "nsu": "900000350",
+    "nsu": "900700141",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Dinheiro",
@@ -5952,7 +5952,7 @@
   {
     "id": "C00351",
     "couponNumber": "NF-700141",
-    "nsu": "900000351",
+    "nsu": "900700142",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5969,7 +5969,7 @@
   {
     "id": "C00352",
     "couponNumber": "NF-700141",
-    "nsu": "900000352",
+    "nsu": "900700142",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -5986,7 +5986,7 @@
   {
     "id": "C00353",
     "couponNumber": "NF-700141",
-    "nsu": "900000353",
+    "nsu": "900700142",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6003,7 +6003,7 @@
   {
     "id": "C00354",
     "couponNumber": "NF-700142",
-    "nsu": "900000354",
+    "nsu": "900700143",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6020,7 +6020,7 @@
   {
     "id": "C00355",
     "couponNumber": "NF-700142",
-    "nsu": "900000355",
+    "nsu": "900700143",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6037,7 +6037,7 @@
   {
     "id": "C00356",
     "couponNumber": "NF-700143",
-    "nsu": "900000356",
+    "nsu": "900700144",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6054,7 +6054,7 @@
   {
     "id": "C00357",
     "couponNumber": "NF-700143",
-    "nsu": "900000357",
+    "nsu": "900700144",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6071,7 +6071,7 @@
   {
     "id": "C00358",
     "couponNumber": "NF-700143",
-    "nsu": "900000358",
+    "nsu": "900700144",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6088,7 +6088,7 @@
   {
     "id": "C00359",
     "couponNumber": "NF-700144",
-    "nsu": "900000359",
+    "nsu": "900700145",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6105,7 +6105,7 @@
   {
     "id": "C00360",
     "couponNumber": "NF-700144",
-    "nsu": "900000360",
+    "nsu": "900700145",
     "storeId": "LJ021",
     "acquirer": "Rede",
     "paymentMethod": "Cartão de Débito",
@@ -6122,7 +6122,7 @@
   {
     "id": "C00361",
     "couponNumber": "NF-700145",
-    "nsu": "900000361",
+    "nsu": "900700146",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6139,7 +6139,7 @@
   {
     "id": "C00362",
     "couponNumber": "NF-700145",
-    "nsu": "900000362",
+    "nsu": "900700146",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6156,7 +6156,7 @@
   {
     "id": "C00363",
     "couponNumber": "NF-700145",
-    "nsu": "900000363",
+    "nsu": "900700146",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6173,7 +6173,7 @@
   {
     "id": "C00364",
     "couponNumber": "NF-700146",
-    "nsu": "900000364",
+    "nsu": "900700147",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6190,7 +6190,7 @@
   {
     "id": "C00365",
     "couponNumber": "NF-700146",
-    "nsu": "900000365",
+    "nsu": "900700147",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6207,7 +6207,7 @@
   {
     "id": "C00366",
     "couponNumber": "NF-700147",
-    "nsu": "900000366",
+    "nsu": "900700148",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6224,7 +6224,7 @@
   {
     "id": "C00367",
     "couponNumber": "NF-700147",
-    "nsu": "900000367",
+    "nsu": "900700148",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6241,7 +6241,7 @@
   {
     "id": "C00368",
     "couponNumber": "NF-700147",
-    "nsu": "900000368",
+    "nsu": "900700148",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6258,7 +6258,7 @@
   {
     "id": "C00369",
     "couponNumber": "NF-700148",
-    "nsu": "900000369",
+    "nsu": "900700149",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6275,7 +6275,7 @@
   {
     "id": "C00370",
     "couponNumber": "NF-700148",
-    "nsu": "900000370",
+    "nsu": "900700149",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6292,7 +6292,7 @@
   {
     "id": "C00371",
     "couponNumber": "NF-700149",
-    "nsu": "900000371",
+    "nsu": "900700150",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6309,7 +6309,7 @@
   {
     "id": "C00372",
     "couponNumber": "NF-700149",
-    "nsu": "900000372",
+    "nsu": "900700150",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6326,7 +6326,7 @@
   {
     "id": "C00373",
     "couponNumber": "NF-700149",
-    "nsu": "900000373",
+    "nsu": "900700150",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6343,7 +6343,7 @@
   {
     "id": "C00374",
     "couponNumber": "NF-700150",
-    "nsu": "900000374",
+    "nsu": "900700151",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6360,7 +6360,7 @@
   {
     "id": "C00375",
     "couponNumber": "NF-700150",
-    "nsu": "900000375",
+    "nsu": "900700151",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6377,7 +6377,7 @@
   {
     "id": "C00376",
     "couponNumber": "NF-700151",
-    "nsu": "900000376",
+    "nsu": "900700152",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6394,7 +6394,7 @@
   {
     "id": "C00377",
     "couponNumber": "NF-700151",
-    "nsu": "900000377",
+    "nsu": "900700152",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6411,7 +6411,7 @@
   {
     "id": "C00378",
     "couponNumber": "NF-700151",
-    "nsu": "900000378",
+    "nsu": "900700152",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6428,7 +6428,7 @@
   {
     "id": "C00379",
     "couponNumber": "NF-700152",
-    "nsu": "900000379",
+    "nsu": "900700153",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6445,7 +6445,7 @@
   {
     "id": "C00380",
     "couponNumber": "NF-700152",
-    "nsu": "900000380",
+    "nsu": "900700153",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6462,7 +6462,7 @@
   {
     "id": "C00381",
     "couponNumber": "NF-700153",
-    "nsu": "900000381",
+    "nsu": "900700154",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6479,7 +6479,7 @@
   {
     "id": "C00382",
     "couponNumber": "NF-700153",
-    "nsu": "900000382",
+    "nsu": "900700154",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6496,7 +6496,7 @@
   {
     "id": "C00383",
     "couponNumber": "NF-700153",
-    "nsu": "900000383",
+    "nsu": "900700154",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6513,7 +6513,7 @@
   {
     "id": "C00384",
     "couponNumber": "NF-700154",
-    "nsu": "900000384",
+    "nsu": "900700155",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6530,7 +6530,7 @@
   {
     "id": "C00385",
     "couponNumber": "NF-700154",
-    "nsu": "900000385",
+    "nsu": "900700155",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6547,7 +6547,7 @@
   {
     "id": "C00386",
     "couponNumber": "NF-700155",
-    "nsu": "900000386",
+    "nsu": "900700156",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6564,7 +6564,7 @@
   {
     "id": "C00387",
     "couponNumber": "NF-700155",
-    "nsu": "900000387",
+    "nsu": "900700156",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6581,7 +6581,7 @@
   {
     "id": "C00388",
     "couponNumber": "NF-700155",
-    "nsu": "900000388",
+    "nsu": "900700156",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6598,7 +6598,7 @@
   {
     "id": "C00389",
     "couponNumber": "NF-700156",
-    "nsu": "900000389",
+    "nsu": "900700157",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6615,7 +6615,7 @@
   {
     "id": "C00390",
     "couponNumber": "NF-700156",
-    "nsu": "900000390",
+    "nsu": "900700157",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -6632,7 +6632,7 @@
   {
     "id": "C00391",
     "couponNumber": "NF-700157",
-    "nsu": "900000391",
+    "nsu": "900700158",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6649,7 +6649,7 @@
   {
     "id": "C00392",
     "couponNumber": "NF-700157",
-    "nsu": "900000392",
+    "nsu": "900700158",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6666,7 +6666,7 @@
   {
     "id": "C00393",
     "couponNumber": "NF-700157",
-    "nsu": "900000393",
+    "nsu": "900700158",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6683,7 +6683,7 @@
   {
     "id": "C00394",
     "couponNumber": "NF-700158",
-    "nsu": "900000394",
+    "nsu": "900700159",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6700,7 +6700,7 @@
   {
     "id": "C00395",
     "couponNumber": "NF-700158",
-    "nsu": "900000395",
+    "nsu": "900700159",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6717,7 +6717,7 @@
   {
     "id": "C00396",
     "couponNumber": "NF-700159",
-    "nsu": "900000396",
+    "nsu": "900700160",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6734,7 +6734,7 @@
   {
     "id": "C00397",
     "couponNumber": "NF-700159",
-    "nsu": "900000397",
+    "nsu": "900700160",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6751,7 +6751,7 @@
   {
     "id": "C00398",
     "couponNumber": "NF-700159",
-    "nsu": "900000398",
+    "nsu": "900700160",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6768,7 +6768,7 @@
   {
     "id": "C00399",
     "couponNumber": "NF-700160",
-    "nsu": "900000399",
+    "nsu": "900700161",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6785,7 +6785,7 @@
   {
     "id": "C00400",
     "couponNumber": "NF-700160",
-    "nsu": "900000400",
+    "nsu": "900700161",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -6802,7 +6802,7 @@
   {
     "id": "C00401",
     "couponNumber": "NF-700161",
-    "nsu": "900000401",
+    "nsu": "900700162",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6819,7 +6819,7 @@
   {
     "id": "C00402",
     "couponNumber": "NF-700161",
-    "nsu": "900000402",
+    "nsu": "900700162",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6836,7 +6836,7 @@
   {
     "id": "C00403",
     "couponNumber": "NF-700161",
-    "nsu": "900000403",
+    "nsu": "900700162",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6853,7 +6853,7 @@
   {
     "id": "C00404",
     "couponNumber": "NF-700162",
-    "nsu": "900000404",
+    "nsu": "900700163",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6870,7 +6870,7 @@
   {
     "id": "C00405",
     "couponNumber": "NF-700162",
-    "nsu": "900000405",
+    "nsu": "900700163",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6887,7 +6887,7 @@
   {
     "id": "C00406",
     "couponNumber": "NF-700163",
-    "nsu": "900000406",
+    "nsu": "900700164",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6904,7 +6904,7 @@
   {
     "id": "C00407",
     "couponNumber": "NF-700163",
-    "nsu": "900000407",
+    "nsu": "900700164",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6921,7 +6921,7 @@
   {
     "id": "C00408",
     "couponNumber": "NF-700163",
-    "nsu": "900000408",
+    "nsu": "900700164",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6938,7 +6938,7 @@
   {
     "id": "C00409",
     "couponNumber": "NF-700164",
-    "nsu": "900000409",
+    "nsu": "900700165",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6955,7 +6955,7 @@
   {
     "id": "C00410",
     "couponNumber": "NF-700164",
-    "nsu": "900000410",
+    "nsu": "900700165",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -6972,7 +6972,7 @@
   {
     "id": "C00411",
     "couponNumber": "NF-700165",
-    "nsu": "900000411",
+    "nsu": "900700166",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -6989,7 +6989,7 @@
   {
     "id": "C00412",
     "couponNumber": "NF-700165",
-    "nsu": "900000412",
+    "nsu": "900700166",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7006,7 +7006,7 @@
   {
     "id": "C00413",
     "couponNumber": "NF-700165",
-    "nsu": "900000413",
+    "nsu": "900700166",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7023,7 +7023,7 @@
   {
     "id": "C00414",
     "couponNumber": "NF-700166",
-    "nsu": "900000414",
+    "nsu": "900700167",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7040,7 +7040,7 @@
   {
     "id": "C00415",
     "couponNumber": "NF-700166",
-    "nsu": "900000415",
+    "nsu": "900700167",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7057,7 +7057,7 @@
   {
     "id": "C00416",
     "couponNumber": "NF-700167",
-    "nsu": "900000416",
+    "nsu": "900700168",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7074,7 +7074,7 @@
   {
     "id": "C00417",
     "couponNumber": "NF-700167",
-    "nsu": "900000417",
+    "nsu": "900700168",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7091,7 +7091,7 @@
   {
     "id": "C00418",
     "couponNumber": "NF-700167",
-    "nsu": "900000418",
+    "nsu": "900700168",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7108,7 +7108,7 @@
   {
     "id": "C00419",
     "couponNumber": "NF-700168",
-    "nsu": "900000419",
+    "nsu": "900700169",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7125,7 +7125,7 @@
   {
     "id": "C00420",
     "couponNumber": "NF-700168",
-    "nsu": "900000420",
+    "nsu": "900700169",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7142,7 +7142,7 @@
   {
     "id": "C00421",
     "couponNumber": "NF-700169",
-    "nsu": "900000421",
+    "nsu": "900700170",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7159,7 +7159,7 @@
   {
     "id": "C00422",
     "couponNumber": "NF-700169",
-    "nsu": "900000422",
+    "nsu": "900700170",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7176,7 +7176,7 @@
   {
     "id": "C00423",
     "couponNumber": "NF-700169",
-    "nsu": "900000423",
+    "nsu": "900700170",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7193,7 +7193,7 @@
   {
     "id": "C00424",
     "couponNumber": "NF-700170",
-    "nsu": "900000424",
+    "nsu": "900700171",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7210,7 +7210,7 @@
   {
     "id": "C00425",
     "couponNumber": "NF-700170",
-    "nsu": "900000425",
+    "nsu": "900700171",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7227,7 +7227,7 @@
   {
     "id": "C00426",
     "couponNumber": "NF-700171",
-    "nsu": "900000426",
+    "nsu": "900700172",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7244,7 +7244,7 @@
   {
     "id": "C00427",
     "couponNumber": "NF-700171",
-    "nsu": "900000427",
+    "nsu": "900700172",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7261,7 +7261,7 @@
   {
     "id": "C00428",
     "couponNumber": "NF-700171",
-    "nsu": "900000428",
+    "nsu": "900700172",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7278,7 +7278,7 @@
   {
     "id": "C00429",
     "couponNumber": "NF-700172",
-    "nsu": "900000429",
+    "nsu": "900700173",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7295,7 +7295,7 @@
   {
     "id": "C00430",
     "couponNumber": "NF-700172",
-    "nsu": "900000430",
+    "nsu": "900700173",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7312,7 +7312,7 @@
   {
     "id": "C00431",
     "couponNumber": "NF-700173",
-    "nsu": "900000431",
+    "nsu": "900700174",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7329,7 +7329,7 @@
   {
     "id": "C00432",
     "couponNumber": "NF-700173",
-    "nsu": "900000432",
+    "nsu": "900700174",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7346,7 +7346,7 @@
   {
     "id": "C00433",
     "couponNumber": "NF-700173",
-    "nsu": "900000433",
+    "nsu": "900700174",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7363,7 +7363,7 @@
   {
     "id": "C00434",
     "couponNumber": "NF-700174",
-    "nsu": "900000434",
+    "nsu": "900700175",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7380,7 +7380,7 @@
   {
     "id": "C00435",
     "couponNumber": "NF-700174",
-    "nsu": "900000435",
+    "nsu": "900700175",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7397,7 +7397,7 @@
   {
     "id": "C00436",
     "couponNumber": "NF-700175",
-    "nsu": "900000436",
+    "nsu": "900700176",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7414,7 +7414,7 @@
   {
     "id": "C00437",
     "couponNumber": "NF-700175",
-    "nsu": "900000437",
+    "nsu": "900700176",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7431,7 +7431,7 @@
   {
     "id": "C00438",
     "couponNumber": "NF-700175",
-    "nsu": "900000438",
+    "nsu": "900700176",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7448,7 +7448,7 @@
   {
     "id": "C00439",
     "couponNumber": "NF-700176",
-    "nsu": "900000439",
+    "nsu": "900700177",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7465,7 +7465,7 @@
   {
     "id": "C00440",
     "couponNumber": "NF-700176",
-    "nsu": "900000440",
+    "nsu": "900700177",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -7482,7 +7482,7 @@
   {
     "id": "C00441",
     "couponNumber": "NF-700177",
-    "nsu": "900000441",
+    "nsu": "900700178",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7499,7 +7499,7 @@
   {
     "id": "C00442",
     "couponNumber": "NF-700177",
-    "nsu": "900000442",
+    "nsu": "900700178",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7516,7 +7516,7 @@
   {
     "id": "C00443",
     "couponNumber": "NF-700177",
-    "nsu": "900000443",
+    "nsu": "900700178",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7533,7 +7533,7 @@
   {
     "id": "C00444",
     "couponNumber": "NF-700178",
-    "nsu": "900000444",
+    "nsu": "900700179",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7550,7 +7550,7 @@
   {
     "id": "C00445",
     "couponNumber": "NF-700178",
-    "nsu": "900000445",
+    "nsu": "900700179",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7567,7 +7567,7 @@
   {
     "id": "C00446",
     "couponNumber": "NF-700179",
-    "nsu": "900000446",
+    "nsu": "900700180",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7584,7 +7584,7 @@
   {
     "id": "C00447",
     "couponNumber": "NF-700179",
-    "nsu": "900000447",
+    "nsu": "900700180",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7601,7 +7601,7 @@
   {
     "id": "C00448",
     "couponNumber": "NF-700179",
-    "nsu": "900000448",
+    "nsu": "900700180",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7618,7 +7618,7 @@
   {
     "id": "C00449",
     "couponNumber": "NF-700180",
-    "nsu": "900000449",
+    "nsu": "900700181",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7635,7 +7635,7 @@
   {
     "id": "C00450",
     "couponNumber": "NF-700180",
-    "nsu": "900000450",
+    "nsu": "900700181",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "PIX",
@@ -7652,7 +7652,7 @@
   {
     "id": "C00451",
     "couponNumber": "NF-700181",
-    "nsu": "900000451",
+    "nsu": "900700182",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7669,7 +7669,7 @@
   {
     "id": "C00452",
     "couponNumber": "NF-700181",
-    "nsu": "900000452",
+    "nsu": "900700182",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7686,7 +7686,7 @@
   {
     "id": "C00453",
     "couponNumber": "NF-700181",
-    "nsu": "900000453",
+    "nsu": "900700182",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7703,7 +7703,7 @@
   {
     "id": "C00454",
     "couponNumber": "NF-700182",
-    "nsu": "900000454",
+    "nsu": "900700183",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7720,7 +7720,7 @@
   {
     "id": "C00455",
     "couponNumber": "NF-700182",
-    "nsu": "900000455",
+    "nsu": "900700183",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7737,7 +7737,7 @@
   {
     "id": "C00456",
     "couponNumber": "NF-700183",
-    "nsu": "900000456",
+    "nsu": "900700184",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7754,7 +7754,7 @@
   {
     "id": "C00457",
     "couponNumber": "NF-700183",
-    "nsu": "900000457",
+    "nsu": "900700184",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7771,7 +7771,7 @@
   {
     "id": "C00458",
     "couponNumber": "NF-700183",
-    "nsu": "900000458",
+    "nsu": "900700184",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7788,7 +7788,7 @@
   {
     "id": "C00459",
     "couponNumber": "NF-700184",
-    "nsu": "900000459",
+    "nsu": "900700185",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7805,7 +7805,7 @@
   {
     "id": "C00460",
     "couponNumber": "NF-700184",
-    "nsu": "900000460",
+    "nsu": "900700185",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Crédito",
@@ -7822,7 +7822,7 @@
   {
     "id": "C00461",
     "couponNumber": "NF-700185",
-    "nsu": "900000461",
+    "nsu": "900700186",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7839,7 +7839,7 @@
   {
     "id": "C00462",
     "couponNumber": "NF-700185",
-    "nsu": "900000462",
+    "nsu": "900700186",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7856,7 +7856,7 @@
   {
     "id": "C00463",
     "couponNumber": "NF-700185",
-    "nsu": "900000463",
+    "nsu": "900700186",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7873,7 +7873,7 @@
   {
     "id": "C00464",
     "couponNumber": "NF-700186",
-    "nsu": "900000464",
+    "nsu": "900700187",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7890,7 +7890,7 @@
   {
     "id": "C00465",
     "couponNumber": "NF-700186",
-    "nsu": "900000465",
+    "nsu": "900700187",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7907,7 +7907,7 @@
   {
     "id": "C00466",
     "couponNumber": "NF-700187",
-    "nsu": "900000466",
+    "nsu": "900700188",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7924,7 +7924,7 @@
   {
     "id": "C00467",
     "couponNumber": "NF-700187",
-    "nsu": "900000467",
+    "nsu": "900700188",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7941,7 +7941,7 @@
   {
     "id": "C00468",
     "couponNumber": "NF-700187",
-    "nsu": "900000468",
+    "nsu": "900700188",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7958,7 +7958,7 @@
   {
     "id": "C00469",
     "couponNumber": "NF-700188",
-    "nsu": "900000469",
+    "nsu": "900700189",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7975,7 +7975,7 @@
   {
     "id": "C00470",
     "couponNumber": "NF-700188",
-    "nsu": "900000470",
+    "nsu": "900700189",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Dinheiro",
@@ -7992,7 +7992,7 @@
   {
     "id": "C00471",
     "couponNumber": "NF-700189",
-    "nsu": "900000471",
+    "nsu": "900700190",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8009,7 +8009,7 @@
   {
     "id": "C00472",
     "couponNumber": "NF-700189",
-    "nsu": "900000472",
+    "nsu": "900700190",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8026,7 +8026,7 @@
   {
     "id": "C00473",
     "couponNumber": "NF-700189",
-    "nsu": "900000473",
+    "nsu": "900700190",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8043,7 +8043,7 @@
   {
     "id": "C00474",
     "couponNumber": "NF-700190",
-    "nsu": "900000474",
+    "nsu": "900700191",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8060,7 +8060,7 @@
   {
     "id": "C00475",
     "couponNumber": "NF-700190",
-    "nsu": "900000475",
+    "nsu": "900700191",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8077,7 +8077,7 @@
   {
     "id": "C00476",
     "couponNumber": "NF-700191",
-    "nsu": "900000476",
+    "nsu": "900700192",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8094,7 +8094,7 @@
   {
     "id": "C00477",
     "couponNumber": "NF-700191",
-    "nsu": "900000477",
+    "nsu": "900700192",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8111,7 +8111,7 @@
   {
     "id": "C00478",
     "couponNumber": "NF-700191",
-    "nsu": "900000478",
+    "nsu": "900700192",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8128,7 +8128,7 @@
   {
     "id": "C00479",
     "couponNumber": "NF-700192",
-    "nsu": "900000479",
+    "nsu": "900700193",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8145,7 +8145,7 @@
   {
     "id": "C00480",
     "couponNumber": "NF-700192",
-    "nsu": "900000480",
+    "nsu": "900700193",
     "storeId": "LJ089",
     "acquirer": "Getnet",
     "paymentMethod": "Cartão de Débito",
@@ -8162,7 +8162,7 @@
   {
     "id": "C00481",
     "couponNumber": "NF-700193",
-    "nsu": "900000481",
+    "nsu": "900700194",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8179,7 +8179,7 @@
   {
     "id": "C00482",
     "couponNumber": "NF-700193",
-    "nsu": "900000482",
+    "nsu": "900700194",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8196,7 +8196,7 @@
   {
     "id": "C00483",
     "couponNumber": "NF-700193",
-    "nsu": "900000483",
+    "nsu": "900700194",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8213,7 +8213,7 @@
   {
     "id": "C00484",
     "couponNumber": "NF-700194",
-    "nsu": "900000484",
+    "nsu": "900700195",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8230,7 +8230,7 @@
   {
     "id": "C00485",
     "couponNumber": "NF-700194",
-    "nsu": "900000485",
+    "nsu": "900700195",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8247,7 +8247,7 @@
   {
     "id": "C00486",
     "couponNumber": "NF-700195",
-    "nsu": "900000486",
+    "nsu": "900700196",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8264,7 +8264,7 @@
   {
     "id": "C00487",
     "couponNumber": "NF-700195",
-    "nsu": "900000487",
+    "nsu": "900700196",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8281,7 +8281,7 @@
   {
     "id": "C00488",
     "couponNumber": "NF-700195",
-    "nsu": "900000488",
+    "nsu": "900700196",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8298,7 +8298,7 @@
   {
     "id": "C00489",
     "couponNumber": "NF-700196",
-    "nsu": "900000489",
+    "nsu": "900700197",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8315,7 +8315,7 @@
   {
     "id": "C00490",
     "couponNumber": "NF-700196",
-    "nsu": "900000490",
+    "nsu": "900700197",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8332,7 +8332,7 @@
   {
     "id": "C00491",
     "couponNumber": "NF-700197",
-    "nsu": "900000491",
+    "nsu": "900700198",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8349,7 +8349,7 @@
   {
     "id": "C00492",
     "couponNumber": "NF-700197",
-    "nsu": "900000492",
+    "nsu": "900700198",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8366,7 +8366,7 @@
   {
     "id": "C00493",
     "couponNumber": "NF-700197",
-    "nsu": "900000493",
+    "nsu": "900700198",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8383,7 +8383,7 @@
   {
     "id": "C00494",
     "couponNumber": "NF-700198",
-    "nsu": "900000494",
+    "nsu": "900700199",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8400,7 +8400,7 @@
   {
     "id": "C00495",
     "couponNumber": "NF-700198",
-    "nsu": "900000495",
+    "nsu": "900700199",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8417,7 +8417,7 @@
   {
     "id": "C00496",
     "couponNumber": "NF-700199",
-    "nsu": "900000496",
+    "nsu": "900700200",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8434,7 +8434,7 @@
   {
     "id": "C00497",
     "couponNumber": "NF-700199",
-    "nsu": "900000497",
+    "nsu": "900700200",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8451,7 +8451,7 @@
   {
     "id": "C00498",
     "couponNumber": "NF-700199",
-    "nsu": "900000498",
+    "nsu": "900700200",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8468,7 +8468,7 @@
   {
     "id": "C00499",
     "couponNumber": "NF-700200",
-    "nsu": "900000499",
+    "nsu": "900700201",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8485,7 +8485,7 @@
   {
     "id": "C00500",
     "couponNumber": "NF-700200",
-    "nsu": "900000500",
+    "nsu": "900700201",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -8502,7 +8502,7 @@
   {
     "id": "C00501",
     "couponNumber": "NF-700201",
-    "nsu": "900000501",
+    "nsu": "900700202",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8519,7 +8519,7 @@
   {
     "id": "C00502",
     "couponNumber": "NF-700201",
-    "nsu": "900000502",
+    "nsu": "900700202",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8536,7 +8536,7 @@
   {
     "id": "C00503",
     "couponNumber": "NF-700201",
-    "nsu": "900000503",
+    "nsu": "900700202",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8553,7 +8553,7 @@
   {
     "id": "C00504",
     "couponNumber": "NF-700202",
-    "nsu": "900000504",
+    "nsu": "900700203",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8570,7 +8570,7 @@
   {
     "id": "C00505",
     "couponNumber": "NF-700202",
-    "nsu": "900000505",
+    "nsu": "900700203",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8587,7 +8587,7 @@
   {
     "id": "C00506",
     "couponNumber": "NF-700203",
-    "nsu": "900000506",
+    "nsu": "900700204",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8604,7 +8604,7 @@
   {
     "id": "C00507",
     "couponNumber": "NF-700203",
-    "nsu": "900000507",
+    "nsu": "900700204",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8621,7 +8621,7 @@
   {
     "id": "C00508",
     "couponNumber": "NF-700203",
-    "nsu": "900000508",
+    "nsu": "900700204",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8638,7 +8638,7 @@
   {
     "id": "C00509",
     "couponNumber": "NF-700204",
-    "nsu": "900000509",
+    "nsu": "900700205",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8655,7 +8655,7 @@
   {
     "id": "C00510",
     "couponNumber": "NF-700204",
-    "nsu": "900000510",
+    "nsu": "900700205",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -8672,7 +8672,7 @@
   {
     "id": "C00511",
     "couponNumber": "NF-700205",
-    "nsu": "900000511",
+    "nsu": "900700206",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8689,7 +8689,7 @@
   {
     "id": "C00512",
     "couponNumber": "NF-700205",
-    "nsu": "900000512",
+    "nsu": "900700206",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8706,7 +8706,7 @@
   {
     "id": "C00513",
     "couponNumber": "NF-700205",
-    "nsu": "900000513",
+    "nsu": "900700206",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8723,7 +8723,7 @@
   {
     "id": "C00514",
     "couponNumber": "NF-700206",
-    "nsu": "900000514",
+    "nsu": "900700207",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8740,7 +8740,7 @@
   {
     "id": "C00515",
     "couponNumber": "NF-700206",
-    "nsu": "900000515",
+    "nsu": "900700207",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8757,7 +8757,7 @@
   {
     "id": "C00516",
     "couponNumber": "NF-700207",
-    "nsu": "900000516",
+    "nsu": "900700208",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8774,7 +8774,7 @@
   {
     "id": "C00517",
     "couponNumber": "NF-700207",
-    "nsu": "900000517",
+    "nsu": "900700208",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8791,7 +8791,7 @@
   {
     "id": "C00518",
     "couponNumber": "NF-700207",
-    "nsu": "900000518",
+    "nsu": "900700208",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8808,7 +8808,7 @@
   {
     "id": "C00519",
     "couponNumber": "NF-700208",
-    "nsu": "900000519",
+    "nsu": "900700209",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8825,7 +8825,7 @@
   {
     "id": "C00520",
     "couponNumber": "NF-700208",
-    "nsu": "900000520",
+    "nsu": "900700209",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -8842,7 +8842,7 @@
   {
     "id": "C00521",
     "couponNumber": "NF-700209",
-    "nsu": "900000521",
+    "nsu": "900700210",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8859,7 +8859,7 @@
   {
     "id": "C00522",
     "couponNumber": "NF-700209",
-    "nsu": "900000522",
+    "nsu": "900700210",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8876,7 +8876,7 @@
   {
     "id": "C00523",
     "couponNumber": "NF-700209",
-    "nsu": "900000523",
+    "nsu": "900700210",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8893,7 +8893,7 @@
   {
     "id": "C00524",
     "couponNumber": "NF-700210",
-    "nsu": "900000524",
+    "nsu": "900700211",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8910,7 +8910,7 @@
   {
     "id": "C00525",
     "couponNumber": "NF-700210",
-    "nsu": "900000525",
+    "nsu": "900700211",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8927,7 +8927,7 @@
   {
     "id": "C00526",
     "couponNumber": "NF-700211",
-    "nsu": "900000526",
+    "nsu": "900700212",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8944,7 +8944,7 @@
   {
     "id": "C00527",
     "couponNumber": "NF-700211",
-    "nsu": "900000527",
+    "nsu": "900700212",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8961,7 +8961,7 @@
   {
     "id": "C00528",
     "couponNumber": "NF-700211",
-    "nsu": "900000528",
+    "nsu": "900700212",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8978,7 +8978,7 @@
   {
     "id": "C00529",
     "couponNumber": "NF-700212",
-    "nsu": "900000529",
+    "nsu": "900700213",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -8995,7 +8995,7 @@
   {
     "id": "C00530",
     "couponNumber": "NF-700212",
-    "nsu": "900000530",
+    "nsu": "900700213",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9012,7 +9012,7 @@
   {
     "id": "C00531",
     "couponNumber": "NF-700213",
-    "nsu": "900000531",
+    "nsu": "900700214",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9029,7 +9029,7 @@
   {
     "id": "C00532",
     "couponNumber": "NF-700213",
-    "nsu": "900000532",
+    "nsu": "900700214",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9046,7 +9046,7 @@
   {
     "id": "C00533",
     "couponNumber": "NF-700213",
-    "nsu": "900000533",
+    "nsu": "900700214",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9063,7 +9063,7 @@
   {
     "id": "C00534",
     "couponNumber": "NF-700214",
-    "nsu": "900000534",
+    "nsu": "900700215",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9080,7 +9080,7 @@
   {
     "id": "C00535",
     "couponNumber": "NF-700214",
-    "nsu": "900000535",
+    "nsu": "900700215",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9097,7 +9097,7 @@
   {
     "id": "C00536",
     "couponNumber": "NF-700215",
-    "nsu": "900000536",
+    "nsu": "900700216",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9114,7 +9114,7 @@
   {
     "id": "C00537",
     "couponNumber": "NF-700215",
-    "nsu": "900000537",
+    "nsu": "900700216",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9131,7 +9131,7 @@
   {
     "id": "C00538",
     "couponNumber": "NF-700215",
-    "nsu": "900000538",
+    "nsu": "900700216",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9148,7 +9148,7 @@
   {
     "id": "C00539",
     "couponNumber": "NF-700216",
-    "nsu": "900000539",
+    "nsu": "900700217",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9165,7 +9165,7 @@
   {
     "id": "C00540",
     "couponNumber": "NF-700216",
-    "nsu": "900000540",
+    "nsu": "900700217",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9182,7 +9182,7 @@
   {
     "id": "C00541",
     "couponNumber": "NF-700217",
-    "nsu": "900000541",
+    "nsu": "900700218",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9199,7 +9199,7 @@
   {
     "id": "C00542",
     "couponNumber": "NF-700217",
-    "nsu": "900000542",
+    "nsu": "900700218",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9216,7 +9216,7 @@
   {
     "id": "C00543",
     "couponNumber": "NF-700217",
-    "nsu": "900000543",
+    "nsu": "900700218",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9233,7 +9233,7 @@
   {
     "id": "C00544",
     "couponNumber": "NF-700218",
-    "nsu": "900000544",
+    "nsu": "900700219",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9250,7 +9250,7 @@
   {
     "id": "C00545",
     "couponNumber": "NF-700218",
-    "nsu": "900000545",
+    "nsu": "900700219",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9267,7 +9267,7 @@
   {
     "id": "C00546",
     "couponNumber": "NF-700219",
-    "nsu": "900000546",
+    "nsu": "900700220",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9284,7 +9284,7 @@
   {
     "id": "C00547",
     "couponNumber": "NF-700219",
-    "nsu": "900000547",
+    "nsu": "900700220",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9301,7 +9301,7 @@
   {
     "id": "C00548",
     "couponNumber": "NF-700219",
-    "nsu": "900000548",
+    "nsu": "900700220",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9318,7 +9318,7 @@
   {
     "id": "C00549",
     "couponNumber": "NF-700220",
-    "nsu": "900000549",
+    "nsu": "900700221",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9335,7 +9335,7 @@
   {
     "id": "C00550",
     "couponNumber": "NF-700220",
-    "nsu": "900000550",
+    "nsu": "900700221",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9352,7 +9352,7 @@
   {
     "id": "C00551",
     "couponNumber": "NF-700221",
-    "nsu": "900000551",
+    "nsu": "900700222",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9369,7 +9369,7 @@
   {
     "id": "C00552",
     "couponNumber": "NF-700221",
-    "nsu": "900000552",
+    "nsu": "900700222",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9386,7 +9386,7 @@
   {
     "id": "C00553",
     "couponNumber": "NF-700221",
-    "nsu": "900000553",
+    "nsu": "900700222",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9403,7 +9403,7 @@
   {
     "id": "C00554",
     "couponNumber": "NF-700222",
-    "nsu": "900000554",
+    "nsu": "900700223",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9420,7 +9420,7 @@
   {
     "id": "C00555",
     "couponNumber": "NF-700222",
-    "nsu": "900000555",
+    "nsu": "900700223",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9437,7 +9437,7 @@
   {
     "id": "C00556",
     "couponNumber": "NF-700223",
-    "nsu": "900000556",
+    "nsu": "900700224",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9454,7 +9454,7 @@
   {
     "id": "C00557",
     "couponNumber": "NF-700223",
-    "nsu": "900000557",
+    "nsu": "900700224",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9471,7 +9471,7 @@
   {
     "id": "C00558",
     "couponNumber": "NF-700223",
-    "nsu": "900000558",
+    "nsu": "900700224",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9488,7 +9488,7 @@
   {
     "id": "C00559",
     "couponNumber": "NF-700224",
-    "nsu": "900000559",
+    "nsu": "900700225",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9505,7 +9505,7 @@
   {
     "id": "C00560",
     "couponNumber": "NF-700224",
-    "nsu": "900000560",
+    "nsu": "900700225",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -9522,7 +9522,7 @@
   {
     "id": "C00561",
     "couponNumber": "NF-700225",
-    "nsu": "900000561",
+    "nsu": "900700226",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9539,7 +9539,7 @@
   {
     "id": "C00562",
     "couponNumber": "NF-700225",
-    "nsu": "900000562",
+    "nsu": "900700226",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9556,7 +9556,7 @@
   {
     "id": "C00563",
     "couponNumber": "NF-700225",
-    "nsu": "900000563",
+    "nsu": "900700226",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9573,7 +9573,7 @@
   {
     "id": "C00564",
     "couponNumber": "NF-700226",
-    "nsu": "900000564",
+    "nsu": "900700227",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9590,7 +9590,7 @@
   {
     "id": "C00565",
     "couponNumber": "NF-700226",
-    "nsu": "900000565",
+    "nsu": "900700227",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9607,7 +9607,7 @@
   {
     "id": "C00566",
     "couponNumber": "NF-700227",
-    "nsu": "900000566",
+    "nsu": "900700228",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9624,7 +9624,7 @@
   {
     "id": "C00567",
     "couponNumber": "NF-700227",
-    "nsu": "900000567",
+    "nsu": "900700228",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9641,7 +9641,7 @@
   {
     "id": "C00568",
     "couponNumber": "NF-700227",
-    "nsu": "900000568",
+    "nsu": "900700228",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9658,7 +9658,7 @@
   {
     "id": "C00569",
     "couponNumber": "NF-700228",
-    "nsu": "900000569",
+    "nsu": "900700229",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9675,7 +9675,7 @@
   {
     "id": "C00570",
     "couponNumber": "NF-700228",
-    "nsu": "900000570",
+    "nsu": "900700229",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "PIX",
@@ -9692,7 +9692,7 @@
   {
     "id": "C00571",
     "couponNumber": "NF-700229",
-    "nsu": "900000571",
+    "nsu": "900700230",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9709,7 +9709,7 @@
   {
     "id": "C00572",
     "couponNumber": "NF-700229",
-    "nsu": "900000572",
+    "nsu": "900700230",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9726,7 +9726,7 @@
   {
     "id": "C00573",
     "couponNumber": "NF-700229",
-    "nsu": "900000573",
+    "nsu": "900700230",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9743,7 +9743,7 @@
   {
     "id": "C00574",
     "couponNumber": "NF-700230",
-    "nsu": "900000574",
+    "nsu": "900700231",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9760,7 +9760,7 @@
   {
     "id": "C00575",
     "couponNumber": "NF-700230",
-    "nsu": "900000575",
+    "nsu": "900700231",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9777,7 +9777,7 @@
   {
     "id": "C00576",
     "couponNumber": "NF-700231",
-    "nsu": "900000576",
+    "nsu": "900700232",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9794,7 +9794,7 @@
   {
     "id": "C00577",
     "couponNumber": "NF-700231",
-    "nsu": "900000577",
+    "nsu": "900700232",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9811,7 +9811,7 @@
   {
     "id": "C00578",
     "couponNumber": "NF-700231",
-    "nsu": "900000578",
+    "nsu": "900700232",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9828,7 +9828,7 @@
   {
     "id": "C00579",
     "couponNumber": "NF-700232",
-    "nsu": "900000579",
+    "nsu": "900700233",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9845,7 +9845,7 @@
   {
     "id": "C00580",
     "couponNumber": "NF-700232",
-    "nsu": "900000580",
+    "nsu": "900700233",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Crédito",
@@ -9862,7 +9862,7 @@
   {
     "id": "C00581",
     "couponNumber": "NF-700233",
-    "nsu": "900000581",
+    "nsu": "900700234",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9879,7 +9879,7 @@
   {
     "id": "C00582",
     "couponNumber": "NF-700233",
-    "nsu": "900000582",
+    "nsu": "900700234",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9896,7 +9896,7 @@
   {
     "id": "C00583",
     "couponNumber": "NF-700233",
-    "nsu": "900000583",
+    "nsu": "900700234",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9913,7 +9913,7 @@
   {
     "id": "C00584",
     "couponNumber": "NF-700234",
-    "nsu": "900000584",
+    "nsu": "900700235",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9930,7 +9930,7 @@
   {
     "id": "C00585",
     "couponNumber": "NF-700234",
-    "nsu": "900000585",
+    "nsu": "900700235",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9947,7 +9947,7 @@
   {
     "id": "C00586",
     "couponNumber": "NF-700235",
-    "nsu": "900000586",
+    "nsu": "900700236",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9964,7 +9964,7 @@
   {
     "id": "C00587",
     "couponNumber": "NF-700235",
-    "nsu": "900000587",
+    "nsu": "900700236",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9981,7 +9981,7 @@
   {
     "id": "C00588",
     "couponNumber": "NF-700235",
-    "nsu": "900000588",
+    "nsu": "900700236",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -9998,7 +9998,7 @@
   {
     "id": "C00589",
     "couponNumber": "NF-700236",
-    "nsu": "900000589",
+    "nsu": "900700237",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -10015,7 +10015,7 @@
   {
     "id": "C00590",
     "couponNumber": "NF-700236",
-    "nsu": "900000590",
+    "nsu": "900700237",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Dinheiro",
@@ -10032,7 +10032,7 @@
   {
     "id": "C00591",
     "couponNumber": "NF-700237",
-    "nsu": "900000591",
+    "nsu": "900700238",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10049,7 +10049,7 @@
   {
     "id": "C00592",
     "couponNumber": "NF-700237",
-    "nsu": "900000592",
+    "nsu": "900700238",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10066,7 +10066,7 @@
   {
     "id": "C00593",
     "couponNumber": "NF-700237",
-    "nsu": "900000593",
+    "nsu": "900700238",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10083,7 +10083,7 @@
   {
     "id": "C00594",
     "couponNumber": "NF-700238",
-    "nsu": "900000594",
+    "nsu": "900700239",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10100,7 +10100,7 @@
   {
     "id": "C00595",
     "couponNumber": "NF-700238",
-    "nsu": "900000595",
+    "nsu": "900700239",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10117,7 +10117,7 @@
   {
     "id": "C00596",
     "couponNumber": "NF-700239",
-    "nsu": "900000596",
+    "nsu": "900700240",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10134,7 +10134,7 @@
   {
     "id": "C00597",
     "couponNumber": "NF-700239",
-    "nsu": "900000597",
+    "nsu": "900700240",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10151,7 +10151,7 @@
   {
     "id": "C00598",
     "couponNumber": "NF-700239",
-    "nsu": "900000598",
+    "nsu": "900700240",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10168,7 +10168,7 @@
   {
     "id": "C00599",
     "couponNumber": "NF-700240",
-    "nsu": "900000599",
+    "nsu": "900700241",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",
@@ -10185,7 +10185,7 @@
   {
     "id": "C00600",
     "couponNumber": "NF-700240",
-    "nsu": "900000600",
+    "nsu": "900700241",
     "storeId": "LJ110",
     "acquirer": "Cielo",
     "paymentMethod": "Cartão de Débito",

@@ -91,6 +91,7 @@ for (const [storeId, { acquirer, products }] of Object.entries(storeConfig)) {
       // Gera 4 NFs neste "slot" (loja+data+pagamento)
       for (let nfIdx = 0; nfIdx < 4; nfIdx++) {
         const nfNumber = `NF-${nfSeq++}`
+        const nfNsu = String(900000000 + nfSeq)  // NSU é por NF — compartilhado entre todos os itens
         const nfTime = `${date}T${String(8 + (nfIdx * 2) % 10).padStart(2,'0')}:${String((nfIdx * 7) % 60).padStart(2,'0')}:00.000Z`
 
         // Quantos produtos nesta NF? Mínimo 2: distribuição 2x→60%, 3x→40%
@@ -116,7 +117,7 @@ for (const [storeId, { acquirer, products }] of Object.entries(storeConfig)) {
           coupons.push({
             id: `C${String(couponIdSeq).padStart(5, '0')}`,
             couponNumber: nfNumber,
-            nsu: String(900000000 + couponIdSeq),
+            nsu: nfNsu,
             storeId,
             acquirer,
             paymentMethod: payMethod,

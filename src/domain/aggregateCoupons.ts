@@ -66,3 +66,39 @@ export const aggregateCoupons = (
     ),
   }))
 }
+
+export const reconstructAggregatedGroups = (
+  coupons: Coupon[],
+): AggregatedCouponGroup[] => {
+  // Filtra apenas cupons que foram agregados (têm idAgregador)
+  const agregados = coupons.filter((c) => c.idAgregador && (c.situacao === 'Agregado' || c.situacao === 'Enviado ao ERP'))
+
+  // Agrupa por idAgregador
+  const buckets = new Map<string, Coupon[]>()
+  for (const coupon of agregados) {
+    const id = coupon.idAgregador!
+    const current = buckets.get(id)
+    if (current) {
+      current.push(coupon)
+    } else {
+      buckets.set(id, [coupon])
+    }
+  }
+
+  // Reconstrói os grupos
+  return Array.from(buckets.entries()).map(([idAgregador, groupedCoupons]) => ({
+    idAgregador,
+    aggregatedAt: groupedCoupons[0]?.createdAt || new Date().toISOString(),
+    storeId: firstOf(groupedCoupons, 'storeId'),
+    date: firstOf(groupedCoupons, 'createdAt').slice(0, 10),
+    productCode: firstOf(groupedCoupons, 'productCode'),
+    productName: firstOf(groupedCoupons, 'productName'),
+    acquirer: firstOf(groupedCoupons, 'acquirer'),
+    paymentMethod: firstOf(groupedCoupons, 'paymentMethod'),
+    couponIds: groupedCoupons.map((c) => c.id),
+    coupons: groupedCoupons,
+    totalAmount: Number(
+      groupedCoupons.reduce((acc, item) => acc + item.amount, 0).toFixed(2),
+    ),
+  }))
+}

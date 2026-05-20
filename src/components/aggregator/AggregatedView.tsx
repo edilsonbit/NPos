@@ -3,8 +3,9 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
-  Button,
+  Checkbox,
   Chip,
+  IconButton,
   Paper,
   Stack,
   Table,
@@ -12,25 +13,25 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  Tooltip,
   Typography,
 } from '@mui/material'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
-import SendIcon from '@mui/icons-material/Send'
+import VisibilityIcon from '@mui/icons-material/Visibility'
 import HubIcon from '@mui/icons-material/Hub'
 import dayjs from 'dayjs'
 import { memo, useState } from 'react'
-import type { AggregatedCouponGroup, SapPayload, SapPayloadItem } from '../../domain/models'
-import { SapPayloadDialog } from './SapPayloadDialog'
-
+import type { AggregatedCouponGroup, AggregationCriteria, ErpPayload, ErpPayloadItem } from '../../domain/models'
+import { ErpPayloadDialog } from './SapPayloadDialog'
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
-
 interface AggregatedViewProps {
   groups: AggregatedCouponGroup[]
+  criteria: AggregationCriteria
+  selectedGroupIds?: Set<string>
+  onSelectGroup?: (idAgregador: string) => void
 }
-
-const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
-  const [sapPayload, setSapPayload] = useState<SapPayload | null>(null)
-
+const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), onSelectGroup }: AggregatedViewProps) => {
+  const [erpPayload, setErpPayload] = useState<ErpPayload | null>(null)
   if (groups.length === 0) {
     return (
       <Paper
@@ -40,15 +41,14 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
         <HubIcon sx={{ fontSize: 40, color: '#c9d8e8', mb: 1 }} />
         <Typography color="text.secondary">
           Nenhum agrupamento gerado. Configure os critérios e clique em{' '}
-          <strong>Rodar Agregador</strong>.
+          <strong>Agregar Cupons</strong>.
         </Typography>
       </Paper>
     )
   }
-
-  const handleSap = (group: AggregatedCouponGroup, e: React.MouseEvent) => {
+  const handleViewDetails = (group: AggregatedCouponGroup, e: React.MouseEvent) => {
     e.stopPropagation()
-    const items: SapPayloadItem[] = group.coupons.map((c) => ({
+    const items: ErpPayloadItem[] = group.coupons.map((c) => ({
       couponNumber: c.couponNumber,
       nsu: c.nsu,
       productCode: c.productCode,
@@ -60,7 +60,7 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
       status: c.status,
       createdAt: c.createdAt,
     }))
-    setSapPayload({
+    setErpPayload({
       idAgregador: group.idAgregador,
       storeId: group.storeId,
       date: group.date,
@@ -74,7 +74,6 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
       items,
     })
   }
-
   return (
     <>
       <Stack spacing={1}>
@@ -108,31 +107,60 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
                 sx={{ alignItems: { md: 'center' }, justifyContent: 'space-between', width: '100%', pr: 2 }}
                 spacing={1}
               >
-                {/* Campos obrigatórios do header conforme Issue #1 */}
-                <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap', gap: 0.5 }}>
+                {/* Checkbox + Header */}
+                <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flex: 1, minWidth: 0 }}>
+                  {onSelectGroup && (
+                    <Checkbox
+                      size="small"
+                      checked={selectedGroupIds.has(group.idAgregador)}
+                      onChange={() => onSelectGroup(group.idAgregador)}
+                      onClick={(e) => e.stopPropagation()}
+                      sx={{ p: 0 }}
+                    />
+                  )}
+                  {/* Header: mostra apenas os campos correspondentes aos critérios selecionados */}
+                  <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center', flexWrap: 'wrap', gap: 0.5 }}>
                   <Chip
                     size="small"
                     label={group.idAgregador}
                     sx={{ backgroundColor: '#0d3b45', color: '#fff', fontSize: 10, fontWeight: 700 }}
                   />
-                  <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
-                    <Typography variant="caption" color="text.secondary">Loja:</Typography>
-                    <Typography variant="caption" sx={{ fontWeight: 700 }}>{group.storeId}</Typography>
-                  </Stack>
-                  <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
-                    <Typography variant="caption" color="text.secondary">Data:</Typography>
-                    <Typography variant="caption" sx={{ fontWeight: 700 }}>
-                      {dayjs(group.date).format('DD/MM/YYYY')}
-                    </Typography>
-                  </Stack>
-                  <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
-                    <Typography variant="caption" color="text.secondary">Produto:</Typography>
-                    <Typography variant="caption" sx={{ fontWeight: 700, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                      {group.productName}
-                    </Typography>
+                  {criteria.byStore && (
+                    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                      <Typography variant="caption" color="text.secondary">Loja:</Typography>
+                      <Typography variant="caption" sx={{ fontWeight: 700 }}>{group.storeId}</Typography>
+                    </Stack>
+                  )}
+                  {criteria.byDate && (
+                    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                      <Typography variant="caption" color="text.secondary">Data:</Typography>
+                      <Typography variant="caption" sx={{ fontWeight: 700 }}>
+                        {dayjs(group.date).format('DD/MM/YYYY')}
+                      </Typography>
+                    </Stack>
+                  )}
+                  {criteria.byProduct && (
+                    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                      <Typography variant="caption" color="text.secondary">Produto:</Typography>
+                      <Typography variant="caption" sx={{ fontWeight: 700, maxWidth: 200, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {group.productName}
+                      </Typography>
+                    </Stack>
+                  )}
+                  {criteria.byAcquirer && (
+                    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                      <Typography variant="caption" color="text.secondary">Adquirente:</Typography>
+                      <Typography variant="caption" sx={{ fontWeight: 700 }}>{group.acquirer}</Typography>
+                    </Stack>
+                  )}
+                  {criteria.byPaymentMethod && (
+                    <Stack direction="row" spacing={0.5} sx={{ alignItems: 'center' }}>
+                      <Typography variant="caption" color="text.secondary">Forma Pag.:</Typography>
+                      <Typography variant="caption" sx={{ fontWeight: 700 }}>{group.paymentMethod}</Typography>
+                    </Stack>
+                  )}
                   </Stack>
                 </Stack>
-
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
                   <Stack sx={{ alignItems: 'flex-end' }}>
                     <Typography variant="caption" color="text.secondary">{group.coupons.length} cupons</Typography>
@@ -140,26 +168,19 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
                       {currency.format(group.totalAmount)}
                     </Typography>
                   </Stack>
-                  {/* Botão SAP por grupo — stopPropagation para não fechar accordion */}
-                  <Button
-                    size="small"
-                    variant="contained"
-                    startIcon={<SendIcon />}
-                    onClick={(e) => handleSap(group, e)}
-                    sx={{
-                      backgroundColor: '#e65100',
-                      '&:hover': { backgroundColor: '#bf360c' },
-                      fontSize: 11,
-                      whiteSpace: 'nowrap',
-                      px: 1.5,
-                    }}
-                  >
-                    Enviar para SAP
-                  </Button>
+                  {/* Ícone de olho para ver detalhes */}
+                  <Tooltip title="Ver detalhes">
+                    <IconButton
+                      size="small"
+                      onClick={(e) => handleViewDetails(group, e)}
+                      sx={{ color: '#666', '&:hover': { color: '#0d3b45' } }}
+                    >
+                      <VisibilityIcon fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
                 </Stack>
               </Stack>
             </AccordionSummary>
-
             <AccordionDetails sx={{ p: 0 }}>
               <Box sx={{ overflowX: 'auto' }}>
                 <Table size="small">
@@ -210,14 +231,12 @@ const AggregatedView = memo(({ groups }: AggregatedViewProps) => {
           </Accordion>
         ))}
       </Stack>
-
-      <SapPayloadDialog
-        open={Boolean(sapPayload)}
-        payload={sapPayload}
-        onClose={() => setSapPayload(null)}
+      <ErpPayloadDialog
+        open={Boolean(erpPayload)}
+        payload={erpPayload}
+        onClose={() => setErpPayload(null)}
       />
     </>
   )
 })
-
 export { AggregatedView }

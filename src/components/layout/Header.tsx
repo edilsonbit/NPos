@@ -1,144 +1,54 @@
-import {
-  AppBar,
-  Avatar,
-  Box,
-  IconButton,
-  ListItemText,
-  Menu,
-  MenuItem,
-  Toolbar,
-  Tooltip,
-} from '@mui/material'
+import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
-import { useEffect, useState } from 'react'
-import { DRAWER_WIDTH } from './Sidebar'
-
-const LANGUAGE_STORAGE_KEY = 'npos-language'
-
-interface LanguageOption {
-  code: 'pt' | 'en' | 'es'
-  label: string
-  subtitle?: string
+import LogoutIcon from '@mui/icons-material/Logout'
+import { useState } from 'react'
+interface HeaderProps {
+  userEmail?: string
+  onLogout?: () => void
+  onToggleSidebar: () => void
 }
 
-const languageOptions: LanguageOption[] = [
-  { code: 'pt', label: 'Português' },
-  { code: 'en', label: 'English', subtitle: '(Inglês)' },
-  { code: 'es', label: 'Español', subtitle: '(Espanhol)' },
-]
-
-const languageAriaLabel: Record<LanguageOption['code'], string> = {
-  pt: 'Seletor de idioma',
-  en: 'Language selector',
-  es: 'Selector de idioma',
-}
-
-const languageTooltipLabel: Record<LanguageOption['code'], string> = {
-  pt: 'Idioma',
-  en: 'Language',
-  es: 'Idioma',
-}
-
-type LanguageCode = (typeof languageOptions)[number]['code']
-
-const isLanguageCode = (value: string | null): value is LanguageCode =>
-  languageOptions.some((option) => option.code === value)
-
-const getStoredLanguage = (): LanguageCode => {
-  try {
-    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    return isLanguageCode(saved) ? saved : 'pt'
-  } catch {
-    return 'pt'
-  }
-}
-
-const saveLanguage = (value: LanguageCode) => {
-  try {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, value)
-  } catch {
-    // no-op when localStorage is unavailable
-  }
-}
-
-const Header = () => {
-  const [language, setLanguage] = useState<LanguageCode>(getStoredLanguage)
+const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
-  const open = Boolean(anchorEl)
-
-  useEffect(() => {
-    saveLanguage(language)
-  }, [language])
+  const letter = userEmail ? userEmail[0].toUpperCase() : 'U'
 
   return (
     <AppBar
       position="fixed"
       elevation={0}
       sx={{
-        width: `calc(100% - ${DRAWER_WIDTH}px)`,
-        ml: `${DRAWER_WIDTH}px`,
+        width: '100%',
+        top: 0,
         backgroundColor: '#fff',
         borderBottom: '1px solid #e8ecf0',
         color: '#1a1a2e',
+        zIndex: 1200,
       }}
     >
-      <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'flex-end' }}>
+      <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'space-between' }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+          <Box
+            component="img"
+            src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
+            alt="Logo"
+            sx={{ height: 36, objectFit: 'contain' }}
+          />
+          <Tooltip title="Alternar menu">
+            <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575' }}>
+              <MenuIcon sx={{ fontSize: 22 }} />
+            </IconButton>
+          </Tooltip>
+        </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Tooltip title={languageTooltipLabel[language]}>
-            <IconButton
-              size="small"
-              aria-label={languageAriaLabel[language]}
-              onClick={(event) => setAnchorEl(event.currentTarget)}
-              sx={{
-                width: 32,
-                height: 32,
-                backgroundColor: '#1e9bd7',
-                color: '#fff',
-                '&:hover': { backgroundColor: '#178bc3' },
-              }}
-            >
+          <Tooltip title="Idioma">
+            <IconButton size="small" sx={{ color: '#757575' }}>
               <TranslateIcon sx={{ fontSize: 20 }} />
             </IconButton>
           </Tooltip>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={() => setAnchorEl(null)}
-            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-            slotProps={{
-              paper: {
-                sx: {
-                  mt: 1,
-                  minWidth: 200,
-                  borderRadius: 2,
-                  boxShadow: '0 10px 24px rgba(0,0,0,0.18)',
-                },
-              },
-            }}
-          >
-            {languageOptions.map((option) => {
-              const selected = option.code === language
-              return (
-                <MenuItem
-                  key={option.code}
-                  selected={selected}
-                  onClick={() => {
-                    setLanguage(option.code)
-                    setAnchorEl(null)
-                  }}
-                >
-                  <ListItemText
-                    primary={option.label}
-                    secondary={option.subtitle}
-                  />
-                </MenuItem>
-              )
-            })}
-          </Menu>
           <Tooltip title="Perfil">
             <Avatar
+              onClick={(e) => setAnchorEl(e.currentTarget)}
               sx={{
                 width: 32,
                 height: 32,
@@ -148,11 +58,37 @@ const Header = () => {
                 cursor: 'pointer',
               }}
             >
-              E
+              {letter}
             </Avatar>
           </Tooltip>
         </Box>
       </Toolbar>
+
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={() => setAnchorEl(null)}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        slotProps={{ paper: { elevation: 3, sx: { minWidth: 200, mt: 0.5 } } }}
+      >
+        {userEmail && (
+          <Box sx={{ px: 2, py: 1.5 }}>
+            <Typography variant="caption" color="text.secondary">Logado como</Typography>
+            <Typography variant="body2" noWrap sx={{ fontWeight: 600 }}>{userEmail}</Typography>
+          </Box>
+        )}
+        <Divider />
+        <MenuItem
+          onClick={() => { setAnchorEl(null); onLogout?.() }}
+          sx={{ color: '#c62828', mt: 0.5 }}
+        >
+          <ListItemIcon sx={{ color: '#c62828' }}>
+            <LogoutIcon fontSize="small" />
+          </ListItemIcon>
+          Sair
+        </MenuItem>
+      </Menu>
     </AppBar>
   )
 }

@@ -1,8 +1,57 @@
-import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+
+const LANGUAGE_STORAGE_KEY = 'npos-language'
+
+interface LanguageOption {
+  code: 'pt' | 'en' | 'es'
+  label: string
+  subtitle?: string
+}
+
+const languageOptions: LanguageOption[] = [
+  { code: 'pt', label: 'Português' },
+  { code: 'en', label: 'English', subtitle: '(Inglês)' },
+  { code: 'es', label: 'Español', subtitle: '(Espanhol)' },
+]
+
+const languageAriaLabel: Record<LanguageOption['code'], string> = {
+  pt: 'Seletor de idioma',
+  en: 'Language selector',
+  es: 'Selector de idioma',
+}
+
+const languageTooltipLabel: Record<LanguageOption['code'], string> = {
+  pt: 'Idioma',
+  en: 'Language',
+  es: 'Idioma',
+}
+
+type LanguageCode = (typeof languageOptions)[number]['code']
+
+const isLanguageCode = (value: string | null): value is LanguageCode =>
+  languageOptions.some((option) => option.code === value)
+
+const getStoredLanguage = (): LanguageCode => {
+  try {
+    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    return isLanguageCode(saved) ? saved : 'pt'
+  } catch {
+    return 'pt'
+  }
+}
+
+const saveLanguage = (value: LanguageCode) => {
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, value)
+  } catch {
+    // no-op when localStorage is unavailable
+  }
+}
+
 interface HeaderProps {
   userEmail?: string
   onLogout?: () => void
@@ -10,8 +59,14 @@ interface HeaderProps {
 }
 
 const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null)
+  const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null)
+  const [language, setLanguage] = useState<LanguageCode>(getStoredLanguage)
   const letter = userEmail ? userEmail[0].toUpperCase() : 'U'
+
+  useEffect(() => {
+    saveLanguage(language)
+  }, [language])
 
   return (
     <AppBar
@@ -41,14 +96,25 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
           </Tooltip>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Tooltip title="Idioma">
-            <IconButton size="small" sx={{ color: '#757575' }}>
+          <Tooltip title={languageTooltipLabel[language]}>
+            <IconButton
+              size="small"
+              aria-label={languageAriaLabel[language]}
+              onClick={(e) => setLangAnchorEl(e.currentTarget)}
+              sx={{
+                width: 32,
+                height: 32,
+                backgroundColor: '#1e9bd7',
+                color: '#fff',
+                '&:hover': { backgroundColor: '#178bc3' },
+              }}
+            >
               <TranslateIcon sx={{ fontSize: 20 }} />
             </IconButton>
           </Tooltip>
           <Tooltip title="Perfil">
             <Avatar
-              onClick={(e) => setAnchorEl(e.currentTarget)}
+              onClick={(e) => setProfileAnchorEl(e.currentTarget)}
               sx={{
                 width: 32,
                 height: 32,
@@ -64,10 +130,43 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
         </Box>
       </Toolbar>
 
+      {/* Menu de seleção de idioma */}
       <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={() => setAnchorEl(null)}
+        anchorEl={langAnchorEl}
+        open={Boolean(langAnchorEl)}
+        onClose={() => setLangAnchorEl(null)}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 1,
+              minWidth: 200,
+              borderRadius: 2,
+              boxShadow: '0 10px 24px rgba(0,0,0,0.18)',
+            },
+          },
+        }}
+      >
+        {languageOptions.map((option) => (
+          <MenuItem
+            key={option.code}
+            selected={option.code === language}
+            onClick={() => {
+              setLanguage(option.code)
+              setLangAnchorEl(null)
+            }}
+          >
+            <ListItemText primary={option.label} secondary={option.subtitle} />
+          </MenuItem>
+        ))}
+      </Menu>
+
+      {/* Menu de perfil do usuário */}
+      <Menu
+        anchorEl={profileAnchorEl}
+        open={Boolean(profileAnchorEl)}
+        onClose={() => setProfileAnchorEl(null)}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         slotProps={{ paper: { elevation: 3, sx: { minWidth: 200, mt: 0.5 } } }}
@@ -80,7 +179,7 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
         )}
         <Divider />
         <MenuItem
-          onClick={() => { setAnchorEl(null); onLogout?.() }}
+          onClick={() => { setProfileAnchorEl(null); onLogout?.() }}
           sx={{ color: '#c62828', mt: 0.5 }}
         >
           <ListItemIcon sx={{ color: '#c62828' }}>

@@ -32,17 +32,31 @@ type LanguageCode = (typeof languageOptions)[number]['code']
 const isLanguageCode = (value: string | null): value is LanguageCode =>
   languageOptions.some((option) => option.code === value)
 
-const Header = () => {
-  const [language, setLanguage] = useState<LanguageCode>(() => {
+const getStoredLanguage = (): LanguageCode => {
+  try {
     const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
     return isLanguageCode(saved) ? saved : 'pt'
-  })
+  } catch {
+    return 'pt'
+  }
+}
+
+const saveLanguage = (value: LanguageCode) => {
+  try {
+    localStorage.setItem(LANGUAGE_STORAGE_KEY, value)
+  } catch {
+    // no-op when localStorage is unavailable
+  }
+}
+
+const Header = () => {
+  const [language, setLanguage] = useState<LanguageCode>(getStoredLanguage)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const open = Boolean(anchorEl)
 
   useEffect(() => {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    saveLanguage(language)
   }, [language])
 
   return (
@@ -62,7 +76,7 @@ const Header = () => {
           <Tooltip title="Idioma">
             <IconButton
               size="small"
-              aria-label="Selecionar idioma"
+              aria-label="Language selector"
               onClick={(event) => setAnchorEl(event.currentTarget)}
               sx={{
                 width: 32,

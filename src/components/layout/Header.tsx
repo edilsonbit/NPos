@@ -27,6 +27,12 @@ const languageOptions: LanguageOption[] = [
   { code: 'es', label: 'Español', subtitle: '(Espanhol)' },
 ] 
 
+const languageAriaLabel: Record<LanguageOption['code'], string> = {
+  pt: 'Seletor de idioma',
+  en: 'Language selector',
+  es: 'Selector de idioma',
+}
+
 type LanguageCode = (typeof languageOptions)[number]['code']
 
 const isLanguageCode = (value: string | null): value is LanguageCode =>
@@ -76,7 +82,7 @@ const Header = () => {
           <Tooltip title="Idioma">
             <IconButton
               size="small"
-              aria-label="Language selector"
+              aria-label={languageAriaLabel[language]}
               onClick={(event) => setAnchorEl(event.currentTarget)}
               sx={{
                 width: 32,

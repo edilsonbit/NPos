@@ -2,55 +2,14 @@ import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, M
 import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
 
-const LANGUAGE_STORAGE_KEY = 'npos-language'
-
-interface LanguageOption {
-  code: 'pt' | 'en' | 'es'
-  label: string
-  subtitle?: string
-}
-
-const languageOptions: LanguageOption[] = [
-  { code: 'pt', label: 'Português' },
-  { code: 'en', label: 'English', subtitle: '(Inglês)' },
-  { code: 'es', label: 'Español', subtitle: '(Espanhol)' },
+const languageOptions = [
+  { code: 'pt' as const, label: 'Português' },
+  { code: 'en' as const, label: 'English', subtitle: '(Inglês)' },
+  { code: 'es' as const, label: 'Español', subtitle: '(Espanhol)' },
 ]
-
-const languageAriaLabel: Record<LanguageOption['code'], string> = {
-  pt: 'Seletor de idioma',
-  en: 'Language selector',
-  es: 'Selector de idioma',
-}
-
-const languageTooltipLabel: Record<LanguageOption['code'], string> = {
-  pt: 'Idioma',
-  en: 'Language',
-  es: 'Idioma',
-}
-
-type LanguageCode = (typeof languageOptions)[number]['code']
-
-const isLanguageCode = (value: string | null): value is LanguageCode =>
-  languageOptions.some((option) => option.code === value)
-
-const getStoredLanguage = (): LanguageCode => {
-  try {
-    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    return isLanguageCode(saved) ? saved : 'pt'
-  } catch {
-    return 'pt'
-  }
-}
-
-const saveLanguage = (value: LanguageCode) => {
-  try {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, value)
-  } catch {
-    // no-op when localStorage is unavailable
-  }
-}
 
 interface HeaderProps {
   userEmail?: string
@@ -59,14 +18,10 @@ interface HeaderProps {
 }
 
 const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
+  const { language, setLanguage, t } = useLanguage()
   const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null)
   const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null)
-  const [language, setLanguage] = useState<LanguageCode>(getStoredLanguage)
   const letter = userEmail ? userEmail[0].toUpperCase() : 'U'
-
-  useEffect(() => {
-    saveLanguage(language)
-  }, [language])
 
   return (
     <AppBar
@@ -89,17 +44,17 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
             alt="Logo"
             sx={{ height: 36, objectFit: 'contain' }}
           />
-          <Tooltip title="Alternar menu">
+          <Tooltip title={t.header.toggleMenu}>
             <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575' }}>
               <MenuIcon sx={{ fontSize: 22 }} />
             </IconButton>
           </Tooltip>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Tooltip title={languageTooltipLabel[language]}>
+          <Tooltip title={t.header.language}>
             <IconButton
               size="small"
-              aria-label={languageAriaLabel[language]}
+              aria-label={t.header.language}
               onClick={(e) => setLangAnchorEl(e.currentTarget)}
               sx={{
                 width: 32,
@@ -112,7 +67,7 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
               <TranslateIcon sx={{ fontSize: 20 }} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Perfil">
+          <Tooltip title={t.header.profile}>
             <Avatar
               onClick={(e) => setProfileAnchorEl(e.currentTarget)}
               sx={{
@@ -173,7 +128,7 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
       >
         {userEmail && (
           <Box sx={{ px: 2, py: 1.5 }}>
-            <Typography variant="caption" color="text.secondary">Logado como</Typography>
+            <Typography variant="caption" color="text.secondary">{t.header.loggedInAs}</Typography>
             <Typography variant="body2" noWrap sx={{ fontWeight: 600 }}>{userEmail}</Typography>
           </Box>
         )}
@@ -185,7 +140,7 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
           <ListItemIcon sx={{ color: '#c62828' }}>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          Sair
+          {t.header.signOut}
         </MenuItem>
       </Menu>
     </AppBar>

@@ -7,13 +7,15 @@
 
 ## 1. Visão Geral do Sistema
 
-O **NPos** é um módulo de conciliação fiscal que agrupa Cupons Fiscais (NFs) por critérios configuráveis e envia os agrupamentos ao SAP.
+O **NPos / OmniPOS** é um módulo de conciliação fiscal que agrupa Cupons Fiscais (NFs) por critérios configuráveis, envia os agrupamentos ao ERP/SAP e registra um log auditável de todas as operações.
 
 ### Fluxo principal
 
 ```
-[Login] → [Cupons Fiscais] → [Configurar Critérios] → [Rodar Agregador]
-       → [Visão Agrupada] → [Enviar para SAP]
+[Login] → [Dashboard] → [Cupons Fiscais] → [Configurar Critérios] → [Agregar Cupons]
+       → [Visão Agrupada] → [Enviar para ERP]
+       → [Cupons Cancelados] → [Enviar Cancelados ao ERP]
+       → [Alerta das Integracoes] (log auditável de todas as operações)
 ```
 
 ### Critérios de agrupamento disponíveis
@@ -38,12 +40,13 @@ src/
 ├── main.tsx                       # Ponto de entrada React + providers (MUI, DatePicker)
 │
 ├── domain/                        # ★ Regras de negócio puras — NÃO dependem de framework
-│   ├── models.ts                  #   Todas as interfaces TypeScript
+│   ├── models.ts                  #   Todas as interfaces TypeScript (Coupon, ActivityLog, ...)
 │   ├── repositories.ts            #   Contratos (interfaces) dos repositórios
 │   └── aggregateCoupons.ts        #   Algoritmo de agrupamento puro
 │
 ├── application/                   # Casos de uso — orquestram domínio + repositórios
-│   └── couponService.ts           #   loadCouponsAndProducts, aggregateAndPersistCoupons
+│   ├── couponService.ts           #   loadCouponsAndProducts, aggregateAndPersistCoupons
+│   └── activityLogService.ts      # ★ logActivity, loadActivityLogs — log geral de operações
 │
 ├── config/
 │   └── appConfig.ts               # Lê VITE_DATA_SOURCE e decide mock vs. firebase
@@ -52,9 +55,9 @@ src/
 │   ├── repositories/
 │   │   ├── index.ts               # ★ FACTORY — decide qual repositório instanciar
 │   │   ├── mockRepositories.ts    #   Implementação com dados em memória (JSON)
-│   │   └── firebaseRepositories.ts#   Implementação com Firestore
+│   │   └── firebaseRepositories.ts#   Implementação com Firestore (coupons + activityLogs)
 │   └── mocks/
-│       ├── coupons.mock.json      #   600 linhas de cupons para desenvolvimento
+│       ├── coupons.mock.json      #   360+ linhas de cupons para desenvolvimento
 │       ├── products.mock.json     #   Catálogo de produtos
 │       └── generateMock.mjs      #   Script Node.js para regenerar o mock
 │
@@ -64,17 +67,21 @@ src/
 └── components/
     ├── auth/LoginPage.tsx          #   Tela de login (autenticação simulada)
     ├── layout/
-    │   ├── AppShell.tsx            #   Layout master com sidebar
+    │   ├── AppShell.tsx            #   Layout master com sidebar fixa
+    │   ├── Header.tsx              #   Cabeçalho com email do usuário e logout
     │   └── Sidebar.tsx             #   Navegação lateral
+    ├── dashboard/
+    │   └── DashboardPage.tsx       #   KPIs e 6 gráficos (ApexCharts)
     ├── coupons/
     │   ├── CouponFiltersBar.tsx    #   Filtros da tela de cupons
-    │   └── CouponTable.tsx         #   Tabela paginada de cupons
-    └── aggregator/
-        ├── AggregatorConfig.tsx    #   5 checkboxes de critérios
-        ├── AgregadorPage.tsx       #   Tela de visão agrupada com filtros
-        ├── AggregatedView.tsx      #   Accordions dos grupos (memoizado)
-        ├── SapPayloadDialog.tsx    #   Modal com payload enviado ao SAP
-        └── SapPayloadDialog.tsx
+    │   └── CouponTable.tsx         #   Tabela paginada, ordenável, com linha expansível
+    ├── aggregator/
+    │   ├── AggregatorConfig.tsx    #   5 checkboxes de critérios (persistidos no localStorage)
+    │   ├── AgregadorPage.tsx       #   Tela de visão agrupada com filtros e paginação
+    │   ├── AggregatedView.tsx      #   Cards dos grupos com ações de envio e desfazer
+    │   └── SapPayloadDialog.tsx    #   Modal com payload enviado ao ERP
+    └── alerts/
+        └── IntegrationAlertsPage.tsx # ★ Log de atividades — tabela auditável com filtros e modal
 ```
 
 ---
@@ -121,7 +128,7 @@ interface AggregatedCouponGroup {
 }
 ```
 
-### `SapPayload` — estrutura enviada ao SAP
+### `SapPayload` — estrutura enviada ao SAP/ERP
 ```ts
 interface SapPayload {
   idAgregador: string
@@ -138,6 +145,31 @@ interface SapPayload {
 }
 ```
 
+### `ActivityLog` — registro auditável de operações ★ Novo
+```ts
+type ActivityLogAction = 'AGREGAR_CUPONS' | 'DESFAZER_AGREGACAO' | 'ENVIAR_ERP' | 'CANCELAR_CUPOM'
+type ActivityLogStatus = 'sucesso' | 'erro'
+
+interface ActivityLog {
+  id?: string             // ID gerado pelo Firestore (opcional no mock)
+  timestamp: string       // ISO 8601 — momento da operação
+  action: ActivityLogAction
+  description: string     // Texto legível: "Agregados 12 cupons em 3 grupos"
+  userId?: string         // Email do usuário que executou (quando disponível)
+  status: ActivityLogStatus
+  details?: {
+    couponIds?: string[]     // IDs dos cupons envolvidos
+    groupIds?: string[]      // IDs dos grupos (idAgregador)
+    couponNumbers?: string[] // Números dos cupons (ex: "NF-700001")
+    count?: number           // Quantidade de itens processados
+    errorMessage?: string    // Mensagem de erro quando status = 'erro'
+  }
+}
+```
+
+> Todos os registros são gravados na coleção `activityLogs` do Firestore (ou em memória no modo mock).
+> A tela **Alerta das Integracoes** exibe e filtra esses registros em tempo real.
+
 ---
 
 ## 4. Arquitetura em Camadas (Padrão Repository)
@@ -153,6 +185,18 @@ App.tsx
 ```
 
 O `createDataLayer()` em `src/data/repositories/index.ts` é o **único ponto** que decide qual implementação usar, baseado na variável de ambiente `VITE_DATA_SOURCE`.
+
+A factory expõe a interface `DataLayer`:
+
+```ts
+interface DataLayer {
+  coupons: CouponRepository
+  products: ProductRepository
+  activityLogs: ActivityLogRepository   // ★ adicionado
+}
+```
+
+Toda operação que modifica dados (agregar, desfazer, enviar ao ERP) chama `logActivity()` de `activityLogService.ts` para registrar o evento, independente do resultado (sucesso ou erro).
 
 ---
 
@@ -425,7 +469,23 @@ node src/data/mocks/generateMock.mjs
 2. **Filtros no servidor** — Hoje os filtros são feitos no front (em memória). Com grande volume de dados, os filtros devem ser feitos via query params na API.
 3. **Paginação via API** — A tabela tem paginação client-side. Para volumes reais, usar paginação server-side (offset/cursor).
 4. **Persistência do agrupamento** — Hoje o agrupamento é calculado no front e vive em memória (`useState`). Em produção, o backend deve persistir os grupos e o front apenas consultá-los.
-5. **Integração SAP real** — Ver seção 7. O envio atual é apenas visual.
+5. **Integração SAP/ERP real** — Ver seção 7. O envio atual é apenas visual.
 6. **Variáveis de ambiente** — Nunca commitar `.env.local` ou `.env.production` com segredos. Usar Secrets do GitHub Actions ou cofre de credenciais do servidor.
 7. **`base` do Vite** — Mudar `base: '/NPos/'` para `base: '/'` se o deploy for na raiz de um domínio próprio.
 8. **CORS** — A API real deve liberar o domínio do front nos headers `Access-Control-Allow-Origin`.
+9. **Retenção dos logs de atividade** — A coleção `activityLogs` cresce sem limite. Para produção, implementar TTL automático no Firestore ou paginação cursor-based na leitura.
+10. **userId nos logs** — Hoje o `userId` é o email do usuário autenticado (passado do `App.tsx`). Ao integrar autenticação real, garantir que o campo seja preenchido consistentemente.
+
+---
+
+## 13. Coleções Firestore
+
+| Coleção        | Descrição                                              | Escrita              |
+|----------------|--------------------------------------------------------|----------------------|
+| `coupons`      | Linhas de cupons fiscais; campo `situacao` atualizado na agregação | App.tsx via couponService |
+| `products`     | Catálogo de produtos (leitura apenas na POC)           | seed manual          |
+| `activityLogs` | Log auditável de todas as operações do sistema         | activityLogService   |
+
+### Regras de segurança (`firestore.rules`)
+
+Verificar que a coleção `activityLogs` está coberta pelas regras de leitura/escrita autenticada antes de ir para produção.

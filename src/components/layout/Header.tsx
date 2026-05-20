@@ -1,8 +1,16 @@
-import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
+import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Toolbar, Tooltip, Typography } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useState } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
+
+const languageOptions = [
+  { code: 'pt' as const, label: 'Português' },
+  { code: 'en' as const, label: 'English', subtitle: '(Inglês)' },
+  { code: 'es' as const, label: 'Español', subtitle: '(Espanhol)' },
+]
+
 interface HeaderProps {
   userEmail?: string
   onLogout?: () => void
@@ -10,7 +18,9 @@ interface HeaderProps {
 }
 
 const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const { language, setLanguage, t } = useLanguage()
+  const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null)
+  const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null)
   const letter = userEmail ? userEmail[0].toUpperCase() : 'U'
 
   return (
@@ -34,21 +44,32 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
             alt="Logo"
             sx={{ height: 36, objectFit: 'contain' }}
           />
-          <Tooltip title="Alternar menu">
+          <Tooltip title={t.header.toggleMenu}>
             <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575' }}>
               <MenuIcon sx={{ fontSize: 22 }} />
             </IconButton>
           </Tooltip>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <Tooltip title="Idioma">
-            <IconButton size="small" sx={{ color: '#757575' }}>
+          <Tooltip title={t.header.language}>
+            <IconButton
+              size="small"
+              aria-label={t.header.language}
+              onClick={(e) => setLangAnchorEl(e.currentTarget)}
+              sx={{
+                width: 32,
+                height: 32,
+                backgroundColor: '#1e9bd7',
+                color: '#fff',
+                '&:hover': { backgroundColor: '#178bc3' },
+              }}
+            >
               <TranslateIcon sx={{ fontSize: 20 }} />
             </IconButton>
           </Tooltip>
-          <Tooltip title="Perfil">
+          <Tooltip title={t.header.profile}>
             <Avatar
-              onClick={(e) => setAnchorEl(e.currentTarget)}
+              onClick={(e) => setProfileAnchorEl(e.currentTarget)}
               sx={{
                 width: 32,
                 height: 32,
@@ -64,29 +85,62 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
         </Box>
       </Toolbar>
 
+      {/* Menu de seleção de idioma */}
       <Menu
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={() => setAnchorEl(null)}
+        anchorEl={langAnchorEl}
+        open={Boolean(langAnchorEl)}
+        onClose={() => setLangAnchorEl(null)}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        slotProps={{
+          paper: {
+            sx: {
+              mt: 1,
+              minWidth: 200,
+              borderRadius: 2,
+              boxShadow: '0 10px 24px rgba(0,0,0,0.18)',
+            },
+          },
+        }}
+      >
+        {languageOptions.map((option) => (
+          <MenuItem
+            key={option.code}
+            selected={option.code === language}
+            onClick={() => {
+              setLanguage(option.code)
+              setLangAnchorEl(null)
+            }}
+          >
+            <ListItemText primary={option.label} secondary={option.subtitle} />
+          </MenuItem>
+        ))}
+      </Menu>
+
+      {/* Menu de perfil do usuário */}
+      <Menu
+        anchorEl={profileAnchorEl}
+        open={Boolean(profileAnchorEl)}
+        onClose={() => setProfileAnchorEl(null)}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
         slotProps={{ paper: { elevation: 3, sx: { minWidth: 200, mt: 0.5 } } }}
       >
         {userEmail && (
           <Box sx={{ px: 2, py: 1.5 }}>
-            <Typography variant="caption" color="text.secondary">Logado como</Typography>
+            <Typography variant="caption" color="text.secondary">{t.header.loggedInAs}</Typography>
             <Typography variant="body2" noWrap sx={{ fontWeight: 600 }}>{userEmail}</Typography>
           </Box>
         )}
         <Divider />
         <MenuItem
-          onClick={() => { setAnchorEl(null); onLogout?.() }}
+          onClick={() => { setProfileAnchorEl(null); onLogout?.() }}
           sx={{ color: '#c62828', mt: 0.5 }}
         >
           <ListItemIcon sx={{ color: '#c62828' }}>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          Sair
+          {t.header.signOut}
         </MenuItem>
       </Menu>
     </AppBar>

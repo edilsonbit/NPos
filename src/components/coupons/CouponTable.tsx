@@ -34,6 +34,7 @@ import dayjs from 'dayjs'
 import Swal from 'sweetalert2'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Coupon, CouponStatus } from '../../domain/models'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 type SortDir = 'asc' | 'desc'
 
@@ -99,12 +100,12 @@ interface GroupRowProps {
   isCancelledOnly?: boolean
 }
 
-function statusChip(status: string) {
+function statusChip(status: string, tStatus: { authorized: string; cancelled: string }) {
   const isAutorizado = status === 'autorizado'
   return (
     <Chip
       size="small"
-      label={isAutorizado ? 'Autorizado' : 'Cancelado'}
+      label={isAutorizado ? tStatus.authorized : tStatus.cancelled}
       sx={{
         fontSize: 10,
         fontWeight: 700,
@@ -116,12 +117,12 @@ function statusChip(status: string) {
   )
 }
 
-function situacaoChip(situacao?: string) {
+function situacaoChip(situacao: string | undefined, tStatus: { aggregated: string; sentToERP: string }) {
   if (situacao === 'Agregado') {
-    return <Chip size="small" label="Agregado" sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#fff3e0', color: '#e65100' }} />
+    return <Chip size="small" label={tStatus.aggregated} sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#fff3e0', color: '#e65100' }} />
   }
   if (situacao === 'Enviado ao ERP') {
-    return <Chip size="small" label="Enviado ao ERP" sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#e8f5e9', color: '#2e7d32' }} />
+    return <Chip size="small" label={tStatus.sentToERP} sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#e8f5e9', color: '#2e7d32' }} />
   }
   return null
 }
@@ -261,6 +262,9 @@ function CouponJsonDialog({ open, group, onClose }: CouponJsonDialogProps) {
 }
 
 function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locked, isCancelledOnly }: GroupRowProps) {
+  const { t } = useLanguage()
+  const tStatus = t.couponTable.status
+  const tExp = t.couponTable.expand
   return (
     <>
       <TableRow
@@ -307,9 +311,9 @@ function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locke
         </TableCell>
         <TableCell sx={{ fontSize: 12 }}>{currency.format(group.totalTax)}</TableCell>
         <TableCell sx={{ fontSize: 12, fontWeight: 700, color: '#0d3b45' }}>{currency.format(group.total)}</TableCell>
-        <TableCell>{statusChip(group.status)}</TableCell>
+        <TableCell>{statusChip(group.status, tStatus)}</TableCell>
         <TableCell sx={{ fontSize: 12, whiteSpace: 'nowrap' }}>{dayjs(group.createdAt).format('DD/MM/YYYY')}</TableCell>
-        <TableCell>{situacaoChip(group.situacao)}</TableCell>
+        <TableCell>{situacaoChip(group.situacao, tStatus)}</TableCell>
         <TableCell>
           <Tooltip title="Visualizar JSON">
             <IconButton
@@ -331,12 +335,12 @@ function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locke
               <Table size="small">
                 <TableHead>
                   <TableRow>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8, pl: 2 }}>Cód. Produto</TableCell>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }}>Nome do Produto</TableCell>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">Qtd.</TableCell>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">Preço Unit.</TableCell>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">Imposto</TableCell>
-                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">Valor</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8, pl: 2 }}>{tExp.productCode}</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }}>{tExp.productName}</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">{tExp.qty}</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">{tExp.unitPrice}</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">{tExp.tax}</TableCell>
+                    <TableCell sx={{ fontSize: 11, fontWeight: 700, color: '#546e7a', py: 0.8 }} align="right">{tExp.value}</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -362,22 +366,7 @@ function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locke
   )
 }
 
-// Colunas do cabeçalho principal
-const headCells = [
-  { id: '_expand', label: '', sortable: false },
-  { id: 'couponNumber', label: 'Nº Cupom', sortable: true },
-  { id: 'nsu', label: 'NSU', sortable: true },
-  { id: 'storeId', label: 'Loja', sortable: true },
-  { id: 'acquirer', label: 'Adquirente', sortable: true },
-  { id: 'paymentMethod', label: 'Forma Pagamento', sortable: true },
-  { id: 'itemCount', label: 'Itens', sortable: true },
-  { id: 'totalTax', label: 'Imposto', sortable: true },
-  { id: 'total', label: 'Valor Total', sortable: true },
-  { id: 'status', label: 'Status', sortable: true },
-  { id: 'createdAt', label: 'Data', sortable: true },
-  { id: 'situacao', label: 'Situação', sortable: false },
-  { id: 'acao', label: 'Ação', sortable: false },
-]
+// Colunas do cabeçalho principal — geradas dentro do componente para suportar i18n
 
 interface CouponTableProps {
   coupons: Coupon[]
@@ -390,6 +379,23 @@ interface CouponTableProps {
 }
 
 const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, processing, filtering, isCancelledOnly }: CouponTableProps) => {
+  const { t } = useLanguage()
+  const col = t.couponTable.columns
+  const headCells = [
+    { id: '_expand', label: '', sortable: false },
+    { id: 'couponNumber', label: col.couponNumber, sortable: true },
+    { id: 'nsu', label: col.nsu, sortable: true },
+    { id: 'storeId', label: col.storeId, sortable: true },
+    { id: 'acquirer', label: col.acquirer, sortable: true },
+    { id: 'paymentMethod', label: col.paymentMethod, sortable: true },
+    { id: 'itemCount', label: col.items, sortable: true },
+    { id: 'totalTax', label: col.tax, sortable: true },
+    { id: 'total', label: col.totalValue, sortable: true },
+    { id: 'status', label: col.status, sortable: true },
+    { id: 'createdAt', label: col.date, sortable: true },
+    { id: 'situacao', label: col.situation, sortable: false },
+    { id: 'acao', label: col.action, sortable: false },
+  ]
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const [sortField, setSortField] = useState<string | null>(null)

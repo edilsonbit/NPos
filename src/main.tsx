@@ -6,6 +6,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import 'dayjs/locale/pt-br'
 import './index.css'
 import App from './App.tsx'
+import { LanguageProvider } from './i18n/LanguageContext'
 
 const theme = createTheme({
   palette: {
@@ -24,11 +25,13 @@ const theme = createTheme({
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ThemeProvider theme={theme}>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-        <CssBaseline />
-        <App />
-      </LocalizationProvider>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider theme={theme}>
+        <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
+          <CssBaseline />
+          <App />
+        </LocalizationProvider>
+      </ThemeProvider>
+    </LanguageProvider>
   </StrictMode>,
 )

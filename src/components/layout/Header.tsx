@@ -29,17 +29,23 @@ const languageOptions: LanguageOption[] = [
 
 type LanguageCode = (typeof languageOptions)[number]['code']
 
+const isLanguageCode = (value: string | null): value is LanguageCode =>
+  languageOptions.some((option) => option.code === value)
+
 const Header = () => {
   const [language, setLanguage] = useState<LanguageCode>(() => {
     const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
-    return saved === 'en' || saved === 'es' ? saved : 'pt'
+    return isLanguageCode(saved) ? saved : 'pt'
   })
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
   const open = Boolean(anchorEl)
 
   useEffect(() => {
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY)
+    if (saved !== language) {
+      localStorage.setItem(LANGUAGE_STORAGE_KEY, language)
+    }
   }, [language])
 
   return (
@@ -103,11 +109,6 @@ const Header = () => {
                   <ListItemText
                     primary={option.label}
                     secondary={option.subtitle}
-                    slotProps={{
-                      secondary: {
-                        sx: { display: 'inline', ml: 0.75 },
-                      },
-                    }}
                   />
                 </MenuItem>
               )

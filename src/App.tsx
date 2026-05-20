@@ -1,14 +1,20 @@
-import { Backdrop, Box, CircularProgress, Fade, Paper, Stack, Typography } from '@mui/material'
+﻿import { Backdrop, Box, CircularProgress, Fade, Paper, Stack, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { onAuthStateChanged, signOut } from 'firebase/auth'
 import { useEffect, useMemo, useState } from 'react'
 import {
   aggregateAndPersistCoupons,
   loadCouponsAndProducts,
+  updateCouponsSituacao,
+  undoAggregation,
+  undoAggregationByNumbers,
 } from './application/couponService'
+import { logActivity, loadActivityLogs } from './application/activityLogService'
+import { reconstructAggregatedGroups } from './domain/aggregateCoupons'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
+import { IntegrationAlertsPage } from './components/alerts/IntegrationAlertsPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { DashboardPage } from './components/dashboard/DashboardPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
@@ -16,10 +22,12 @@ import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
 import { getFirebaseAuth } from './firebase/client'
 import type {
+  ActivityLog,
   AggregatedCouponGroup,
   AggregationCriteria,
   Coupon,
   CouponFilters,
+  CouponStatus,
 } from './domain/models'
 
 const defaultFilters: CouponFilters = {
@@ -30,6 +38,7 @@ const defaultFilters: CouponFilters = {
   acquirer: '',
   paymentMethod: '',
   status: '',
+  situacao: '',
   dateFrom: '',
   dateTo: '',
 }
@@ -58,6 +67,50 @@ const saveCriteria = (c: AggregationCriteria) => {
   localStorage.setItem(CRITERIA_KEY, JSON.stringify(c))
 }
 
+const applyCouponFilters = (
+  source: Coupon[],
+  applied: CouponFilters,
+  forcedStatus?: CouponStatus,
+): Coupon[] => {
+  return source.filter((c) => {
+    const matchCouponNumber =
+      !applied.couponNumber ||
+      c.couponNumber.toLowerCase().includes(applied.couponNumber.toLowerCase())
+
+    const matchNsu =
+      !applied.nsu ||
+      c.nsu.toLowerCase().includes(applied.nsu.toLowerCase())
+
+    const matchProduct =
+      !applied.productSearch ||
+      c.productCode.toLowerCase().includes(applied.productSearch.toLowerCase()) ||
+      c.productName.toLowerCase().includes(applied.productSearch.toLowerCase())
+
+    const matchFrom =
+      !applied.dateFrom ||
+      dayjs(c.createdAt).isAfter(dayjs(applied.dateFrom).subtract(1, 'day'))
+
+    const matchTo =
+      !applied.dateTo ||
+      dayjs(c.createdAt).isBefore(dayjs(applied.dateTo).add(1, 'day'))
+
+    const statusFilter = forcedStatus ?? applied.status
+
+    return (
+      matchCouponNumber &&
+      matchNsu &&
+      matchProduct &&
+      (!applied.storeId || c.storeId === applied.storeId) &&
+      (!applied.acquirer || c.acquirer === applied.acquirer) &&
+      (!applied.paymentMethod || c.paymentMethod === applied.paymentMethod) &&
+      (!statusFilter || c.status === statusFilter) &&
+      (!applied.situacao || c.situacao === applied.situacao) &&
+      matchFrom &&
+      matchTo
+    )
+  })
+}
+
 const App = () => {
   const [authenticated, setAuthenticated] = useState<boolean | null>(null)
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined)
@@ -75,6 +128,18 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
   const [activePage, setActivePage] = useState('dashboard')
+  const [activityLogs, setActivityLogs] = useState<ActivityLog[]>([])
+  const [logsLoading, setLogsLoading] = useState(false)
+
+  const refreshLogs = async () => {
+    setLogsLoading(true)
+    try {
+      const logs = await loadActivityLogs(200)
+      setActivityLogs(logs)
+    } finally {
+      setLogsLoading(false)
+    }
+  }
 
   useEffect(() => {
     const auth = getFirebaseAuth()
@@ -97,6 +162,18 @@ const App = () => {
     void bootstrap()
   }, [])
 
+  useEffect(() => {
+    // Reconstroem os grupos agregados quando a pagina Agregador e acessada ou cupons mudam
+    if (activePage === 'agregador') {
+      const reconstructedGroups = reconstructAggregatedGroups(coupons)
+      setGroups(reconstructedGroups)
+    }
+    // Carrega logs quando a pagina de alertas é acessada
+    if (activePage === 'alertas') {
+      void refreshLogs()
+    }
+  }, [activePage, coupons])
+
   const triggerFilter = (newFilters: CouponFilters) => {
     setFiltering(true)
     setTimeout(() => {
@@ -117,59 +194,219 @@ const App = () => {
     triggerFilter(defaultFilters)
   }
 
-  const filteredCoupons = useMemo(() => {
-    return coupons.filter((c) => {
-      const matchCouponNumber =
-        !appliedFilters.couponNumber ||
-        c.couponNumber.toLowerCase().includes(appliedFilters.couponNumber.toLowerCase())
+  const filteredCoupons = useMemo(
+    () => applyCouponFilters(coupons, appliedFilters),
+    [coupons, appliedFilters],
+  )
 
-      const matchNsu =
-        !appliedFilters.nsu ||
-        c.nsu.toLowerCase().includes(appliedFilters.nsu.toLowerCase())
+  const filteredCancelledCoupons = useMemo(
+    () => applyCouponFilters(coupons, appliedFilters, 'cancelado'),
+    [coupons, appliedFilters],
+  )
 
-      const matchProduct =
-        !appliedFilters.productSearch ||
-        c.productCode.toLowerCase().includes(appliedFilters.productSearch.toLowerCase()) ||
-        c.productName.toLowerCase().includes(appliedFilters.productSearch.toLowerCase())
-
-      const matchFrom =
-        !appliedFilters.dateFrom ||
-        dayjs(c.createdAt).isAfter(dayjs(appliedFilters.dateFrom).subtract(1, 'day'))
-
-      const matchTo =
-        !appliedFilters.dateTo ||
-        dayjs(c.createdAt).isBefore(dayjs(appliedFilters.dateTo).add(1, 'day'))
-
-      return (
-        matchCouponNumber &&
-        matchNsu &&
-        matchProduct &&
-        (!appliedFilters.storeId || c.storeId === appliedFilters.storeId) &&
-        (!appliedFilters.acquirer || c.acquirer === appliedFilters.acquirer) &&
-        (!appliedFilters.paymentMethod || c.paymentMethod === appliedFilters.paymentMethod) &&
-        (!appliedFilters.status || c.status === appliedFilters.status) &&
-        matchFrom &&
-        matchTo
-      )
-    })
-  }, [coupons, appliedFilters])
+  const couponsCancelledOnly = useMemo(
+    () => coupons.filter((coupon) => coupon.status === 'cancelado'),
+    [coupons],
+  )
 
   const filteredTotal = useMemo(
     () => filteredCoupons.reduce((acc, c) => acc + c.amount, 0),
     [filteredCoupons],
   )
 
-  const handleAggregate = async () => {
-    if (!filteredCoupons.length) return
+  const filteredCancelledTotal = useMemo(
+    () => filteredCancelledCoupons.reduce((acc, c) => acc + c.amount, 0),
+    [filteredCancelledCoupons],
+  )
+
+  const handleAggregate = async (couponsToAggregate: Coupon[]) => {
+    // Detecta se sao cupons cancelados verificando o status
+    const isCancelledCoupons = couponsToAggregate.length > 0 && couponsToAggregate.every((c) => c.status === 'cancelado')
+    
+    if (isCancelledCoupons) {
+      // Fluxo de envio de cupons cancelados ao ERP
+      setProcessing(true)
+      try {
+        // Delay minimo de 1.5s para o loading ser visivel
+        await Promise.all([
+          updateCouponsSituacao(couponsToAggregate.map((c) => c.id), 'Enviado ao ERP'),
+          new Promise((res) => setTimeout(res, 1500)),
+        ])
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'ENVIAR_ERP',
+          description: `${couponsToAggregate.length} cupom(ns) cancelado(s) enviado(s) ao ERP`,
+          userId: userEmail,
+          status: 'sucesso',
+          details: {
+            couponIds: couponsToAggregate.map((c) => c.id),
+            count: couponsToAggregate.length,
+          },
+        })
+        // Recarregar cupons do Firestore para refletir a situacao "Enviado ao ERP"
+        const { coupons: updatedCoupons } = await loadCouponsAndProducts()
+        setCoupons(updatedCoupons)
+        
+        setActivePage('cupons-cancelados')
+      } catch (err) {
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'ENVIAR_ERP',
+          description: `Erro ao enviar cupons cancelados ao ERP`,
+          userId: userEmail,
+          status: 'erro',
+          details: { errorMessage: String(err), count: couponsToAggregate.length },
+        })
+      } finally {
+        setProcessing(false)
+      }
+    } else {
+      // Fluxo normal de agregacao
+      const aggregatable = couponsToAggregate.filter((coupon) => coupon.status !== 'cancelado')
+      if (!aggregatable.length) return
+
+      setProcessing(true)
+      try {
+        // Delay minimo de 1.5s para o loading ser visivel
+        const [grouped] = await Promise.all([
+          aggregateAndPersistCoupons(aggregatable, criteria),
+          new Promise((res) => setTimeout(res, 1500)),
+        ])
+        setGroups(grouped)
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'AGREGAR_CUPONS',
+          description: `${aggregatable.length} cupom(ns) agregado(s) em ${grouped.length} grupo(s)`,
+          userId: userEmail,
+          status: 'sucesso',
+          details: {
+            couponIds: aggregatable.map((c) => c.id),
+            groupIds: grouped.map((g) => g.idAgregador),
+            count: aggregatable.length,
+          },
+        })
+        // Recarregar cupons do Firestore para refletir a situacao "Agregado"
+        const { coupons: updatedCoupons } = await loadCouponsAndProducts()
+        setCoupons(updatedCoupons)
+        
+        setActivePage('agregador')
+      } catch (err) {
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'AGREGAR_CUPONS',
+          description: `Erro ao agregar cupons`,
+          userId: userEmail,
+          status: 'erro',
+          details: { errorMessage: String(err), count: aggregatable.length },
+        })
+      } finally {
+        setProcessing(false)
+      }
+    }
+  }
+
+  const handleSendGroupsToErp = async (groupIds: string[]) => {
     setProcessing(true)
     try {
-      // Delay mínimo de 1.5s para o loading ser visível
-      const [grouped] = await Promise.all([
-        aggregateAndPersistCoupons(filteredCoupons, criteria),
+      // Encontrar todos os coupons dos grupos selecionados
+      const couponIds = groups
+        .filter((g) => groupIds.includes(g.idAgregador))
+        .flatMap((g) => g.coupons.map((c) => c.id))
+
+      if (couponIds.length === 0) return
+
+      // Delay minimo de 1.5s para o loading ser visivel
+      await Promise.all([
+        updateCouponsSituacao(couponIds, 'Enviado ao ERP'),
         new Promise((res) => setTimeout(res, 1500)),
       ])
-      setGroups(grouped)
-      setActivePage('agregador')
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'ENVIAR_ERP',
+        description: `${groupIds.length} grupo(s) com ${couponIds.length} cupom(ns) enviado(s) ao ERP`,
+        userId: userEmail,
+        status: 'sucesso',
+        details: { groupIds, couponIds, count: couponIds.length },
+      })
+
+      // Recarregar coupons e reconstruir grupos
+      const { coupons: updatedCoupons } = await loadCouponsAndProducts()
+      setCoupons(updatedCoupons)
+      
+      // Reconstruir os grupos agregados
+      const reconstructedGroups = reconstructAggregatedGroups(updatedCoupons)
+      setGroups(reconstructedGroups)
+    } catch (err) {
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'ENVIAR_ERP',
+        description: `Erro ao enviar grupos ao ERP`,
+        userId: userEmail,
+        status: 'erro',
+        details: { groupIds, errorMessage: String(err) },
+      })
+    } finally {
+      setProcessing(false)
+    }
+  }
+
+  const handleUndoAggregation = async (groupId: string) => {
+    setProcessing(true)
+    try {
+      await undoAggregation(groupId)
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'DESFAZER_AGREGACAO',
+        description: `Agregação desfeita para o grupo ${groupId}`,
+        userId: userEmail,
+        status: 'sucesso',
+        details: { groupIds: [groupId] },
+      })
+      const { coupons: updatedCoupons } = await loadCouponsAndProducts()
+      setCoupons(updatedCoupons)
+      const reconstructedGroups = reconstructAggregatedGroups(updatedCoupons)
+      setGroups(reconstructedGroups)
+      setActivePage('cupons')
+    } catch (err) {
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'DESFAZER_AGREGACAO',
+        description: `Erro ao desfazer agregação do grupo ${groupId}`,
+        userId: userEmail,
+        status: 'erro',
+        details: { groupIds: [groupId], errorMessage: String(err) },
+      })
+    } finally {
+      setProcessing(false)
+    }
+  }
+
+  const handleUndoAggregationByNumbers = async (couponNumbers: string[]) => {
+    setProcessing(true)
+    try {
+      await undoAggregationByNumbers(couponNumbers)
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'DESFAZER_AGREGACAO',
+        description: `Agregação desfeita para ${couponNumbers.length} cupom(ns)`,
+        userId: userEmail,
+        status: 'sucesso',
+        details: { couponNumbers, count: couponNumbers.length },
+      })
+      const { coupons: updatedCoupons } = await loadCouponsAndProducts()
+      setCoupons(updatedCoupons)
+      const reconstructedGroups = reconstructAggregatedGroups(updatedCoupons)
+      setGroups(reconstructedGroups)
+      setActivePage('cupons')
+    } catch (err) {
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'DESFAZER_AGREGACAO',
+        description: `Erro ao desfazer agregação`,
+        userId: userEmail,
+        status: 'erro',
+        details: { couponNumbers, errorMessage: String(err) },
+      })
     } finally {
       setProcessing(false)
     }
@@ -238,15 +475,46 @@ const App = () => {
           criteria={criteria}
           onChange={handleCriteriaChange}
           couponCount={filteredCoupons.length}
-          onAggregate={() => void handleAggregate()}
+          onAggregate={() => void handleAggregate(filteredCoupons)}
           processing={processing}
         />
       ) : activePage === 'agregador' ? (
-        <AgregadorPage groups={groups} onGoToCupons={() => setActivePage('cupons')} />
+        <AgregadorPage groups={groups} criteria={criteria} onGoToCupons={() => setActivePage('cupons')} onSendToErp={handleSendGroupsToErp} onUndoAggregation={handleUndoAggregation} onUndoAggregationByNumbers={handleUndoAggregationByNumbers} />
       ) : activePage === 'api-tester' ? (
         <ApiTesterPage />
+      ) : activePage === 'alertas' ? (
+        <IntegrationAlertsPage logs={activityLogs} loading={logsLoading} onRefresh={refreshLogs} />
+      ) : activePage === 'cupons-cancelados' ? (
+        <Paper
+          elevation={0}
+          sx={{
+            borderRadius: 2,
+            border: '1px solid #e8ecf0',
+            overflow: 'hidden',
+            backgroundColor: '#fff',
+          }}
+        >
+          <CouponFiltersBar
+            coupons={couponsCancelledOnly}
+            filters={filters}
+            onChange={setFilters}
+            onInstantChange={handleInstantChange}
+            onClear={handleClear}
+            onSearch={handleSearch}
+            hideStatusFilter={true}
+          />
+          <CouponTable
+            coupons={filteredCancelledCoupons}
+            filteredCount={filteredCancelledCoupons.length}
+            filteredTotal={filteredCancelledTotal}
+            onAggregate={(selected) => void handleAggregate(selected)}
+            processing={processing}
+            filtering={filtering}
+            isCancelledOnly={true}
+          />
+        </Paper>
       ) : (
-        /* Página padrão: Cupons Fiscais */
+        /* Pagina padrao: Cupons Fiscais */
         <Paper
           elevation={0}
           sx={{
@@ -268,7 +536,7 @@ const App = () => {
             coupons={filteredCoupons}
             filteredCount={filteredCoupons.length}
             filteredTotal={filteredTotal}
-            onAggregate={() => void handleAggregate()}
+            onAggregate={(selected) => void handleAggregate(selected)}
             processing={processing}
             filtering={filtering}
           />
@@ -280,3 +548,5 @@ const App = () => {
 }
 
 export default App
+
+

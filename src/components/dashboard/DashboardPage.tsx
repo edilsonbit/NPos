@@ -2,9 +2,14 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import ReceiptLongIcon from '@mui/icons-material/ReceiptLong'
 import CancelIcon from '@mui/icons-material/Cancel'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import { Box, Card, CardContent, Chip, Grid, Stack, Typography } from '@mui/material'
-import dayjs from 'dayjs'
-import { useMemo } from 'react'
+import FilterListIcon from '@mui/icons-material/FilterList'
+import { Box, Button, Card, CardContent, Chip, Grid, Stack, Typography } from '@mui/material'
+import { DatePicker } from '@mui/x-date-pickers/DatePicker'
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import dayjs, { type Dayjs } from 'dayjs'
+import 'dayjs/locale/pt-br'
+import { useMemo, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 import type { ApexOptions } from 'apexcharts'
 import type { Coupon } from '../../domain/models'
@@ -89,16 +94,30 @@ function ChartCard({ title, badge, children }: { title: string; badge?: string; 
 // Main component
 // ─────────────────────────────────────────────
 export function DashboardPage({ coupons }: Props) {
+  // ── Filtro de período ─────────────────────
+  const [dateFrom, setDateFrom] = useState<Dayjs | null>(null)
+  const [dateTo, setDateTo] = useState<Dayjs | null>(null)
+
+  const filteredCoupons = useMemo(() => {
+    if (!dateFrom && !dateTo) return coupons
+    return coupons.filter((c) => {
+      const d = dayjs(c.createdAt)
+      if (dateFrom && d.isBefore(dateFrom.startOf('day'))) return false
+      if (dateTo && d.isAfter(dateTo.endOf('day'))) return false
+      return true
+    })
+  }, [coupons, dateFrom, dateTo])
+
   // 'agrupado' = foi autorizado e depois agregado; conta como receita
   const authorized = useMemo(
-    () => coupons.filter((c) => c.status === 'autorizado' || (c.status as string) === 'agrupado'),
-    [coupons],
+    () => filteredCoupons.filter((c) => c.status === 'autorizado' || (c.status as string) === 'agrupado'),
+    [filteredCoupons],
   )
-  const cancelled = useMemo(() => coupons.filter((c) => c.status === 'cancelado'), [coupons])
+  const cancelled = useMemo(() => filteredCoupons.filter((c) => c.status === 'cancelado'), [filteredCoupons])
 
   const totalRevenue = useMemo(() => authorized.reduce((s, c) => s + c.amount, 0), [authorized])
   const avgTicket = authorized.length ? totalRevenue / authorized.length : 0
-  const cancelRate = coupons.length ? (cancelled.length / coupons.length) * 100 : 0
+  const cancelRate = filteredCoupons.length ? (cancelled.length / filteredCoupons.length) * 100 : 0
 
   // ── Faturamento por dia (linha) ───────────────
   const revenueByDay = useMemo(() => {
@@ -156,11 +175,11 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Status dos cupons (donut com 3 fatias) ────
   const statusCounts = useMemo(() => {
-    const aut = coupons.filter((c) => c.status === 'autorizado').length
-    const agr = coupons.filter((c) => (c.status as string) === 'agrupado').length
+    const aut = filteredCoupons.filter((c) => c.status === 'autorizado').length
+    const agr = filteredCoupons.filter((c) => (c.status as string) === 'agrupado').length
     const can = cancelled.length
     return { aut, agr, can }
-  }, [coupons, cancelled])
+  }, [filteredCoupons, cancelled])
 
   // ─────────────────────────────────────────────
   // Chart options
@@ -242,9 +261,13 @@ export function DashboardPage({ coupons }: Props) {
   }
 
   return (
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
     <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: '#f7f9fb', minHeight: '100%' }}>
       {/* Header */}
-      <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 3 }}>
+      <Stack
+        direction={{ xs: 'column', md: 'row' }}
+        sx={{ alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', gap: 2, mb: 3 }}
+      >
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#0d3b45' }}>
             Dashboard
@@ -253,10 +276,50 @@ export function DashboardPage({ coupons }: Props) {
             Visão geral dos cupons fiscais em tempo real
           </Typography>
         </Box>
-        <Chip
-          label={`${coupons.length.toLocaleString('pt-BR')} registros`}
-          sx={{ backgroundColor: '#0d3b45', color: '#fff', fontWeight: 600 }}
-        />
+
+        {/* Filtro de período */}
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
+          <Stack direction="row" sx={{ alignItems: 'center', gap: 0.5 }}>
+            <FilterListIcon sx={{ fontSize: 18, color: '#0d3b45' }} />
+            <Typography variant="body2" sx={{ fontWeight: 600, color: '#0d3b45', whiteSpace: 'nowrap' }}>
+              Período:
+            </Typography>
+          </Stack>
+          <DatePicker
+            label="De"
+            value={dateFrom}
+            onChange={(v) => setDateFrom(v)}
+            maxDate={dateTo ?? undefined}
+            slotProps={{
+              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              field: { clearable: true },
+            }}
+          />
+          <DatePicker
+            label="Até"
+            value={dateTo}
+            onChange={(v) => setDateTo(v)}
+            minDate={dateFrom ?? undefined}
+            slotProps={{
+              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              field: { clearable: true },
+            }}
+          />
+          {(dateFrom || dateTo) && (
+            <Button
+              size="small"
+              variant="outlined"
+              onClick={() => { setDateFrom(null); setDateTo(null) }}
+              sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' } }}
+            >
+              Limpar
+            </Button>
+          )}
+          <Chip
+            label={`${filteredCoupons.length.toLocaleString('pt-BR')} registros`}
+            sx={{ backgroundColor: '#0d3b45', color: '#fff', fontWeight: 600 }}
+          />
+        </Stack>
       </Stack>
 
       {/* KPIs */}
@@ -264,7 +327,7 @@ export function DashboardPage({ coupons }: Props) {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
             label="Total de Cupons"
-            value={coupons.length.toLocaleString('pt-BR')}
+            value={filteredCoupons.length.toLocaleString('pt-BR')}
             sub={`${authorized.length.toLocaleString('pt-BR')} com receita`}
             color="#0d3b45"
             icon={<ReceiptLongIcon />}
@@ -371,5 +434,6 @@ export function DashboardPage({ coupons }: Props) {
         </Grid>
       </Grid>
     </Box>
+    </LocalizationProvider>
   )
 }

@@ -9,6 +9,8 @@ export interface Product {
   price: number
 }
 
+export type CouponSituacao = 'Agregado' | 'Enviado ao ERP'
+
 export interface Coupon {
   id: string
   couponNumber: string
@@ -17,6 +19,8 @@ export interface Coupon {
   acquirer: string
   paymentMethod: string
   status: CouponStatus
+  situacao?: CouponSituacao
+  idAgregador?: string
   createdAt: string
   productId: string
   productCode: string
@@ -35,6 +39,7 @@ export interface CouponFilters {
   acquirer: string
   paymentMethod: string
   status: '' | CouponStatus
+  situacao: '' | CouponSituacao
   dateFrom: string
   dateTo: string
 }
@@ -72,7 +77,7 @@ export interface AggregatedCouponGroup {
   totalAmount: number
 }
 
-export interface SapPayloadItem {
+export interface ErpPayloadItem {
   couponNumber: string
   nsu: string
   productCode: string
@@ -85,7 +90,7 @@ export interface SapPayloadItem {
   createdAt: string
 }
 
-export interface SapPayload {
+export interface ErpPayload {
   idAgregador: string
   storeId: string
   date: string
@@ -96,10 +101,41 @@ export interface SapPayload {
   paymentMethod: string
   totalAmount: number
   couponCount: number
-  items: SapPayloadItem[]
+  items: ErpPayloadItem[]
 }
 
 export interface AggregatorPersistPayload {
   couponId: string
   idAgregador: string
+}
+
+export interface CouponSituacaoPayload {
+  couponId: string
+  situacao: CouponSituacao
+}
+
+// --- Activity Log ---
+
+export type ActivityLogAction =
+  | 'AGREGAR_CUPONS'
+  | 'DESFAZER_AGREGACAO'
+  | 'ENVIAR_ERP'
+  | 'CANCELAR_CUPOM'
+
+export type ActivityLogStatus = 'sucesso' | 'erro'
+
+export interface ActivityLog {
+  id?: string
+  timestamp: string
+  action: ActivityLogAction
+  description: string
+  userId?: string
+  status: ActivityLogStatus
+  details?: {
+    couponIds?: string[]
+    groupIds?: string[]
+    couponNumbers?: string[]
+    count?: number
+    errorMessage?: string
+  }
 }

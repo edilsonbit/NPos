@@ -20,6 +20,7 @@ interface CouponFiltersBarProps {
     onInstantChange: (filters: CouponFilters) => void
     onClear: () => void
     onSearch: () => void
+    hideStatusFilter?: boolean
 }
 
 const set = <K extends keyof CouponFilters>(
@@ -35,14 +36,16 @@ const CouponFiltersBar = ({
     onInstantChange,
     onClear,
     onSearch,
+    hideStatusFilter,
 }: CouponFiltersBarProps) => {
     const stores = [...new Set(coupons.map((c) => c.storeId))].sort()
     const acquirers = [...new Set(coupons.map((c) => c.acquirer))].sort()
     const payMethods = [...new Set(coupons.map((c) => c.paymentMethod))].sort()
+    const situacoes = [...new Set(coupons.filter((c) => c.situacao).map((c) => c.situacao))].sort() as string[]
 
     return (
         <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
-            {/* Linha 1 — Selects (Loja, Adquirente, Forma de Pagamento, Status) */}
+            {/* Linha 1 — Selects (Loja, Adquirente, Forma de Pagamento, Status, Situação) */}
             <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
                 <TextField
                     select size="small" label="Loja"
@@ -74,15 +77,27 @@ const CouponFiltersBar = ({
                     {payMethods.map((p) => <MenuItem key={p} value={p}>{p}</MenuItem>)}
                 </TextField>
 
+                {!hideStatusFilter && (
+                    <TextField
+                        select size="small" label="Status"
+                        value={filters.status}
+                        onChange={(e) => onInstantChange(set(filters, 'status', e.target.value as CouponFilters['status']))}
+                        sx={selectSx}
+                    >
+                        <MenuItem value="">Todos</MenuItem>
+                        <MenuItem value="autorizado">Autorizado</MenuItem>
+                        <MenuItem value="cancelado">Cancelado</MenuItem>
+                    </TextField>
+                )}
+
                 <TextField
-                    select size="small" label="Status"
-                    value={filters.status}
-                    onChange={(e) => onInstantChange(set(filters, 'status', e.target.value as CouponFilters['status']))}
+                    select size="small" label="Situação"
+                    value={filters.situacao}
+                    onChange={(e) => onInstantChange(set(filters, 'situacao', e.target.value as CouponFilters['situacao']))}
                     sx={selectSx}
                 >
-                    <MenuItem value="">Todos</MenuItem>
-                    <MenuItem value="autorizado">Autorizado</MenuItem>
-                    <MenuItem value="cancelado">Cancelado</MenuItem>
+                    <MenuItem value="">Todas</MenuItem>
+                    {situacoes.map((s) => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </TextField>
             </Stack>
 

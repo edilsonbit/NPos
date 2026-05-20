@@ -1,8 +1,8 @@
-import HubIcon from '@mui/icons-material/Hub'
+﻿
 import TuneIcon from '@mui/icons-material/Tune'
 import {
   Box,
-  Button,
+
   Card,
   CardContent,
   Checkbox,
@@ -26,8 +26,8 @@ interface AggregatorConfigProps {
 const options: { key: keyof AggregationCriteria; label: string; description: string }[] = [
   { key: 'byProduct', label: 'Produto', description: 'Agrupa pelo código do produto' },
   { key: 'byStore', label: 'Loja', description: 'Agrupa pelo ID da loja' },
-  { key: 'byAcquirer', label: 'Adquirente', description: 'Agrupa pela adquirente (Cielo, Rede…)' },
-  { key: 'byPaymentMethod', label: 'Forma de Pagamento', description: 'Agrupa por PIX, Crédito, Débito…' },
+  { key: 'byAcquirer', label: 'Adquirente', description: 'Agrupa pela adquirente (Cielo, Rede...)' },
+  { key: 'byPaymentMethod', label: 'Forma de Pagamento', description: 'Agrupa por PIX, Crédito, Débito...' },
   { key: 'byDate', label: 'Data', description: 'Agrupa pela data do cupom (dia)' },
 ]
 
@@ -35,8 +35,6 @@ const AggregatorConfig = ({
   criteria,
   onChange,
   couponCount = 0,
-  onAggregate,
-  processing = false,
 }: AggregatorConfigProps) => {
   const activeCount = Object.values(criteria).filter(Boolean).length
   const activeLabels = options.filter((o) => criteria[o.key]).map((o) => o.label)
@@ -128,7 +126,7 @@ const AggregatorConfig = ({
           <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2 }}>
             <CardContent>
               <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#1a2e35', mb: 2 }}>
-                Resumo da configuração
+                Resumo da Configuração
               </Typography>
 
               <Stack direction="row" sx={{ justifyContent: 'space-between', mb: 1.5 }}>
@@ -174,28 +172,7 @@ const AggregatorConfig = ({
             </CardContent>
           </Card>
 
-          <Button
-            variant="contained"
-            size="large"
-            startIcon={<HubIcon />}
-            onClick={onAggregate}
-            disabled={processing || activeCount === 0 || couponCount === 0}
-            fullWidth
-            sx={{
-              backgroundColor: '#0d3b45',
-              '&:hover': { backgroundColor: '#062930' },
-              '&:disabled': { backgroundColor: '#b0bec5' },
-              textTransform: 'none',
-              fontWeight: 700,
-              py: 1.5,
-              fontSize: 15,
-            }}
-          >
-            {processing ? 'Agrupando...' : 'Rodar Agregador'}
-          </Button>
-          <Typography variant="caption" color="text.secondary" sx={{ textAlign: 'center' }}>
-            Após rodar, o resultado será exibido na aba <strong>Agregador</strong>
-          </Typography>
+
         </Stack>
       </Stack>
     </Box>
@@ -203,3 +180,4 @@ const AggregatorConfig = ({
 }
 
 export { AggregatorConfig }
+

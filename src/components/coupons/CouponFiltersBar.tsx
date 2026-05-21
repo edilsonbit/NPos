@@ -9,27 +9,9 @@ import ClearIcon from '@mui/icons-material/Clear'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
 import type { Coupon, CouponFilters } from '../../domain/models'
+import { uniqueNormalized } from '../../utils/textNormalization'
 
 const selectSx = { width: '100%' }
-
-const normalizeKey = (value: string) =>
-    value
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, ' ')
-        .trim()
-        .toLocaleLowerCase('pt-BR')
-
-const uniqueCaseInsensitive = (values: string[]) => {
-    const map = new Map<string, string>()
-    values.forEach((value) => {
-        const key = normalizeKey(value)
-        if (!map.has(key)) {
-            map.set(key, value)
-        }
-    })
-    return Array.from(map.values()).sort((a, b) => a.localeCompare(b, 'pt-BR'))
-}
 
 interface CouponFiltersBarProps {
     coupons: Coupon[]
@@ -56,9 +38,9 @@ const CouponFiltersBar = ({
     onSearch,
     hideStatusFilter,
 }: CouponFiltersBarProps) => {
-    const stores = uniqueCaseInsensitive(coupons.map((c) => c.storeId))
-    const acquirers = uniqueCaseInsensitive(coupons.map((c) => c.acquirer))
-    const payMethods = uniqueCaseInsensitive(coupons.map((c) => c.paymentMethod))
+    const stores = uniqueNormalized(coupons.map((c) => c.storeId))
+    const acquirers = uniqueNormalized(coupons.map((c) => c.acquirer))
+    const payMethods = uniqueNormalized(coupons.map((c) => c.paymentMethod))
     const situacoes = [...new Set(coupons.filter((c) => c.situacao).map((c) => c.situacao))].sort() as string[]
 
     return (

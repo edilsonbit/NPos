@@ -35,6 +35,7 @@ import Swal from 'sweetalert2'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import type { Coupon, CouponStatus } from '../../domain/models'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { equalsNormalized } from '../../utils/textNormalization'
 
 type SortDir = 'asc' | 'desc'
 
@@ -104,7 +105,7 @@ interface GroupRowProps {
 }
 
 function statusChip(status: string, tStatus: { authorized: string; cancelled: string }) {
-  const isAutorizado = status === 'autorizado'
+  const isAutorizado = equalsNormalized(status, 'autorizado')
   return (
     <Chip
       size="small"
@@ -121,17 +122,17 @@ function statusChip(status: string, tStatus: { authorized: string; cancelled: st
 }
 
 function situacaoChip(situacao: string | undefined, tStatus: { aggregated: string; sentToERP: string }) {
-  if (situacao === 'Agregado') {
+  if (equalsNormalized(situacao, 'Agregado')) {
     return <Chip size="small" label={tStatus.aggregated} sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#fff3e0', color: '#e65100' }} />
   }
-  if (situacao === 'Enviado ao ERP') {
+  if (equalsNormalized(situacao, 'Enviado ao ERP')) {
     return <Chip size="small" label={tStatus.sentToERP} sx={{ fontSize: 10, fontWeight: 700, height: 20, backgroundColor: '#e8f5e9', color: '#2e7d32' }} />
   }
   return null
 }
 
 function isLocked(situacao?: string) {
-  return situacao === 'Agregado' || situacao === 'Enviado ao ERP'
+  return equalsNormalized(situacao, 'Agregado') || equalsNormalized(situacao, 'Enviado ao ERP')
 }
 
 // Modal JSON do cupom
@@ -442,15 +443,15 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
 
   const groups = useMemo(() => groupCoupons(coupons), [coupons])
   const authorizedGroupsCount = useMemo(
-    () => groups.filter((g) => g.status === 'autorizado').length,
+    () => groups.filter((g) => equalsNormalized(g.status, 'autorizado')).length,
     [groups],
   )
   const aggregatedGroupsCount = useMemo(
-    () => groups.filter((g) => g.situacao === 'Agregado').length,
+    () => groups.filter((g) => equalsNormalized(g.situacao, 'Agregado')).length,
     [groups],
   )
   const sentToErpGroupsCount = useMemo(
-    () => groups.filter((g) => g.situacao === 'Enviado ao ERP').length,
+    () => groups.filter((g) => equalsNormalized(g.situacao, 'Enviado ao ERP')).length,
     [groups],
   )
 

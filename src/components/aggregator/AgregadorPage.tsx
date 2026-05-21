@@ -24,6 +24,7 @@ import dayjs from 'dayjs'
 import Swal from 'sweetalert2'
 import { useMemo, useState } from 'react'
 import type { AggregatedCouponGroup, AggregationCriteria, GroupFilters } from '../../domain/models'
+import { equalsNormalized, includesNormalized, uniqueNormalized } from '../../utils/textNormalization'
 import { AggregatedView } from './AggregatedView'
 
 const currency = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -83,22 +84,22 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
     triggerSearch(defaultFilters)
   }
 
-  const stores = useMemo(() => [...new Set(groups.map((g) => g.storeId))].sort(), [groups])
-  const acquirers = useMemo(() => [...new Set(groups.map((g) => g.acquirer))].sort(), [groups])
-  const payMethods = useMemo(() => [...new Set(groups.map((g) => g.paymentMethod))].sort(), [groups])
+  const stores = useMemo(() => uniqueNormalized(groups.map((g) => g.storeId)), [groups])
+  const acquirers = useMemo(() => uniqueNormalized(groups.map((g) => g.acquirer)), [groups])
+  const payMethods = useMemo(() => uniqueNormalized(groups.map((g) => g.paymentMethod)), [groups])
 
   const filtered = useMemo(() => {
     const f = appliedFilters
     return groups.filter((g) => {
-      const matchId = !f.idAgregador || g.idAgregador.toLowerCase().includes(f.idAgregador.toLowerCase())
-      const matchNF = !f.couponNumber || g.coupons.some((c) => c.couponNumber.toLowerCase().includes(f.couponNumber.toLowerCase()))
-      const matchStore = !f.storeId || g.storeId === f.storeId
-      const matchAcquirer = !f.acquirer || g.acquirer === f.acquirer
-      const matchPayment = !f.paymentMethod || g.paymentMethod === f.paymentMethod
+      const matchId = !f.idAgregador || includesNormalized(g.idAgregador, f.idAgregador)
+      const matchNF = !f.couponNumber || g.coupons.some((c) => includesNormalized(c.couponNumber, f.couponNumber))
+      const matchStore = !f.storeId || equalsNormalized(g.storeId, f.storeId)
+      const matchAcquirer = !f.acquirer || equalsNormalized(g.acquirer, f.acquirer)
+      const matchPayment = !f.paymentMethod || equalsNormalized(g.paymentMethod, f.paymentMethod)
       const matchProduct =
         !f.productSearch ||
-        g.productCode.toLowerCase().includes(f.productSearch.toLowerCase()) ||
-        g.productName.toLowerCase().includes(f.productSearch.toLowerCase())
+        includesNormalized(g.productCode, f.productSearch) ||
+        includesNormalized(g.productName, f.productSearch)
       const matchFrom = !f.dateFrom || dayjs(g.date).isAfter(dayjs(f.dateFrom).subtract(1, 'day'))
       const matchTo = !f.dateTo || dayjs(g.date).isBefore(dayjs(f.dateTo).add(1, 'day'))
       return matchId && matchNF && matchStore && matchAcquirer && matchPayment && matchProduct && matchFrom && matchTo

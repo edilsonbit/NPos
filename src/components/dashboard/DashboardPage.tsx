@@ -14,6 +14,7 @@ import ReactApexChart from 'react-apexcharts'
 import type { ApexOptions } from 'apexcharts'
 import type { Coupon } from '../../domain/models'
 import { useLanguage } from '../../i18n/LanguageContext'
+import { equalsNormalized, normalizeText, uniqueNormalized } from '../../utils/textNormalization'
 
 interface Props {
   coupons: Coupon[]
@@ -30,12 +31,7 @@ function getSeriesIndex(opts?: { seriesIndex: number }) {
 }
 
 function normalizeGroupKey(value: string) {
-  return value
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-    .toLocaleLowerCase('pt-BR')
+  return normalizeText(value)
 }
 
 // ─────────────────────────────────────────────
@@ -173,7 +169,7 @@ function ChartCard({ title, badge, children }: { title: string; badge?: string; 
 // ─────────────────────────────────────────────
 export function DashboardPage({ coupons }: Props) {
   const { t } = useLanguage()
-  const stores = useMemo(() => [...new Set(coupons.map((c) => c.storeId))].sort(), [coupons])
+  const stores = useMemo(() => uniqueNormalized(coupons.map((c) => c.storeId)), [coupons])
   const defaultDateFrom = useMemo(() => dayjs().startOf('month').startOf('day'), [])
   const defaultDateTo = useMemo(() => dayjs().startOf('day'), [])
   const [dateFrom, setDateFrom] = useState<Dayjs | null>(defaultDateFrom)
@@ -188,7 +184,7 @@ export function DashboardPage({ coupons }: Props) {
   const filteredCoupons = useMemo(() => {
     return coupons.filter((c) => {
       const d = dayjs(c.createdAt)
-      if (storeId && c.storeId !== storeId) return false
+      if (storeId && !equalsNormalized(c.storeId, storeId)) return false
       if (dateFrom && d.isBefore(dateFrom.startOf('day'))) return false
       if (dateTo && d.isAfter(dateTo.endOf('day'))) return false
       return true
@@ -244,12 +240,14 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Faturamento por loja (bar horizontal) ─────
   const byStore = useMemo(() => {
-    const map: Record<string, number> = {}
+    const map: Record<string, { label: string; amount: number }> = {}
     authorized.forEach((c) => {
-      map[c.storeId] = (map[c.storeId] ?? 0) + c.amount
+      const key = normalizeGroupKey(c.storeId)
+      map[key] = map[key] ?? { label: c.storeId.trim(), amount: 0 }
+      map[key].amount += c.amount
     })
-    const sorted = Object.entries(map).sort(([, a], [, b]) => b - a)
-    return { categories: sorted.map(([s]) => s), values: sorted.map(([, v]) => +v.toFixed(2)) }
+    const sorted = Object.values(map).sort((a, b) => b.amount - a.amount)
+    return { categories: sorted.map((entry) => entry.label), values: sorted.map((entry) => +entry.amount.toFixed(2)) }
   }, [authorized])
 
   // ── Adquirentes (donut) ────────────────────────

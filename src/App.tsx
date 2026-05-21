@@ -21,6 +21,7 @@ import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
 import { getFirebaseAuth } from './firebase/client'
+import { equalsNormalized, includesNormalized } from './utils/textNormalization'
 import type {
   ActivityLog,
   AggregatedCouponGroup,
@@ -72,27 +73,19 @@ const applyCouponFilters = (
   applied: CouponFilters,
   forcedStatus?: CouponStatus,
 ): Coupon[] => {
-  const normalize = (value: string) =>
-    value
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .replace(/\s+/g, ' ')
-      .trim()
-      .toLocaleLowerCase('pt-BR')
-
   return source.filter((c) => {
     const matchCouponNumber =
       !applied.couponNumber ||
-      c.couponNumber.toLowerCase().includes(applied.couponNumber.toLowerCase())
+      includesNormalized(c.couponNumber, applied.couponNumber)
 
     const matchNsu =
       !applied.nsu ||
-      c.nsu.toLowerCase().includes(applied.nsu.toLowerCase())
+      includesNormalized(c.nsu, applied.nsu)
 
     const matchProduct =
       !applied.productSearch ||
-      c.productCode.toLowerCase().includes(applied.productSearch.toLowerCase()) ||
-      c.productName.toLowerCase().includes(applied.productSearch.toLowerCase())
+      includesNormalized(c.productCode, applied.productSearch) ||
+      includesNormalized(c.productName, applied.productSearch)
 
     const matchFrom =
       !applied.dateFrom ||
@@ -108,11 +101,11 @@ const applyCouponFilters = (
       matchCouponNumber &&
       matchNsu &&
       matchProduct &&
-      (!applied.storeId || normalize(c.storeId) === normalize(applied.storeId)) &&
-      (!applied.acquirer || normalize(c.acquirer) === normalize(applied.acquirer)) &&
-      (!applied.paymentMethod || normalize(c.paymentMethod) === normalize(applied.paymentMethod)) &&
+      (!applied.storeId || equalsNormalized(c.storeId, applied.storeId)) &&
+      (!applied.acquirer || equalsNormalized(c.acquirer, applied.acquirer)) &&
+      (!applied.paymentMethod || equalsNormalized(c.paymentMethod, applied.paymentMethod)) &&
       (!statusFilter || c.status === statusFilter) &&
-      (!applied.situacao || c.situacao === applied.situacao) &&
+      (!applied.situacao || equalsNormalized(c.situacao, applied.situacao)) &&
       matchFrom &&
       matchTo
     )

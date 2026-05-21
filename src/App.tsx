@@ -435,6 +435,14 @@ const App = () => {
     )
   }
 
+  const pageCardSx = {
+    borderRadius: { xs: 2, md: 2.5 },
+    border: '1px solid #e8ecf0',
+    boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+  }
+
   return (
     <>
     <Backdrop
@@ -487,12 +495,7 @@ const App = () => {
       ) : activePage === 'cupons-cancelados' ? (
         <Paper
           elevation={0}
-          sx={{
-            borderRadius: 2,
-            border: '1px solid #e8ecf0',
-            overflow: 'hidden',
-            backgroundColor: '#fff',
-          }}
+          sx={pageCardSx}
         >
           <CouponFiltersBar
             coupons={couponsCancelledOnly}
@@ -517,12 +520,7 @@ const App = () => {
         /* Pagina padrao: Cupons Fiscais */
         <Paper
           elevation={0}
-          sx={{
-            borderRadius: 2,
-            border: '1px solid #e8ecf0',
-            overflow: 'hidden',
-            backgroundColor: '#fff',
-          }}
+          sx={pageCardSx}
         >
           <CouponFiltersBar
             coupons={coupons}

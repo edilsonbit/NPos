@@ -526,12 +526,13 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
     <Box>
       {/* Toolbar */}
       <Stack
-        direction="row"
+        direction={{ xs: 'column', sm: 'row' }}
         sx={{
-          alignItems: 'center',
+          alignItems: { xs: 'stretch', sm: 'center' },
           justifyContent: 'space-between',
-          px: 2,
-          py: 1,
+          px: { xs: 1.5, sm: 2 },
+          py: { xs: 1.25, sm: 1 },
+          gap: 1,
           borderBottom: '1px solid #e8ecf0',
           backgroundColor: '#fafbfc',
         }}
@@ -539,9 +540,17 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
         <Chip
           size="small"
           label={`${groups.length} cupons (${filteredCount} itens) | ${currency.format(filteredTotal)}`}
-          sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600, height: 28, borderRadius: 1 }}
+          sx={{
+            backgroundColor: '#e3f0ff',
+            color: '#1565c0',
+            fontWeight: 600,
+            height: 28,
+            borderRadius: 1,
+            maxWidth: { xs: '100%', sm: 'unset' },
+            '& .MuiChip-label': { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' },
+          }}
         />
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap', justifyContent: { xs: 'flex-start', sm: 'flex-end' } }}>
           {someSelected && (
             <Chip
               size="small"
@@ -561,9 +570,11 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
               textTransform: 'none',
               fontWeight: 600,
               px: 2,
-              height: 32,
+              height: 36,
               fontSize: 13,
               whiteSpace: 'nowrap',
+              width: { xs: '100%', sm: 'auto' },
+              borderRadius: 1.5,
             }}
           >
             {isCancelledOnly ? (

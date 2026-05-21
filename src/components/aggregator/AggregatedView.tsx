@@ -36,7 +36,7 @@ const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), o
     return (
       <Paper
         elevation={0}
-        sx={{ border: '1px solid #e0e7ef', borderRadius: 2, p: 4, textAlign: 'center' }}
+        sx={{ border: '1px dashed #cdd7e3', borderRadius: 2.5, p: 4, textAlign: 'center', backgroundColor: '#fbfdff' }}
       >
         <HubIcon sx={{ fontSize: 40, color: '#c9d8e8', mb: 1 }} />
         <Typography color="text.secondary">
@@ -83,23 +83,25 @@ const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), o
             elevation={0}
             sx={{
               border: '1px solid #e0e7ef',
-              borderRadius: '8px !important',
+              borderRadius: '12px !important',
+              overflow: 'hidden',
               '&:before': { display: 'none' },
               '&.Mui-expanded': { margin: 0 },
+              '&:hover': { boxShadow: '0 6px 18px rgba(15, 23, 42, 0.06)' },
             }}
           >
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               sx={{
                 backgroundColor: '#f8fafc',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 '&.Mui-expanded': {
                   borderBottomLeftRadius: 0,
                   borderBottomRightRadius: 0,
                   borderBottom: '1px solid #e0e7ef',
                 },
-                px: 2.5,
-                py: 0.5,
+                px: { xs: 1.5, md: 2.5 },
+                py: 0.75,
               }}
             >
               <Stack
@@ -162,7 +164,7 @@ const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), o
                   </Stack>
                 </Stack>
                 <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
-                  <Stack sx={{ alignItems: 'flex-end' }}>
+                  <Stack sx={{ alignItems: 'flex-end', minWidth: 110 }}>
                     <Typography variant="caption" color="text.secondary">{group.coupons.length} cupons</Typography>
                     <Typography variant="body2" sx={{ fontWeight: 800, color: '#0d3b45' }}>
                       {currency.format(group.totalAmount)}
@@ -173,7 +175,7 @@ const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), o
                     <IconButton
                       size="small"
                       onClick={(e) => handleViewDetails(group, e)}
-                      sx={{ color: '#666', '&:hover': { color: '#0d3b45' } }}
+                      sx={{ color: '#516072', border: '1px solid #d8e0ea', '&:hover': { color: '#0d3b45', backgroundColor: '#eef4ff' } }}
                     >
                       <VisibilityIcon fontSize="small" />
                     </IconButton>
@@ -195,7 +197,7 @@ const AggregatedView = memo(({ groups, criteria, selectedGroupIds = new Set(), o
                   </TableHead>
                   <TableBody>
                     {group.coupons.map((c) => (
-                      <TableRow key={c.id} sx={{ '&:hover': { backgroundColor: '#f5f8ff' } }}>
+                      <TableRow key={c.id} sx={{ '&:nth-of-type(even)': { backgroundColor: '#fbfdff' }, '&:hover': { backgroundColor: '#f5f8ff' } }}>
                         <TableCell sx={{ fontSize: 11 }}>{c.couponNumber}</TableCell>
                         <TableCell sx={{ fontSize: 11 }}>{c.nsu}</TableCell>
                         <TableCell sx={{ fontSize: 11 }}>{c.storeId}</TableCell>

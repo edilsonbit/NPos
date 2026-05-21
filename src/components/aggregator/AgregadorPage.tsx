@@ -209,48 +209,71 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
   // ...nenhuma lista mock, tela segue original...
 
   return (
-    <Box>
-      {/* Título + resumo */}
-      <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 2 }}>
-        <Box>
-          <Typography variant="h6" sx={{ fontWeight: 700, color: '#1a2c3d', lineHeight: 1.2 }}>
-            Agregador — Visão Agrupada
-          </Typography>
-          <Typography variant="caption" color="text.secondary">
-            Grupos gerados pelo último agrupamento
-          </Typography>
-        </Box>
-        <Stack direction="row" spacing={1}>
-          <Chip
-            size="small"
-            icon={<HubIcon sx={{ fontSize: 14 }} />}
-            label={`${filtered.length} grupos`}
-            sx={{ backgroundColor: '#e8eaf6', color: '#3949ab', fontWeight: 600 }}
-          />
-          <Chip
-            size="small"
-            label={`${totalCupons} cupons`}
-            sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600 }}
-          />
-          <Chip
-            size="small"
-            label={currency.format(totalAgregado)}
-            sx={{ backgroundColor: '#e8f5e9', color: '#2e7d32', fontWeight: 600 }}
-          />
+    <Box sx={{ p: { xs: 0.5, md: 0 } }}>
+      <Paper
+        elevation={0}
+        sx={{
+          mb: 2,
+          borderRadius: 2.5,
+          border: '1px solid #e8ecf0',
+          boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
+          background: 'linear-gradient(135deg, #f7fbff 0%, #eff6ff 100%)',
+        }}
+      >
+        <Stack
+          direction={{ xs: 'column', md: 'row' }}
+          sx={{ alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', p: { xs: 1.5, md: 2 }, gap: 1.5 }}
+        >
+          <Box>
+            <Typography variant="h6" sx={{ fontWeight: 800, color: '#1a2c3d', lineHeight: 1.2 }}>
+              Agregador — Visão Agrupada
+            </Typography>
+            <Typography variant="body2" color="text.secondary" sx={{ mt: 0.25 }}>
+              Gerencie os grupos agregados e envie para o ERP com controle total.
+            </Typography>
+          </Box>
+          <Stack direction="row" spacing={1} sx={{ flexWrap: 'wrap' }}>
+            <Chip
+              size="small"
+              icon={<HubIcon sx={{ fontSize: 14 }} />}
+              label={`${filtered.length} grupos`}
+              sx={{ backgroundColor: '#e8eaf6', color: '#3949ab', fontWeight: 700 }}
+            />
+            <Chip
+              size="small"
+              label={`${totalCupons} cupons`}
+              sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 700 }}
+            />
+            <Chip
+              size="small"
+              label={currency.format(totalAgregado)}
+              sx={{ backgroundColor: '#e8f5e9', color: '#2e7d32', fontWeight: 700 }}
+            />
+          </Stack>
         </Stack>
-      </Stack>
+      </Paper>
 
       {/* Card: filtros dos grupos + accordion */}
-      <Paper elevation={0} sx={{ borderRadius: 2, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff' }}>
+      <Paper elevation={0} sx={{ borderRadius: 2.5, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
         {/* Barra de filtros */}
-        <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
-          {/* Linha 1 — Selects */}
-          <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
+        <Box sx={{ p: { xs: 1.25, sm: 2 }, borderBottom: '1px solid #e8ecf0', backgroundColor: '#fcfdff' }}>
+          <Typography sx={{ fontSize: 13, fontWeight: 700, color: '#445266', mb: 1.25 }}>
+            Filtros de busca
+          </Typography>
+
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(3, minmax(0, 1fr))' },
+              gap: 1.5,
+              mb: 1.5,
+            }}
+          >
             <TextField
               select size="small" label="Loja"
               value={pendingFilters.storeId}
               onChange={(e) => setInstantField('storeId', e.target.value)}
-              sx={{ flex: 1 }}
+              sx={{ width: '100%' }}
             >
               <MenuItem value="">Todas</MenuItem>
               {stores.map((s) => <MenuItem key={s} value={s}>{s}</MenuItem>)}
@@ -260,7 +283,7 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
               select size="small" label="Adquirente"
               value={pendingFilters.acquirer}
               onChange={(e) => setInstantField('acquirer', e.target.value)}
-              sx={{ flex: 1 }}
+              sx={{ width: '100%' }}
             >
               <MenuItem value="">Todos</MenuItem>
               {acquirers.map((a) => <MenuItem key={a} value={a}>{a}</MenuItem>)}
@@ -270,47 +293,56 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
               select size="small" label="Forma de Pagamento"
               value={pendingFilters.paymentMethod}
               onChange={(e) => setInstantField('paymentMethod', e.target.value)}
-              sx={{ flex: 1 }}
+              sx={{ width: '100%', gridColumn: { xs: '1 / -1', md: 'auto' } }}
             >
               <MenuItem value="">Todas</MenuItem>
               {payMethods.map((p) => <MenuItem key={p} value={p}>{p}</MenuItem>)}
             </TextField>
-          </Stack>
+          </Box>
 
-          {/* Linha 2 — Datas + textos + botão */}
-          <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
+          <Box
+            sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr 1fr', md: 'repeat(5, minmax(0, 1fr))' },
+              gap: 1.5,
+              mb: 1.5,
+            }}
+          >
             <DatePicker
               label="Data Início"
               format="DD/MM/YYYY"
               value={pendingFilters.dateFrom ? dayjs(pendingFilters.dateFrom) : null}
               onChange={(v) => setInstantField('dateFrom', v ? v.format('YYYY-MM-DD') : '')}
-              slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
+              slotProps={{ textField: { size: 'small', sx: { width: '100%' } } }}
             />
             <DatePicker
               label="Data Fim"
               format="DD/MM/YYYY"
               value={pendingFilters.dateTo ? dayjs(pendingFilters.dateTo) : null}
               onChange={(v) => setInstantField('dateTo', v ? v.format('YYYY-MM-DD') : '')}
-              slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
+              slotProps={{ textField: { size: 'small', sx: { width: '100%' } } }}
             />
             <TextField
               size="small" label="Nº do Cupom Fiscal"
               value={pendingFilters.couponNumber}
               onChange={(e) => setField('couponNumber', e.target.value)}
-              sx={{ flex: 1 }}
+              sx={{ width: '100%' }}
             />
             <TextField
               size="small" label="IdAgregador"
               value={pendingFilters.idAgregador}
               onChange={(e) => setField('idAgregador', e.target.value)}
-              sx={{ flex: 1 }}
+              sx={{ width: '100%' }}
             />
             <TextField
               size="small" label="Código / Nome do Produto"
               value={pendingFilters.productSearch}
               onChange={(e) => setField('productSearch', e.target.value)}
-              sx={{ flex: 2 }}
+              sx={{ width: '100%', gridColumn: { xs: '1 / -1', md: 'auto' } }}
             />
+          </Box>
+
+          <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: { xs: '1fr 1fr', sm: 'auto auto' }, justifyContent: { xs: 'stretch', sm: 'flex-end' } }}>
             <Button
               variant="contained"
               startIcon={<SearchIcon />}
@@ -319,10 +351,11 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
                 backgroundColor: '#1976d2',
                 '&:hover': { backgroundColor: '#1565c0' },
                 textTransform: 'none',
-                fontWeight: 600,
+                fontWeight: 700,
                 px: 2,
                 height: 40,
-                flexShrink: 0,
+                borderRadius: 1.5,
+                width: { xs: '100%', sm: 'auto' },
               }}
             >
               Pesquisar
@@ -332,19 +365,20 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
               startIcon={<ClearIcon />}
               onClick={handleClear}
               sx={{
-                borderColor: '#e0e0e0',
-                color: '#757575',
-                '&:hover': { borderColor: '#bdbdbd', backgroundColor: '#f5f5f5' },
+                borderColor: '#d0d7de',
+                color: '#59636e',
+                '&:hover': { borderColor: '#b8c0ca', backgroundColor: '#f5f7fa' },
                 textTransform: 'none',
-                fontWeight: 600,
+                fontWeight: 700,
                 px: 2,
                 height: 40,
-                flexShrink: 0,
+                borderRadius: 1.5,
+                width: { xs: '100%', sm: 'auto' },
               }}
             >
               Limpar
             </Button>
-          </Stack>
+          </Box>
         </Box>
 
         {/* LinearProgress durante o filtro */}
@@ -353,7 +387,7 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
         )}
 
         {/* Lista de grupos em accordion */}
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ p: { xs: 1.25, md: 2 } }}>
           {filtered.length === 0 ? (
             <Box sx={{ textAlign: 'center', py: 5 }}>
               <Typography color="text.secondary" variant="body2">
@@ -363,7 +397,19 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
           ) : (
             <>
               {/* Barra de ações acima da lista */}
-              <Stack direction="row" spacing={2} sx={{ mb: 2, alignItems: 'center', justifyContent: 'space-between' }}>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }}
+                spacing={1.5}
+                sx={{
+                  mb: 2,
+                  p: 1,
+                  border: '1px solid #e8ecf0',
+                  borderRadius: 2,
+                  backgroundColor: '#fbfcfe',
+                  alignItems: { xs: 'stretch', sm: 'center' },
+                  justifyContent: 'space-between',
+                }}
+              >
                 <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
                   <Checkbox
                     size="small"
@@ -371,11 +417,11 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
                     indeterminate={!allGroupsSelected && someGroupsSelected}
                     onChange={handleToggleAllGroups}
                   />
-                  <Typography variant="body2" sx={{ color: '#666', fontWeight: 500 }}>
+                  <Typography variant="body2" sx={{ color: '#4b5563', fontWeight: 600 }}>
                     {selectedGroupIds.size > 0 ? `${selectedGroupIds.size} selecionado(s)` : 'Selecionar tudo'}
                   </Typography>
                 </Stack>
-                <Stack direction="row" spacing={1}>
+                <Stack direction="row" spacing={1} sx={{ width: { xs: '100%', sm: 'auto' } }}>
                   <Button
                     variant="contained"
                     startIcon={<SendIcon />}
@@ -386,7 +432,8 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
                       '&:hover': { backgroundColor: '#bf360c' },
                       '&:disabled': { backgroundColor: '#ccc', color: '#999' },
                       textTransform: 'none',
-                      fontWeight: 600,
+                      fontWeight: 700,
+                      width: { xs: '100%', sm: 'auto' },
                     }}
                   >
                     {sendingToErp ? 'Enviando...' : 'Enviar para o ERP'}
@@ -402,7 +449,8 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
                       '&:hover': { borderColor: '#b71c1c', backgroundColor: 'rgba(211, 47, 47, 0.04)' },
                       '&:disabled': { borderColor: '#ccc', color: '#999' },
                       textTransform: 'none',
-                      fontWeight: 600,
+                      fontWeight: 700,
+                      width: { xs: '100%', sm: 'auto' },
                     }}
                   >
                     Desfazer Agregação
@@ -418,7 +466,7 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
               />
 
               {/* TablePagination */}
-              <Table sx={{ mt: 2 }}>
+              <Table sx={{ mt: 2, border: '1px solid #e8ecf0', borderRadius: 1.5 }}>
                 <TableFooter>
                   <TableRow>
                     <TablePagination
@@ -437,7 +485,7 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
                       }
                       sx={{
                         '& .MuiTablePagination-toolbar': { fontSize: 12 },
-                        '& .MuiTablePagination-selectLabel': { fontSize: 12, color: '#e65100', fontWeight: 600 },
+                        '& .MuiTablePagination-selectLabel': { fontSize: 12, color: '#e65100', fontWeight: 700 },
                         '& .MuiTablePagination-displayedRows': { fontSize: 12 },
                       }}
                     />

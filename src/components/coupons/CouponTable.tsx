@@ -50,6 +50,7 @@ interface CouponGroup {
   paymentMethod: string
   status: CouponStatus
   situacao?: string
+  idAgregador?: string
   createdAt: string
   items: Coupon[]
   total: number
@@ -71,6 +72,7 @@ function groupCoupons(coupons: Coupon[]): CouponGroup[] {
         paymentMethod: c.paymentMethod,
         status: c.status,
         situacao: c.situacao,
+        idAgregador: c.idAgregador,
         createdAt: c.createdAt,
         items: [],
         total: 0,
@@ -80,6 +82,7 @@ function groupCoupons(coupons: Coupon[]): CouponGroup[] {
     }
     const g = map.get(key)!
     g.items.push(c)
+    if (!g.idAgregador && c.idAgregador) g.idAgregador = c.idAgregador
     g.total += c.amount
     g.totalTax += c.tax
     g.itemCount += 1
@@ -261,7 +264,7 @@ function CouponJsonDialog({ open, group, onClose }: CouponJsonDialogProps) {
   )
 }
 
-function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locked, isCancelledOnly }: GroupRowProps) {
+function GroupRow({ group, open, onToggle, colCount, onViewJson, selected, onSelect, locked, isCancelledOnly }: GroupRowProps) {
   const { t } = useLanguage()
   const tStatus = t.couponTable.status
   const tExp = t.couponTable.expand
@@ -314,6 +317,7 @@ function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locke
         <TableCell>{statusChip(group.status, tStatus)}</TableCell>
         <TableCell sx={{ fontSize: 12, whiteSpace: 'nowrap' }}>{dayjs(group.createdAt).format('DD/MM/YYYY')}</TableCell>
         <TableCell>{situacaoChip(group.situacao, tStatus)}</TableCell>
+        <TableCell sx={{ fontSize: 12, fontFamily: 'monospace' }}>{group.idAgregador || '-'}</TableCell>
         <TableCell>
           <Tooltip title="Visualizar JSON">
             <IconButton
@@ -329,7 +333,7 @@ function GroupRow({ group, open, onToggle, onViewJson, selected, onSelect, locke
 
       {/* Sub-linhas dos produtos */}
       <TableRow>
-        <TableCell colSpan={14} sx={{ p: 0, border: 0 }}>
+        <TableCell colSpan={colCount + 1} sx={{ p: 0, border: 0 }}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ backgroundColor: '#f9fbff', borderLeft: '3px solid #1976d2', mx: 2, mb: 1, borderRadius: 1 }}>
               <Table size="small">
@@ -394,6 +398,7 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
     { id: 'status', label: col.status, sortable: true },
     { id: 'createdAt', label: col.date, sortable: true },
     { id: 'situacao', label: col.situation, sortable: false },
+    { id: 'idAgregador', label: 'Id Agregador', sortable: false },
     { id: 'acao', label: col.action, sortable: false },
   ]
   const [page, setPage] = useState(0)
@@ -435,6 +440,18 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
   }
 
   const groups = useMemo(() => groupCoupons(coupons), [coupons])
+  const authorizedGroupsCount = useMemo(
+    () => groups.filter((g) => g.status === 'autorizado').length,
+    [groups],
+  )
+  const aggregatedGroupsCount = useMemo(
+    () => groups.filter((g) => g.situacao === 'Agregado').length,
+    [groups],
+  )
+  const sentToErpGroupsCount = useMemo(
+    () => groups.filter((g) => g.situacao === 'Enviado ao ERP').length,
+    [groups],
+  )
 
   const aggregatableGroups = useMemo(
     () => isCancelledOnly 
@@ -526,22 +543,46 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
     <Box>
       {/* Toolbar */}
       <Stack
-        direction="row"
+        direction={{ xs: 'column', sm: 'row' }}
         sx={{
-          alignItems: 'center',
+          alignItems: { xs: 'stretch', sm: 'center' },
           justifyContent: 'space-between',
-          px: 2,
-          py: 1,
+          px: { xs: 1.5, sm: 2 },
+          py: { xs: 1.25, sm: 1 },
+          gap: 1,
           borderBottom: '1px solid #e8ecf0',
           backgroundColor: '#fafbfc',
         }}
       >
-        <Chip
-          size="small"
-          label={`${groups.length} cupons (${filteredCount} itens) | ${currency.format(filteredTotal)}`}
-          sx={{ backgroundColor: '#e3f0ff', color: '#1565c0', fontWeight: 600, height: 28, borderRadius: 1 }}
-        />
-        <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap', rowGap: 1 }}>
+          <Chip
+            size="small"
+            label={`${groups.length} cupons (${filteredCount} itens) | ${currency.format(filteredTotal)}`}
+            sx={{
+              backgroundColor: '#e3f0ff',
+              color: '#1565c0',
+              fontWeight: 600,
+              height: 28,
+              borderRadius: 1,
+            }}
+          />
+          <Chip
+            size="small"
+            label={`Autorizados: ${authorizedGroupsCount}`}
+            sx={{ backgroundColor: '#e8f5e9', color: '#2e7d32', fontWeight: 700, height: 28, borderRadius: 1 }}
+          />
+          <Chip
+            size="small"
+            label={`Agregados: ${aggregatedGroupsCount}`}
+            sx={{ backgroundColor: '#fff3e0', color: '#e65100', fontWeight: 700, height: 28, borderRadius: 1 }}
+          />
+          <Chip
+            size="small"
+            label={`Enviados ao ERP: ${sentToErpGroupsCount}`}
+            sx={{ backgroundColor: '#e3f2fd', color: '#1565c0', fontWeight: 700, height: 28, borderRadius: 1 }}
+          />
+        </Stack>
+        <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap', justifyContent: { xs: 'flex-start', sm: 'flex-end' } }}>
           {someSelected && (
             <Chip
               size="small"
@@ -561,9 +602,11 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
               textTransform: 'none',
               fontWeight: 600,
               px: 2,
-              height: 32,
+              height: 36,
               fontSize: 13,
               whiteSpace: 'nowrap',
+              width: { xs: '100%', sm: 'auto' },
+              borderRadius: 1.5,
             }}
           >
             {isCancelledOnly ? (
@@ -666,10 +709,14 @@ const CouponTable = ({ coupons, filteredCount, filteredTotal, onAggregate, proce
                 count={groups.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
-                onPageChange={(_, newPage) => setPage(newPage)}
+                onPageChange={(_, newPage) => {
+                  setPage(newPage)
+                  setSelectedKeys(new Set())
+                }}
                 onRowsPerPageChange={(e) => {
                   setRowsPerPage(parseInt(e.target.value, 10))
                   setPage(0)
+                  setSelectedKeys(new Set())
                 }}
                 labelRowsPerPage="Cupons por página"
                 labelDisplayedRows={({ from, to, count }) =>

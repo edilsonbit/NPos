@@ -3,7 +3,7 @@ import ReceiptLongIcon from '@mui/icons-material/ReceiptLong'
 import CancelIcon from '@mui/icons-material/Cancel'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import FilterListIcon from '@mui/icons-material/FilterList'
-import { Box, Button, Card, CardContent, Chip, Grid, Stack, Typography } from '@mui/material'
+import { Autocomplete, Box, Button, Card, CardContent, Chip, Grid, Stack, TextField, Typography } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
@@ -25,47 +25,115 @@ function fmtBRL(v: number) {
   return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 }
 
+function getSeriesIndex(opts?: { seriesIndex: number }) {
+  return opts?.seriesIndex ?? 0
+}
+
 // ─────────────────────────────────────────────
 // KPI Card
 // ─────────────────────────────────────────────
 interface KpiProps {
   label: string
   value: string
-  sub?: string
+  detailPrimary?: string
+  detailSecondary?: string
+  detailPrimaryLabel?: string
+  detailSecondaryLabel?: string
   color: string
   icon: React.ReactNode
 }
-function KpiCard({ label, value, sub, color, icon }: KpiProps) {
+function KpiCard({ label, value, detailPrimary, detailSecondary, detailPrimaryLabel, detailSecondaryLabel, color, icon }: KpiProps) {
+  const renderDetail = (detail?: string, forcedLabel?: string) => {
+    if (!detail) return null
+    const detailLabel = forcedLabel ?? detail.split(': ')[0]
+    const detailValue = forcedLabel ? detail : detail.split(': ').slice(1).join(': ') || detailLabel
+
+    return (
+      <Box
+        sx={{
+          minHeight: 72,
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'flex-start',
+          gap: 0.25,
+          p: 1.3,
+          borderRadius: 2.2,
+          backgroundColor: '#ffffff',
+          border: '1px solid #e4eaf1',
+          boxShadow: '0 1px 4px rgba(15,23,42,0.03)',
+        }}
+      >
+        <Typography variant="caption" sx={{ color: '#667085', fontWeight: 700, lineHeight: 1.05, textTransform: 'uppercase', letterSpacing: 0.35 }}>
+          {detailLabel}
+        </Typography>
+        <Typography variant="body2" sx={{ color: '#1f2937', fontWeight: 800, lineHeight: 1.1 }}>
+          {detailValue || detailLabel}
+        </Typography>
+      </Box>
+    )
+  }
+
   return (
-    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, height: '100%' }}>
-      <CardContent>
-        <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
-          <Box>
-            <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, fontWeight: 500 }}>
-              {label}
-            </Typography>
-            <Typography variant="h5" sx={{ fontWeight: 700, color }}>
-              {value}
-            </Typography>
-            {sub && (
-              <Typography variant="caption" color="text.secondary">
-                {sub}
+    <Card
+      elevation={0}
+      sx={{
+        border: '1px solid #e1e8f0',
+        borderRadius: 3,
+        height: '100%',
+        overflow: 'hidden',
+        position: 'relative',
+        boxShadow: '0 10px 30px rgba(15,23,42,0.06)',
+        background: 'linear-gradient(180deg, #ffffff 0%, #fbfdff 100%)',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          inset: '0 0 auto 0',
+          height: 5,
+          background: `linear-gradient(90deg, ${color}, ${color}cc)`,
+        },
+      }}
+    >
+      <CardContent sx={{ p: { xs: 1.8, md: 2.2 }, pt: { xs: 2.4, md: 2.6 }, position: 'relative' }}>
+        <Stack spacing={1.5}>
+          <Stack direction="row" sx={{ alignItems: 'flex-start', justifyContent: 'space-between', gap: 1.5 }}>
+            <Box sx={{ minWidth: 0 }}>
+              <Typography variant="overline" sx={{ display: 'block', color: '#6b7280', fontWeight: 700, lineHeight: 1.1, letterSpacing: 0.8 }}>
+                {label}
               </Typography>
-            )}
-          </Box>
-          <Box
-            sx={{
-              width: 44,
-              height: 44,
-              borderRadius: 2,
-              display: 'grid',
-              placeItems: 'center',
-              backgroundColor: `${color}18`,
-              color,
-            }}
-          >
-            {icon}
-          </Box>
+              <Typography variant="h5" sx={{ fontWeight: 800, color, lineHeight: 1.05, mt: 0.25 }}>
+                {value}
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                width: { xs: 40, md: 44 },
+                height: { xs: 40, md: 44 },
+                borderRadius: 2.25,
+                display: 'grid',
+                placeItems: 'center',
+                backgroundColor: `${color}14`,
+                border: `1px solid ${color}22`,
+                color,
+                flexShrink: 0,
+              }}
+            >
+              {icon}
+            </Box>
+          </Stack>
+
+          {(detailPrimary || detailSecondary) && (
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
+                gap: 1,
+              }}
+            >
+              {renderDetail(detailPrimary, detailPrimaryLabel)}
+              {renderDetail(detailSecondary, detailSecondaryLabel)}
+            </Box>
+          )}
         </Stack>
       </CardContent>
     </Card>
@@ -77,9 +145,9 @@ function KpiCard({ label, value, sub, color, icon }: KpiProps) {
 // ─────────────────────────────────────────────
 function ChartCard({ title, badge, children }: { title: string; badge?: string; children: React.ReactNode }) {
   return (
-    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, height: '100%' }}>
-      <CardContent>
-        <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, height: '100%', boxShadow: '0 4px 16px rgba(15,23,42,0.04)' }}>
+      <CardContent sx={{ p: { xs: 1.5, md: 2 } }}>
+        <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1, flexWrap: 'wrap', gap: 0.75 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2e35' }}>
             {title}
           </Typography>
@@ -96,19 +164,27 @@ function ChartCard({ title, badge, children }: { title: string; badge?: string; 
 // ─────────────────────────────────────────────
 export function DashboardPage({ coupons }: Props) {
   const { t } = useLanguage()
-  // ── Filtro de período ─────────────────────
-  const [dateFrom, setDateFrom] = useState<Dayjs | null>(null)
-  const [dateTo, setDateTo] = useState<Dayjs | null>(null)
+  const stores = useMemo(() => [...new Set(coupons.map((c) => c.storeId))].sort(), [coupons])
+  const defaultDateFrom = useMemo(() => dayjs().startOf('month').startOf('day'), [])
+  const defaultDateTo = useMemo(() => dayjs().startOf('day'), [])
+  const [dateFrom, setDateFrom] = useState<Dayjs | null>(defaultDateFrom)
+  const [dateTo, setDateTo] = useState<Dayjs | null>(defaultDateTo)
+  const [storeId, setStoreId] = useState<string | null>(null)
+
+  const hasCustomPeriod = useMemo(() => {
+    if (!dateFrom || !dateTo) return true
+    return !dateFrom.isSame(defaultDateFrom, 'day') || !dateTo.isSame(defaultDateTo, 'day')
+  }, [dateFrom, dateTo, defaultDateFrom, defaultDateTo])
 
   const filteredCoupons = useMemo(() => {
-    if (!dateFrom && !dateTo) return coupons
     return coupons.filter((c) => {
       const d = dayjs(c.createdAt)
+      if (storeId && c.storeId !== storeId) return false
       if (dateFrom && d.isBefore(dateFrom.startOf('day'))) return false
       if (dateTo && d.isAfter(dateTo.endOf('day'))) return false
       return true
     })
-  }, [coupons, dateFrom, dateTo])
+  }, [coupons, dateFrom, dateTo, storeId])
 
   // 'agrupado' = foi autorizado e depois agregado; conta como receita
   const authorized = useMemo(
@@ -118,7 +194,10 @@ export function DashboardPage({ coupons }: Props) {
   const cancelled = useMemo(() => filteredCoupons.filter((c) => c.status === 'cancelado'), [filteredCoupons])
 
   const totalRevenue = useMemo(() => authorized.reduce((s, c) => s + c.amount, 0), [authorized])
+  const cancelledRevenue = useMemo(() => cancelled.reduce((s, c) => s + c.amount, 0), [cancelled])
+  const grossRevenue = totalRevenue + cancelledRevenue
   const avgTicket = authorized.length ? totalRevenue / authorized.length : 0
+  const avgCancelledTicket = cancelled.length ? cancelledRevenue / cancelled.length : 0
   const cancelRate = filteredCoupons.length ? (cancelled.length / filteredCoupons.length) * 100 : 0
 
   // ── Faturamento por dia (linha) ───────────────
@@ -138,11 +217,18 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Meios de pagamento (donut) ────────────────
   const byPayment = useMemo(() => {
-    const map: Record<string, number> = {}
+    const map: Record<string, { amount: number; count: number }> = {}
     authorized.forEach((c) => {
-      map[c.paymentMethod] = (map[c.paymentMethod] ?? 0) + c.amount
+      map[c.paymentMethod] = map[c.paymentMethod] ?? { amount: 0, count: 0 }
+      map[c.paymentMethod].amount += c.amount
+      map[c.paymentMethod].count += 1
     })
-    return { labels: Object.keys(map), values: Object.values(map).map((v) => +v.toFixed(2)) }
+    const labels = Object.keys(map)
+    const values = Object.values(map).map((v) => +v.amount.toFixed(2))
+    const meta = labels.map((label) => ({ label, count: map[label].count, amount: +map[label].amount.toFixed(2) }))
+    const totalCount = meta.reduce((acc, item) => acc + item.count, 0)
+    const totalAmount = meta.reduce((acc, item) => acc + item.amount, 0)
+    return { labels, values, meta, totalCount, totalAmount }
   }, [authorized])
 
   // ── Faturamento por loja (bar horizontal) ─────
@@ -157,11 +243,18 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Adquirentes (donut) ────────────────────────
   const byAcquirer = useMemo(() => {
-    const map: Record<string, number> = {}
+    const map: Record<string, { amount: number; count: number }> = {}
     authorized.forEach((c) => {
-      map[c.acquirer] = (map[c.acquirer] ?? 0) + 1
+      map[c.acquirer] = map[c.acquirer] ?? { amount: 0, count: 0 }
+      map[c.acquirer].count += 1
+      map[c.acquirer].amount += c.amount
     })
-    return { labels: Object.keys(map), values: Object.values(map) }
+    const labels = Object.keys(map)
+    const values = labels.map((label) => map[label].count)
+    const meta = labels.map((label) => ({ label, count: map[label].count, amount: +map[label].amount.toFixed(2) }))
+    const totalCount = meta.reduce((acc, item) => acc + item.count, 0)
+    const totalAmount = meta.reduce((acc, item) => acc + item.amount, 0)
+    return { labels, values, meta, totalCount, totalAmount }
   }, [authorized])
 
   // ── Top 8 produtos por receita (bar) ──────────
@@ -175,12 +268,21 @@ export function DashboardPage({ coupons }: Props) {
     return { categories: sorted.map(([n]) => n), values: sorted.map(([, v]) => +v.toFixed(2)) }
   }, [authorized])
 
-  // ── Status dos cupons (donut com 3 fatias) ────
+  // ── Status dos cupons (donut com 2 fatias) ────
   const statusCounts = useMemo(() => {
-    const aut = filteredCoupons.filter((c) => c.status === 'autorizado').length
-    const agr = filteredCoupons.filter((c) => (c.status as string) === 'agrupado').length
+    const aut = filteredCoupons.filter((c) => c.status === 'autorizado' || (c.status as string) === 'agrupado').length
     const can = cancelled.length
-    return { aut, agr, can }
+    const authorizedAmount = filteredCoupons
+      .filter((c) => c.status === 'autorizado' || (c.status as string) === 'agrupado')
+      .reduce((acc, c) => acc + c.amount, 0)
+    const cancelledAmount = cancelled.reduce((acc, c) => acc + c.amount, 0)
+    const meta = [
+      { label: 'Autorizado', count: aut, amount: +authorizedAmount.toFixed(2) },
+      { label: 'Cancelado', count: can, amount: +cancelledAmount.toFixed(2) },
+    ]
+    const totalCount = meta.reduce((acc, item) => acc + item.count, 0)
+    const totalAmount = meta.reduce((acc, item) => acc + item.amount, 0)
+    return { aut, can, meta, totalCount, totalAmount }
   }, [filteredCoupons, cancelled])
 
   // ─────────────────────────────────────────────
@@ -211,9 +313,23 @@ export function DashboardPage({ coupons }: Props) {
     labels: byPayment.labels,
     colors: PALETTE,
     legend: { position: 'bottom', fontSize: '12px' },
-    dataLabels: { style: { fontSize: '12px' } },
+    dataLabels: {
+      style: { fontSize: '12px' },
+      formatter: (value, opts) => {
+        const item = byPayment.meta[getSeriesIndex(opts)]
+        const numericValue = typeof value === 'number' ? value : Array.isArray(value) ? value[0] : Number(value)
+        return byPayment.totalAmount > 0 ? `${((item.amount / byPayment.totalAmount) * 100).toFixed(1)}%` : `${numericValue.toFixed(1)}%`
+      },
+    },
     plotOptions: { pie: { donut: { size: '62%' } } },
-    tooltip: { y: { formatter: (v) => fmtBRL(v) } },
+    tooltip: {
+      y: {
+        formatter: (v, opts) => {
+          const item = byPayment.meta[getSeriesIndex(opts)]
+          return `${fmtBRL(v)} • ${item.count.toLocaleString('pt-BR')} cupons`
+        },
+      },
+    },
   }
 
   const barStoreOpts: ApexOptions = {
@@ -232,9 +348,23 @@ export function DashboardPage({ coupons }: Props) {
     labels: byAcquirer.labels,
     colors: [PALETTE[2], PALETTE[1], PALETTE[4], PALETTE[5]],
     legend: { position: 'bottom', fontSize: '12px' },
-    dataLabels: { style: { fontSize: '12px' } },
+    dataLabels: {
+      style: { fontSize: '12px' },
+      formatter: (value, opts) => {
+        const item = byAcquirer.meta[getSeriesIndex(opts)]
+        const numericValue = typeof value === 'number' ? value : Array.isArray(value) ? value[0] : Number(value)
+        return byAcquirer.totalCount > 0 ? `${((item.count / byAcquirer.totalCount) * 100).toFixed(1)}%` : `${numericValue.toFixed(1)}%`
+      },
+    },
     plotOptions: { pie: { donut: { size: '62%' } } },
-    tooltip: { y: { formatter: (v) => `${v} cupons` } },
+    tooltip: {
+      y: {
+        formatter: (_v, opts) => {
+          const item = byAcquirer.meta[getSeriesIndex(opts)]
+          return `${item.count.toLocaleString('pt-BR')} cupons • ${fmtBRL(item.amount)}`
+        },
+      },
+    },
   }
 
   const barProductOpts: ApexOptions = {
@@ -255,20 +385,43 @@ export function DashboardPage({ coupons }: Props) {
   const donutStatusOpts: ApexOptions = {
     chart: { type: 'donut', fontFamily: 'inherit' },
     labels: t.dashboard.charts.statusLabels,
-    colors: [PALETTE[2], PALETTE[4], PALETTE[3]],
+    colors: [PALETTE[2], PALETTE[3]],
     legend: { position: 'bottom', fontSize: '12px' },
-    dataLabels: { style: { fontSize: '12px' } },
+    dataLabels: {
+      style: { fontSize: '12px' },
+      formatter: (value, opts) => {
+        const item = statusCounts.meta[getSeriesIndex(opts)]
+        const numericValue = typeof value === 'number' ? value : Array.isArray(value) ? value[0] : Number(value)
+        return statusCounts.totalCount > 0 ? `${((item.count / statusCounts.totalCount) * 100).toFixed(1)}%` : `${numericValue.toFixed(1)}%`
+      },
+    },
     plotOptions: { pie: { donut: { size: '62%' } } },
-    tooltip: { y: { formatter: (v) => `${v} cupons` } },
+    tooltip: {
+      y: {
+        formatter: (_v, opts) => {
+          const item = statusCounts.meta[getSeriesIndex(opts)]
+          return `${item.count.toLocaleString('pt-BR')} cupons • ${fmtBRL(item.amount)}`
+        },
+      },
+    },
   }
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: '#f7f9fb', minHeight: '100%' }}>
+    <Box sx={{ minHeight: '100%' }}>
       {/* Header */}
       <Stack
         direction={{ xs: 'column', md: 'row' }}
-        sx={{ alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', gap: 2, mb: 3 }}
+        sx={{
+          alignItems: { xs: 'flex-start', md: 'center' },
+          justifyContent: 'space-between',
+          gap: 2,
+          mb: 3,
+          p: { xs: 1.5, md: 2 },
+          border: '1px solid #e8ecf0',
+          borderRadius: 2.5,
+          backgroundColor: '#fcfdff',
+        }}
       >
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#0d3b45' }}>
@@ -280,20 +433,35 @@ export function DashboardPage({ coupons }: Props) {
         </Box>
 
         {/* Filtro de período */}
-        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: { xs: 'stretch', sm: 'center' }, gap: 1.25, flexWrap: 'wrap', width: { xs: '100%', md: 'auto' } }}>
           <Stack direction="row" sx={{ alignItems: 'center', gap: 0.5 }}>
             <FilterListIcon sx={{ fontSize: 18, color: '#0d3b45' }} />
             <Typography variant="body2" sx={{ fontWeight: 600, color: '#0d3b45', whiteSpace: 'nowrap' }}>
               {t.dashboard.period}
             </Typography>
           </Stack>
+          <Autocomplete
+            options={stores}
+            value={storeId}
+            onChange={(_, value) => setStoreId(value)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Loja"
+                size="small"
+                placeholder="Todas"
+                sx={{ minWidth: 170, width: { xs: '100%', sm: 190 }, backgroundColor: '#fff' }}
+              />
+            )}
+            sx={{ width: { xs: '100%', sm: 190 } }}
+          />
           <DatePicker
             label={t.dashboard.from}
             value={dateFrom}
             onChange={(v) => setDateFrom(v)}
             maxDate={dateTo ?? undefined}
             slotProps={{
-              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              textField: { size: 'small', sx: { minWidth: 148, width: { xs: '100%', sm: 160 }, backgroundColor: '#fff' } },
               field: { clearable: true },
             }}
           />
@@ -303,16 +471,20 @@ export function DashboardPage({ coupons }: Props) {
             onChange={(v) => setDateTo(v)}
             minDate={dateFrom ?? undefined}
             slotProps={{
-              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              textField: { size: 'small', sx: { minWidth: 148, width: { xs: '100%', sm: 160 }, backgroundColor: '#fff' } },
               field: { clearable: true },
             }}
           />
-          {(dateFrom || dateTo) && (
+          {hasCustomPeriod && (
             <Button
               size="small"
               variant="outlined"
-              onClick={() => { setDateFrom(null); setDateTo(null) }}
-              sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' } }}
+              onClick={() => {
+                setDateFrom(defaultDateFrom)
+                setDateTo(defaultDateTo)
+                setStoreId(null)
+              }}
+              sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' }, width: { xs: '100%', sm: 'auto' } }}
             >
               {t.dashboard.clear}
             </Button>
@@ -330,7 +502,8 @@ export function DashboardPage({ coupons }: Props) {
           <KpiCard
             label={t.dashboard.kpi.totalCoupons}
             value={filteredCoupons.length.toLocaleString('pt-BR')}
-            sub={`${authorized.length.toLocaleString('pt-BR')} ${t.dashboard.kpi.withRevenue}`}
+            detailPrimary={`Autorizados: ${authorized.length.toLocaleString('pt-BR')}`}
+            detailSecondary={`Cancelados: ${cancelled.length.toLocaleString('pt-BR')}`}
             color="#0d3b45"
             icon={<ReceiptLongIcon />}
           />
@@ -338,8 +511,9 @@ export function DashboardPage({ coupons }: Props) {
         <Grid size={{ xs: 12, sm: 6, md: 3 }}>
           <KpiCard
             label={t.dashboard.kpi.totalRevenue}
-            value={fmtBRL(totalRevenue)}
-            sub={t.dashboard.kpi.authorizedCoupons}
+            value={fmtBRL(grossRevenue)}
+            detailPrimary={`Autorizados: ${fmtBRL(totalRevenue)}`}
+            detailSecondary={`Cancelados: ${fmtBRL(cancelledRevenue)}`}
             color="#3db8a4"
             icon={<TrendingUpIcon />}
           />
@@ -348,7 +522,8 @@ export function DashboardPage({ coupons }: Props) {
           <KpiCard
             label={t.dashboard.kpi.avgTicket}
             value={fmtBRL(avgTicket)}
-            sub={t.dashboard.kpi.perAuthorizedCoupon}
+            detailPrimary={`Faturado: ${fmtBRL(avgTicket)}`}
+            detailSecondary={`Cancelados: ${fmtBRL(avgCancelledTicket)}`}
             color="#f08f4f"
             icon={<ShoppingCartIcon />}
           />
@@ -357,7 +532,10 @@ export function DashboardPage({ coupons }: Props) {
           <KpiCard
             label={t.dashboard.kpi.cancellationRate}
             value={`${cancelRate.toFixed(1)}%`}
-            sub={`${cancelled.length} ${t.dashboard.kpi.cancelled}`}
+            detailPrimary={`${filteredCoupons.length.toLocaleString('pt-BR')} registros`}
+            detailSecondary={`${cancelled.length.toLocaleString('pt-BR')} cancelados`}
+            detailPrimaryLabel="REGISTROS"
+            detailSecondaryLabel="CANCELADOS"
             color="#e85d6a"
             icon={<CancelIcon />}
           />
@@ -430,7 +608,7 @@ export function DashboardPage({ coupons }: Props) {
               type="donut"
               height={280}
               options={donutStatusOpts}
-              series={[statusCounts.aut, statusCounts.agr, statusCounts.can]}
+              series={[statusCounts.aut, statusCounts.can]}
             />
           </ChartCard>
         </Grid>

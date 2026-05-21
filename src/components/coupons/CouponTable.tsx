@@ -145,6 +145,7 @@ function CouponJsonDialog({ open, group, onClose }: CouponJsonDialogProps) {
   if (!group) return null
 
   const json = JSON.stringify({
+    ...(group.idAgregador ? { idAgregacao: group.idAgregador } : {}),
     couponNumber: group.couponNumber,
     nsu: group.nsu,
     storeId: group.storeId,

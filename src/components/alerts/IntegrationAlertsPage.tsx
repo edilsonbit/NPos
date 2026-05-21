@@ -348,6 +348,18 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
                           <Typography variant="body2">{selectedLog.details.count}</Typography>
                         </Box>
                       )}
+                      {selectedLog.details.aggregationIds && selectedLog.details.aggregationIds.length > 0 && (
+                        <Box>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, display: 'block', mb: 0.5 }}>
+                            ID da agregação ({selectedLog.details.aggregationIds.length})
+                          </Typography>
+                          <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 0.5 }}>
+                            {selectedLog.details.aggregationIds.map((id) => (
+                              <Chip key={id} size="small" label={id} sx={{ backgroundColor: '#fff3e0', color: '#e65100', fontSize: 11 }} />
+                            ))}
+                          </Stack>
+                        </Box>
+                      )}
                       {selectedLog.details.groupIds && selectedLog.details.groupIds.length > 0 && (
                         <Box>
                           <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, display: 'block', mb: 0.5 }}>

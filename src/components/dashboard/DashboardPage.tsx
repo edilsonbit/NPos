@@ -29,6 +29,10 @@ function getSeriesIndex(opts?: { seriesIndex: number }) {
   return opts?.seriesIndex ?? 0
 }
 
+function normalizeGroupKey(value: string) {
+  return value.trim().toLocaleLowerCase('pt-BR')
+}
+
 // ─────────────────────────────────────────────
 // KPI Card
 // ─────────────────────────────────────────────
@@ -217,15 +221,17 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Meios de pagamento (donut) ────────────────
   const byPayment = useMemo(() => {
-    const map: Record<string, { amount: number; count: number }> = {}
+    const map: Record<string, { label: string; amount: number; count: number }> = {}
     authorized.forEach((c) => {
-      map[c.paymentMethod] = map[c.paymentMethod] ?? { amount: 0, count: 0 }
-      map[c.paymentMethod].amount += c.amount
-      map[c.paymentMethod].count += 1
+      const key = normalizeGroupKey(c.paymentMethod)
+      map[key] = map[key] ?? { label: c.paymentMethod.trim(), amount: 0, count: 0 }
+      map[key].amount += c.amount
+      map[key].count += 1
     })
-    const labels = Object.keys(map)
-    const values = Object.values(map).map((v) => +v.amount.toFixed(2))
-    const meta = labels.map((label) => ({ label, count: map[label].count, amount: +map[label].amount.toFixed(2) }))
+    const entries = Object.values(map)
+    const labels = entries.map((entry) => entry.label)
+    const values = entries.map((entry) => +entry.amount.toFixed(2))
+    const meta = entries.map((entry) => ({ label: entry.label, count: entry.count, amount: +entry.amount.toFixed(2) }))
     const totalCount = meta.reduce((acc, item) => acc + item.count, 0)
     const totalAmount = meta.reduce((acc, item) => acc + item.amount, 0)
     return { labels, values, meta, totalCount, totalAmount }
@@ -243,15 +249,17 @@ export function DashboardPage({ coupons }: Props) {
 
   // ── Adquirentes (donut) ────────────────────────
   const byAcquirer = useMemo(() => {
-    const map: Record<string, { amount: number; count: number }> = {}
+    const map: Record<string, { label: string; amount: number; count: number }> = {}
     authorized.forEach((c) => {
-      map[c.acquirer] = map[c.acquirer] ?? { amount: 0, count: 0 }
-      map[c.acquirer].count += 1
-      map[c.acquirer].amount += c.amount
+      const key = normalizeGroupKey(c.acquirer)
+      map[key] = map[key] ?? { label: c.acquirer.trim(), amount: 0, count: 0 }
+      map[key].count += 1
+      map[key].amount += c.amount
     })
-    const labels = Object.keys(map)
-    const values = labels.map((label) => map[label].count)
-    const meta = labels.map((label) => ({ label, count: map[label].count, amount: +map[label].amount.toFixed(2) }))
+    const entries = Object.values(map)
+    const labels = entries.map((entry) => entry.label)
+    const values = entries.map((entry) => entry.count)
+    const meta = entries.map((entry) => ({ label: entry.label, count: entry.count, amount: +entry.amount.toFixed(2) }))
     const totalCount = meta.reduce((acc, item) => acc + item.count, 0)
     const totalAmount = meta.reduce((acc, item) => acc + item.amount, 0)
     return { labels, values, meta, totalCount, totalAmount }

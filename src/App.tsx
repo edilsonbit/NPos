@@ -72,6 +72,8 @@ const applyCouponFilters = (
   applied: CouponFilters,
   forcedStatus?: CouponStatus,
 ): Coupon[] => {
+  const normalize = (value: string) => value.trim().toLocaleLowerCase('pt-BR')
+
   return source.filter((c) => {
     const matchCouponNumber =
       !applied.couponNumber ||
@@ -100,9 +102,9 @@ const applyCouponFilters = (
       matchCouponNumber &&
       matchNsu &&
       matchProduct &&
-      (!applied.storeId || c.storeId === applied.storeId) &&
-      (!applied.acquirer || c.acquirer === applied.acquirer) &&
-      (!applied.paymentMethod || c.paymentMethod === applied.paymentMethod) &&
+      (!applied.storeId || normalize(c.storeId) === normalize(applied.storeId)) &&
+      (!applied.acquirer || normalize(c.acquirer) === normalize(applied.acquirer)) &&
+      (!applied.paymentMethod || normalize(c.paymentMethod) === normalize(applied.paymentMethod)) &&
       (!statusFilter || c.status === statusFilter) &&
       (!applied.situacao || c.situacao === applied.situacao) &&
       matchFrom &&

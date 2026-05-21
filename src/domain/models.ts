@@ -134,6 +134,7 @@ export interface ActivityLog {
   details?: {
     couponIds?: string[]
     groupIds?: string[]
+    aggregationIds?: string[]
     couponNumbers?: string[]
     count?: number
     errorMessage?: string

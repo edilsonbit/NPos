@@ -282,6 +282,7 @@ const App = () => {
           details: {
             couponIds: aggregatable.map((c) => c.id),
             groupIds: grouped.map((g) => g.idAgregador),
+            aggregationIds: grouped.map((g) => g.idAgregador),
             count: aggregatable.length,
           },
         })
@@ -326,7 +327,7 @@ const App = () => {
         description: `${groupIds.length} grupo(s) com ${couponIds.length} cupom(ns) enviado(s) ao ERP`,
         userId: userEmail,
         status: 'sucesso',
-        details: { groupIds, couponIds, count: couponIds.length },
+        details: { groupIds, aggregationIds: groupIds, couponIds, count: couponIds.length },
       })
 
       // Recarregar coupons e reconstruir grupos
@@ -360,7 +361,7 @@ const App = () => {
         description: `Agregação desfeita para o grupo ${groupId}`,
         userId: userEmail,
         status: 'sucesso',
-        details: { groupIds: [groupId] },
+        details: { groupIds: [groupId], aggregationIds: [groupId] },
       })
       const { coupons: updatedCoupons } = await loadCouponsAndProducts()
       setCoupons(updatedCoupons)
@@ -384,6 +385,10 @@ const App = () => {
   const handleUndoAggregationByNumbers = async (couponNumbers: string[]) => {
     setProcessing(true)
     try {
+      const aggregationIds = groups
+        .filter((g) => couponNumbers.some((couponNumber) => g.coupons.some((c) => c.couponNumber === couponNumber)))
+        .map((g) => g.idAgregador)
+
       await undoAggregationByNumbers(couponNumbers)
       await logActivity({
         timestamp: new Date().toISOString(),
@@ -391,7 +396,12 @@ const App = () => {
         description: `Agregação desfeita para ${couponNumbers.length} cupom(ns)`,
         userId: userEmail,
         status: 'sucesso',
-        details: { couponNumbers, count: couponNumbers.length },
+        details: {
+          couponNumbers,
+          aggregationIds,
+          groupIds: aggregationIds,
+          count: couponNumbers.length,
+        },
       })
       const { coupons: updatedCoupons } = await loadCouponsAndProducts()
       setCoupons(updatedCoupons)
@@ -405,7 +415,13 @@ const App = () => {
         description: `Erro ao desfazer agregação`,
         userId: userEmail,
         status: 'erro',
-        details: { couponNumbers, errorMessage: String(err) },
+        details: {
+          couponNumbers,
+          aggregationIds: groups
+            .filter((g) => couponNumbers.some((couponNumber) => g.coupons.some((c) => c.couponNumber === couponNumber)))
+            .map((g) => g.idAgregador),
+          errorMessage: String(err),
+        },
       })
     } finally {
       setProcessing(false)

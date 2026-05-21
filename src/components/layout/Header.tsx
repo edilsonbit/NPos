@@ -30,22 +30,23 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
       sx={{
         width: '100%',
         top: 0,
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.95)',
+        backdropFilter: 'blur(6px)',
         borderBottom: '1px solid #e8ecf0',
         color: '#1a1a2e',
         zIndex: 1200,
       }}
     >
-      <Toolbar sx={{ minHeight: '56px !important', px: 2.5, justifyContent: 'space-between' }}>
+      <Toolbar sx={{ minHeight: '56px !important', px: { xs: 1.5, sm: 2.5 }, justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
           <Box
             component="img"
             src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
             alt="Logo"
-            sx={{ height: 36, objectFit: 'contain' }}
+            sx={{ height: { xs: 34, sm: 36 }, objectFit: 'contain' }}
           />
           <Tooltip title={t.header.toggleMenu}>
-            <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575' }}>
+            <IconButton size="small" onClick={onToggleSidebar} sx={{ color: '#757575', border: '1px solid #e5e9ef' }}>
               <MenuIcon sx={{ fontSize: 22 }} />
             </IconButton>
           </Tooltip>
@@ -57,8 +58,8 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
               aria-label={t.header.language}
               onClick={(e) => setLangAnchorEl(e.currentTarget)}
               sx={{
-                width: 32,
-                height: 32,
+                width: 34,
+                height: 34,
                 backgroundColor: '#1e9bd7',
                 color: '#fff',
                 '&:hover': { backgroundColor: '#178bc3' },
@@ -71,8 +72,8 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
             <Avatar
               onClick={(e) => setProfileAnchorEl(e.currentTarget)}
               sx={{
-                width: 32,
-                height: 32,
+                width: 34,
+                height: 34,
                 backgroundColor: '#1976d2',
                 fontSize: 13,
                 fontWeight: 700,

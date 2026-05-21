@@ -40,9 +40,9 @@ const AggregatorConfig = ({
   const activeLabels = options.filter((o) => criteria[o.key]).map((o) => o.label)
 
   return (
-    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: '#f7f9fb', minHeight: '100%' }}>
+    <Box sx={{ p: { xs: 1, md: 3 }, minHeight: '100%' }}>
       {/* Header */}
-      <Stack direction="row" sx={{ alignItems: 'center', mb: 3 }} spacing={1.5}>
+      <Stack direction="row" sx={{ alignItems: 'center', mb: 2.5, p: { xs: 1.5, md: 2 }, border: '1px solid #e8ecf0', borderRadius: 2.5, backgroundColor: '#fcfdff' }} spacing={1.5}>
         <Box
           sx={{
             width: 40,
@@ -68,7 +68,7 @@ const AggregatorConfig = ({
 
       <Stack direction={{ xs: 'column', md: 'row' }} spacing={3} sx={{ alignItems: 'flex-start' }}>
         {/* Critérios */}
-        <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, flex: 1 }}>
+        <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, flex: 1, boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
           <CardContent>
             <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#1a2e35', mb: 2 }}>
               Critérios de agrupamento
@@ -123,7 +123,7 @@ const AggregatorConfig = ({
 
         {/* Painel de resumo + ação */}
         <Stack spacing={2} sx={{ width: { xs: '100%', md: 280 } }}>
-          <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2 }}>
+          <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
             <CardContent>
               <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#1a2e35', mb: 2 }}>
                 Resumo da Configuração

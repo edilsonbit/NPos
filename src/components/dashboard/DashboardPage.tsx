@@ -37,8 +37,8 @@ interface KpiProps {
 }
 function KpiCard({ label, value, sub, color, icon }: KpiProps) {
   return (
-    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, height: '100%' }}>
-      <CardContent>
+    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, height: '100%', boxShadow: '0 4px 16px rgba(15,23,42,0.04)' }}>
+      <CardContent sx={{ p: { xs: 1.75, md: 2 } }}>
         <Stack direction="row" sx={{ justifyContent: 'space-between', alignItems: 'flex-start' }}>
           <Box>
             <Typography variant="body2" color="text.secondary" sx={{ mb: 0.5, fontWeight: 500 }}>
@@ -55,8 +55,8 @@ function KpiCard({ label, value, sub, color, icon }: KpiProps) {
           </Box>
           <Box
             sx={{
-              width: 44,
-              height: 44,
+              width: { xs: 40, md: 44 },
+              height: { xs: 40, md: 44 },
               borderRadius: 2,
               display: 'grid',
               placeItems: 'center',
@@ -77,9 +77,9 @@ function KpiCard({ label, value, sub, color, icon }: KpiProps) {
 // ─────────────────────────────────────────────
 function ChartCard({ title, badge, children }: { title: string; badge?: string; children: React.ReactNode }) {
   return (
-    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, height: '100%' }}>
-      <CardContent>
-        <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
+    <Card elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, height: '100%', boxShadow: '0 4px 16px rgba(15,23,42,0.04)' }}>
+      <CardContent sx={{ p: { xs: 1.5, md: 2 } }}>
+        <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1, flexWrap: 'wrap', gap: 0.75 }}>
           <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#1a2e35' }}>
             {title}
           </Typography>
@@ -264,11 +264,20 @@ export function DashboardPage({ coupons }: Props) {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt-br">
-    <Box sx={{ p: { xs: 2, md: 3 }, backgroundColor: '#f7f9fb', minHeight: '100%' }}>
+    <Box sx={{ minHeight: '100%' }}>
       {/* Header */}
       <Stack
         direction={{ xs: 'column', md: 'row' }}
-        sx={{ alignItems: { xs: 'flex-start', md: 'center' }, justifyContent: 'space-between', gap: 2, mb: 3 }}
+        sx={{
+          alignItems: { xs: 'flex-start', md: 'center' },
+          justifyContent: 'space-between',
+          gap: 2,
+          mb: 3,
+          p: { xs: 1.5, md: 2 },
+          border: '1px solid #e8ecf0',
+          borderRadius: 2.5,
+          backgroundColor: '#fcfdff',
+        }}
       >
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 800, color: '#0d3b45' }}>
@@ -280,7 +289,7 @@ export function DashboardPage({ coupons }: Props) {
         </Box>
 
         {/* Filtro de período */}
-        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: 'center', gap: 1.5, flexWrap: 'wrap' }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ alignItems: { xs: 'stretch', sm: 'center' }, gap: 1.25, flexWrap: 'wrap', width: { xs: '100%', md: 'auto' } }}>
           <Stack direction="row" sx={{ alignItems: 'center', gap: 0.5 }}>
             <FilterListIcon sx={{ fontSize: 18, color: '#0d3b45' }} />
             <Typography variant="body2" sx={{ fontWeight: 600, color: '#0d3b45', whiteSpace: 'nowrap' }}>
@@ -293,7 +302,7 @@ export function DashboardPage({ coupons }: Props) {
             onChange={(v) => setDateFrom(v)}
             maxDate={dateTo ?? undefined}
             slotProps={{
-              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              textField: { size: 'small', sx: { minWidth: 148, width: { xs: '100%', sm: 160 }, backgroundColor: '#fff' } },
               field: { clearable: true },
             }}
           />
@@ -303,7 +312,7 @@ export function DashboardPage({ coupons }: Props) {
             onChange={(v) => setDateTo(v)}
             minDate={dateFrom ?? undefined}
             slotProps={{
-              textField: { size: 'small', sx: { minWidth: 148, backgroundColor: '#fff' } },
+              textField: { size: 'small', sx: { minWidth: 148, width: { xs: '100%', sm: 160 }, backgroundColor: '#fff' } },
               field: { clearable: true },
             }}
           />
@@ -312,7 +321,7 @@ export function DashboardPage({ coupons }: Props) {
               size="small"
               variant="outlined"
               onClick={() => { setDateFrom(null); setDateTo(null) }}
-              sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' } }}
+              sx={{ borderColor: '#e85d6a', color: '#e85d6a', '&:hover': { borderColor: '#c0392b', color: '#c0392b' }, width: { xs: '100%', sm: 'auto' } }}
             >
               {t.dashboard.clear}
             </Button>

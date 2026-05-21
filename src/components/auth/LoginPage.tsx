@@ -48,22 +48,27 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
     <Box
       sx={{
         minHeight: '100vh',
-        backgroundColor: '#e8edf2',
+        background: 'linear-gradient(180deg, #eef3f8 0%, #e3ebf3 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        px: 1.5,
+        py: 2,
       }}
     >
       <Paper
         elevation={2}
         sx={{
-          width: 390,
-          borderRadius: 2,
-          p: '40px 48px',
+          width: '100%',
+          maxWidth: 390,
+          borderRadius: 2.5,
+          p: { xs: '26px 18px', sm: '40px 48px' },
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           gap: 1.5,
+          border: '1px solid #e8ecf0',
+          boxShadow: '0 16px 40px rgba(15,23,42,0.10)',
         }}
       >
         {/* Logo */}
@@ -71,7 +76,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
           component="img"
           src={`${import.meta.env.BASE_URL}images/logo_qas.png`}
           alt="Logo"
-          sx={{ height: 52, objectFit: 'contain', mb: 1 }}
+          sx={{ height: { xs: 46, sm: 52 }, objectFit: 'contain', mb: 1 }}
         />
 
         {/* Título */}

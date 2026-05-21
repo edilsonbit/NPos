@@ -151,7 +151,7 @@ const ApiTesterPage = () => {
   }
 
   return (
-    <Box sx={{ p: 3, maxWidth: 1100, mx: 'auto' }}>
+    <Box sx={{ p: { xs: 1, sm: 3 }, maxWidth: 1100, mx: 'auto' }}>
       {/* Título */}
       <Typography variant="h6" sx={{ fontWeight: 700, color: '#1c2536', mb: 0.5 }}>
         API Tester
@@ -161,7 +161,7 @@ const ApiTesterPage = () => {
       </Typography>
 
       {/* Exemplos rápidos */}
-      <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
+      <Stack direction="row" spacing={1} sx={{ mb: 2, flexWrap: 'wrap', rowGap: 1 }}>
         <Typography variant="caption" sx={{ alignSelf: 'center', color: '#9e9e9e', fontWeight: 600 }}>
           EXEMPLOS:
         </Typography>
@@ -182,15 +182,15 @@ const ApiTesterPage = () => {
         ))}
       </Stack>
 
-      <Paper elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2, overflow: 'hidden' }}>
+      <Paper elevation={0} sx={{ border: '1px solid #e8ecf0', borderRadius: 2.5, overflow: 'hidden', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}>
         {/* Barra de URL */}
-        <Stack direction="row" sx={{ borderBottom: '1px solid #e8ecf0', p: 1.5, gap: 1 }}>
+        <Stack direction={{ xs: 'column', sm: 'row' }} sx={{ borderBottom: '1px solid #e8ecf0', p: { xs: 1.25, sm: 1.5 }, gap: 1 }}>
           <Select
             value={method}
             onChange={(e) => setMethod(e.target.value as HttpMethod)}
             size="small"
             sx={{
-              minWidth: 100,
+              minWidth: { xs: '100%', sm: 100 },
               fontWeight: 700,
               fontSize: 13,
               color: METHOD_COLORS[method],
@@ -223,8 +223,10 @@ const ApiTesterPage = () => {
               '&:hover': { backgroundColor: '#0d3b45' },
               textTransform: 'none',
               fontWeight: 600,
-              minWidth: 100,
+              minWidth: { xs: '100%', sm: 100 },
               whiteSpace: 'nowrap',
+              height: 40,
+              borderRadius: 1.5,
             }}
           >
             {loading ? 'Enviando...' : 'Enviar'}
@@ -241,11 +243,11 @@ const ApiTesterPage = () => {
           {hasBody && <Tab label="Body" />}
         </Tabs>
 
-        <Box sx={{ p: 2, minHeight: 140 }}>
+        <Box sx={{ p: { xs: 1.5, sm: 2 }, minHeight: 140 }}>
           {tab === 0 && (
             <Stack spacing={1}>
               {headers.map((h, i) => (
-                <Stack key={i} direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                <Stack key={i} direction={{ xs: 'column', sm: 'row' }} spacing={1} sx={{ alignItems: { xs: 'stretch', sm: 'center' } }}>
                   <TextField
                     size="small"
                     placeholder="Key"
@@ -292,7 +294,7 @@ const ApiTesterPage = () => {
         {response !== null && (
           <>
             <Divider />
-            <Box sx={{ p: 2 }}>
+            <Box sx={{ p: { xs: 1.5, sm: 2 } }}>
               <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1.5 }}>
                   <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
                   <Typography variant="caption" sx={{ fontWeight: 700, color: '#9e9e9e', letterSpacing: 0.5 }}>

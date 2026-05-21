@@ -103,16 +103,17 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
     <>
       <Paper
         elevation={0}
-        sx={{ borderRadius: 2, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff' }}
+        sx={{ borderRadius: 2.5, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}
       >
         {/* Toolbar — título + contadores + refresh */}
         <Stack
-          direction="row"
+          direction={{ xs: 'column', sm: 'row' }}
           sx={{
-            alignItems: 'center',
+            alignItems: { xs: 'flex-start', sm: 'center' },
             justifyContent: 'space-between',
-            px: 2,
-            py: 1,
+            px: { xs: 1.5, sm: 2 },
+            py: { xs: 1.25, sm: 1 },
+            gap: 1,
             borderBottom: '1px solid #e8ecf0',
             backgroundColor: '#fafbfc',
           }}
@@ -128,7 +129,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
               </Typography>
             </Box>
           </Stack>
-          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
             <Chip
               icon={<CheckCircleOutlinedIcon sx={{ fontSize: 14 }} />}
               label={`${countSuccess} ${ta.status.success}`}
@@ -150,15 +151,15 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
         </Stack>
 
         {/* Filtros */}
-        <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
-          <Stack direction="row" spacing={1.5}>
+        <Box sx={{ p: { xs: 1.5, sm: 2 }, borderBottom: '1px solid #e8ecf0', backgroundColor: '#fcfdff' }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: '1fr 1fr 2fr' }, gap: 1.5 }}>
             <TextField
               select
               size="small"
               label={ta.filters.action}
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value as ActivityLogAction | '')}
-              sx={{ flex: 1, minWidth: 160 }}
+              sx={{ width: '100%' }}
             >
               <MenuItem value="">{ta.filters.allActions}</MenuItem>
               {(Object.keys(actionConfig) as ActivityLogAction[]).map((key) => (
@@ -172,7 +173,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
               label={ta.filters.status}
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as 'sucesso' | 'erro' | '')}
-              sx={{ flex: 1, minWidth: 120 }}
+              sx={{ width: '100%' }}
             >
               <MenuItem value="">{ta.filters.allStatuses}</MenuItem>
               <MenuItem value="sucesso">{ta.status.success}</MenuItem>
@@ -184,9 +185,9 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
               label={ta.filters.search}
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
-              sx={{ flex: 3 }}
+              sx={{ width: '100%', gridColumn: { xs: '1 / -1', md: 'auto' } }}
             />
-          </Stack>
+          </Box>
         </Box>
 
         {/* Tabela */}
@@ -292,7 +293,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
         </TableContainer>
 
         {filteredLogs.length > 0 && (
-          <Box sx={{ px: 2, py: 1, borderTop: '1px solid #e8ecf0', backgroundColor: '#fafbfc' }}>
+          <Box sx={{ px: { xs: 1.5, sm: 2 }, py: 1, borderTop: '1px solid #e8ecf0', backgroundColor: '#fafbfc' }}>
             <Typography variant="caption" color="text.secondary">
               Exibindo {filteredLogs.length} de {logs.length} registros
             </Typography>

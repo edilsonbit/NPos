@@ -72,7 +72,13 @@ const applyCouponFilters = (
   applied: CouponFilters,
   forcedStatus?: CouponStatus,
 ): Coupon[] => {
-  const normalize = (value: string) => value.trim().toLocaleLowerCase('pt-BR')
+  const normalize = (value: string) =>
+    value
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .toLocaleLowerCase('pt-BR')
 
   return source.filter((c) => {
     const matchCouponNumber =

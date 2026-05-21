@@ -30,7 +30,12 @@ function getSeriesIndex(opts?: { seriesIndex: number }) {
 }
 
 function normalizeGroupKey(value: string) {
-  return value.trim().toLocaleLowerCase('pt-BR')
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLocaleLowerCase('pt-BR')
 }
 
 // ─────────────────────────────────────────────

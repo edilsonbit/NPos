@@ -12,7 +12,13 @@ import type { Coupon, CouponFilters } from '../../domain/models'
 
 const selectSx = { width: '100%' }
 
-const normalizeKey = (value: string) => value.trim().toLocaleLowerCase('pt-BR')
+const normalizeKey = (value: string) =>
+    value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim()
+        .toLocaleLowerCase('pt-BR')
 
 const uniqueCaseInsensitive = (values: string[]) => {
     const map = new Map<string, string>()

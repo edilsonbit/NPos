@@ -13,22 +13,9 @@ import {
   IconAlertTriangle,
   IconBug,
   IconDashboard,
-  IconDeviceFloppy,
-  IconDirections,
-  IconHttpDelete,
-  IconMapPins,
-  IconPercentage,
-  IconPencilMinus,
   IconReceipt,
   IconReceiptOff,
-  IconReportMoney,
-  IconRoute,
-  IconShoppingCartOff,
   IconStack2,
-  IconTableExport,
-  IconTopologyStar,
-  IconUsers,
-  IconUsersGroup,
 } from '@tabler/icons-react'
 import { type ReactNode } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
@@ -41,7 +28,6 @@ interface NavItem {
   icon: ReactNode
   label: string
   pageKey: string
-  externalUrl?: string
 }
 
 interface NavSection {
@@ -58,41 +44,17 @@ const getNavSections = (t: Translations): NavSection[] => [
       { icon: <IconReceiptOff size={20} stroke={1.5} />, label: t.sidebar.items.cancelledCoupons, pageKey: 'cupons-cancelados' },
       { icon: <IconStack2 size={20} stroke={1.5} />, label: t.sidebar.items.aggregator, pageKey: 'agregador' },
       { icon: <IconBug size={20} stroke={1.5} />, label: t.sidebar.items.apiTester, pageKey: 'api-tester' },
-      { icon: <IconPencilMinus size={20} stroke={1.5} />, label: t.sidebar.items.orderResend, pageKey: 'reenvio', externalUrl: 'https://monitordev.omnipos.dev.br/monitoramento/reenvio-pedido' },
-      { icon: <IconPencilMinus size={20} stroke={1.5} />, label: t.sidebar.items.payloadEditor, pageKey: 'payload', externalUrl: 'https://monitordev.omnipos.dev.br/monitoramento/edicao-payload' },
     ],
   },
   {
     label: t.sidebar.sections.reports,
     items: [
       { icon: <IconAlertTriangle size={20} stroke={1.5} />, label: t.sidebar.items.integrationAlerts, pageKey: 'alertas' },
-      { icon: <IconShoppingCartOff size={20} stroke={1.5} />, label: t.sidebar.items.nonIntegrated, pageKey: 'pedidos-ni', externalUrl: 'https://monitordev.omnipos.dev.br/relatorio/pedidos-nao-integrados' },
-    ],
-  },
-  {
-    label: t.sidebar.sections.reconciliation,
-    items: [
-      { icon: <IconPercentage size={20} stroke={1.5} />, label: t.sidebar.items.adminFee, pageKey: 'taxa', externalUrl: 'https://monitordev.omnipos.dev.br/conciliacao/taxas-adm' },
-      { icon: <IconTableExport size={20} stroke={1.5} />, label: t.sidebar.items.externalEntries, pageKey: 'lancamentos', externalUrl: 'https://monitordev.omnipos.dev.br/conciliacao/lancamentos-externos' },
-      { icon: <IconReportMoney size={20} stroke={1.5} />, label: t.sidebar.items.reconciliation, pageKey: 'conciliacao', externalUrl: 'https://monitordev.omnipos.dev.br/conciliacao/conciliacao' },
-    ],
-  },
-  {
-    label: t.sidebar.sections.records,
-    items: [
-      { icon: <IconMapPins size={20} stroke={1.5} />, label: t.sidebar.items.environment, pageKey: 'ambiente', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/ambiente' },
-      { icon: <IconUsers size={20} stroke={1.5} />, label: t.sidebar.items.client, pageKey: 'cliente', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/cliente' },
-      { icon: <IconTopologyStar size={20} stroke={1.5} />, label: t.sidebar.items.depara, pageKey: 'depara', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/de-para' },
-      { icon: <IconHttpDelete size={20} stroke={1.5} />, label: t.sidebar.items.endpoint, pageKey: 'endpoint', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/endpoint' },
-      { icon: <IconDeviceFloppy size={20} stroke={1.5} />, label: t.sidebar.items.integration, pageKey: 'integracao', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/integracao' },
-      { icon: <IconDirections size={20} stroke={1.5} />, label: t.sidebar.items.routingSteps, pageKey: 'passos', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/passos-roteamento' },
-      { icon: <IconRoute size={20} stroke={1.5} />, label: t.sidebar.items.routing, pageKey: 'roteamento', externalUrl: 'https://monitordev.omnipos.dev.br/cadastro/roteamento' },
     ],
   },
   {
     label: t.sidebar.sections.settings,
     items: [
-      { icon: <IconUsersGroup size={20} stroke={1.5} />, label: t.sidebar.items.users, pageKey: 'usuarios', externalUrl: 'https://monitordev.omnipos.dev.br/configuracoes/gerenciamento-usuarios' },
       { icon: <IconAdjustments size={20} stroke={1.5} />, label: t.sidebar.items.aggregatorConfig, pageKey: 'config-agregador' },
     ],
   },
@@ -179,13 +141,7 @@ const Sidebar = ({ activePage, onNavigate, collapsed, isMobile, mobileOpen, onMo
                     placement="right"
                   >
                     <ListItem
-                      onClick={() => {
-                        if (item.externalUrl) {
-                          window.open(item.externalUrl, '_blank', 'noopener,noreferrer')
-                        } else {
-                          onNavigate(item.pageKey)
-                        }
-                      }}
+                      onClick={() => onNavigate(item.pageKey)}
                       sx={{
                         px: collapsed ? 0 : 1.5,
                         pt: isMobile ? '11px' : '10px',

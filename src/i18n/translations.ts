@@ -68,7 +68,7 @@ const pt = {
       byAcquirer: 'Por Adquirente',
       couponStatus: 'Status dos Cupons',
       revenue: 'Faturamento',
-      statusLabels: ['Autorizado', 'Agrupado', 'Cancelado'] as [string, string, string],
+      statusLabels: ['Autorizado', 'Cancelado'] as [string, string],
     },
   },
   couponTable: {
@@ -197,7 +197,7 @@ const en: typeof pt = {
       byAcquirer: 'By Acquirer',
       couponStatus: 'Coupon Status',
       revenue: 'Revenue',
-      statusLabels: ['Authorized', 'Aggregated', 'Cancelled'],
+      statusLabels: ['Authorized', 'Cancelled'],
     },
   },
   couponTable: {
@@ -326,7 +326,7 @@ const es: typeof pt = {
       byAcquirer: 'Por Adquirente',
       couponStatus: 'Estado de Cupones',
       revenue: 'Facturación',
-      statusLabels: ['Autorizado', 'Agrupado', 'Cancelado'],
+      statusLabels: ['Autorizado', 'Cancelado'],
     },
   },
   couponTable: {

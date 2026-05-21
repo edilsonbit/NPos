@@ -174,7 +174,7 @@ const AgregadorPage = ({ groups, criteria, onGoToCupons: _onGoToCupons, onSendTo
     const result = await Swal.fire({
       icon: 'warning',
       title: 'Desfazer Agregação',
-      html: `Deseja realmente desfazer <strong>${selectedGroupIds.size} grupo(s)</strong> selecionado(s)?<br/><br/><span style="font-size:12px;color:#9e9e9e">Esta ação removerá a situação dos cupons e eles voltarão para a lista de cupons fiscais.</span>`,
+      html: `Deseja realmente desfazer <strong>${selectedGroupIds.size} grupo(s)</strong> selecionado(s)?<br/><br/><span style="font-size:12px;color:#9e9e9e">A desagregação irá reverter a agregação de todos os itens dos cupons fiscais selecionados.</span>`,
       showCancelButton: true,
       confirmButtonText: 'Sim, desfazer',
       cancelButtonText: 'Cancelar',

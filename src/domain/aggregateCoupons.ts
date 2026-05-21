@@ -1,4 +1,5 @@
 import type { AggregatedCouponGroup, AggregationCriteria, Coupon } from './models'
+import { normalizeText } from '../utils/textNormalization'
 
 const buildGroupKey = (coupon: Coupon, criteria: AggregationCriteria): string => {
   const parts: string[] = []
@@ -70,8 +71,13 @@ export const aggregateCoupons = (
 export const reconstructAggregatedGroups = (
   coupons: Coupon[],
 ): AggregatedCouponGroup[] => {
+  const isAggregatedSituation = (situacao?: string) => {
+    const normalized = normalizeText(situacao)
+    return normalized === normalizeText('Agregado') || normalized === normalizeText('Enviado ao ERP')
+  }
+
   // Filtra apenas cupons que foram agregados (têm idAgregador)
-  const agregados = coupons.filter((c) => c.idAgregador && (c.situacao === 'Agregado' || c.situacao === 'Enviado ao ERP'))
+  const agregados = coupons.filter((c) => c.idAgregador && isAggregatedSituation(c.situacao))
 
   // Agrupa por idAgregador
   const buckets = new Map<string, Coupon[]>()

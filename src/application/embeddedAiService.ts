@@ -131,6 +131,9 @@ const summarizeRecentLogs = (logs: ActivityLog[]) => {
   return { recentLogs, success, errors, topActions }
 }
 
+const pluralize = (count: number, singular: string, plural: string) =>
+  count === 1 ? singular : plural
+
 export const askEmbeddedAssistant = async ({
   prompt,
   userEmail,
@@ -175,7 +178,7 @@ export const askEmbeddedAssistant = async ({
         'cancelados_por_data',
         'ok',
         payload.matches.length > 0
-          ? `Foram encontrados ${payload.matches.length} cupom(s) cancelado(s) em ${payload.dateKey}.`
+          ? `Foram encontrados ${payload.matches.length} ${pluralize(payload.matches.length, 'cupom', 'cupons')} cancelados em ${payload.dateKey}.`
           : `Não encontrei cupons cancelados em ${payload.dateKey}.`,
         evidence,
         payload.matches.length === 0
@@ -256,7 +259,7 @@ export const askEmbeddedAssistant = async ({
         profile,
         'resumo_logs',
         'ok',
-        `Últimos ${summary.recentLogs.length} log(s): ${summary.success} sucesso(s), ${summary.errors} erro(s). Ações mais frequentes: ${summary.topActions.join(' | ') || 'sem dados'}.`,
+        `Últimos ${summary.recentLogs.length} ${pluralize(summary.recentLogs.length, 'log', 'logs')}: ${summary.success} ${pluralize(summary.success, 'sucesso', 'sucessos')}, ${summary.errors} ${pluralize(summary.errors, 'erro', 'erros')}. Ações mais frequentes: ${summary.topActions.join(' | ') || 'sem dados'}.`,
         evidence,
       )
     }

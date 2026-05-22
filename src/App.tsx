@@ -439,10 +439,14 @@ const App = () => {
     try {
       const response = await askEmbeddedAssistant({ prompt, userEmail })
       setAiResult(response)
+      const promptForLog =
+        prompt.length > MAX_AI_LOG_PROMPT_LENGTH
+          ? `${prompt.slice(0, MAX_AI_LOG_PROMPT_LENGTH)}...`
+          : prompt
       await logActivity({
         timestamp: new Date().toISOString(),
         action: 'CONSULTA_IA',
-        description: `Consulta IA: ${prompt.slice(0, MAX_AI_LOG_PROMPT_LENGTH)}`,
+        description: `Consulta IA: ${promptForLog}`,
         userId: userEmail,
         status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
         details: {

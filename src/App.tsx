@@ -431,44 +431,44 @@ const App = () => {
     } finally {
       setProcessing(false)
     }
+  }
 
-    const handleAskEmbeddedAi = async (prompt: string) => {
-      setAiLoading(true)
-      try {
-        const response = await askEmbeddedAssistant({ prompt, userEmail })
-        setAiResult(response)
-        await logActivity({
-          timestamp: new Date().toISOString(),
-          action: 'CONSULTA_IA',
-          description: `Consulta IA: ${prompt.slice(0, 120)}`,
-          userId: userEmail,
-          status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
-          details: {
-            count: response.evidence.length,
-          },
-        })
-      } catch (err) {
-        setAiResult({
-          requestId: `IA-${Date.now()}`,
-          generatedAt: new Date().toISOString(),
-          queryType: 'desconhecida',
-          status: 'error',
-          answer: 'Falha ao processar consulta no assistente IA.',
-          evidence: [],
-          warnings: [String(err)],
-          profile: 'operador',
-        })
-        await logActivity({
-          timestamp: new Date().toISOString(),
-          action: 'CONSULTA_IA',
-          description: 'Erro ao executar consulta IA',
-          userId: userEmail,
-          status: 'erro',
-          details: { errorMessage: String(err) },
-        })
-      } finally {
-        setAiLoading(false)
-      }
+  const handleAskEmbeddedAi = async (prompt: string) => {
+    setAiLoading(true)
+    try {
+      const response = await askEmbeddedAssistant({ prompt, userEmail })
+      setAiResult(response)
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'CONSULTA_IA',
+        description: `Consulta IA: ${prompt.slice(0, 120)}`,
+        userId: userEmail,
+        status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
+        details: {
+          count: response.evidence.length,
+        },
+      })
+    } catch (err) {
+      setAiResult({
+        requestId: `IA-${Date.now()}`,
+        generatedAt: new Date().toISOString(),
+        queryType: 'desconhecida',
+        status: 'error',
+        answer: 'Falha ao processar consulta no assistente IA.',
+        evidence: [],
+        warnings: [String(err)],
+        profile: 'operador',
+      })
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'CONSULTA_IA',
+        description: 'Erro ao executar consulta IA',
+        userId: userEmail,
+        status: 'erro',
+        details: { errorMessage: String(err) },
+      })
+    } finally {
+      setAiLoading(false)
     }
   }
 
@@ -608,4 +608,3 @@ const App = () => {
 }
 
 export default App
-

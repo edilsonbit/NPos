@@ -77,7 +77,7 @@ const newResponse = (
 })
 
 const parseDateInput = (prompt: string): string | null => {
-  const dateMatch = prompt.match(/\b(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})\b/)
+  const dateMatch = prompt.match(/\b(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})\b/)
   if (!dateMatch) return null
   const [, ddRaw, mmRaw, yyRaw] = dateMatch
   const dd = ddRaw.padStart(2, '0')

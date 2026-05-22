@@ -489,3 +489,101 @@ node src/data/mocks/generateMock.mjs
 ### Regras de segurança (`firestore.rules`)
 
 Verificar que a coleção `activityLogs` está coberta pelas regras de leitura/escrita autenticada antes de ir para produção.
+
+---
+
+## 14. IA Embarcada no OmniPOS (RAG Local)
+
+### 14.1 Viabilidade
+
+Sim, é viável embarcar um agente de IA no sistema para responder perguntas operacionais como:
+
+- "Quais cupons foram cancelados no dia 21/05/2026?"
+- "O cupom 123456 está agrupado?"
+- "Quais grupos foram enviados ao ERP hoje?"
+
+Desde que a arquitetura seja **RAG com base local** (banco interno + logs do sistema), sem depender de pesquisa na internet.
+
+### 14.2 Arquitetura recomendada (segura e corporativa)
+
+```text
+[Tela Monitor / Chat IA no Front]
+        ↓ (HTTPS autenticado)
+[API IA interna (backend)]
+        ├─ Consulta SQL/Firestore (cupons, grupos, logs)
+        ├─ Camada RAG (busca + contexto)
+        ├─ Regras de autorização por perfil
+        └─ Cliente LLM (Claude/Outro modelo em ambiente privado)
+        ↓
+[Resposta estruturada + evidências (cupom, data, loja, status)]
+```
+
+### 14.3 O que o DEV precisa implementar (escopo de desenvolvimento)
+
+1. **Nova área de interface ("Assistente IA")**
+   - Campo de prompt no monitor
+   - Histórico de perguntas
+   - Cards de resposta com evidências (cupom, status, data, loja, idAgregador)
+
+2. **Camada de aplicação para IA**
+   - Criar serviço dedicado (ex.: `aiAssistantService.ts`)
+   - Receber prompt, enviar para API IA e devolver resposta tipada para UI
+
+3. **Contrato de dados da resposta**
+   - Resposta em JSON estruturado (não apenas texto livre)
+   - Incluir fonte/evidência para auditoria ("baseado em X cupons e Y logs")
+
+4. **Ações guiadas pela IA (fase 2)**
+   - Botões rápidos na resposta (ex.: "abrir cupom", "filtrar cancelados do dia")
+   - Reuso dos filtros já existentes no módulo de cupons e alertas
+
+### 14.4 O que foge do front-end atual (dependências externas)
+
+1. **Provisionamento do modelo LLM**
+   - Definição entre Claude, Azure OpenAI ou modelo self-hosted
+   - Contrato, custos, SLA e residência de dados
+
+2. **Backend IA corporativo**
+   - Endpoint seguro para orquestrar RAG
+   - Conectores com banco oficial (não mock)
+   - Observabilidade, rate limit e proteção contra prompt injection
+
+3. **Governança e segurança**
+   - Política de acesso por perfil (RBAC)
+   - Mascaramento de dados sensíveis
+   - Retenção de logs da IA (auditoria/LGPD)
+
+4. **Validação funcional com negócio**
+   - Catálogo de perguntas homologadas
+   - Critérios de precisão mínima das respostas
+   - Plano de fallback quando IA não tiver confiança
+
+### 14.5 Casos de uso recomendados (além dos exemplos iniciais)
+
+- Monitorar picos de cancelamento por loja/período
+- Identificar cupons sem agrupamento
+- Explicar motivo de rejeição no envio ao ERP com base no log
+- Resumir operações do dia ("quantos agrupados, desfeitos e enviados")
+- Sugerir filtros prontos para investigação operacional
+
+### 14.6 Roadmap sugerido
+
+**Fase 1 — Consulta assistida (baixo risco)**
+- IA responde perguntas somente leitura
+- Sem acionar operações críticas
+
+**Fase 2 — Assistente operacional**
+- IA sugere ações e navegação contextual no sistema
+- Usuário continua confirmando qualquer ação
+
+**Fase 3 — Automação controlada**
+- Fluxos semiautomáticos com aprovação humana
+- Trilhas de auditoria completas
+
+### 14.7 Critérios de aceite mínimos para produção
+
+- Respostas com evidência rastreável no banco
+- Sem uso de dados externos não autorizados
+- Controle de acesso por perfil
+- Log de toda interação IA (pergunta, contexto, resposta, usuário)
+- Tempo de resposta compatível com operação de monitor (SLA definido)

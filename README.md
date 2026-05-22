@@ -101,3 +101,4 @@ npm run dev
 - O modo `mock` e o padrao para facilitar demonstracao rapida.
 - O modo `firebase` ja esta preparado para leitura/escrita de `products` e `coupons` no Firestore.
 - O aviso de chunk grande no build e esperado nesta POC por causa do bundle de UI e Firebase.
+- Planejamento da **IA embarcada (RAG com base local)** documentado em `GUIA_DESENVOLVIMENTO.md` (seção 14).

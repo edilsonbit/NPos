@@ -55,6 +55,7 @@ const defaultCriteria: AggregationCriteria = {
 }
 
 const CRITERIA_KEY = 'npos:aggregator:criteria'
+const MAX_AI_LOG_PROMPT_LENGTH = 120
 
 const loadCriteria = (): AggregationCriteria => {
   try {
@@ -441,7 +442,7 @@ const App = () => {
       await logActivity({
         timestamp: new Date().toISOString(),
         action: 'CONSULTA_IA',
-        description: `Consulta IA: ${prompt.slice(0, 120)}`,
+        description: `Consulta IA: ${prompt.slice(0, MAX_AI_LOG_PROMPT_LENGTH)}`,
         userId: userEmail,
         status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
         details: {

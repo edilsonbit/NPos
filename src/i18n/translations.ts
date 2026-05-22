@@ -21,6 +21,7 @@ const pt = {
       fiscalCoupons: 'Cupons Fiscais',
       cancelledCoupons: 'Cupons Cancelados',
       aggregator: 'Agregador',
+      aiAssistant: 'Assistente IA',
       apiTester: 'API Tester',
       orderResend: 'Reenvio Pedido',
       payloadEditor: 'Edição Payload',
@@ -121,6 +122,7 @@ const pt = {
       DESFAZER_AGREGACAO: 'Desfazer Agregação',
       ENVIAR_ERP: 'Enviar ao ERP',
       CANCELAR_CUPOM: 'Cancelar Cupom',
+      CONSULTA_IA: 'Consulta IA',
     } as Record<string, string>,
     status: {
       success: 'Sucesso',
@@ -150,6 +152,7 @@ const en: typeof pt = {
       fiscalCoupons: 'Tax Coupons',
       cancelledCoupons: 'Cancelled Coupons',
       aggregator: 'Aggregator',
+      aiAssistant: 'AI Assistant',
       apiTester: 'API Tester',
       orderResend: 'Order Resend',
       payloadEditor: 'Payload Editor',
@@ -250,6 +253,7 @@ const en: typeof pt = {
       DESFAZER_AGREGACAO: 'Undo Aggregation',
       ENVIAR_ERP: 'Send to ERP',
       CANCELAR_CUPOM: 'Cancel Coupon',
+      CONSULTA_IA: 'AI Query',
     },
     status: {
       success: 'Success',
@@ -279,6 +283,7 @@ const es: typeof pt = {
       fiscalCoupons: 'Cupones Fiscales',
       cancelledCoupons: 'Cupones Cancelados',
       aggregator: 'Agregador',
+      aiAssistant: 'Asistente IA',
       apiTester: 'API Tester',
       orderResend: 'Reenvío de Pedido',
       payloadEditor: 'Edición de Payload',
@@ -379,6 +384,7 @@ const es: typeof pt = {
       DESFAZER_AGREGACAO: 'Deshacer Agrupación',
       ENVIAR_ERP: 'Enviar al ERP',
       CANCELAR_CUPOM: 'Cancelar Cupón',
+      CONSULTA_IA: 'Consulta IA',
     },
     status: {
       success: 'Éxito',

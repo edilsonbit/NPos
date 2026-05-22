@@ -14,6 +14,7 @@ import { reconstructAggregatedGroups } from './domain/aggregateCoupons'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
+import { EmbeddedAiPage } from './components/ai/EmbeddedAiPage'
 import { IntegrationAlertsPage } from './components/alerts/IntegrationAlertsPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { DashboardPage } from './components/dashboard/DashboardPage'
@@ -22,6 +23,7 @@ import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
 import { getFirebaseAuth } from './firebase/client'
 import { equalsNormalized, includesNormalized } from './utils/textNormalization'
+import { askEmbeddedAssistant, type EmbeddedAiResponse } from './application/embeddedAiService'
 import type {
   ActivityLog,
   AggregatedCouponGroup,
@@ -131,6 +133,8 @@ const App = () => {
   const [activePage, setActivePage] = useState('dashboard')
   const [activityLogs, setActivityLogs] = useState<ActivityLog[]>([])
   const [logsLoading, setLogsLoading] = useState(false)
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiResult, setAiResult] = useState<EmbeddedAiResponse | null>(null)
 
   const refreshLogs = async () => {
     setLogsLoading(true)
@@ -427,6 +431,45 @@ const App = () => {
     } finally {
       setProcessing(false)
     }
+
+    const handleAskEmbeddedAi = async (prompt: string) => {
+      setAiLoading(true)
+      try {
+        const response = await askEmbeddedAssistant({ prompt, userEmail })
+        setAiResult(response)
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'CONSULTA_IA',
+          description: `Consulta IA: ${prompt.slice(0, 120)}`,
+          userId: userEmail,
+          status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
+          details: {
+            count: response.evidence.length,
+          },
+        })
+      } catch (err) {
+        setAiResult({
+          requestId: `IA-${Date.now()}`,
+          generatedAt: new Date().toISOString(),
+          queryType: 'desconhecida',
+          status: 'error',
+          answer: 'Falha ao processar consulta no assistente IA.',
+          evidence: [],
+          warnings: [String(err)],
+          profile: 'operador',
+        })
+        await logActivity({
+          timestamp: new Date().toISOString(),
+          action: 'CONSULTA_IA',
+          description: 'Erro ao executar consulta IA',
+          userId: userEmail,
+          status: 'erro',
+          details: { errorMessage: String(err) },
+        })
+      } finally {
+        setAiLoading(false)
+      }
+    }
   }
 
   if (authenticated === null) {
@@ -507,6 +550,8 @@ const App = () => {
         <AgregadorPage groups={groups} criteria={criteria} onGoToCupons={() => setActivePage('cupons')} onSendToErp={handleSendGroupsToErp} onUndoAggregation={handleUndoAggregation} onUndoAggregationByNumbers={handleUndoAggregationByNumbers} />
       ) : activePage === 'api-tester' ? (
         <ApiTesterPage />
+      ) : activePage === 'assistente-ia' ? (
+        <EmbeddedAiPage loading={aiLoading} result={aiResult} onAsk={handleAskEmbeddedAi} />
       ) : activePage === 'alertas' ? (
         <IntegrationAlertsPage logs={activityLogs} loading={logsLoading} onRefresh={refreshLogs} />
       ) : activePage === 'cupons-cancelados' ? (
@@ -563,5 +608,4 @@ const App = () => {
 }
 
 export default App
-
 

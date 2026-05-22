@@ -11,6 +11,7 @@
 import {
   IconAdjustments,
   IconAlertTriangle,
+  IconBrain,
   IconBug,
   IconDashboard,
   IconReceipt,
@@ -43,6 +44,7 @@ const getNavSections = (t: Translations): NavSection[] => [
       { icon: <IconReceipt size={20} stroke={1.5} />, label: t.sidebar.items.fiscalCoupons, pageKey: 'cupons' },
       { icon: <IconReceiptOff size={20} stroke={1.5} />, label: t.sidebar.items.cancelledCoupons, pageKey: 'cupons-cancelados' },
       { icon: <IconStack2 size={20} stroke={1.5} />, label: t.sidebar.items.aggregator, pageKey: 'agregador' },
+      { icon: <IconBrain size={20} stroke={1.5} />, label: t.sidebar.items.aiAssistant, pageKey: 'assistente-ia' },
       { icon: <IconBug size={20} stroke={1.5} />, label: t.sidebar.items.apiTester, pageKey: 'api-tester' },
     ],
   },
@@ -206,4 +208,3 @@ const Sidebar = ({ activePage, onNavigate, collapsed, isMobile, mobileOpen, onMo
 }
 
 export { Sidebar, DRAWER_WIDTH, DRAWER_WIDTH_COLLAPSED }
-

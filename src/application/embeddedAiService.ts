@@ -3,6 +3,8 @@ import type { ActivityLog, Coupon } from '../domain/models'
 import { normalizeText } from '../utils/textNormalization'
 
 const dataLayer = createDataLayer()
+const MAX_EVIDENCE_ITEMS = 10
+const MAX_LOG_SUMMARY_RECORDS = 10
 
 export type EmbeddedAiUserProfile = 'operador' | 'analista' | 'administrador'
 export type EmbeddedAiQueryType =
@@ -113,7 +115,7 @@ const findCouponAggregationStatus = (coupons: Coupon[], prompt: string) => {
 }
 
 const summarizeRecentLogs = (logs: ActivityLog[]) => {
-  const recentLogs = logs.slice(0, 10)
+  const recentLogs = logs.slice(0, MAX_LOG_SUMMARY_RECORDS)
   const success = recentLogs.filter((item) => item.status === 'sucesso').length
   const errors = recentLogs.filter((item) => item.status === 'erro').length
   const topActions = Array.from(
@@ -162,7 +164,7 @@ export const askEmbeddedAssistant = async ({
         )
       }
 
-      const evidence = payload.matches.slice(0, 10).map((coupon) => ({
+      const evidence = payload.matches.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
         source: 'coupons' as const,
         recordId: coupon.id,
         snippet: `Cupom ${coupon.couponNumber} cancelado em ${coupon.createdAt.slice(0, 10)} (loja ${coupon.storeId}).`,
@@ -173,7 +175,7 @@ export const askEmbeddedAssistant = async ({
         'cancelados_por_data',
         'ok',
         payload.matches.length > 0
-          ? `Foram encontrados ${payload.matches.length} cupom(ns) cancelado(s) em ${payload.dateKey}.`
+          ? `Foram encontrados ${payload.matches.length} cupom(s) cancelado(s) em ${payload.dateKey}.`
           : `Não encontrei cupons cancelados em ${payload.dateKey}.`,
         evidence,
         payload.matches.length === 0
@@ -210,7 +212,7 @@ export const askEmbeddedAssistant = async ({
         new Set(payload.matches.map((coupon) => coupon.idAgregador).filter(Boolean)),
       )
 
-      const evidence = payload.matches.slice(0, 10).map((coupon) => ({
+      const evidence = payload.matches.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
         source: 'coupons' as const,
         recordId: coupon.id,
         snippet: `Cupom ${coupon.couponNumber} | situação: ${coupon.situacao ?? 'sem situação'} | agregador: ${coupon.idAgregador ?? 'não agregado'}.`,
@@ -244,7 +246,7 @@ export const askEmbeddedAssistant = async ({
       }
 
       const summary = summarizeRecentLogs(activityLogs)
-      const evidence = summary.recentLogs.slice(0, 10).map((log) => ({
+      const evidence = summary.recentLogs.slice(0, MAX_EVIDENCE_ITEMS).map((log) => ({
         source: 'activityLogs' as const,
         recordId: log.id ?? log.timestamp,
         snippet: `${log.action} | ${log.status} | ${log.description}`,

@@ -14,6 +14,7 @@ import { reconstructAggregatedGroups } from './domain/aggregateCoupons'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
+import { EmbeddedAiModal } from './components/ai/EmbeddedAiModal'
 import { IntegrationAlertsPage } from './components/alerts/IntegrationAlertsPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { DashboardPage } from './components/dashboard/DashboardPage'
@@ -21,6 +22,8 @@ import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
 import { getFirebaseAuth } from './firebase/client'
+import { equalsNormalized, includesNormalized } from './utils/textNormalization'
+import { askEmbeddedAssistant, type EmbeddedAiResponse } from './application/embeddedAiService'
 import type {
   ActivityLog,
   AggregatedCouponGroup,
@@ -52,6 +55,7 @@ const defaultCriteria: AggregationCriteria = {
 }
 
 const CRITERIA_KEY = 'npos:aggregator:criteria'
+const MAX_AI_LOG_PROMPT_LENGTH = 120
 
 const loadCriteria = (): AggregationCriteria => {
   try {
@@ -75,16 +79,16 @@ const applyCouponFilters = (
   return source.filter((c) => {
     const matchCouponNumber =
       !applied.couponNumber ||
-      c.couponNumber.toLowerCase().includes(applied.couponNumber.toLowerCase())
+      includesNormalized(c.couponNumber, applied.couponNumber)
 
     const matchNsu =
       !applied.nsu ||
-      c.nsu.toLowerCase().includes(applied.nsu.toLowerCase())
+      includesNormalized(c.nsu, applied.nsu)
 
     const matchProduct =
       !applied.productSearch ||
-      c.productCode.toLowerCase().includes(applied.productSearch.toLowerCase()) ||
-      c.productName.toLowerCase().includes(applied.productSearch.toLowerCase())
+      includesNormalized(c.productCode, applied.productSearch) ||
+      includesNormalized(c.productName, applied.productSearch)
 
     const matchFrom =
       !applied.dateFrom ||
@@ -100,11 +104,11 @@ const applyCouponFilters = (
       matchCouponNumber &&
       matchNsu &&
       matchProduct &&
-      (!applied.storeId || c.storeId === applied.storeId) &&
-      (!applied.acquirer || c.acquirer === applied.acquirer) &&
-      (!applied.paymentMethod || c.paymentMethod === applied.paymentMethod) &&
+      (!applied.storeId || equalsNormalized(c.storeId, applied.storeId)) &&
+      (!applied.acquirer || equalsNormalized(c.acquirer, applied.acquirer)) &&
+      (!applied.paymentMethod || equalsNormalized(c.paymentMethod, applied.paymentMethod)) &&
       (!statusFilter || c.status === statusFilter) &&
-      (!applied.situacao || c.situacao === applied.situacao) &&
+      (!applied.situacao || equalsNormalized(c.situacao, applied.situacao)) &&
       matchFrom &&
       matchTo
     )
@@ -130,6 +134,9 @@ const App = () => {
   const [activePage, setActivePage] = useState('dashboard')
   const [activityLogs, setActivityLogs] = useState<ActivityLog[]>([])
   const [logsLoading, setLogsLoading] = useState(false)
+  const [aiLoading, setAiLoading] = useState(false)
+  const [aiResult, setAiResult] = useState<EmbeddedAiResponse | null>(null)
+  const [assistantOpen, setAssistantOpen] = useState(false)
 
   const refreshLogs = async () => {
     setLogsLoading(true)
@@ -161,6 +168,18 @@ const App = () => {
     }
     void bootstrap()
   }, [])
+
+  useEffect(() => {
+    const onGlobalShortcut = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && !assistantOpen) {
+        event.preventDefault()
+        setAssistantOpen(true)
+      }
+    }
+
+    window.addEventListener('keydown', onGlobalShortcut)
+    return () => window.removeEventListener('keydown', onGlobalShortcut)
+  }, [assistantOpen])
 
   useEffect(() => {
     // Reconstroem os grupos agregados quando a pagina Agregador e acessada ou cupons mudam
@@ -282,6 +301,7 @@ const App = () => {
           details: {
             couponIds: aggregatable.map((c) => c.id),
             groupIds: grouped.map((g) => g.idAgregador),
+            aggregationIds: grouped.map((g) => g.idAgregador),
             count: aggregatable.length,
           },
         })
@@ -326,7 +346,7 @@ const App = () => {
         description: `${groupIds.length} grupo(s) com ${couponIds.length} cupom(ns) enviado(s) ao ERP`,
         userId: userEmail,
         status: 'sucesso',
-        details: { groupIds, couponIds, count: couponIds.length },
+        details: { groupIds, aggregationIds: groupIds, couponIds, count: couponIds.length },
       })
 
       // Recarregar coupons e reconstruir grupos
@@ -360,7 +380,7 @@ const App = () => {
         description: `Agregação desfeita para o grupo ${groupId}`,
         userId: userEmail,
         status: 'sucesso',
-        details: { groupIds: [groupId] },
+        details: { groupIds: [groupId], aggregationIds: [groupId] },
       })
       const { coupons: updatedCoupons } = await loadCouponsAndProducts()
       setCoupons(updatedCoupons)
@@ -384,6 +404,10 @@ const App = () => {
   const handleUndoAggregationByNumbers = async (couponNumbers: string[]) => {
     setProcessing(true)
     try {
+      const aggregationIds = groups
+        .filter((g) => couponNumbers.some((couponNumber) => g.coupons.some((c) => c.couponNumber === couponNumber)))
+        .map((g) => g.idAgregador)
+
       await undoAggregationByNumbers(couponNumbers)
       await logActivity({
         timestamp: new Date().toISOString(),
@@ -391,7 +415,12 @@ const App = () => {
         description: `Agregação desfeita para ${couponNumbers.length} cupom(ns)`,
         userId: userEmail,
         status: 'sucesso',
-        details: { couponNumbers, count: couponNumbers.length },
+        details: {
+          couponNumbers,
+          aggregationIds,
+          groupIds: aggregationIds,
+          count: couponNumbers.length,
+        },
       })
       const { coupons: updatedCoupons } = await loadCouponsAndProducts()
       setCoupons(updatedCoupons)
@@ -405,10 +434,59 @@ const App = () => {
         description: `Erro ao desfazer agregação`,
         userId: userEmail,
         status: 'erro',
-        details: { couponNumbers, errorMessage: String(err) },
+        details: {
+          couponNumbers,
+          aggregationIds: groups
+            .filter((g) => couponNumbers.some((couponNumber) => g.coupons.some((c) => c.couponNumber === couponNumber)))
+            .map((g) => g.idAgregador),
+          errorMessage: String(err),
+        },
       })
     } finally {
       setProcessing(false)
+    }
+  }
+
+  const handleAskEmbeddedAi = async (prompt: string, conversation: Array<{ role: 'user' | 'assistant'; content: string }>) => {
+    setAiLoading(true)
+    try {
+      const response = await askEmbeddedAssistant({ prompt, userEmail, conversation })
+      setAiResult(response)
+      const promptForLog =
+        prompt.length > MAX_AI_LOG_PROMPT_LENGTH
+          ? `${prompt.slice(0, MAX_AI_LOG_PROMPT_LENGTH)}...`
+          : prompt
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'CONSULTA_IA',
+        description: `Consulta IA: ${promptForLog}`,
+        userId: userEmail,
+        status: response.status === 'error' || response.status === 'forbidden' ? 'erro' : 'sucesso',
+        details: {
+          count: response.evidence.length,
+        },
+      })
+    } catch (err) {
+      setAiResult({
+        requestId: `IA-${Date.now()}`,
+        generatedAt: new Date().toISOString(),
+        queryType: 'desconhecida',
+        status: 'error',
+        answer: 'Falha ao processar consulta no assistente IA.',
+        evidence: [],
+        warnings: [String(err)],
+        profile: 'operador',
+      })
+      await logActivity({
+        timestamp: new Date().toISOString(),
+        action: 'CONSULTA_IA',
+        description: 'Erro ao executar consulta IA',
+        userId: userEmail,
+        status: 'erro',
+        details: { errorMessage: String(err) },
+      })
+    } finally {
+      setAiLoading(false)
     }
   }
 
@@ -433,6 +511,14 @@ const App = () => {
         </Stack>
       </Box>
     )
+  }
+
+  const pageCardSx = {
+    borderRadius: { xs: 2, md: 2.5 },
+    border: '1px solid #e8ecf0',
+    boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)',
+    overflow: 'hidden',
+    backgroundColor: '#fff',
   }
 
   return (
@@ -467,6 +553,7 @@ const App = () => {
       onNavigate={setActivePage}
       userEmail={userEmail}
       onLogout={() => void signOut(getFirebaseAuth())}
+      onOpenAssistant={() => setAssistantOpen(true)}
     >
       {activePage === 'dashboard' ? (
         <DashboardPage coupons={coupons} />
@@ -487,12 +574,7 @@ const App = () => {
       ) : activePage === 'cupons-cancelados' ? (
         <Paper
           elevation={0}
-          sx={{
-            borderRadius: 2,
-            border: '1px solid #e8ecf0',
-            overflow: 'hidden',
-            backgroundColor: '#fff',
-          }}
+          sx={pageCardSx}
         >
           <CouponFiltersBar
             coupons={couponsCancelledOnly}
@@ -517,12 +599,7 @@ const App = () => {
         /* Pagina padrao: Cupons Fiscais */
         <Paper
           elevation={0}
-          sx={{
-            borderRadius: 2,
-            border: '1px solid #e8ecf0',
-            overflow: 'hidden',
-            backgroundColor: '#fff',
-          }}
+          sx={pageCardSx}
         >
           <CouponFiltersBar
             coupons={coupons}
@@ -543,10 +620,15 @@ const App = () => {
         </Paper>
       )}
     </AppShell>
+    <EmbeddedAiModal
+      open={assistantOpen}
+      onClose={() => setAssistantOpen(false)}
+      loading={aiLoading}
+      result={aiResult}
+      onAsk={handleAskEmbeddedAi}
+    />
     </>
   )
 }
 
 export default App
-
-

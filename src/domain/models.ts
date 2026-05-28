@@ -121,6 +121,7 @@ export type ActivityLogAction =
   | 'DESFAZER_AGREGACAO'
   | 'ENVIAR_ERP'
   | 'CANCELAR_CUPOM'
+  | 'CONSULTA_IA'
 
 export type ActivityLogStatus = 'sucesso' | 'erro'
 
@@ -134,6 +135,7 @@ export interface ActivityLog {
   details?: {
     couponIds?: string[]
     groupIds?: string[]
+    aggregationIds?: string[]
     couponNumbers?: string[]
     count?: number
     errorMessage?: string

@@ -4,6 +4,7 @@ import { onRequest } from 'firebase-functions/v2/https'
 import admin from 'firebase-admin'
 import { createCouponsRouter } from './routes/coupons.js'
 import { createAggregationRouter } from './routes/aggregation.js'
+import { createAssistantRouter } from './routes/assistant.js'
 
 admin.initializeApp()
 const db = admin.firestore()
@@ -18,5 +19,6 @@ app.get('/health', (_req, res) => {
 
 app.use('/cupons', createCouponsRouter(db))
 app.use('/agregacao', createAggregationRouter(db))
+app.use('/assistant', createAssistantRouter(db))
 
-export const api = onRequest({ region: 'southamerica-east1' }, app)
+export const api = onRequest({ region: 'southamerica-east1', invoker: 'public' }, app)

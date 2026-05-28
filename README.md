@@ -23,6 +23,7 @@ POC tecnica para demo executiva do cliente Boticario, com front-end em React + T
 - **Enviar grupos ao ERP** com confirmacao e feedback visual
 - **Cupons Cancelados** — pagina dedicada com filtros e acao "Enviar Cancelados ao ERP"
 - **Alerta das Integracoes** — log geral de todas as operacoes realizadas (agregacao, desfazer, envio ERP), com filtros, tabela e modal de detalhes
+- **Assistente IA Embarcada (v1)** — consultas operacionais locais com evidencias (cupons cancelados por data, status de agrupamento e resumo de logs)
 - Massa de simulacao robusta:
   - `products.mock.json` com 120 produtos
   - `coupons.mock.json` com 360+ cupons
@@ -83,7 +84,10 @@ VITE_FIREBASE_API_KEY=...
 VITE_FIREBASE_AUTH_DOMAIN=...
 VITE_FIREBASE_PROJECT_ID=...
 VITE_FIREBASE_APP_ID=...
+VITE_ASSISTANT_API_URL=...
 ```
+
+Se `VITE_ASSISTANT_API_URL` nao for definido ou o endpoint estiver indisponivel, o assistente usa fallback local no frontend.
 
 4. Rode em desenvolvimento:
 

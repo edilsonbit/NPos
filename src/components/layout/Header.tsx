@@ -2,6 +2,8 @@ import { AppBar, Avatar, Box, Divider, IconButton, ListItemIcon, ListItemText, M
 import MenuIcon from '@mui/icons-material/Menu'
 import TranslateIcon from '@mui/icons-material/Translate'
 import LogoutIcon from '@mui/icons-material/Logout'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
+import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import { useState } from 'react'
 import { useLanguage } from '../../i18n/LanguageContext'
 
@@ -15,9 +17,10 @@ interface HeaderProps {
   userEmail?: string
   onLogout?: () => void
   onToggleSidebar: () => void
+  onOpenAssistant: () => void
 }
 
-const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
+const Header = ({ userEmail, onLogout, onToggleSidebar, onOpenAssistant }: HeaderProps) => {
   const { language, setLanguage, t } = useLanguage()
   const [profileAnchorEl, setProfileAnchorEl] = useState<null | HTMLElement>(null)
   const [langAnchorEl, setLangAnchorEl] = useState<null | HTMLElement>(null)
@@ -52,6 +55,53 @@ const Header = ({ userEmail, onLogout, onToggleSidebar }: HeaderProps) => {
           </Tooltip>
         </Box>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+          <Tooltip title="Abrir Assistente IA (Ctrl+Enter)">
+            <Box
+              component="button"
+              type="button"
+              onClick={onOpenAssistant}
+              sx={{
+                outline: 'none',
+                cursor: 'pointer',
+                borderRadius: 999,
+                px: { xs: 1.2, sm: 1.8 },
+                py: 0.8,
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 0.75,
+                color: '#fff',
+                background: 'linear-gradient(135deg, #0f766e 0%, #1d4ed8 52%, #0284c7 100%)',
+                border: '1px solid rgba(255,255,255,0.22)',
+                boxShadow: '0 8px 22px rgba(29,78,216,0.34), inset 0 1px 0 rgba(255,255,255,0.28)',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease',
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #0d6b64 0%, #1e40af 54%, #0369a1 100%)',
+                  transform: 'translateY(-1px)',
+                  boxShadow: '0 12px 28px rgba(30,64,175,0.4), inset 0 1px 0 rgba(255,255,255,0.3)',
+                },
+                '&:active': {
+                  transform: 'translateY(0)',
+                },
+              }}
+            >
+              <SmartToyIcon sx={{ fontSize: 18, color: '#7dd3fc' }} />
+              <Typography
+                component="span"
+                sx={{
+                  display: 'inline',
+                  fontSize: { xs: 12, sm: 13 },
+                  fontWeight: 700,
+                  lineHeight: 1,
+                }}
+              >
+                IA
+                <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>
+                  {' '}Assistente
+                </Box>
+              </Typography>
+              <AutoAwesomeIcon sx={{ fontSize: 16, opacity: 0.95, color: '#fde68a' }} />
+            </Box>
+          </Tooltip>
           <Tooltip title={t.header.language}>
             <IconButton
               size="small"

@@ -14,7 +14,7 @@ import { reconstructAggregatedGroups } from './domain/aggregateCoupons'
 import { AgregadorPage } from './components/aggregator/AgregadorPage'
 import { AggregatorConfig } from './components/aggregator/AggregatorConfig'
 import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
-import { EmbeddedAiPage } from './components/ai/EmbeddedAiPage'
+import { EmbeddedAiModal } from './components/ai/EmbeddedAiModal'
 import { IntegrationAlertsPage } from './components/alerts/IntegrationAlertsPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { DashboardPage } from './components/dashboard/DashboardPage'
@@ -136,6 +136,7 @@ const App = () => {
   const [logsLoading, setLogsLoading] = useState(false)
   const [aiLoading, setAiLoading] = useState(false)
   const [aiResult, setAiResult] = useState<EmbeddedAiResponse | null>(null)
+  const [assistantOpen, setAssistantOpen] = useState(false)
 
   const refreshLogs = async () => {
     setLogsLoading(true)
@@ -167,6 +168,18 @@ const App = () => {
     }
     void bootstrap()
   }, [])
+
+  useEffect(() => {
+    const onGlobalShortcut = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'Enter' && !assistantOpen) {
+        event.preventDefault()
+        setAssistantOpen(true)
+      }
+    }
+
+    window.addEventListener('keydown', onGlobalShortcut)
+    return () => window.removeEventListener('keydown', onGlobalShortcut)
+  }, [assistantOpen])
 
   useEffect(() => {
     // Reconstroem os grupos agregados quando a pagina Agregador e acessada ou cupons mudam
@@ -540,6 +553,7 @@ const App = () => {
       onNavigate={setActivePage}
       userEmail={userEmail}
       onLogout={() => void signOut(getFirebaseAuth())}
+      onOpenAssistant={() => setAssistantOpen(true)}
     >
       {activePage === 'dashboard' ? (
         <DashboardPage coupons={coupons} />
@@ -555,8 +569,6 @@ const App = () => {
         <AgregadorPage groups={groups} criteria={criteria} onGoToCupons={() => setActivePage('cupons')} onSendToErp={handleSendGroupsToErp} onUndoAggregation={handleUndoAggregation} onUndoAggregationByNumbers={handleUndoAggregationByNumbers} />
       ) : activePage === 'api-tester' ? (
         <ApiTesterPage />
-      ) : activePage === 'assistente-ia' ? (
-        <EmbeddedAiPage loading={aiLoading} result={aiResult} onAsk={handleAskEmbeddedAi} />
       ) : activePage === 'alertas' ? (
         <IntegrationAlertsPage logs={activityLogs} loading={logsLoading} onRefresh={refreshLogs} />
       ) : activePage === 'cupons-cancelados' ? (
@@ -608,6 +620,13 @@ const App = () => {
         </Paper>
       )}
     </AppShell>
+    <EmbeddedAiModal
+      open={assistantOpen}
+      onClose={() => setAssistantOpen(false)}
+      loading={aiLoading}
+      result={aiResult}
+      onAsk={handleAskEmbeddedAi}
+    />
     </>
   )
 }

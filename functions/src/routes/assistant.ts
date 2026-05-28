@@ -1,30 +1,31 @@
-import { createDataLayer } from '../data/repositories'
-import type { ActivityLog, Coupon } from '../domain/models'
-import { normalizeText } from '../utils/textNormalization'
+import { Router } from 'express'
+import type { Firestore } from 'firebase-admin/firestore'
+import type { Coupon } from '../domain/models.js'
 
-const dataLayer = createDataLayer()
-const MAX_EVIDENCE_ITEMS = 10
-const MAX_LOG_SUMMARY_RECORDS = 10
-const ASSISTANT_API_TIMEOUT_MS = 10000
-const ASSISTANT_API_URL = import.meta.env.VITE_ASSISTANT_API_URL?.trim() || '/api/assistant/query'
+interface ActivityLog {
+  id?: string
+  timestamp: string
+  action: string
+  description: string
+  status: 'sucesso' | 'erro'
+}
 
-export type EmbeddedAiUserProfile = 'operador' | 'analista' | 'administrador'
-export type EmbeddedAiQueryType =
+type EmbeddedAiUserProfile = 'operador' | 'analista' | 'administrador'
+type EmbeddedAiQueryType =
   | 'cancelados_por_data'
   | 'status_agrupamento_cupom'
   | 'metricas_operacionais'
   | 'resumo_logs'
   | 'desconhecida'
+type EmbeddedAiResponseStatus = 'ok' | 'insufficient_context' | 'forbidden' | 'error'
 
-export type EmbeddedAiResponseStatus = 'ok' | 'insufficient_context' | 'forbidden' | 'error'
-
-interface EmbeddedAiEvidence {
+type EmbeddedAiEvidence = {
   source: 'coupons' | 'activityLogs'
   recordId: string
   snippet: string
 }
 
-export interface EmbeddedAiResponse {
+type EmbeddedAiResponse = {
   requestId: string
   generatedAt: string
   queryType: EmbeddedAiQueryType
@@ -41,47 +42,40 @@ export interface EmbeddedAiResponse {
   }
 }
 
-export interface EmbeddedAiRequest {
+type AssistantAuditRecord = {
+  requestId: string
+  generatedAt: string
+  userEmail?: string
   prompt: string
+  queryType: EmbeddedAiQueryType
+  status: EmbeddedAiResponseStatus
+  profile: EmbeddedAiUserProfile
+  latencyMs: number
+  retrievedCount: number
+  evidence: Array<{ source: string; recordId: string }>
+  usedLlm: boolean
+  model: string
+  warnings: string[]
+}
+
+type AssistantRequestBody = {
+  prompt?: string
   userEmail?: string
 }
 
-const isEmbeddedAiResponse = (value: unknown): value is EmbeddedAiResponse => {
-  if (!value || typeof value !== 'object') return false
-  const candidate = value as Partial<EmbeddedAiResponse>
-  return (
-    typeof candidate.requestId === 'string' &&
-    typeof candidate.generatedAt === 'string' &&
-    typeof candidate.queryType === 'string' &&
-    typeof candidate.status === 'string' &&
-    typeof candidate.answer === 'string' &&
-    Array.isArray(candidate.evidence) &&
-    Array.isArray(candidate.warnings) &&
-    typeof candidate.profile === 'string'
-  )
-}
+const MAX_EVIDENCE_ITEMS = 10
+const MAX_LOG_SUMMARY_RECORDS = 10
+const ASSISTANT_FALLBACK_MODEL = 'rule-engine-local'
 
-const askAssistantViaApi = async ({ prompt, userEmail }: EmbeddedAiRequest): Promise<EmbeddedAiResponse | null> => {
-  const controller = new AbortController()
-  const timer = window.setTimeout(() => controller.abort(), ASSISTANT_API_TIMEOUT_MS)
+const normalizeText = (value: string | undefined | null) => {
+  if (!value) return ''
 
-  try {
-    const response = await fetch(ASSISTANT_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt, userEmail }),
-      signal: controller.signal,
-    })
-
-    if (!response.ok) return null
-
-    const payload = (await response.json()) as unknown
-    return isEmbeddedAiResponse(payload) ? payload : null
-  } catch {
-    return null
-  } finally {
-    window.clearTimeout(timer)
-  }
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLocaleLowerCase('pt-BR')
 }
 
 const parseEmails = (raw: string | undefined): Set<string> => {
@@ -94,8 +88,8 @@ const parseEmails = (raw: string | undefined): Set<string> => {
   )
 }
 
-const adminEmails = parseEmails(import.meta.env.VITE_AI_ADMIN_EMAILS)
-const analystEmails = parseEmails(import.meta.env.VITE_AI_ANALYST_EMAILS)
+const adminEmails = parseEmails(process.env.ASSISTANT_ADMIN_EMAILS ?? process.env.VITE_AI_ADMIN_EMAILS)
+const analystEmails = parseEmails(process.env.ASSISTANT_ANALYST_EMAILS ?? process.env.VITE_AI_ANALYST_EMAILS)
 
 const resolveProfile = (userEmail?: string): EmbeddedAiUserProfile => {
   const normalized = normalizeText(userEmail)
@@ -232,6 +226,9 @@ const buildCouponEvidence = (coupons: Coupon[], sourceLabel: string): EmbeddedAi
     snippet: `${sourceLabel} | cupom ${coupon.couponNumber} | loja ${coupon.storeId} | ${coupon.status} | ${coupon.createdAt.slice(0, 10)} | valor ${formatCurrency(coupon.amount)}.`,
   }))
 }
+
+const pluralize = (count: number, singular: string, plural: string) =>
+  count === 1 ? singular : plural
 
 const resolveOperationalMetricsQuery = (
   profile: EmbeddedAiUserProfile,
@@ -484,18 +481,119 @@ const summarizeRecentLogs = (logs: ActivityLog[]) => {
   return { recentLogs, success, errors, topActions }
 }
 
-const pluralize = (count: number, singular: string, plural: string) =>
-  count === 1 ? singular : plural
+const tryHumanizeAnswerWithLlm = async (
+  prompt: string,
+  response: EmbeddedAiResponse,
+): Promise<string | null> => {
+  if (process.env.ASSISTANT_LLM_ENABLED !== 'true') return null
 
-export const askEmbeddedAssistant = async ({
-  prompt,
-  userEmail,
-}: EmbeddedAiRequest): Promise<EmbeddedAiResponse> => {
-  const apiResponse = await askAssistantViaApi({ prompt, userEmail })
-  if (apiResponse) {
-    return apiResponse
+  const endpoint = process.env.ASSISTANT_LLM_ENDPOINT
+  const apiKey = process.env.ASSISTANT_LLM_API_KEY
+  const model = process.env.ASSISTANT_LLM_MODEL ?? 'gpt-4.1-mini'
+
+  if (!endpoint || !apiKey) return null
+
+  try {
+    const llmResponse = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0.2,
+        messages: [
+          {
+            role: 'system',
+            content:
+              'Reescreva respostas operacionais em portugues do Brasil com tom claro e objetivo. Nao invente dados, nao altere numeros e preserve os fatos/evidencias.',
+          },
+          {
+            role: 'user',
+            content: JSON.stringify({
+              prompt,
+              answer: response.answer,
+              warnings: response.warnings,
+              evidence: response.evidence.slice(0, 5),
+            }),
+          },
+        ],
+      }),
+    })
+
+    if (!llmResponse.ok) return null
+
+    const payload = (await llmResponse.json()) as {
+      choices?: Array<{ message?: { content?: string } }>
+    }
+
+    const content = payload.choices?.[0]?.message?.content?.trim()
+    return content || null
+  } catch {
+    return null
+  }
+}
+
+const inferConfidence = (response: EmbeddedAiResponse): 'low' | 'medium' | 'high' => {
+  if (response.status !== 'ok') return 'low'
+  if (response.evidence.length >= 5) return 'high'
+  if (response.evidence.length >= 2) return 'medium'
+  return 'low'
+}
+
+const enrichResponseMetadata = (response: EmbeddedAiResponse, latencyMs: number): EmbeddedAiResponse => {
+  const llmWarning = response.warnings.find((warning) => warning.includes('LLM externo'))
+  const model = llmWarning
+    ? process.env.ASSISTANT_LLM_MODEL ?? 'external-llm'
+    : ASSISTANT_FALLBACK_MODEL
+
+  return {
+    ...response,
+    metadata: {
+      model,
+      latencyMs,
+      retrievedCount: response.evidence.length,
+      confidence: inferConfidence(response),
+    },
+  }
+}
+
+const toAuditRecord = (
+  prompt: string,
+  userEmail: string | undefined,
+  response: EmbeddedAiResponse,
+): AssistantAuditRecord => {
+  const metadata = response.metadata ?? {
+    model: ASSISTANT_FALLBACK_MODEL,
+    latencyMs: 0,
+    retrievedCount: response.evidence.length,
+    confidence: inferConfidence(response),
   }
 
+  return {
+    requestId: response.requestId,
+    generatedAt: response.generatedAt,
+    userEmail,
+    prompt,
+    queryType: response.queryType,
+    status: response.status,
+    profile: response.profile,
+    latencyMs: metadata.latencyMs,
+    retrievedCount: metadata.retrievedCount,
+    evidence: response.evidence.map((item) => ({ source: item.source, recordId: item.recordId })),
+    usedLlm: metadata.model !== ASSISTANT_FALLBACK_MODEL,
+    model: metadata.model,
+    warnings: response.warnings,
+  }
+}
+
+const resolveAssistantResponse = async (
+  prompt: string,
+  userEmail: string | undefined,
+  coupons: Coupon[],
+  activityLogs: ActivityLog[],
+): Promise<EmbeddedAiResponse> => {
   const profile = resolveProfile(userEmail)
   const normalizedPrompt = normalizeText(prompt)
 
@@ -508,82 +606,76 @@ export const askEmbeddedAssistant = async ({
     )
   }
 
-  try {
-    const [coupons, activityLogs] = await Promise.all([
-      dataLayer.coupons.list(),
-      dataLayer.activityLogs.list(200),
-    ])
+  let response: EmbeddedAiResponse = newResponse(
+    profile,
+    'desconhecida',
+    'insufficient_context',
+    'Nao consegui classificar sua consulta. Tente exemplos como: "quais cupons foram cancelados em 21/05/26?" ou "o cupom 123456 esta agrupado?".',
+  )
 
-    const metricsResponse = resolveOperationalMetricsQuery(profile, coupons, normalizedPrompt)
-    if (metricsResponse) {
-      return metricsResponse
-    }
+  const metricsResponse = resolveOperationalMetricsQuery(profile, coupons, normalizedPrompt)
+  if (metricsResponse) {
+    response = metricsResponse
+  } else if (normalizedPrompt.includes('cancelad')) {
+    const payload = findCancelledByDate(coupons, normalizedPrompt)
+    if (!payload?.dateKey) {
+      const cancelledCoupons = findAllCancelled(coupons)
+      const evidence = cancelledCoupons.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
+        source: 'coupons' as const,
+        recordId: coupon.id,
+        snippet: `Cupom ${coupon.couponNumber} cancelado em ${coupon.createdAt.slice(0, 10)} (loja ${coupon.storeId}).`,
+      }))
 
-    if (normalizedPrompt.includes('cancelad')) {
-      const payload = findCancelledByDate(coupons, normalizedPrompt)
-      if (!payload?.dateKey) {
-        const cancelledCoupons = findAllCancelled(coupons)
-        const evidence = cancelledCoupons.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
-          source: 'coupons' as const,
-          recordId: coupon.id,
-          snippet: `Cupom ${coupon.couponNumber} cancelado em ${coupon.createdAt.slice(0, 10)} (loja ${coupon.storeId}).`,
-        }))
-
-        return newResponse(
-          profile,
-          'cancelados_por_data',
-          'ok',
-          cancelledCoupons.length > 0
-            ? `Encontrei ${cancelledCoupons.length} ${pluralize(cancelledCoupons.length, 'cupom', 'cupons')} cancelados no total. Posso detalhar por data se voce informar um dia especifico (DD/MM/AA ou DD/MM/AAAA).`
-            : 'Nao encontrei cupons cancelados na base atual.',
-          evidence,
-          ['Pergunta sem data especifica: resposta retornada em modo resumo geral.'],
-        )
-      }
-
+      response = newResponse(
+        profile,
+        'cancelados_por_data',
+        'ok',
+        cancelledCoupons.length > 0
+          ? `Encontrei ${cancelledCoupons.length} ${pluralize(cancelledCoupons.length, 'cupom', 'cupons')} cancelados no total. Posso detalhar por data se voce informar um dia especifico (DD/MM/AA ou DD/MM/AAAA).`
+          : 'Nao encontrei cupons cancelados na base atual.',
+        evidence,
+        ['Pergunta sem data especifica: resposta retornada em modo resumo geral.'],
+      )
+    } else {
       const evidence = payload.matches.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
         source: 'coupons' as const,
         recordId: coupon.id,
         snippet: `Cupom ${coupon.couponNumber} cancelado em ${coupon.createdAt.slice(0, 10)} (loja ${coupon.storeId}).`,
       }))
 
-      return newResponse(
+      response = newResponse(
         profile,
         'cancelados_por_data',
         'ok',
         payload.matches.length > 0
           ? `Foram encontrados ${payload.matches.length} ${pluralize(payload.matches.length, 'cupom', 'cupons')} cancelados em ${payload.dateKey}.`
-          : `Não encontrei cupons cancelados em ${payload.dateKey}.`,
+          : `Nao encontrei cupons cancelados em ${payload.dateKey}.`,
         evidence,
         payload.matches.length === 0
-          ? ['Sem resultados para a data informada. Verifique o período ou a base de dados.']
+          ? ['Sem resultados para a data informada. Verifique o periodo ou a base de dados.']
           : [],
       )
     }
-
-    if (
-      normalizedPrompt.includes('cupom') &&
-      (normalizedPrompt.includes('agrupad') || normalizedPrompt.includes('agregad'))
-    ) {
-      const payload = findCouponAggregationStatus(coupons, normalizedPrompt)
-      if (!payload?.couponNumber) {
-        return newResponse(
-          profile,
-          'status_agrupamento_cupom',
-          'insufficient_context',
-          'Não consegui identificar o número do cupom na pergunta.',
-        )
-      }
-
-      if (payload.matches.length === 0) {
-        return newResponse(
-          profile,
-          'status_agrupamento_cupom',
-          'insufficient_context',
-          `Não encontrei registros para o cupom ${payload.couponNumber}.`,
-        )
-      }
-
+  } else if (
+    normalizedPrompt.includes('cupom') &&
+    (normalizedPrompt.includes('agrupad') || normalizedPrompt.includes('agregad'))
+  ) {
+    const payload = findCouponAggregationStatus(coupons, normalizedPrompt)
+    if (!payload?.couponNumber) {
+      response = newResponse(
+        profile,
+        'status_agrupamento_cupom',
+        'insufficient_context',
+        'Nao consegui identificar o numero do cupom na pergunta.',
+      )
+    } else if (payload.matches.length === 0) {
+      response = newResponse(
+        profile,
+        'status_agrupamento_cupom',
+        'insufficient_context',
+        `Nao encontrei registros para o cupom ${payload.couponNumber}.`,
+      )
+    } else {
       const grouped = payload.matches.some((coupon) => Boolean(coupon.idAgregador))
       const aggregatorIds = Array.from(
         new Set(payload.matches.map((coupon) => coupon.idAgregador).filter(Boolean)),
@@ -592,36 +684,34 @@ export const askEmbeddedAssistant = async ({
       const evidence = payload.matches.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
         source: 'coupons' as const,
         recordId: coupon.id,
-        snippet: `Cupom ${coupon.couponNumber} | situação: ${coupon.situacao ?? 'sem situação'} | agregador: ${coupon.idAgregador ?? 'não agregado'}.`,
+        snippet: `Cupom ${coupon.couponNumber} | situacao: sem situacao | agregador: ${coupon.idAgregador ?? 'nao agregado'}.`,
       }))
 
-      return newResponse(
+      response = newResponse(
         profile,
         'status_agrupamento_cupom',
         'ok',
         grouped
-          ? `O cupom ${payload.couponNumber} está agrupado (${aggregatorIds.join(', ')}).`
-          : `O cupom ${payload.couponNumber} não está agrupado no momento.`,
+          ? `O cupom ${payload.couponNumber} esta agrupado (${aggregatorIds.join(', ')}).`
+          : `O cupom ${payload.couponNumber} nao esta agrupado no momento.`,
         evidence,
       )
     }
-
-    if (
-      normalizedPrompt.includes('log') ||
-      normalizedPrompt.includes('auditoria') ||
-      normalizedPrompt.includes('alerta')
-    ) {
-      if (!hasLogAccess(profile)) {
-        return newResponse(
-          profile,
-          'resumo_logs',
-          'forbidden',
-          'Seu perfil não possui acesso a consultas de logs de auditoria.',
-          [],
-          ['Solicite um perfil analista ou administrador para esse tipo de consulta.'],
-        )
-      }
-
+  } else if (
+    normalizedPrompt.includes('log') ||
+    normalizedPrompt.includes('auditoria') ||
+    normalizedPrompt.includes('alerta')
+  ) {
+    if (!hasLogAccess(profile)) {
+      response = newResponse(
+        profile,
+        'resumo_logs',
+        'forbidden',
+        'Seu perfil nao possui acesso a consultas de logs de auditoria.',
+        [],
+        ['Solicite um perfil analista ou administrador para esse tipo de consulta.'],
+      )
+    } else {
       const summary = summarizeRecentLogs(activityLogs)
       const evidence = summary.recentLogs.slice(0, MAX_EVIDENCE_ITEMS).map((log) => ({
         source: 'activityLogs' as const,
@@ -629,29 +719,101 @@ export const askEmbeddedAssistant = async ({
         snippet: `${log.action} | ${log.status} | ${log.description}`,
       }))
 
-      return newResponse(
+      response = newResponse(
         profile,
         'resumo_logs',
         'ok',
-        `Últimos ${summary.recentLogs.length} ${pluralize(summary.recentLogs.length, 'log', 'logs')}: ${summary.success} ${pluralize(summary.success, 'sucesso', 'sucessos')}, ${summary.errors} ${pluralize(summary.errors, 'erro', 'erros')}. Ações mais frequentes: ${summary.topActions.join(' | ') || 'sem dados'}.`,
+        `Ultimos ${summary.recentLogs.length} ${pluralize(summary.recentLogs.length, 'log', 'logs')}: ${summary.success} ${pluralize(summary.success, 'sucesso', 'sucessos')}, ${summary.errors} ${pluralize(summary.errors, 'erro', 'erros')}. Acoes mais frequentes: ${summary.topActions.join(' | ') || 'sem dados'}.`,
         evidence,
       )
     }
-
-    return newResponse(
-      profile,
-      'desconhecida',
-      'insufficient_context',
-      'Não consegui classificar sua consulta. Tente exemplos como: "quais cupons foram cancelados em 21/05/26?" ou "o cupom 123456 está agrupado?".',
-    )
-  } catch (err) {
-    return newResponse(
-      profile,
-      'desconhecida',
-      'error',
-      'Falha ao consultar dados internos do assistente IA.',
-      [],
-      [String(err)],
-    )
   }
+
+  const rewritten = await tryHumanizeAnswerWithLlm(prompt, response)
+  if (!rewritten) return response
+
+  return {
+    ...response,
+    answer: rewritten,
+    warnings: ['Resposta redigida com apoio de LLM externo usando apenas contexto interno.', ...response.warnings],
+  }
+}
+
+export const createAssistantRouter = (db: Firestore): Router => {
+  const router = Router()
+
+  router.get('/health', (_req, res) => {
+    const llmEnabled = process.env.ASSISTANT_LLM_ENABLED === 'true'
+    const llmConfigured = Boolean(process.env.ASSISTANT_LLM_ENDPOINT && process.env.ASSISTANT_LLM_API_KEY)
+
+    res.status(200).json({
+      status: 'ok',
+      service: 'assistant',
+      llmEnabled,
+      llmConfigured,
+      fallbackModel: ASSISTANT_FALLBACK_MODEL,
+      region: process.env.FUNCTION_REGION ?? 'southamerica-east1',
+      generatedAt: new Date().toISOString(),
+    })
+  })
+
+  router.post('/query', async (req, res) => {
+    const startedAt = Date.now()
+    const body = (req.body ?? {}) as AssistantRequestBody
+    const prompt = String(body.prompt ?? '').trim()
+
+    if (!prompt) {
+      res.status(400).json({ error: 'Body invalido. Envie { prompt: string, userEmail?: string }.' })
+      return
+    }
+
+    try {
+      const [couponSnapshot, logSnapshot] = await Promise.all([
+        db.collection('coupons').get(),
+        db.collection('activityLogs').orderBy('timestamp', 'desc').limit(200).get(),
+      ])
+
+      const coupons = couponSnapshot.docs.map((doc) => doc.data() as Coupon)
+      const logs = logSnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as ActivityLog) }))
+
+      const rawResponse = await resolveAssistantResponse(prompt, body.userEmail, coupons, logs)
+      const response = enrichResponseMetadata(rawResponse, Date.now() - startedAt)
+
+      try {
+        await db.collection('assistantLogs').add(toAuditRecord(prompt, body.userEmail, response))
+      } catch (auditError) {
+        console.error('Falha ao gravar auditoria assistantLogs', auditError)
+      }
+
+      res.status(200).json(response)
+    } catch (error) {
+      console.error('Erro em POST /assistant/query', error)
+      const errorResponse: EmbeddedAiResponse = {
+        requestId: `IA-${Date.now()}`,
+        generatedAt: new Date().toISOString(),
+        queryType: 'desconhecida',
+        status: 'error',
+        answer: 'Falha ao consultar dados internos do assistente IA.',
+        evidence: [],
+        warnings: [error instanceof Error ? error.message : 'Erro desconhecido'],
+        profile: 'operador',
+        metadata: {
+          model: ASSISTANT_FALLBACK_MODEL,
+          latencyMs: Date.now() - startedAt,
+          retrievedCount: 0,
+          confidence: 'low',
+        },
+      }
+
+      try {
+        await db.collection('assistantLogs').add(toAuditRecord(prompt, body.userEmail, errorResponse))
+      } catch (auditError) {
+        console.error('Falha ao gravar auditoria de erro assistantLogs', auditError)
+      }
+
+      res.status(500).json(errorResponse)
+    }
+  })
+
+  return router
 }

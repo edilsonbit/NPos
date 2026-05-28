@@ -9,9 +9,10 @@ interface AppShellProps {
   children: ReactNode
   userEmail?: string
   onLogout?: () => void
+  onOpenAssistant: () => void
 }
 
-const AppShell = ({ activePage, onNavigate, children, userEmail, onLogout }: AppShellProps) => {
+const AppShell = ({ activePage, onNavigate, children, userEmail, onLogout, onOpenAssistant }: AppShellProps) => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
   const [collapsed, setCollapsed] = useState(false)
@@ -30,7 +31,7 @@ const AppShell = ({ activePage, onNavigate, children, userEmail, onLogout }: App
   return (
     <Box sx={{ minHeight: '100vh', background: 'linear-gradient(180deg, #ffffff 0%, #f2f5f9 100%)' }}>
       {/* Header 100% fixo */}
-      <Header userEmail={userEmail} onLogout={onLogout} onToggleSidebar={handleToggleSidebar} />
+      <Header userEmail={userEmail} onLogout={onLogout} onToggleSidebar={handleToggleSidebar} onOpenAssistant={onOpenAssistant} />
 
       {/* Sidebar + Main Content - começa abaixo do Header fixo */}
       <Box sx={{ display: 'flex', minHeight: 'calc(100vh - 56px)', marginTop: '56px' }}>

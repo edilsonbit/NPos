@@ -41,9 +41,15 @@ export interface EmbeddedAiResponse {
   }
 }
 
+export interface EmbeddedAiMessage {
+  role: 'user' | 'assistant'
+  content: string
+}
+
 export interface EmbeddedAiRequest {
   prompt: string
   userEmail?: string
+  conversation?: EmbeddedAiMessage[]
 }
 
 const isEmbeddedAiResponse = (value: unknown): value is EmbeddedAiResponse => {
@@ -61,7 +67,7 @@ const isEmbeddedAiResponse = (value: unknown): value is EmbeddedAiResponse => {
   )
 }
 
-const askAssistantViaApi = async ({ prompt, userEmail }: EmbeddedAiRequest): Promise<EmbeddedAiResponse | null> => {
+const askAssistantViaApi = async ({ prompt, userEmail, conversation }: EmbeddedAiRequest): Promise<EmbeddedAiResponse | null> => {
   const controller = new AbortController()
   const timer = window.setTimeout(() => controller.abort(), ASSISTANT_API_TIMEOUT_MS)
 
@@ -69,7 +75,7 @@ const askAssistantViaApi = async ({ prompt, userEmail }: EmbeddedAiRequest): Pro
     const response = await fetch(ASSISTANT_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt, userEmail }),
+      body: JSON.stringify({ prompt, userEmail, conversation }),
       signal: controller.signal,
     })
 

@@ -58,9 +58,15 @@ type AssistantAuditRecord = {
   warnings: string[]
 }
 
+type AssistantConversationMessage = {
+  role: 'user' | 'assistant'
+  content: string
+}
+
 type AssistantRequestBody = {
   prompt?: string
   userEmail?: string
+  conversation?: AssistantConversationMessage[]
 }
 
 const MAX_EVIDENCE_ITEMS = 10
@@ -219,12 +225,364 @@ const topEntry = (map: Map<string, number>) => {
   }
 }
 
+type AssistantQueryIntent =
+  | 'top_product'
+  | 'top_store'
+  | 'top_payment_method'
+  | 'top_acquirer'
+  | 'most_expensive_product'
+  | 'most_expensive_coupon'
+  | 'product_revenue'
+  | 'total_coupons'
+  | 'total_revenue'
+  | 'avg_ticket'
+  | 'cancel_rate'
+  | 'cancelled_by_date'
+  | 'coupon_status'
+  | 'grouped_total'
+  | 'unknown'
+
+interface AssistantQuerySpec {
+  intent: AssistantQueryIntent
+  entity?: 'product' | 'store' | 'coupon' | 'paymentMethod' | 'acquirer' | 'general'
+  productName?: string
+  storeId?: string
+  couponNumber?: string
+  paymentMethod?: string
+  acquirer?: string
+  period?: 'today' | 'yesterday' | '7days' | 'month' | 'all' | 'specificDate'
+  date?: string
+}
+
 const buildCouponEvidence = (coupons: Coupon[], sourceLabel: string): EmbeddedAiEvidence[] => {
   return coupons.slice(0, MAX_EVIDENCE_ITEMS).map((coupon) => ({
     source: 'coupons' as const,
     recordId: coupon.id,
     snippet: `${sourceLabel} | cupom ${coupon.couponNumber} | loja ${coupon.storeId} | ${coupon.status} | ${coupon.createdAt.slice(0, 10)} | valor ${formatCurrency(coupon.amount)}.`,
   }))
+}
+
+const buildCouponQueryContext = (coupons: Coupon[]) => {
+  const total = coupons.length
+  const totalRevenue = coupons.reduce((sum, coupon) => sum + coupon.amount, 0)
+  const topProductByQty = topEntry(sumByQuantity(coupons, (coupon) => coupon.productName))
+  const topProductByRevenue = topEntry(sumBy(coupons, (coupon) => coupon.productName))
+  const topProductByUnitPrice = (() => {
+    const top = coupons.reduce((best, coupon) => {
+      if (!best || coupon.unitPrice > best.unitPrice) {
+        return coupon
+      }
+      return best
+    }, undefined as Coupon | undefined)
+    return top
+  })()
+  const topStoreByCoupons = topEntry(countBy(coupons, (coupon) => coupon.storeId))
+  const topPaymentMethod = topEntry(countBy(coupons, (coupon) => coupon.paymentMethod))
+
+  return `Dados internos: ${total} cupons, faturamento total ${formatCurrency(totalRevenue)}. Top produto por quantidade: ${topProductByQty.top ? `${topProductByQty.top[0]} (${topProductByQty.top[1]})` : 'sem dados'}. Top produto por receita: ${topProductByRevenue.top ? `${topProductByRevenue.top[0]} (${formatCurrency(topProductByRevenue.top[1])})` : 'sem dados'}. Top produto mais caro: ${topProductByUnitPrice ? `${topProductByUnitPrice.productName} (${formatCurrency(topProductByUnitPrice.unitPrice)})` : 'sem dados'}. Top loja por cupons: ${topStoreByCoupons.top ? `${topStoreByCoupons.top[0]} (${topStoreByCoupons.top[1]})` : 'sem dados'}. Top meio de pagamento: ${topPaymentMethod.top ? `${topPaymentMethod.top[0]} (${topPaymentMethod.top[1]})` : 'sem dados'}.`
+}
+
+const buildConversationPrompt = (conversation: AssistantConversationMessage[]) => {
+  return conversation
+    .map((message) => `${message.role === 'user' ? 'Usuario' : 'Assistente'}: ${message.content}`)
+    .join('\n')
+}
+
+const parseAssistantQueryWithLlm = async (
+  prompt: string,
+  coupons: Coupon[],
+  conversation: AssistantConversationMessage[] = [],
+): Promise<AssistantQuerySpec | null> => {
+  if (process.env.ASSISTANT_LLM_ENABLED !== 'true') return null
+
+  const endpoint = process.env.ASSISTANT_LLM_ENDPOINT
+  const apiKey = process.env.ASSISTANT_LLM_API_KEY
+  const model = process.env.ASSISTANT_LLM_MODEL ?? 'gpt-4.1-mini'
+
+  if (!endpoint || !apiKey) return null
+
+  const context = buildCouponQueryContext(coupons)
+
+  try {
+    const conversationContext = conversation.length > 0 ? `Conversa:\n${buildConversationPrompt(conversation)}\n\n` : ''
+    const llmResponse = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify({
+        model,
+        temperature: 0,
+        messages: [
+          {
+            role: 'system',
+            content:
+              'Voce e um parser para consultas de relatorios de cupons e produtos. Responda apenas com JSON valido sem texto adicional. Use os campos: intent, entity, productName, storeId, couponNumber, paymentMethod, acquirer, period, date. period deve ser one of today, yesterday, 7days, month, all, specificDate. date deve estar no formato YYYY-MM-DD se especificado.',
+          },
+          {
+            role: 'user',
+            content: `${conversationContext}Pergunta atual: ${prompt}\n\nContexto: ${context}`,
+          },
+        ],
+      }),
+    })
+
+    if (!llmResponse.ok) return null
+
+    const payload = (await llmResponse.json()) as { choices?: Array<{ message?: { content?: string } }> }
+    const content = payload.choices?.[0]?.message?.content?.trim()
+    if (!content) return null
+
+    const jsonMatch = content.match(/\{[\s\S]*\}/)
+    if (!jsonMatch) return null
+
+    const parsed: unknown = JSON.parse(jsonMatch[0])
+    if (typeof parsed !== 'object' || parsed === null) return null
+
+    const spec = parsed as AssistantQuerySpec
+    if (!spec.intent) return null
+    return spec
+  } catch {
+    return null
+  }
+}
+
+const executeAssistantQuerySpec = (
+  profile: EmbeddedAiUserProfile,
+  coupons: Coupon[],
+  spec: AssistantQuerySpec,
+  label: string,
+): EmbeddedAiResponse | null => {
+  const { filtered } = filterCouponsByPeriod(coupons, spec.period === 'today' ? 'hoje' : spec.period === 'yesterday' ? 'ontem' : spec.period === '7days' ? '7 dias' : spec.period === 'month' ? 'mes atual' : 'na base atual')
+
+  if (filtered.length === 0) {
+    return newResponse(
+      profile,
+      'metricas_operacionais',
+      'insufficient_context',
+      `Nao encontrei cupons ${label}.`,
+      [],
+      ['Tente remover ou ajustar o periodo informado.'],
+    )
+  }
+
+  switch (spec.intent) {
+    case 'top_product': {
+      const ranking = topEntry(sumByQuantity(filtered, (coupon) => coupon.productName))
+      if (!ranking.top) return null
+      const [productName, quantity] = ranking.top
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O produto mais vendido ${label} e ${productName}, com ${quantity} unidades vendidas.`,
+        buildCouponEvidence(
+          filtered.filter((coupon) => coupon.productName === productName).sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+          'Ranking de produtos por quantidade',
+        ),
+      )
+    }
+    case 'most_expensive_product': {
+      let topCoupon: Coupon | null = null
+      for (const coupon of filtered) {
+        if (!topCoupon || coupon.unitPrice > topCoupon.unitPrice) {
+          topCoupon = coupon
+        }
+      }
+      if (!topCoupon) return null
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O produto mais caro ${label} e ${topCoupon.productName}, com preco unitario de ${formatCurrency(topCoupon.unitPrice)} (cupom ${topCoupon.couponNumber}, loja ${topCoupon.storeId}).`,
+        buildCouponEvidence([topCoupon], 'Produto mais caro'),
+      )
+    }
+    case 'product_revenue': {
+      const ranking = topEntry(sumBy(filtered, (coupon) => coupon.productName))
+      if (!ranking.top) return null
+      const [productName, value] = ranking.top
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O produto com maior faturamento ${label} e ${productName}, com ${formatCurrency(value)}.`,
+        buildCouponEvidence(
+          filtered.filter((coupon) => coupon.productName === productName).sort((a, b) => b.amount - a.amount),
+          'Ranking de produtos por receita',
+        ),
+      )
+    }
+    case 'cancel_rate': {
+      const cancelled = filtered.filter((coupon) => coupon.status === 'cancelado').length
+      const rate = filtered.length ? (cancelled / filtered.length) * 100 : 0
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `A taxa de cancelamento ${label} e ${rate.toFixed(2)}% (${cancelled} de ${filtered.length} cupons).`,
+        buildCouponEvidence(filtered.filter((coupon) => coupon.status === 'cancelado').sort((a, b) => b.createdAt.localeCompare(a.createdAt)), 'Taxa de cancelamento'),
+      )
+    }
+    case 'total_coupons': {
+      const cancelled = filtered.filter((coupon) => coupon.status === 'cancelado').length
+      const authorized = filtered.length - cancelled
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `Existem ${filtered.length} cupons ${label}: ${authorized} autorizados e ${cancelled} cancelados.`,
+        buildCouponEvidence(filtered.sort((a, b) => b.createdAt.localeCompare(a.createdAt)), 'Resumo de quantidade'),
+      )
+    }
+    case 'total_revenue': {
+      const total = filtered.reduce((acc, coupon) => acc + coupon.amount, 0)
+      const cancelledTotal = filtered.filter((coupon) => coupon.status === 'cancelado').reduce((acc, coupon) => acc + coupon.amount, 0)
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O valor total ${label} e ${formatCurrency(total)}. Desse total, ${formatCurrency(cancelledTotal)} sao de cupons cancelados.`,
+        buildCouponEvidence(filtered.sort((a, b) => b.amount - a.amount), 'Resumo de faturamento'),
+      )
+    }
+    case 'avg_ticket': {
+      const authorized = filtered.filter((coupon) => coupon.status === 'autorizado')
+      const totalAuthorized = authorized.reduce((acc, coupon) => acc + coupon.amount, 0)
+      const avg = authorized.length ? totalAuthorized / authorized.length : 0
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O ticket medio ${label} e ${formatCurrency(avg)}, considerando ${authorized.length} cupons autorizados.`,
+        buildCouponEvidence(authorized.sort((a, b) => b.amount - a.amount), 'Ticket medio'),
+      )
+    }
+    case 'top_store': {
+      const ranking = topEntry(countBy(filtered, (coupon) => coupon.storeId))
+      if (!ranking.top) return null
+      const [storeId, count] = ranking.top
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `A loja com mais cupons ${label} e ${storeId}, com ${count} cupons.`,
+        buildCouponEvidence(filtered.filter((coupon) => coupon.storeId === storeId).sort((a, b) => b.createdAt.localeCompare(a.createdAt)), 'Ranking por loja'),
+      )
+    }
+    case 'top_payment_method': {
+      const ranking = topEntry(countBy(filtered, (coupon) => coupon.paymentMethod))
+      if (!ranking.top) return null
+      const [paymentMethod, count] = ranking.top
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O meio de pagamento mais usado ${label} e ${paymentMethod}, com ${count} cupons.`,
+        buildCouponEvidence(filtered.filter((coupon) => coupon.paymentMethod === paymentMethod).sort((a, b) => b.createdAt.localeCompare(a.createdAt)), 'Ranking por meio de pagamento'),
+      )
+    }
+    case 'top_acquirer': {
+      const ranking = topEntry(countBy(filtered, (coupon) => coupon.acquirer))
+      if (!ranking.top) return null
+      const [acquirer, count] = ranking.top
+      return newResponse(
+        profile,
+        'metricas_operacionais',
+        'ok',
+        `O adquirente com mais cupons ${label} e ${acquirer}, com ${count} registros.`,
+        buildCouponEvidence(filtered.filter((coupon) => coupon.acquirer === acquirer).sort((a, b) => b.createdAt.localeCompare(a.createdAt)), 'Ranking por adquirente'),
+      )
+    }
+    default:
+      return null
+  }
+}
+
+const sumByQuantity = (coupons: Coupon[], getter: (coupon: Coupon) => string) => {
+  return coupons.reduce((acc, coupon) => {
+    const key = getter(coupon).trim() || 'Nao informado'
+    acc.set(key, (acc.get(key) ?? 0) + coupon.quantity)
+    return acc
+  }, new Map<string, number>())
+}
+
+const summarizeTopEntries = (entries: Array<[string, number]>, limit = 5) => {
+  return entries
+    .slice(0, limit)
+    .map(([key, value], index) => `${index + 1}. ${key}: ${value}`)
+    .join('; ')
+}
+
+const isOpenCouponQuestion = (normalizedPrompt: string) => {
+  return hasAny(normalizedPrompt, [
+    'cupom',
+    'cupon',
+    'produto',
+    'produtos',
+    'faturament',
+    'receita',
+    'ticket',
+    'cancel',
+    'loja',
+    'adquirent',
+    'pagament',
+    'meio',
+    'vend',
+    'vendas',
+    'quant',
+    'percent',
+    'taxa',
+    'barat',
+  ])
+}
+
+const buildCouponContextSummary = (coupons: Coupon[]) => {
+  const total = coupons.length
+  const authorized = coupons.filter((coupon) => coupon.status === 'autorizado').length
+  const cancelled = coupons.filter((coupon) => coupon.status === 'cancelado').length
+  const totalRevenue = coupons.reduce((acc, coupon) => acc + coupon.amount, 0)
+  const avgTicket = authorized
+    ? coupons
+        .filter((coupon) => coupon.status === 'autorizado')
+        .reduce((acc, coupon) => acc + coupon.amount, 0) / authorized
+    : 0
+
+  const productByQuantity = topEntry(sumByQuantity(coupons, (coupon) => coupon.productName))
+  const productByRevenue = topEntry(sumBy(coupons, (coupon) => coupon.productName))
+  const storeByCoupons = topEntry(countBy(coupons, (coupon) => coupon.storeId))
+  const storeByRevenue = topEntry(sumBy(coupons, (coupon) => coupon.storeId))
+  const paymentMethods = topEntry(countBy(coupons, (coupon) => coupon.paymentMethod))
+  const acquirers = topEntry(countBy(coupons, (coupon) => coupon.acquirer))
+  const cancelledByProduct = topEntry(
+    sumBy(
+      coupons.filter((coupon) => coupon.status === 'cancelado'),
+      (coupon) => coupon.productName,
+    ),
+  )
+
+  const topProductsQty = summarizeTopEntries(productByQuantity.entries)
+  const topProductsRevenue = summarizeTopEntries(productByRevenue.entries)
+  const topStoresCoupons = summarizeTopEntries(storeByCoupons.entries)
+  const topStoresRevenue = summarizeTopEntries(storeByRevenue.entries)
+  const topPaymentMethods = summarizeTopEntries(paymentMethods.entries)
+  const topAcquirers = summarizeTopEntries(acquirers.entries)
+  const topCancelledProducts = summarizeTopEntries(cancelledByProduct.entries)
+
+  return `Total de cupons: ${total}
+Autorizados: ${authorized}
+Cancelados: ${cancelled}
+Faturamento total: ${formatCurrency(totalRevenue)}
+Ticket medio autorizado: ${formatCurrency(avgTicket)}
+
+Top produtos por quantidade: ${topProductsQty || 'sem dados'}
+Top produtos por receita: ${topProductsRevenue || 'sem dados'}
+Top lojas por cupons: ${topStoresCoupons || 'sem dados'}
+Top lojas por receita: ${topStoresRevenue || 'sem dados'}
+Top meios de pagamento: ${topPaymentMethods || 'sem dados'}
+Top adquirentes: ${topAcquirers || 'sem dados'}
+Produtos com mais cancelamentos: ${topCancelledProducts || 'sem dados'}`
 }
 
 const pluralize = (count: number, singular: string, plural: string) =>
@@ -270,6 +628,129 @@ const resolveOperationalMetricsQuery = (
       evidence,
       ranking.entries.length > 1
         ? [`Segundo lugar: ${ranking.entries[1][0]} com ${ranking.entries[1][1]} cupons.`]
+        : [],
+    )
+  }
+
+  const asksMostExpensiveProduct =
+    normalizedPrompt.includes('produto') &&
+    (normalizedPrompt.includes('caro') ||
+      normalizedPrompt.includes('mais caro') ||
+      normalizedPrompt.includes('produto mais caro') ||
+      normalizedPrompt.includes('valor mais alto') ||
+      normalizedPrompt.includes('preco mais alto') ||
+      normalizedPrompt.includes('preco maior'))
+
+  if (asksMostExpensiveProduct) {
+    let topCoupon = filtered[0]
+    for (const coupon of filtered) {
+      if (coupon.unitPrice > (topCoupon?.unitPrice ?? 0)) {
+        topCoupon = coupon
+      }
+    }
+
+    if (!topCoupon) return null
+
+    const evidence = buildCouponEvidence(
+      filtered.filter((coupon) => coupon.productName === topCoupon.productName).sort((a, b) => b.unitPrice - a.unitPrice),
+      'Produto mais caro',
+    )
+
+    return newResponse(
+      profile,
+      'metricas_operacionais',
+      'ok',
+      `O produto mais caro ${label} e ${topCoupon.productName}, com preco unitario de ${formatCurrency(topCoupon.unitPrice)} (cupom ${topCoupon.couponNumber}, loja ${topCoupon.storeId}).`,
+      evidence,
+      [],
+    )
+  }
+
+  const asksCheapestProduct =
+    normalizedPrompt.includes('barat') ||
+    normalizedPrompt.includes('mais barato') ||
+    normalizedPrompt.includes('produto mais barato') ||
+    normalizedPrompt.includes('valor mais baixo') ||
+    normalizedPrompt.includes('preco mais baixo') ||
+    normalizedPrompt.includes('preco mais barato')
+
+  if (asksCheapestProduct) {
+    let cheapestCoupon = filtered[0]
+    for (const coupon of filtered) {
+      if (coupon.unitPrice < (cheapestCoupon?.unitPrice ?? Infinity)) {
+        cheapestCoupon = coupon
+      }
+    }
+
+    if (!cheapestCoupon) return null
+
+    const evidence = buildCouponEvidence(
+      filtered.filter((coupon) => coupon.productName === cheapestCoupon.productName).sort((a, b) => a.unitPrice - b.unitPrice),
+      'Produto mais barato',
+    )
+
+    return newResponse(
+      profile,
+      'metricas_operacionais',
+      'ok',
+      `O produto mais barato ${label} e ${cheapestCoupon.productName}, com preco unitario de ${formatCurrency(cheapestCoupon.unitPrice)} (cupom ${cheapestCoupon.couponNumber}, loja ${cheapestCoupon.storeId}).`,
+      evidence,
+      [],
+    )
+  }
+
+  const asksMostSoldProduct =
+    normalizedPrompt.includes('produto') &&
+    (normalizedPrompt.includes('vend') ||
+      normalizedPrompt.includes('mais vendido') ||
+      normalizedPrompt.includes('produto mais vendido') ||
+      normalizedPrompt.includes('maior venda') ||
+      normalizedPrompt.includes('top produto') ||
+      normalizedPrompt.includes('top produtos'))
+
+  if (asksMostSoldProduct) {
+    const ranking = topEntry(sumByQuantity(filtered, (coupon) => coupon.productName))
+    if (!ranking.top) return null
+    const [productName, quantity] = ranking.top
+    const evidence = buildCouponEvidence(
+      filtered.filter((coupon) => coupon.productName === productName).sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
+      'Ranking de produtos por quantidade',
+    )
+
+    return newResponse(
+      profile,
+      'metricas_operacionais',
+      'ok',
+      `O produto mais vendido ${label} e ${productName}, com ${quantity} unidade${quantity === 1 ? '' : 's'} vendida${quantity === 1 ? '' : 's'}.`,
+      evidence,
+      ranking.entries.length > 1
+        ? [`Segundo colocado: ${ranking.entries[1][0]} com ${ranking.entries[1][1]} unidade${ranking.entries[1][1] === 1 ? '' : 's'}.`]
+        : [],
+    )
+  }
+
+  const asksMostRevenueProduct =
+    normalizedPrompt.includes('produto') &&
+    hasAny(normalizedPrompt, ['faturament', 'receita', 'valor']) &&
+    hasAny(normalizedPrompt, ['mais', 'top', 'maior'])
+
+  if (asksMostRevenueProduct) {
+    const ranking = topEntry(sumBy(filtered, (coupon) => coupon.productName))
+    if (!ranking.top) return null
+    const [productName, value] = ranking.top
+    const evidence = buildCouponEvidence(
+      filtered.filter((coupon) => coupon.productName === productName).sort((a, b) => b.amount - a.amount),
+      'Ranking de produtos por receita',
+    )
+
+    return newResponse(
+      profile,
+      'metricas_operacionais',
+      'ok',
+      `O produto com maior faturamento ${label} e ${productName}, com ${formatCurrency(value)}.`,
+      evidence,
+      ranking.entries.length > 1
+        ? [`Segundo maior faturamento: ${ranking.entries[1][0]} com ${formatCurrency(ranking.entries[1][1])}.`]
         : [],
     )
   }
@@ -484,6 +965,8 @@ const summarizeRecentLogs = (logs: ActivityLog[]) => {
 const tryHumanizeAnswerWithLlm = async (
   prompt: string,
   response: EmbeddedAiResponse,
+  context?: string,
+  conversation: AssistantConversationMessage[] = [],
 ): Promise<string | null> => {
   if (process.env.ASSISTANT_LLM_ENABLED !== 'true') return null
 
@@ -494,6 +977,21 @@ const tryHumanizeAnswerWithLlm = async (
   if (!endpoint || !apiKey) return null
 
   try {
+    const conversationContext = conversation.length
+      ? `Historico da conversa:\n${buildConversationPrompt(conversation)}\n\n`
+      : ''
+
+    const userContent = [
+      conversationContext,
+      `Pergunta: ${prompt}`,
+      context ? `Contexto:\n${context}` : null,
+      'Resposta base:',
+      response.answer,
+      response.warnings.length ? `Avisos: ${response.warnings.join('; ')}` : null,
+    ]
+      .filter(Boolean)
+      .join('\n\n')
+
     const llmResponse = await fetch(endpoint, {
       method: 'POST',
       headers: {
@@ -507,16 +1005,11 @@ const tryHumanizeAnswerWithLlm = async (
           {
             role: 'system',
             content:
-              'Reescreva respostas operacionais em portugues do Brasil com tom claro e objetivo. Nao invente dados, nao altere numeros e preserve os fatos/evidencias.',
+              'Voce e um assistente operacional que responde em portugues do Brasil. Nao invente dados. Use apenas as informacoes internas fornecidas. Seja claro, objetivo e mantenha numeros e fatos corretos. Use o historico da conversa quando a pergunta depender de seguimento ou fizer referencia a mensagens anteriores.',
           },
           {
             role: 'user',
-            content: JSON.stringify({
-              prompt,
-              answer: response.answer,
-              warnings: response.warnings,
-              evidence: response.evidence.slice(0, 5),
-            }),
+            content: userContent,
           },
         ],
       }),
@@ -593,6 +1086,7 @@ const resolveAssistantResponse = async (
   userEmail: string | undefined,
   coupons: Coupon[],
   activityLogs: ActivityLog[],
+  conversation: AssistantConversationMessage[] = [],
 ): Promise<EmbeddedAiResponse> => {
   const profile = resolveProfile(userEmail)
   const normalizedPrompt = normalizeText(prompt)
@@ -729,7 +1223,51 @@ const resolveAssistantResponse = async (
     }
   }
 
-  const rewritten = await tryHumanizeAnswerWithLlm(prompt, response)
+  if (response.status !== 'ok' && isOpenCouponQuestion(normalizedPrompt)) {
+    const parsedQuery = await parseAssistantQueryWithLlm(prompt, coupons, conversation)
+    if (parsedQuery) {
+      const intentResponse = executeAssistantQuerySpec(profile, coupons, parsedQuery, 'na base atual')
+      if (intentResponse?.status === 'ok') {
+        const context = buildCouponContextSummary(coupons)
+        const rewritten = await tryHumanizeAnswerWithLlm(prompt, intentResponse, context, conversation)
+        if (rewritten) {
+          return {
+            ...intentResponse,
+            answer: rewritten,
+            warnings: ['Resposta redigida com apoio de LLM externo usando apenas contexto interno.', ...intentResponse.warnings],
+          }
+        }
+        return intentResponse
+      }
+    }
+
+    const context = buildCouponContextSummary(coupons)
+    response = newResponse(
+      profile,
+      'metricas_operacionais',
+      'ok',
+      'Buscando a resposta com base nos dados internos de cupons e produtos.',
+      buildCouponEvidence(coupons.slice(0, MAX_EVIDENCE_ITEMS), 'Contexto de cupons'),
+      ['Consulta aberta usando contexto interno.'],
+    )
+
+    const rewritten = await tryHumanizeAnswerWithLlm(prompt, response, context, conversation)
+    if (rewritten) {
+      return {
+        ...response,
+        answer: rewritten,
+        warnings: ['Resposta redigida com apoio de LLM externo usando apenas contexto interno.', ...response.warnings],
+      }
+    }
+
+    return response
+  }
+
+  if (response.status === 'ok') {
+    return response
+  }
+
+  const rewritten = await tryHumanizeAnswerWithLlm(prompt, response, undefined, conversation)
   if (!rewritten) return response
 
   return {
@@ -775,8 +1313,14 @@ export const createAssistantRouter = (db: Firestore): Router => {
 
       const coupons = couponSnapshot.docs.map((doc) => doc.data() as Coupon)
       const logs = logSnapshot.docs.map((doc) => ({ id: doc.id, ...(doc.data() as ActivityLog) }))
+      const conversation = Array.isArray(body.conversation)
+        ? body.conversation.filter(
+            (item): item is AssistantConversationMessage =>
+              item && (item.role === 'user' || item.role === 'assistant') && typeof item.content === 'string',
+          )
+        : []
 
-      const rawResponse = await resolveAssistantResponse(prompt, body.userEmail, coupons, logs)
+      const rawResponse = await resolveAssistantResponse(prompt, body.userEmail, coupons, logs, conversation)
       const response = enrichResponseMetadata(rawResponse, Date.now() - startedAt)
 
       try {

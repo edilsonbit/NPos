@@ -21,4 +21,4 @@ app.use('/cupons', createCouponsRouter(db))
 app.use('/agregacao', createAggregationRouter(db))
 app.use('/assistant', createAssistantRouter(db))
 
-export const api = onRequest({ region: 'southamerica-east1' }, app)
+export const api = onRequest({ region: 'southamerica-east1', invoker: 'public' }, app)

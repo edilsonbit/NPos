@@ -447,10 +447,10 @@ const App = () => {
     }
   }
 
-  const handleAskEmbeddedAi = async (prompt: string) => {
+  const handleAskEmbeddedAi = async (prompt: string, conversation: Array<{ role: 'user' | 'assistant'; content: string }>) => {
     setAiLoading(true)
     try {
-      const response = await askEmbeddedAssistant({ prompt, userEmail })
+      const response = await askEmbeddedAssistant({ prompt, userEmail, conversation })
       setAiResult(response)
       const promptForLog =
         prompt.length > MAX_AI_LOG_PROMPT_LENGTH

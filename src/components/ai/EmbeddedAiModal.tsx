@@ -66,6 +66,7 @@ const EmbeddedAiModal = ({ open, loading, result, onClose, onAsk }: EmbeddedAiMo
   const [prompt, setPrompt] = useState('')
   const [messages, setMessages] = useState<AssistantMessage[]>(() => loadAssistantChatHistory())
   const messagesEndRef = useRef<HTMLDivElement | null>(null)
+  const isWaitingForResponse = loading && messages.length > 0 && messages[messages.length - 1]?.role === 'user'
 
   useEffect(() => {
     if (!open) return
@@ -214,6 +215,31 @@ const EmbeddedAiModal = ({ open, loading, result, onClose, onAsk }: EmbeddedAiMo
                   </Paper>
                 </Box>
               ))
+            )}
+            {isWaitingForResponse && (
+              <Box sx={{ display: 'flex', justifyContent: 'flex-start' }}>
+                <Paper
+                  elevation={0}
+                  sx={{
+                    maxWidth: '65%',
+                    p: 1.5,
+                    borderRadius: 3,
+                    backgroundColor: '#ffffff',
+                    color: '#152238',
+                    borderTopLeftRadius: 16,
+                    borderTopRightRadius: 0,
+                    boxShadow: '0 1px 2px rgba(0,0,0,0.08)',
+                    opacity: 0.85,
+                  }}
+                >
+                  <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+                    <CircularProgress size={16} sx={{ color: '#2563eb' }} />
+                    <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap', fontStyle: 'italic' }}>
+                      Pensando... Respondendo em breve.
+                    </Typography>
+                  </Stack>
+                </Paper>
+              </Box>
             )}
             <div ref={messagesEndRef} />
           </Box>

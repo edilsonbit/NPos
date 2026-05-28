@@ -489,3 +489,44 @@ node src/data/mocks/generateMock.mjs
 ### Regras de segurança (`firestore.rules`)
 
 Verificar que a coleção `activityLogs` está coberta pelas regras de leitura/escrita autenticada antes de ir para produção.
+
+---
+
+## 14. IA Embarcada — Versão Inicial (Issue #11)
+
+### Objetivo entregue nesta versão
+
+- Fluxo ponta a ponta no front: **UI (Assistente IA) → API interna (serviço de aplicação) → resposta estruturada**
+- Consultas operacionais com base em dados internos:
+  - cupons cancelados por data
+  - status de agrupamento por número de cupom
+  - resumo de logs de integração
+- Resposta com evidências (fontes internas utilizadas)
+- Fallback para contexto insuficiente (pergunta ambígua ou sem data/número de cupom)
+- Registro mínimo de auditoria via `activityLogs` com ação `CONSULTA_IA`
+
+### Arquivos principais
+
+- `src/components/ai/EmbeddedAiPage.tsx`
+- `src/application/embeddedAiService.ts`
+- `src/App.tsx` (integração da página e logging)
+- `src/components/layout/Sidebar.tsx` (menu Assistente IA)
+- `src/components/alerts/IntegrationAlertsPage.tsx` (nova ação de log)
+
+### Perfis e restrições (RBAC inicial)
+
+- Perfis suportados: `operador`, `analista`, `administrador`
+- Resolução de perfil via e-mail autenticado:
+  - `VITE_AI_ADMIN_EMAILS` (lista CSV)
+  - `VITE_AI_ANALYST_EMAILS` (lista CSV)
+  - fallback padrão: `operador`
+- Restrição aplicada:
+  - consultas de **logs/auditoria** exigem perfil `analista` ou `administrador`
+  - demais consultas operacionais permanecem disponíveis para `operador`
+
+### Limites conhecidos da versão inicial
+
+- Sem uso de LLM externo nesta etapa; interpretação por regras locais de intenção
+- Sem memória conversacional entre perguntas
+- Cobertura intencionalmente focada em três tipos de consulta operacional
+- Evidências retornadas em quantidade limitada para manter resposta rápida

@@ -2,7 +2,6 @@ import {
     Box,
     Button,
     MenuItem,
-    Stack,
     TextField,
 } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers'
@@ -10,8 +9,9 @@ import ClearIcon from '@mui/icons-material/Clear'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
 import type { Coupon, CouponFilters } from '../../domain/models'
+import { uniqueNormalized } from '../../utils/textNormalization'
 
-const selectSx = { flex: 1, minWidth: 100 }
+const selectSx = { width: '100%' }
 
 interface CouponFiltersBarProps {
     coupons: Coupon[]
@@ -38,15 +38,20 @@ const CouponFiltersBar = ({
     onSearch,
     hideStatusFilter,
 }: CouponFiltersBarProps) => {
-    const stores = [...new Set(coupons.map((c) => c.storeId))].sort()
-    const acquirers = [...new Set(coupons.map((c) => c.acquirer))].sort()
-    const payMethods = [...new Set(coupons.map((c) => c.paymentMethod))].sort()
+    const stores = uniqueNormalized(coupons.map((c) => c.storeId))
+    const acquirers = uniqueNormalized(coupons.map((c) => c.acquirer))
+    const payMethods = uniqueNormalized(coupons.map((c) => c.paymentMethod))
     const situacoes = [...new Set(coupons.filter((c) => c.situacao).map((c) => c.situacao))].sort() as string[]
 
     return (
-        <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
+        <Box sx={{ p: { xs: 1.5, sm: 2 }, borderBottom: '1px solid #e8ecf0', backgroundColor: '#fcfdff' }}>
             {/* Linha 1 — Selects (Loja, Adquirente, Forma de Pagamento, Status, Situação) */}
-            <Stack direction="row" spacing={1.5} sx={{ mb: 1.5 }}>
+            <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'repeat(5, minmax(120px, 1fr))' },
+                gap: 1.5,
+                mb: 1.5,
+            }}>
                 <TextField
                     select size="small" label="Loja"
                     value={filters.storeId}
@@ -94,84 +99,95 @@ const CouponFiltersBar = ({
                     select size="small" label="Situação"
                     value={filters.situacao}
                     onChange={(e) => onInstantChange(set(filters, 'situacao', e.target.value as CouponFilters['situacao']))}
-                    sx={selectSx}
+                    sx={{ ...selectSx, gridColumn: { xs: '1 / -1', md: 'auto' } }}
                 >
                     <MenuItem value="">Todas</MenuItem>
                     {situacoes.map((s) => <MenuItem key={s} value={s}>{s}</MenuItem>)}
                 </TextField>
-            </Stack>
+            </Box>
 
-            {/* Linha 2 — Datas, campos de texto, botões */}
-            <Stack direction="row" spacing={1.5} sx={{ alignItems: 'center' }}>
-                <DatePicker
-                    label="Data Início"
-                    format="DD/MM/YYYY"
-                    value={filters.dateFrom ? dayjs(filters.dateFrom) : null}
-                    onChange={(v) => onInstantChange(set(filters, 'dateFrom', v ? v.format('YYYY-MM-DD') : ''))}
-                    slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
-                />
-                <DatePicker
-                    label="Data Fim"
-                    format="DD/MM/YYYY"
-                    value={filters.dateTo ? dayjs(filters.dateTo) : null}
-                    onChange={(v) => onInstantChange(set(filters, 'dateTo', v ? v.format('YYYY-MM-DD') : ''))}
-                    slotProps={{ textField: { size: 'small', sx: { width: 165 } } }}
-                />
+            {/* Linha 2 — Datas + campos de texto */}
+            <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: 'repeat(2, minmax(0, 1fr))', md: 'repeat(5, minmax(120px, 1fr))' },
+                gap: 1.5,
+                mb: 1.5,
+            }}>
+                <Box>
+                    <DatePicker
+                        label="Data Início"
+                        format="DD/MM/YYYY"
+                        value={filters.dateFrom ? dayjs(filters.dateFrom) : null}
+                        onChange={(v) => onInstantChange(set(filters, 'dateFrom', v ? v.format('YYYY-MM-DD') : ''))}
+                        slotProps={{ textField: { size: 'small', sx: { width: '100%' } } }}
+                    />
+                </Box>
+                <Box>
+                    <DatePicker
+                        label="Data Fim"
+                        format="DD/MM/YYYY"
+                        value={filters.dateTo ? dayjs(filters.dateTo) : null}
+                        onChange={(v) => onInstantChange(set(filters, 'dateTo', v ? v.format('YYYY-MM-DD') : ''))}
+                        slotProps={{ textField: { size: 'small', sx: { width: '100%' } } }}
+                    />
+                </Box>
                 <TextField
                     size="small" label="Nº Cupom"
                     value={filters.couponNumber}
                     onChange={(e) => onChange(set(filters, 'couponNumber', e.target.value))}
-                    sx={{ flex: 1 }}
+                    sx={{ width: '100%' }}
                 />
                 <TextField
                     size="small" label="NSU"
                     value={filters.nsu}
                     onChange={(e) => onChange(set(filters, 'nsu', e.target.value))}
-                    sx={{ flex: 1 }}
+                    sx={{ width: '100%' }}
                 />
                 <TextField
                     size="small" label="Código / Nome do Produto"
                     value={filters.productSearch}
                     onChange={(e) => onChange(set(filters, 'productSearch', e.target.value))}
-                    sx={{ flex: 2 }}
+                    sx={{ width: '100%', gridColumn: { xs: '1 / -1', md: 'auto' } }}
                 />
+            </Box>
 
-                <Box sx={{ display: 'flex', gap: 1, flexShrink: 0, alignItems: 'center' }}>
-                    <Button
-                        variant="contained"
-                        startIcon={<SearchIcon />}
-                        onClick={onSearch}
-                        sx={{
-                            backgroundColor: '#1976d2',
-                            '&:hover': { backgroundColor: '#1565c0' },
-                            textTransform: 'none',
-                            fontWeight: 600,
-                            px: 2,
-                            height: 40,
-                        }}
-                    >
-                        Pesquisar
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        startIcon={<ClearIcon />}
-                        onClick={onClear}
-                        sx={{
-                            borderColor: '#e0e0e0',
-                            color: '#757575',
-                            '&:hover': { borderColor: '#bdbdbd', backgroundColor: '#f5f5f5' },
-                            textTransform: 'none',
-                            fontWeight: 600,
-                            px: 2,
-                            height: 40,
-                            whiteSpace: 'nowrap',
-                        }}
-                    >
-                        Limpar
-                    </Button>
-
-                </Box>
-            </Stack>
+            {/* Linha 3 — Botões */}
+            <Box sx={{ display: 'grid', gap: 1, gridTemplateColumns: { xs: '1fr 1fr', sm: 'auto auto' }, justifyContent: { xs: 'stretch', sm: 'flex-end' } }}>
+                <Button
+                    variant="contained"
+                    startIcon={<SearchIcon />}
+                    onClick={onSearch}
+                    sx={{
+                        backgroundColor: '#1976d2',
+                        '&:hover': { backgroundColor: '#1565c0' },
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        px: 2,
+                        height: 40,
+                        borderRadius: 1.5,
+                    }}
+                >
+                    Pesquisar
+                </Button>
+                <Button
+                    variant="outlined"
+                    startIcon={<ClearIcon />}
+                    onClick={onClear}
+                    sx={{
+                        borderColor: '#e0e0e0',
+                        color: '#757575',
+                        '&:hover': { borderColor: '#bdbdbd', backgroundColor: '#f5f5f5' },
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        px: 2,
+                        height: 40,
+                        whiteSpace: 'nowrap',
+                        borderRadius: 1.5,
+                    }}
+                >
+                    Limpar
+                </Button>
+            </Box>
         </Box>
     )
 }

@@ -8,26 +8,18 @@
   Tooltip,
   Typography,
 } from '@mui/material'
-import AccountBalanceIcon from '@mui/icons-material/AccountBalance'
-import ApiIcon from '@mui/icons-material/Api'
-import BugReportIcon from '@mui/icons-material/BugReport'
-import CloudIcon from '@mui/icons-material/Cloud'
-import CodeIcon from '@mui/icons-material/Code'
-import CompareArrowsIcon from '@mui/icons-material/CompareArrows'
-import DashboardIcon from '@mui/icons-material/Dashboard'
-import ForkRightIcon from '@mui/icons-material/ForkRight'
-import GroupIcon from '@mui/icons-material/Group'
-import HubIcon from '@mui/icons-material/Hub'
-import NotificationsIcon from '@mui/icons-material/Notifications'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import PersonIcon from '@mui/icons-material/Person'
-import ReceiptLongIcon from '@mui/icons-material/ReceiptLong'
-import ReplayIcon from '@mui/icons-material/Replay'
-import RouteIcon from '@mui/icons-material/Route'
-import SwapHorizIcon from '@mui/icons-material/SwapHoriz'
-import TuneIcon from '@mui/icons-material/Tune'
-import WarningIcon from '@mui/icons-material/Warning'
+import {
+  IconAdjustments,
+  IconAlertTriangle,
+  IconBug,
+  IconDashboard,
+  IconReceipt,
+  IconReceiptOff,
+  IconStack2,
+} from '@tabler/icons-react'
 import { type ReactNode } from 'react'
+import { useLanguage } from '../../i18n/LanguageContext'
+import type { Translations } from '../../i18n/translations'
 
 const DRAWER_WIDTH = 240
 const DRAWER_WIDTH_COLLAPSED = 64
@@ -43,51 +35,27 @@ interface NavSection {
   items: NavItem[]
 }
 
-const navSections: NavSection[] = [
+const getNavSections = (t: Translations): NavSection[] => [
   {
-    label: 'Monitoramento',
+    label: t.sidebar.sections.monitoring,
     items: [
-      { icon: <DashboardIcon sx={{ fontSize: 18 }} />, label: 'Dashboard', pageKey: 'dashboard' },
-      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Fiscais', pageKey: 'cupons' },
-      { icon: <ReceiptLongIcon sx={{ fontSize: 18 }} />, label: 'Cupons Cancelados', pageKey: 'cupons-cancelados' },
-      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'agregador' },
-      { icon: <BugReportIcon sx={{ fontSize: 18 }} />, label: 'API Tester', pageKey: 'api-tester' },
-      { icon: <ReplayIcon sx={{ fontSize: 18 }} />, label: 'Reenvio Pedido', pageKey: 'reenvio' },
-      { icon: <CodeIcon sx={{ fontSize: 18 }} />, label: 'Edição Payload', pageKey: 'payload' },
+      { icon: <IconDashboard size={20} stroke={1.5} />, label: t.sidebar.items.dashboard, pageKey: 'dashboard' },
+      { icon: <IconReceipt size={20} stroke={1.5} />, label: t.sidebar.items.fiscalCoupons, pageKey: 'cupons' },
+      { icon: <IconReceiptOff size={20} stroke={1.5} />, label: t.sidebar.items.cancelledCoupons, pageKey: 'cupons-cancelados' },
+      { icon: <IconStack2 size={20} stroke={1.5} />, label: t.sidebar.items.aggregator, pageKey: 'agregador' },
+      { icon: <IconBug size={20} stroke={1.5} />, label: t.sidebar.items.apiTester, pageKey: 'api-tester' },
     ],
   },
   {
-    label: 'Relatórios',
+    label: t.sidebar.sections.reports,
     items: [
-      { icon: <NotificationsIcon sx={{ fontSize: 18 }} />, label: 'Alerta das integrações', pageKey: 'alertas' },
-      { icon: <WarningIcon sx={{ fontSize: 18 }} />, label: 'Pedidos não integrados', pageKey: 'pedidos-ni' },
+      { icon: <IconAlertTriangle size={20} stroke={1.5} />, label: t.sidebar.items.integrationAlerts, pageKey: 'alertas' },
     ],
   },
   {
-    label: 'Conciliação',
+    label: t.sidebar.sections.settings,
     items: [
-      { icon: <AccountBalanceIcon sx={{ fontSize: 18 }} />, label: 'Taxa Administrativa', pageKey: 'taxa' },
-      { icon: <OpenInNewIcon sx={{ fontSize: 18 }} />, label: 'Lançamentos Externos', pageKey: 'lancamentos' },
-      { icon: <CompareArrowsIcon sx={{ fontSize: 18 }} />, label: 'Conciliação', pageKey: 'conciliacao' },
-    ],
-  },
-  {
-    label: 'Cadastros',
-    items: [
-      { icon: <CloudIcon sx={{ fontSize: 18 }} />, label: 'Ambiente', pageKey: 'ambiente' },
-      { icon: <PersonIcon sx={{ fontSize: 18 }} />, label: 'Cliente', pageKey: 'cliente' },
-      { icon: <SwapHorizIcon sx={{ fontSize: 18 }} />, label: 'De Para', pageKey: 'depara' },
-      { icon: <ApiIcon sx={{ fontSize: 18 }} />, label: 'Endpoint', pageKey: 'endpoint' },
-      { icon: <HubIcon sx={{ fontSize: 18 }} />, label: 'Integração', pageKey: 'integracao' },
-      { icon: <ForkRightIcon sx={{ fontSize: 18 }} />, label: 'Passos Roteamento', pageKey: 'passos' },
-      { icon: <RouteIcon sx={{ fontSize: 18 }} />, label: 'Roteamento', pageKey: 'roteamento' },
-    ],
-  },
-  {
-    label: 'Configurações',
-    items: [
-      { icon: <GroupIcon sx={{ fontSize: 18 }} />, label: 'Usuários', pageKey: 'usuarios' },
-      { icon: <TuneIcon sx={{ fontSize: 18 }} />, label: 'Agregador', pageKey: 'config-agregador' },
+      { icon: <IconAdjustments size={20} stroke={1.5} />, label: t.sidebar.items.aggregatorConfig, pageKey: 'config-agregador' },
     ],
   },
 ]
@@ -96,33 +64,54 @@ interface SidebarProps {
   activePage: string
   onNavigate: (pageKey: string) => void
   collapsed: boolean
+  isMobile: boolean
+  mobileOpen: boolean
+  onMobileClose: () => void
 }
 
-const Sidebar = ({ activePage, onNavigate, collapsed }: SidebarProps) => {
+const Sidebar = ({ activePage, onNavigate, collapsed, isMobile, mobileOpen, onMobileClose }: SidebarProps) => {
+  const { t } = useLanguage()
+  const navSections = getNavSections(t)
   const width = collapsed ? DRAWER_WIDTH_COLLAPSED : DRAWER_WIDTH
 
   return (
     <Drawer
-      variant="permanent"
+      variant={isMobile ? 'temporary' : 'permanent'}
+      open={isMobile ? mobileOpen : true}
+      onClose={isMobile ? onMobileClose : undefined}
+      ModalProps={{ keepMounted: true }}
       sx={{
-        width,
+        width: isMobile ? DRAWER_WIDTH : width,
         flexShrink: 0,
         '& .MuiDrawer-paper': {
-          width,
+          width: isMobile ? DRAWER_WIDTH : width,
           boxSizing: 'border-box',
           backgroundColor: '#fff',
           borderRight: '1px solid #e8ecf0',
           overflowX: 'hidden',
           transition: 'width 0.2s',
-          height: '100%',
+          height: 'calc(100vh - 56px)',
           position: 'fixed',
-          top: '56px', // Garante que o menu começa abaixo do Header fixo
+          top: '56px',
           left: 0,
-          zIndex: 1100, // Menor que o Header (1200)
+          zIndex: isMobile ? 1300 : 1100,
+          borderTopRightRadius: isMobile ? 12 : 0,
+          boxShadow: isMobile ? '4px 0 20px rgba(15, 23, 42, 0.16)' : 'none',
         },
       }}
     >
-      <Box sx={{ overflowY: 'auto', overflowX: 'hidden', flexGrow: 1, pb: 2, height: 'calc(100vh - 56px)', pt: 0 }}>
+      <Box sx={{
+        overflowY: 'auto',
+        overflowX: 'hidden',
+        flexGrow: 1,
+        pb: 2,
+        height: '100%',
+        pt: 0,
+        '&::-webkit-scrollbar': { width: 4 },
+        '&::-webkit-scrollbar-track': { background: 'transparent' },
+        '&::-webkit-scrollbar-thumb': { background: '#d0d5dd', borderRadius: 4 },
+        '&::-webkit-scrollbar-thumb:hover': { background: '#9aa3ae' },
+      }}>
         {navSections.map((section) => (
           <Box key={section.label}>
             {!collapsed && (
@@ -155,8 +144,9 @@ const Sidebar = ({ activePage, onNavigate, collapsed }: SidebarProps) => {
                       onClick={() => onNavigate(item.pageKey)}
                       sx={{
                         px: collapsed ? 0 : 1.5,
-                        pt: '10px',
-                        pb: '10px',
+                        pt: isMobile ? '11px' : '10px',
+                        pb: isMobile ? '11px' : '10px',
+                        mb: '4px',
                         mx: collapsed ? 0 : 0.75,
                         width: collapsed ? '100%' : 'calc(100% - 12px)',
                         borderRadius: collapsed ? 0 : '6px',
@@ -216,4 +206,3 @@ const Sidebar = ({ activePage, onNavigate, collapsed }: SidebarProps) => {
 }
 
 export { Sidebar, DRAWER_WIDTH, DRAWER_WIDTH_COLLAPSED }
-

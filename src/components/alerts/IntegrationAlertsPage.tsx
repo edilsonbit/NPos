@@ -3,6 +3,7 @@ import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined'
 import HubIcon from '@mui/icons-material/Hub'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import SendIcon from '@mui/icons-material/Send'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
 import UndoIcon from '@mui/icons-material/Undo'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import WarningAmberIcon from '@mui/icons-material/WarningAmber'
@@ -35,6 +36,7 @@ import 'dayjs/locale/pt-br'
 import relativeTime from 'dayjs/plugin/relativeTime'
 import { useMemo, useState } from 'react'
 import type { ActivityLog, ActivityLogAction } from '../../domain/models'
+import { useLanguage } from '../../i18n/LanguageContext'
 
 dayjs.extend(relativeTime)
 dayjs.locale('pt-br')
@@ -45,37 +47,45 @@ interface IntegrationAlertsPageProps {
   onRefresh: () => void
 }
 
-const actionConfig: Record<
-  ActivityLogAction,
-  { label: string; color: string; bg: string; icon: React.ReactNode }
-> = {
+type ActionConfig = Record<ActivityLogAction, { label: string; color: string; bg: string; icon: React.ReactNode }>
+
+const getActionConfig = (labels: Record<string, string>): ActionConfig => ({
   AGREGAR_CUPONS: {
-    label: 'Agregar Cupons',
+    label: labels.AGREGAR_CUPONS,
     color: '#1565c0',
     bg: '#e3f0ff',
     icon: <HubIcon sx={{ fontSize: 14 }} />,
   },
   DESFAZER_AGREGACAO: {
-    label: 'Desfazer Agregacao',
+    label: labels.DESFAZER_AGREGACAO,
     color: '#c62828',
     bg: '#ffebee',
     icon: <UndoIcon sx={{ fontSize: 14 }} />,
   },
   ENVIAR_ERP: {
-    label: 'Enviar ao ERP',
+    label: labels.ENVIAR_ERP,
     color: '#e65100',
     bg: '#fff3e0',
     icon: <SendIcon sx={{ fontSize: 14 }} />,
   },
   CANCELAR_CUPOM: {
-    label: 'Cancelar Cupom',
+    label: labels.CANCELAR_CUPOM,
     color: '#6a1b9a',
     bg: '#f3e5f5',
     icon: <ErrorOutlinedIcon sx={{ fontSize: 14 }} />,
   },
-}
+  CONSULTA_IA: {
+    label: labels.CONSULTA_IA,
+    color: '#00838f',
+    bg: '#e0f7fa',
+    icon: <SmartToyIcon sx={{ fontSize: 14 }} />,
+  },
+})
 
 const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: IntegrationAlertsPageProps) => {
+  const { t } = useLanguage()
+  const ta = t.alerts
+  const actionConfig = getActionConfig(ta.actions)
   const [actionFilter, setActionFilter] = useState<ActivityLogAction | ''>('')
   const [statusFilter, setStatusFilter] = useState<'sucesso' | 'erro' | ''>('')
   const [searchFilter, setSearchFilter] = useState('')
@@ -100,16 +110,17 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
     <>
       <Paper
         elevation={0}
-        sx={{ borderRadius: 2, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff' }}
+        sx={{ borderRadius: 2.5, border: '1px solid #e8ecf0', overflow: 'hidden', backgroundColor: '#fff', boxShadow: '0 8px 24px rgba(15, 23, 42, 0.06)' }}
       >
         {/* Toolbar — título + contadores + refresh */}
         <Stack
-          direction="row"
+          direction={{ xs: 'column', sm: 'row' }}
           sx={{
-            alignItems: 'center',
+            alignItems: { xs: 'flex-start', sm: 'center' },
             justifyContent: 'space-between',
-            px: 2,
-            py: 1,
+            px: { xs: 1.5, sm: 2 },
+            py: { xs: 1.25, sm: 1 },
+            gap: 1,
             borderBottom: '1px solid #e8ecf0',
             backgroundColor: '#fafbfc',
           }}
@@ -118,27 +129,27 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
             <WarningAmberIcon sx={{ color: '#ef6c00', fontSize: 22 }} />
             <Box>
               <Typography sx={{ fontWeight: 700, fontSize: 14, color: '#1a2c3d', lineHeight: 1.2 }}>
-                Alerta das Integracoes
+                {ta.title}
               </Typography>
               <Typography variant="caption" color="text.secondary">
-                Log geral de todas as operacoes realizadas no sistema
+                {ta.subtitle}
               </Typography>
             </Box>
           </Stack>
-          <Stack direction="row" spacing={1} sx={{ alignItems: 'center' }}>
+          <Stack direction="row" spacing={1} sx={{ alignItems: 'center', flexWrap: 'wrap' }}>
             <Chip
               icon={<CheckCircleOutlinedIcon sx={{ fontSize: 14 }} />}
-              label={`${countSuccess} sucesso(s)`}
+              label={`${countSuccess} ${ta.status.success}`}
               size="small"
               sx={{ backgroundColor: '#e8f5e9', color: '#2e7d32', fontWeight: 600, height: 28, borderRadius: 1 }}
             />
             <Chip
               icon={<ErrorOutlinedIcon sx={{ fontSize: 14 }} />}
-              label={`${countError} erro(s)`}
+              label={`${countError} ${ta.status.error}`}
               size="small"
               sx={{ backgroundColor: '#ffebee', color: '#c62828', fontWeight: 600, height: 28, borderRadius: 1 }}
             />
-            <Tooltip title="Atualizar logs">
+            <Tooltip title={ta.refresh}>
               <IconButton size="small" onClick={onRefresh} disabled={loading} sx={{ color: '#1976d2' }}>
                 {loading ? <CircularProgress size={18} /> : <RefreshIcon fontSize="small" />}
               </IconButton>
@@ -147,17 +158,17 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
         </Stack>
 
         {/* Filtros */}
-        <Box sx={{ p: 2, borderBottom: '1px solid #e8ecf0' }}>
-          <Stack direction="row" spacing={1.5}>
+        <Box sx={{ p: { xs: 1.5, sm: 2 }, borderBottom: '1px solid #e8ecf0', backgroundColor: '#fcfdff' }}>
+          <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr 1fr', md: '1fr 1fr 2fr' }, gap: 1.5 }}>
             <TextField
               select
               size="small"
-              label="Acao"
+              label={ta.filters.action}
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value as ActivityLogAction | '')}
-              sx={{ flex: 1, minWidth: 160 }}
+              sx={{ width: '100%' }}
             >
-              <MenuItem value="">Todas</MenuItem>
+              <MenuItem value="">{ta.filters.allActions}</MenuItem>
               {(Object.keys(actionConfig) as ActivityLogAction[]).map((key) => (
                 <MenuItem key={key} value={key}>{actionConfig[key].label}</MenuItem>
               ))}
@@ -166,24 +177,24 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
             <TextField
               select
               size="small"
-              label="Status"
+              label={ta.filters.status}
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as 'sucesso' | 'erro' | '')}
-              sx={{ flex: 1, minWidth: 120 }}
+              sx={{ width: '100%' }}
             >
-              <MenuItem value="">Todos</MenuItem>
-              <MenuItem value="sucesso">Sucesso</MenuItem>
-              <MenuItem value="erro">Erro</MenuItem>
+              <MenuItem value="">{ta.filters.allStatuses}</MenuItem>
+              <MenuItem value="sucesso">{ta.status.success}</MenuItem>
+              <MenuItem value="erro">{ta.status.error}</MenuItem>
             </TextField>
 
             <TextField
               size="small"
-              label="Buscar por descricao ou usuario"
+              label={ta.filters.search}
               value={searchFilter}
               onChange={(e) => setSearchFilter(e.target.value)}
-              sx={{ flex: 3 }}
+              sx={{ width: '100%', gridColumn: { xs: '1 / -1', md: 'auto' } }}
             />
-          </Stack>
+          </Box>
         </Box>
 
         {/* Tabela */}
@@ -191,7 +202,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
           <Table size="small">
             <TableHead>
               <TableRow>
-                {['Data / Hora', 'Acao', 'Descricao', 'Usuario', 'Status', 'Ver'].map((label, i) => (
+                {ta.tableHeaders.map((label, i) => (
                   <TableCell
                     key={label}
                     align={i >= 4 ? 'center' : 'left'}
@@ -222,8 +233,8 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
                 <TableRow>
                   <TableCell colSpan={6} align="center" sx={{ py: 6, color: '#9e9e9e', fontSize: 13 }}>
                     {logs.length === 0
-                      ? 'Nenhuma operacao registrada ainda. As acoes realizadas no sistema aparecerao aqui.'
-                      : 'Nenhum log encontrado para os filtros aplicados.'}
+                      ? ta.emptyState
+                      : ta.noResults}
                   </TableCell>
                 </TableRow>
               ) : (
@@ -259,7 +270,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
                       <TableCell align="center">
                         <Chip
                           size="small"
-                          label={log.status === 'sucesso' ? 'Sucesso' : 'Erro'}
+                          label={log.status === 'sucesso' ? ta.status.success : ta.status.error}
                           sx={{
                             fontSize: 10,
                             fontWeight: 700,
@@ -289,7 +300,7 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
         </TableContainer>
 
         {filteredLogs.length > 0 && (
-          <Box sx={{ px: 2, py: 1, borderTop: '1px solid #e8ecf0', backgroundColor: '#fafbfc' }}>
+          <Box sx={{ px: { xs: 1.5, sm: 2 }, py: 1, borderTop: '1px solid #e8ecf0', backgroundColor: '#fafbfc' }}>
             <Typography variant="caption" color="text.secondary">
               Exibindo {filteredLogs.length} de {logs.length} registros
             </Typography>
@@ -342,6 +353,18 @@ const IntegrationAlertsPage = ({ logs, loading = false, onRefresh }: Integration
                         <Box>
                           <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>Quantidade</Typography>
                           <Typography variant="body2">{selectedLog.details.count}</Typography>
+                        </Box>
+                      )}
+                      {selectedLog.details.aggregationIds && selectedLog.details.aggregationIds.length > 0 && (
+                        <Box>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600, display: 'block', mb: 0.5 }}>
+                            ID da agregação ({selectedLog.details.aggregationIds.length})
+                          </Typography>
+                          <Stack direction="row" sx={{ flexWrap: 'wrap', gap: 0.5 }}>
+                            {selectedLog.details.aggregationIds.map((id) => (
+                              <Chip key={id} size="small" label={id} sx={{ backgroundColor: '#fff3e0', color: '#e65100', fontSize: 11 }} />
+                            ))}
+                          </Stack>
                         </Box>
                       )}
                       {selectedLog.details.groupIds && selectedLog.details.groupIds.length > 0 && (

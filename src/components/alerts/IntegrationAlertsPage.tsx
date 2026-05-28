@@ -3,6 +3,7 @@ import ErrorOutlinedIcon from '@mui/icons-material/ErrorOutlined'
 import HubIcon from '@mui/icons-material/Hub'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import SendIcon from '@mui/icons-material/Send'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
 import UndoIcon from '@mui/icons-material/Undo'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import WarningAmberIcon from '@mui/icons-material/WarningAmber'
@@ -72,6 +73,12 @@ const getActionConfig = (labels: Record<string, string>): ActionConfig => ({
     color: '#6a1b9a',
     bg: '#f3e5f5',
     icon: <ErrorOutlinedIcon sx={{ fontSize: 14 }} />,
+  },
+  CONSULTA_IA: {
+    label: labels.CONSULTA_IA,
+    color: '#00838f',
+    bg: '#e0f7fa',
+    icon: <SmartToyIcon sx={{ fontSize: 14 }} />,
   },
 })
 

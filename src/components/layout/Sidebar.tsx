@@ -206,4 +206,3 @@ const Sidebar = ({ activePage, onNavigate, collapsed, isMobile, mobileOpen, onMo
 }
 
 export { Sidebar, DRAWER_WIDTH, DRAWER_WIDTH_COLLAPSED }
-

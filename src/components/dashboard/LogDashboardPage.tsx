@@ -12,6 +12,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   Box,
+  Button,
   Card,
   CardContent,
   Chip,
@@ -31,7 +32,7 @@ import {
 } from '@mui/material'
 import dayjs from 'dayjs'
 import 'dayjs/locale/pt-br'
-import { useMemo, useState } from 'react'
+import { type ReactNode, useMemo, useState } from 'react'
 import ReactApexChart from 'react-apexcharts'
 import type { ApexOptions } from 'apexcharts'
 import { auditLogMock, salesForecastTotal, salesLogMock } from '../../data/mocks/logDashboard.mock'
@@ -227,27 +228,29 @@ type AuditFilters = {
   environment: string
 }
 
+const ALL_VALUE = '__all__'
+
 const defaultSalesFilters: SalesFilters = {
   dateFrom: '2023-01-02',
   dateTo: '2023-01-31',
-  group: 'Tudo',
-  subgroup: 'Tudo',
-  manufacturer: 'Tudo',
-  sku: 'Tudo',
-  channel: 'Tudo',
-  state: 'Tudo',
-  description: 'Tudo',
-  city: 'Tudo',
-  country: 'Tudo',
+  group: ALL_VALUE,
+  subgroup: ALL_VALUE,
+  manufacturer: ALL_VALUE,
+  sku: ALL_VALUE,
+  channel: ALL_VALUE,
+  state: ALL_VALUE,
+  description: ALL_VALUE,
+  city: ALL_VALUE,
+  country: ALL_VALUE,
 }
 
 const defaultAuditFilters: AuditFilters = {
   dateFrom: '2026-07-01',
   dateTo: '2026-07-05',
-  action: 'Tudo',
-  status: 'Tudo',
-  user: 'Tudo',
-  environment: 'Tudo',
+  action: ALL_VALUE,
+  status: ALL_VALUE,
+  user: ALL_VALUE,
+  environment: ALL_VALUE,
 }
 
 function fmtBRL(value: number) {
@@ -266,8 +269,8 @@ function fmtDuration(value: number) {
   return `${Math.round(value)} ms`
 }
 
-function withAll(options: string[], allLabel: string) {
-  return [allLabel, ...Array.from(new Set(options))]
+function withAll(options: string[]) {
+  return [ALL_VALUE, ...Array.from(new Set(options))]
 }
 
 function MetricCard({
@@ -280,7 +283,7 @@ function MetricCard({
   title: string
   value: string
   subtitle?: string
-  icon: React.ReactNode
+  icon: ReactNode
   color: string
 }) {
   return (
@@ -309,7 +312,7 @@ function MetricCard({
   )
 }
 
-function ChartCard({ title, children }: { title: string; children: React.ReactNode }) {
+function ChartCard({ title, children }: { title: string; children: ReactNode }) {
   return (
     <Card elevation={0} sx={{ height: '100%', border: '1px solid #e8ecf0', borderRadius: 2.5, boxShadow: '0 6px 18px rgba(15, 23, 42, 0.05)' }}>
       <CardContent sx={{ p: 2 }}>
@@ -331,17 +334,17 @@ export function LogDashboardPage() {
 
   const salesOptions = useMemo(
     () => ({
-      groups: withAll(salesLogMock.map((row) => row.group), copy.all),
-      subgroups: withAll(salesLogMock.map((row) => row.subgroup), copy.all),
-      manufacturers: withAll(salesLogMock.map((row) => row.manufacturer), copy.all),
-      skus: withAll(salesLogMock.map((row) => row.sku), copy.all),
-      channels: withAll(salesLogMock.map((row) => row.channel), copy.all),
-      states: withAll(salesLogMock.map((row) => row.state), copy.all),
-      descriptions: withAll(salesLogMock.map((row) => row.description), copy.all),
-      cities: withAll(salesLogMock.map((row) => row.city), copy.all),
-      countries: withAll(salesLogMock.map((row) => row.country), copy.all),
+      groups: withAll(salesLogMock.map((row) => row.group)),
+      subgroups: withAll(salesLogMock.map((row) => row.subgroup)),
+      manufacturers: withAll(salesLogMock.map((row) => row.manufacturer)),
+      skus: withAll(salesLogMock.map((row) => row.sku)),
+      channels: withAll(salesLogMock.map((row) => row.channel)),
+      states: withAll(salesLogMock.map((row) => row.state)),
+      descriptions: withAll(salesLogMock.map((row) => row.description)),
+      cities: withAll(salesLogMock.map((row) => row.city)),
+      countries: withAll(salesLogMock.map((row) => row.country)),
     }),
-    [copy.all],
+    [],
   )
 
   const filteredSales = useMemo(() => {
@@ -350,18 +353,18 @@ export function LogDashboardPage() {
       return (
         (!salesFilters.dateFrom || !rowDate.isBefore(dayjs(salesFilters.dateFrom), 'day')) &&
         (!salesFilters.dateTo || !rowDate.isAfter(dayjs(salesFilters.dateTo), 'day')) &&
-        (salesFilters.group === copy.all || row.group === salesFilters.group) &&
-        (salesFilters.subgroup === copy.all || row.subgroup === salesFilters.subgroup) &&
-        (salesFilters.manufacturer === copy.all || row.manufacturer === salesFilters.manufacturer) &&
-        (salesFilters.sku === copy.all || row.sku === salesFilters.sku) &&
-        (salesFilters.channel === copy.all || row.channel === salesFilters.channel) &&
-        (salesFilters.state === copy.all || row.state === salesFilters.state) &&
-        (salesFilters.description === copy.all || row.description === salesFilters.description) &&
-        (salesFilters.city === copy.all || row.city === salesFilters.city) &&
-        (salesFilters.country === copy.all || row.country === salesFilters.country)
+        (salesFilters.group === ALL_VALUE || row.group === salesFilters.group) &&
+        (salesFilters.subgroup === ALL_VALUE || row.subgroup === salesFilters.subgroup) &&
+        (salesFilters.manufacturer === ALL_VALUE || row.manufacturer === salesFilters.manufacturer) &&
+        (salesFilters.sku === ALL_VALUE || row.sku === salesFilters.sku) &&
+        (salesFilters.channel === ALL_VALUE || row.channel === salesFilters.channel) &&
+        (salesFilters.state === ALL_VALUE || row.state === salesFilters.state) &&
+        (salesFilters.description === ALL_VALUE || row.description === salesFilters.description) &&
+        (salesFilters.city === ALL_VALUE || row.city === salesFilters.city) &&
+        (salesFilters.country === ALL_VALUE || row.country === salesFilters.country)
       )
     })
-  }, [copy.all, salesFilters])
+  }, [salesFilters])
 
   const salesTotals = useMemo(() => {
     const grossRevenue = filteredSales.reduce((total, row) => total + row.grossRevenue, 0)
@@ -397,12 +400,12 @@ export function LogDashboardPage() {
 
   const auditOptions = useMemo(
     () => ({
-      actions: withAll(auditLogMock.map((row) => row.action), copy.all),
-      statuses: withAll(auditLogMock.map((row) => row.status), copy.all),
-      users: withAll(auditLogMock.map((row) => row.user), copy.all),
-      environments: withAll(auditLogMock.map((row) => row.environment), copy.all),
+      actions: withAll(auditLogMock.map((row) => row.action)),
+      statuses: withAll(auditLogMock.map((row) => row.status)),
+      users: withAll(auditLogMock.map((row) => row.user)),
+      environments: withAll(auditLogMock.map((row) => row.environment)),
     }),
-    [copy.all],
+    [],
   )
 
   const filteredAudit = useMemo(() => {
@@ -411,13 +414,13 @@ export function LogDashboardPage() {
       return (
         (!auditFilters.dateFrom || !rowDate.isBefore(dayjs(auditFilters.dateFrom), 'day')) &&
         (!auditFilters.dateTo || !rowDate.isAfter(dayjs(auditFilters.dateTo).endOf('day'))) &&
-        (auditFilters.action === copy.all || row.action === auditFilters.action) &&
-        (auditFilters.status === copy.all || row.status === auditFilters.status) &&
-        (auditFilters.user === copy.all || row.user === auditFilters.user) &&
-        (auditFilters.environment === copy.all || row.environment === auditFilters.environment)
+        (auditFilters.action === ALL_VALUE || row.action === auditFilters.action) &&
+        (auditFilters.status === ALL_VALUE || row.status === auditFilters.status) &&
+        (auditFilters.user === ALL_VALUE || row.user === auditFilters.user) &&
+        (auditFilters.environment === ALL_VALUE || row.environment === auditFilters.environment)
       )
     })
-  }, [auditFilters, copy.all])
+  }, [auditFilters])
 
   const auditMetrics = useMemo(() => {
     const successCount = filteredAudit.filter((row) => row.status === 'Sucesso').length
@@ -579,7 +582,7 @@ export function LogDashboardPage() {
                       type="date"
                       value={salesFilters.dateFrom}
                       onChange={(event) => setSalesFilters((current) => ({ ...current, dateFrom: event.target.value }))}
-                      InputLabelProps={{ shrink: true }}
+                      slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField
                       label={copy.filters.to}
@@ -587,49 +590,48 @@ export function LogDashboardPage() {
                       type="date"
                       value={salesFilters.dateTo}
                       onChange={(event) => setSalesFilters((current) => ({ ...current, dateTo: event.target.value }))}
-                      InputLabelProps={{ shrink: true }}
+                      slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField select label={copy.filters.group} size="small" value={salesFilters.group} onChange={(event) => setSalesFilters((current) => ({ ...current, group: event.target.value }))}>
-                      {salesOptions.groups.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.groups.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.subgroup} size="small" value={salesFilters.subgroup} onChange={(event) => setSalesFilters((current) => ({ ...current, subgroup: event.target.value }))}>
-                      {salesOptions.subgroups.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.subgroups.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.manufacturer} size="small" value={salesFilters.manufacturer} onChange={(event) => setSalesFilters((current) => ({ ...current, manufacturer: event.target.value }))}>
-                      {salesOptions.manufacturers.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.manufacturers.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.sku} size="small" value={salesFilters.sku} onChange={(event) => setSalesFilters((current) => ({ ...current, sku: event.target.value }))}>
-                      {salesOptions.skus.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.skus.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.channel} size="small" value={salesFilters.channel} onChange={(event) => setSalesFilters((current) => ({ ...current, channel: event.target.value }))}>
-                      {salesOptions.channels.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.channels.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.state} size="small" value={salesFilters.state} onChange={(event) => setSalesFilters((current) => ({ ...current, state: event.target.value }))}>
-                      {salesOptions.states.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.states.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.description} size="small" value={salesFilters.description} onChange={(event) => setSalesFilters((current) => ({ ...current, description: event.target.value }))}>
-                      {salesOptions.descriptions.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.descriptions.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.city} size="small" value={salesFilters.city} onChange={(event) => setSalesFilters((current) => ({ ...current, city: event.target.value }))}>
-                      {salesOptions.cities.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.cities.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.country} size="small" value={salesFilters.country} onChange={(event) => setSalesFilters((current) => ({ ...current, country: event.target.value }))}>
-                      {salesOptions.countries.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {salesOptions.countries.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
-                    <TextField
-                      size="small"
-                      value={copy.clear}
-                      slotProps={{ input: { readOnly: true } }}
+                    <Button
+                      variant="outlined"
                       onClick={() => setSalesFilters(defaultSalesFilters)}
                       sx={{
-                        '& .MuiOutlinedInput-root': {
-                          cursor: 'pointer',
-                          backgroundColor: '#fff5f5',
-                          color: '#c62828',
-                          fontWeight: 700,
-                        },
+                        minHeight: 40,
+                        borderColor: '#ef5350',
+                        color: '#c62828',
+                        fontWeight: 700,
+                        justifyContent: 'center',
                       }}
-                    />
+                    >
+                      {copy.clear}
+                    </Button>
                   </Box>
                 </AccordionDetails>
               </Accordion>
@@ -782,7 +784,7 @@ export function LogDashboardPage() {
                       type="date"
                       value={auditFilters.dateFrom}
                       onChange={(event) => setAuditFilters((current) => ({ ...current, dateFrom: event.target.value }))}
-                      InputLabelProps={{ shrink: true }}
+                      slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField
                       label={copy.filters.to}
@@ -790,20 +792,33 @@ export function LogDashboardPage() {
                       type="date"
                       value={auditFilters.dateTo}
                       onChange={(event) => setAuditFilters((current) => ({ ...current, dateTo: event.target.value }))}
-                      InputLabelProps={{ shrink: true }}
+                      slotProps={{ inputLabel: { shrink: true } }}
                     />
                     <TextField select label={copy.filters.action} size="small" value={auditFilters.action} onChange={(event) => setAuditFilters((current) => ({ ...current, action: event.target.value }))}>
-                      {auditOptions.actions.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {auditOptions.actions.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.status} size="small" value={auditFilters.status} onChange={(event) => setAuditFilters((current) => ({ ...current, status: event.target.value }))}>
-                      {auditOptions.statuses.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {auditOptions.statuses.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.user} size="small" value={auditFilters.user} onChange={(event) => setAuditFilters((current) => ({ ...current, user: event.target.value }))}>
-                      {auditOptions.users.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {auditOptions.users.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
                     <TextField select label={copy.filters.environment} size="small" value={auditFilters.environment} onChange={(event) => setAuditFilters((current) => ({ ...current, environment: event.target.value }))}>
-                      {auditOptions.environments.map((option) => <MenuItem key={option} value={option}>{option}</MenuItem>)}
+                      {auditOptions.environments.map((option) => <MenuItem key={option} value={option}>{option === ALL_VALUE ? copy.all : option}</MenuItem>)}
                     </TextField>
+                    <Button
+                      variant="outlined"
+                      onClick={() => setAuditFilters(defaultAuditFilters)}
+                      sx={{
+                        minHeight: 40,
+                        borderColor: '#ef5350',
+                        color: '#c62828',
+                        fontWeight: 700,
+                        justifyContent: 'center',
+                      }}
+                    >
+                      {copy.clear}
+                    </Button>
                   </Box>
                 </AccordionDetails>
               </Accordion>
@@ -813,7 +828,7 @@ export function LogDashboardPage() {
                   <MetricCard title={copy.audit.totalEntries} value={fmtNumber(filteredAudit.length)} icon={<ReceiptLongOutlinedIcon />} color="#0d3b45" />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
-                  <MetricCard title={copy.audit.successRate} value={fmtPercent(auditMetrics.successRate)} subtitle={`${fmtNumber(auditMetrics.successCount)} sucesso(s)`} icon={<TrendingUpIcon />} color="#2e7d32" />
+                  <MetricCard title={copy.audit.successRate} value={fmtPercent(auditMetrics.successRate)} subtitle={fmtNumber(auditMetrics.successCount)} icon={<TrendingUpIcon />} color="#2e7d32" />
                 </Grid>
                 <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
                   <MetricCard title={copy.audit.errors} value={fmtNumber(auditMetrics.errorCount)} icon={<HubOutlinedIcon />} color="#d32f2f" />

@@ -18,6 +18,8 @@ const pt = {
     },
     items: {
       dashboard: 'Dashboard',
+      dashboardCoupons: 'Cupons',
+      dashboardLog: 'Log',
       fiscalCoupons: 'Cupons Fiscais',
       cancelledCoupons: 'Cupons Cancelados',
       aggregator: 'Agregador',
@@ -147,6 +149,8 @@ const en: typeof pt = {
     },
     items: {
       dashboard: 'Dashboard',
+      dashboardCoupons: 'Coupons',
+      dashboardLog: 'Log',
       fiscalCoupons: 'Tax Coupons',
       cancelledCoupons: 'Cancelled Coupons',
       aggregator: 'Aggregator',
@@ -276,6 +280,8 @@ const es: typeof pt = {
     },
     items: {
       dashboard: 'Dashboard',
+      dashboardCoupons: 'Cupones',
+      dashboardLog: 'Log',
       fiscalCoupons: 'Cupones Fiscales',
       cancelledCoupons: 'Cupones Cancelados',
       aggregator: 'Agregador',

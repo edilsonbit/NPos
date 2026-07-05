@@ -37,9 +37,15 @@ interface NavSection {
 
 const getNavSections = (t: Translations): NavSection[] => [
   {
+    label: t.sidebar.items.dashboard,
+    items: [
+      { icon: <IconDashboard size={20} stroke={1.5} />, label: t.sidebar.items.dashboardCoupons, pageKey: 'dashboard-cupons' },
+      { icon: <IconReceipt size={20} stroke={1.5} />, label: t.sidebar.items.dashboardLog, pageKey: 'dashboard-log' },
+    ],
+  },
+  {
     label: t.sidebar.sections.monitoring,
     items: [
-      { icon: <IconDashboard size={20} stroke={1.5} />, label: t.sidebar.items.dashboard, pageKey: 'dashboard' },
       { icon: <IconReceipt size={20} stroke={1.5} />, label: t.sidebar.items.fiscalCoupons, pageKey: 'cupons' },
       { icon: <IconReceiptOff size={20} stroke={1.5} />, label: t.sidebar.items.cancelledCoupons, pageKey: 'cupons-cancelados' },
       { icon: <IconStack2 size={20} stroke={1.5} />, label: t.sidebar.items.aggregator, pageKey: 'agregador' },
@@ -206,4 +212,3 @@ const Sidebar = ({ activePage, onNavigate, collapsed, isMobile, mobileOpen, onMo
 }
 
 export { Sidebar, DRAWER_WIDTH, DRAWER_WIDTH_COLLAPSED }
-

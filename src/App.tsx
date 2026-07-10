@@ -17,6 +17,7 @@ import { ApiTesterPage } from './components/apiTester/ApiTesterPage'
 import { IntegrationAlertsPage } from './components/alerts/IntegrationAlertsPage'
 import { LoginPage } from './components/auth/LoginPage'
 import { DashboardPage } from './components/dashboard/DashboardPage'
+import { LogDashboardPage } from './components/dashboard/LogDashboardPage'
 import { CouponFiltersBar } from './components/coupons/CouponFiltersBar'
 import { CouponTable } from './components/coupons/CouponTable'
 import { AppShell } from './components/layout/AppShell'
@@ -128,7 +129,7 @@ const App = () => {
   const [groups, setGroups] = useState<AggregatedCouponGroup[]>([])
   const [loading, setLoading] = useState(true)
   const [processing, setProcessing] = useState(false)
-  const [activePage, setActivePage] = useState('dashboard')
+  const [activePage, setActivePage] = useState('dashboard-cupons')
   const [activityLogs, setActivityLogs] = useState<ActivityLog[]>([])
   const [logsLoading, setLogsLoading] = useState(false)
 
@@ -493,8 +494,10 @@ const App = () => {
       userEmail={userEmail}
       onLogout={() => void signOut(getFirebaseAuth())}
     >
-      {activePage === 'dashboard' ? (
+      {activePage === 'dashboard-cupons' ? (
         <DashboardPage coupons={coupons} />
+      ) : activePage === 'dashboard-log' ? (
+        <LogDashboardPage />
       ) : activePage === 'config-agregador' ? (
         <AggregatorConfig
           criteria={criteria}
@@ -563,5 +566,4 @@ const App = () => {
 }
 
 export default App
-
 
